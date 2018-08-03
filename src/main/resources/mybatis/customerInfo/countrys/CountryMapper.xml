@@ -40,22 +40,19 @@
     </select>
 
 
-    <insert id="insertNotice" parameterType="Notice">
-        insert into sys_notice (
-        <if test="noticeTitle != null and noticeTitle != '' ">notice_title, </if>
-        <if test="noticeType != null and noticeType != '' ">notice_type, </if>
-        <if test="noticeContent != null and noticeContent != '' ">notice_content, </if>
-        <if test="status != null and status != '' ">status, </if>
-        <if test="remark != null and remark != ''">remark,</if>
-        <if test="createBy != null and createBy != ''">create_by,</if>
-        create_time
+    <insert id="insertCountry" parameterType="Country">
+        insert into cus_country(
+        <if test="countryCN != null and countryCN != '' ">countryCN, </if>
+        <if test="countryEN != null and countryEN != '' ">countryEN, </if>
+        <if test="countryCode != null and countryCode != '' ">country_code, </if>
+        <if test="aviationCode != null and status != '' ">aviation_code, </if>
+        <if test="continent != null and continent != ''">continent,</if>
         )values(
-        <if test="noticeTitle != null and noticeTitle != ''">#{noticeTitle}, </if>
-        <if test="noticeType != null and noticeType != ''">#{noticeType}, </if>
-        <if test="noticeContent != null and noticeContent != ''">#{noticeContent}, </if>
-        <if test="status != null and status != ''">#{status}, </if>
-        <if test="remark != null and remark != ''">#{remark},</if>
-        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        <if test="countryCN != null and countryCN != ''">#{countryCN}, </if>
+        <if test="countryEN != null and countryEN != ''">#{countryEN}, </if>
+        <if test="countryCode != null and countryCode != ''">#{countryCode}, </if>
+        <if test="aviationCode != null and aviationCode != ''">#{aviationCode}, </if>
+        <if test="continent != null and continent != ''">#{continent},</if>
         sysdate()
         )
     </insert>
