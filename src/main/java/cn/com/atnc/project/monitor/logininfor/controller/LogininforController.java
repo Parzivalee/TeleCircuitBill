@@ -21,7 +21,7 @@ import cn.com.atnc.framework.web.page.TableDataInfo;
 /**
  * 系统访问记录
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/monitor/logininfor")

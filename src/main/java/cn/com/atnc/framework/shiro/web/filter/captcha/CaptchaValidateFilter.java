@@ -13,7 +13,6 @@ import cn.com.atnc.common.constant.ShiroConstants;
 /**
  * 验证码过滤器
  * 
- * @author ruoyi
  */
 public class CaptchaValidateFilter extends AccessControlFilter
 {

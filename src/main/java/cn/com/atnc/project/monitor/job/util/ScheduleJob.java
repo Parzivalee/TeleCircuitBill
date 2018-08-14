@@ -21,7 +21,7 @@ import cn.com.atnc.project.monitor.job.domain.JobLog;
 /**
  * 定时任务
  * 
- * @author ruoyi
+ * @author
  *
  */
 public class ScheduleJob extends QuartzJobBean

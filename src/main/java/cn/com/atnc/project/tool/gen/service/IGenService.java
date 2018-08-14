@@ -7,7 +7,6 @@ import cn.com.atnc.project.tool.gen.domain.TableInfo;
 /**
  * 代码生成 服务层
  * 
- * @author ruoyi
  */
 public interface IGenService
 {

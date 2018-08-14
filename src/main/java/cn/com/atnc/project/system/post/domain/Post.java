@@ -6,7 +6,7 @@ import cn.com.atnc.framework.web.domain.BaseEntity;
 /**
  * 岗位对象 sys_post
  * 
- * @author ruoyi
+ * @author
  */
 public class Post extends BaseEntity
 {

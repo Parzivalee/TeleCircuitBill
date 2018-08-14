@@ -21,7 +21,7 @@ import java.util.List;
  * 
  */
 @Controller
-@RequestMapping("/customerInfo/countrys/country")
+@RequestMapping("/customerInfo/countrys")
 public class CountryController extends BaseController {
     private String prefix = "customerInfo/countrys/";
 
@@ -45,25 +45,9 @@ public class CountryController extends BaseController {
         return getDataTable(list);
     }
 
-   /* @Log(title = "用户管理", action = BusinessType.EXPORT)
-    @PostMapping("/export")
-    @ResponseBody
-    public AjaxResult export(User user) throws Exception
-    {
-        try
-        {
-            List<User> list = userService.selectUserList(user);
-            ExcelUtil<User> util = new ExcelUtil<User>(User.class);
-            return util.exportExcel(list, "user");
-        }
-        catch (Exception e)
-        {
-            return error("导出Excel失败，请联系网站管理员！");
-        }
-    }*/
 
     /**
-     * 新增用户
+     * 国家新增-get
      */
     @GetMapping("/add")
     public String add() {
@@ -71,7 +55,7 @@ public class CountryController extends BaseController {
     }
 
     /**
-     * 新增保存用户
+     * 国家新增-post
      */
     @RequiresPermissions("customerInfo:countrys:add")
     @Log(title = "国家管理", action = BusinessType.INSERT)

@@ -6,7 +6,7 @@ import cn.com.atnc.framework.web.domain.BaseEntity;
 /**
  * 定时任务调度日志信息 sys_job_log
  * 
- * @author ruoyi
+ * @author
  */
 public class JobLog extends BaseEntity
 {

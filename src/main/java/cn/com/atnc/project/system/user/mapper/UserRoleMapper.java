@@ -6,7 +6,7 @@ import cn.com.atnc.project.system.user.domain.UserRole;
 /**
  * 用户表 数据层
  * 
- * @author ruoyi
+ * @author
  */
 public interface UserRoleMapper
 {

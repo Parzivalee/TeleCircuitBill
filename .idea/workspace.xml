@@ -1,12 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6889b66-f9ba-436b-b27b-673f84ac8ad8" name="Default" comment="">
+    <list default="true" id="8d7d401f-a502-4dbe-827f-d9921c23b332" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/atncweb_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/lwj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/loginv2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ProjectConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ProjectConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ShiroConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/service/PasswordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/service/PasswordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/session/OnlineSessionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/session/OnlineSessionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/session/OnlineSessionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/session/OnlineSessionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/LogoutFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/LogoutFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/captcha/CaptchaValidateFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/captcha/CaptchaValidateFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/online/OnlineSessionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/online/OnlineSessionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/sync/SyncOnlineSessionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/sync/SyncOnlineSessionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/session/OnlineWebSessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/session/OnlineWebSessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/session/SpringSessionValidationScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/session/SpringSessionValidationScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/domain/AjaxResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/domain/AjaxResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/domain/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/domain/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/exception/DefaultExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/exception/DefaultExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/page/TableSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/page/TableSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/service/ConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/service/ConfigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/service/PermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/service/PermissionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/controller/CountryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/controller/CountryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/controller/JobController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/controller/JobController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/controller/JobLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/controller/JobLogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/domain/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/domain/Job.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/domain/JobLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/domain/JobLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/mapper/JobLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/mapper/JobLogMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/mapper/JobMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/mapper/JobMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/IJobLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/IJobLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/IJobService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/IJobService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/JobLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/JobLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/JobServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/JobServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/task/RyTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/task/RyTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/util/ScheduleJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/util/ScheduleJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/util/ScheduleRunnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/util/ScheduleRunnable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/util/ScheduleUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/util/ScheduleUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/controller/LogininforController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/controller/LogininforController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/domain/Logininfor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/domain/Logininfor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/mapper/LogininforMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/mapper/LogininforMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/service/ILogininforService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/service/ILogininforService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/service/LogininforServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/logininfor/service/LogininforServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/controller/UserOnlineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/controller/UserOnlineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/domain/OnlineSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/domain/OnlineSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/domain/UserOnline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/domain/UserOnline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/mapper/UserOnlineMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/mapper/UserOnlineMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/service/IUserOnlineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/service/IUserOnlineService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/service/UserOnlineServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/online/service/UserOnlineServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/controller/OperlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/controller/OperlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/domain/OperLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/domain/OperLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/mapper/OperLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/mapper/OperLogMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/service/IOperLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/service/IOperLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/service/OperLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/operlog/service/OperLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/controller/ConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/controller/ConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/domain/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/domain/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/mapper/ConfigMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/mapper/ConfigMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/service/ConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/service/ConfigServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/service/IConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/config/service/IConfigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/controller/DeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/controller/DeptController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/domain/Dept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/domain/Dept.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/mapper/DeptMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/mapper/DeptMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/service/DeptServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/service/DeptServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/service/IDeptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dept/service/IDeptService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/controller/DictDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/controller/DictDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/controller/DictTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/controller/DictTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/domain/DictData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/domain/DictData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/domain/DictType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/domain/DictType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/mapper/DictDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/mapper/DictDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/mapper/DictTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/mapper/DictTypeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/service/DictDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/service/DictDataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/service/DictTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/service/DictTypeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/service/IDictDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/service/IDictDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/service/IDictTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/dict/service/IDictTypeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/domain/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/domain/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/mapper/MenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/mapper/MenuMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/service/IMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/service/IMenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/service/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/service/MenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/controller/NoticeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/domain/Notice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/domain/Notice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/mapper/NoticeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/mapper/NoticeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/service/INoticeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/service/INoticeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/service/NoticeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/service/NoticeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/domain/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/domain/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/mapper/PostMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/service/IPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/service/IPostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/post/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/mapper/RoleMenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/mapper/RoleMenuMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/service/IRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/service/IRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/service/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/service/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/CaptchaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/CaptchaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/domain/UserPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/domain/UserPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/domain/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/domain/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/domain/UserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/domain/UserStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/mapper/UserPostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/mapper/UserPostMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/mapper/UserRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/mapper/UserRoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/build/BuildController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/build/BuildController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/controller/GenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/controller/GenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/domain/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/domain/ColumnInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/domain/TableInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/domain/TableInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/mapper/GenMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/mapper/GenMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/service/GenServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/service/GenServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/service/IGenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/service/IGenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/util/GenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/util/GenUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/util/VelocityInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/util/VelocityInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/swagger/SwaggerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/swagger/SwaggerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/swagger/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/swagger/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-druid.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ehcache/ehcache-shiro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ehcache/ehcache-shiro.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/countrys/CountryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/countrys/CountryMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ruoyi.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ruoyi/css/ry-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc/css/ry-ui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ruoyi/css/ry-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc/css/ry-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ruoyi/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ruoyi/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ruoyi/js/ry-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ruoyi/js/ry-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/ruoyi/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/country.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/country.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/500.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error/500.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/unauth.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error/unauth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/include.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/include.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/system/menu/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/system/menu/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-druid.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/config/ProjectConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/config/ProjectConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/config/ShiroConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/config/ShiroConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/service/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/service/PasswordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/service/PasswordService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/session/OnlineSessionDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/session/OnlineSessionDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/session/OnlineSessionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/session/OnlineSessionFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/web/filter/captcha/CaptchaValidateFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/web/filter/captcha/CaptchaValidateFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/web/filter/sync/SyncOnlineSessionFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/web/filter/sync/SyncOnlineSessionFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/web/session/OnlineWebSessionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/framework/shiro/web/session/OnlineWebSessionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/system/user/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/system/user/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/build/BuildController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/build/BuildController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/controller/GenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/controller/GenController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/domain/ColumnInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/domain/ColumnInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/domain/TableInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/domain/TableInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/service/GenServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/service/GenServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/util/GenUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/util/GenUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/util/VelocityInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/com/atnc/project/tool/gen/util/VelocityInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ehcache/ehcache-shiro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ehcache/ehcache-shiro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/ruoyi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/ruoyi/css/ry-ui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/ruoyi/css/ry-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/ruoyi/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/ruoyi/js/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/ruoyi/js/ry-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/ruoyi/js/ry-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/ruoyi/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/error/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error/500.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/error/500.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error/unauth.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/error/unauth.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/include.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/include.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,96 +187,113 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="CountryController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/controller/CountryController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="69" column="29" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="29" />
+            <state relative-caret-position="-1375">
+              <caret line="66" column="44" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2133#2134#0" expanded="true" />
-                <element signature="e#2171#2172#0" expanded="true" />
-                <element signature="e#2461#2462#0" expanded="true" />
-                <element signature="e#2529#2530#0" expanded="true" />
+                <element signature="e#1925#1926#0" expanded="true" />
+                <element signature="e#1993#1994#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/notice/add.html">
+      <file leaf-file-name="notice.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/notice/notice.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="57" column="28" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="41" />
+            <state relative-caret-position="-1296">
+              <caret line="45" column="9" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CountryMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/countrys/CountryMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="33" column="66" lean-forward="true" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeptMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/system/DeptMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1452" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/system/MenuMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2420">
+              <caret line="110" column="36" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/menu/menu.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="30" column="89" selection-start-line="30" selection-start-column="89" selection-end-line="30" selection-end-column="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/user/add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="225" column="9" lean-forward="true" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/user/user.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4308" />
+            <state relative-caret-position="-913" />
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>了解若依</find>
-      <find>若依</find>
-      <find>若依管理</find>
-      <find />
-      <find>liwenjie</find>
-      <find>createBy</find>
-      <find>form-user-add</find>
-      <find>form-notice-add</find>
+      <find>login_2</find>
+      <find>signupForm</find>
+      <find>运行时异常</find>
+      <find>undefinded</find>
+      <find>index#</find>
+      <find>index</find>
+      <find>btnSubmit</find>
+      <find>/ruoyi</find>
+      <find>`</find>
+      <find>ruoyi_iframe</find>
       <find>ruoyi</find>
-      <find>ctx</find>
-      <find>editFlag</find>
+      <find>·</find>
+      <find>anima</find>
+      <find>http://tajs.qq.com/stats?sId=62048022</find>
+      <find>addf</find>
+      <find>toolbar</find>
+      <find>PostResult</find>
     </findStrings>
     <replaceStrings>
       <replace />
-      <replace>countryName</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>E:\github\ATNCWeb\src\main\java\cn\com\atnc\project\system</dir>
+      <dir>D:\project\ATNCWeb\src\main\resources\static\atnc</dir>
+      <dir>D:\project\ATNCWeb</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -114,55 +302,44 @@
   <component name="GradleLocalSettings">
     <option name="projectSyncType">
       <map>
-        <entry key="$PROJECT_DIR$/../app-engine-master" value="PREVIEW" />
+        <entry key="D:/gitProject/kwserver" value="PREVIEW" />
       </map>
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/templates/main.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/constant/CommonMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/constant/ShiroConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/constant/UserConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/utils/ServletUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/utils/MessageUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/utils/AddressUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/utils/DateUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/utils/StringUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/utils/SystemLogUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/utils/TreeUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/common/xss/XssFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/aspectj/LogAspect.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/banner.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/application-druid.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/ProfileController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/mapper/RoleMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/domain/Role.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/controller/BaseController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/domain/RoleMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/StartApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/controller/RoleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ProjectConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ShiroConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/util/GenUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/service/LoginService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/service/PasswordService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login1.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login_2.html" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/tool/gen/controller/GenController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/session/OnlineSessionDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/session/OnlineSessionFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/captcha/CaptchaValidateFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/filter/sync/SyncOnlineSessionFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/session/OnlineWebSessionManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/atnc/login.js" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/LICENSE" />
+        <option value="$PROJECT_DIR$/src/main/resources/ehcache/ehcache-shiro.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/atnc/js/common.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/customer/countrys/edit.html" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/service/DictService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/customer/countrys/countrys.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/customer/countrys/add.html" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/mapper/CountryMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/domain/Country.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/realm/UserRealm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/page/PageDomain.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/ruoyi/css/ry-ui.min.css" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/page/TableDataInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/countrys/CountryMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/system/notice/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/include.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/loginv2.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/domain/Country.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/controller/CountryController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/system/menu/menu.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/country.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/countrys/CountryMapper.xml" />
       </list>
     </option>
   </component>
@@ -172,16 +349,26 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="E:/apache/apache-maven-3.2.3" />
+        <option name="mavenHome" value="D:/Config/Maven/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="D:\Config\Maven\apache-maven-3.5.2\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
       <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="Profiles" type="6783ec58:MavenProjectsStructure$ProfilesNode" />
+        </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="atncweb" type="9519ce18:MavenProjectsStructure$ProjectNode" />
@@ -194,16 +381,13 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="520" />
-    <option name="y" value="15" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="608" />
+    <option name="width" value="628" />
+    <option name="height" value="668" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
-      <flattenPackages ProjectPane="false" />
-      <hideEmptyPackages ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -270,7 +454,7 @@
               <item name="cn" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
@@ -282,6 +466,7 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="atnc" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
@@ -332,103 +517,20 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="atnc" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="notice" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="role" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="role" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
               <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
               <item name="countrys" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="atnc" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -436,44 +538,11 @@
               <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
-              <item name="countrys" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="atnc" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
               <item name="system" type="462c0819:PsiDirectoryNode" />
               <item name="menu" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -482,23 +551,145 @@
               <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="atnc" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="atnc" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="notice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="atnc" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="notice" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
+              <item name="countrys" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
+              <item name="countrys" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="notice" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
               <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="role" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="atncweb" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ATNCWeb" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -508,25 +699,25 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/atnc/js/common.js" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/main/resources/static/atnc/js/common.js" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\github\ATNCWeb\src\main\resources\templates" />
-      <recent name="E:\github\ATNCWeb\src\main\resources\mybatis" />
-      <recent name="E:\github\ATNCWeb\src\main\java\cn\com\atnc\project" />
-      <recent name="E:\github\ATNCWeb\src\main\resources\static\img" />
-      <recent name="E:\github\ATNCWeb\src\main\resources\static" />
+      <recent name="D:\project\ATNCWeb\src\main\resources\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -565,7 +756,7 @@
       <module name="atncweb" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.com.atnc.StartApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateResources" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateResources" />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -591,75 +782,64 @@
       <listeners />
     </configuration>
   </component>
+  <component name="SpringBeansView">
+    <option name="beanDetailsProportion" value="0.3877551" />
+  </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\lwj\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e6889b66-f9ba-436b-b27b-673f84ac8ad8" name="Default" comment="" />
-      <created>1533014743447</created>
+      <changelist id="8d7d401f-a502-4dbe-827f-d9921c23b332" name="Default" comment="" />
+      <created>1533892988880</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1533014743447</updated>
-      <workItem from="1533014745942" duration="15545000" />
-      <workItem from="1533085078434" duration="5184000" />
-      <workItem from="1533179840799" duration="2851000" />
-      <workItem from="1533256990580" duration="19143000" />
+      <updated>1533892988880</updated>
+      <workItem from="1533892990430" duration="8845000" />
+      <workItem from="1533965916118" duration="4228000" />
+      <workItem from="1534036858408" duration="7020000" />
+      <workItem from="1534059972409" duration="800000" />
+      <workItem from="1534213760527" duration="2163000" />
+      <workItem from="1534228432502" duration="12585000" />
     </task>
-    <task id="LOCAL-00001" summary="readme提交">
-      <created>1533259254951</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1533259254951</updated>
-    </task>
-    <task id="LOCAL-00002" summary="洲与国家模块添加">
-      <created>1533275196535</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1533275196535</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42723000" />
+    <option name="totallyTimeSpent" value="35641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.5010661" side_tool="true" weight="0.32922733" />
-      <window_info anchor="right" id="Maven Projects" order="9" weight="0.32995737" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" weight="0.3293944" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.3297587" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info anchor="bottom" id="Docker" order="9" />
-      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Database" order="5" weight="0.3297587" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3988183" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49946696" weight="0.32997763" />
+      <window_info anchor="bottom" id="Messages" order="9" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32922733" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.38409853" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4989339" weight="0.26651737" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25746268" />
-      <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31466964" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.3293944" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3293944" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22547974" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.3297587" />
       <window_info id="Web" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32922733" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.24972005" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -671,299 +851,235 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="readme提交" />
-    <MESSAGE value="洲与国家模块添加" />
-    <option name="LAST_COMMIT_MESSAGE" value="洲与国家模块添加" />
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/role/edit.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-682">
-          <caret line="8" column="77" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="77" />
+        <state relative-caret-position="88">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ry.sh">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/user/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1198" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/include.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="968">
-          <caret line="44" column="18" lean-forward="true" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+        <state relative-caret-position="726">
+          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="43" />
+        <state relative-caret-position="418">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tool/build/build.html">
+    <entry file="file://D:/Config/Maven/repository/org/springframework/boot/spring-boot-starter-parent/2.0.3.RELEASE/spring-boot-starter-parent-2.0.3.RELEASE.pom">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132" />
+        <state relative-caret-position="-4975" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/tool/gen/gen.html">
+    <entry file="jar://D:/Config/Maven/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/scanners/ApiListingScanner.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-176">
-          <caret line="5" column="4" lean-forward="true" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        <state relative-caret-position="142">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/service/DictService.java">
+    <entry file="jar://D:/Config/Maven/repository/org/hibernate/validator/hibernate-validator/6.0.10.Final/hibernate-validator-6.0.10.Final.jar!/org/hibernate/validator/internal/constraintvalidators/bv/number/bound/decimal/AbstractDecimalMaxValidator.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="14" />
+        <state relative-caret-position="132">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/ajax/libs/validate/jquery.validate.min.js">
+    <entry file="jar://D:/Config/Maven/repository/org/hibernate/validator/hibernate-validator/6.0.10.Final/hibernate-validator-6.0.10.Final.jar!/org/hibernate/validator/internal/constraintvalidators/bv/number/bound/decimal/AbstractDecimalMinValidator.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="3" column="110" selection-start-line="3" selection-start-column="110" selection-end-line="3" selection-end-column="110" />
+        <state relative-caret-position="132">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/customer/countrys/add.html">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="80" column="21" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+        <state relative-caret-position="-443">
+          <caret line="253" column="21" selection-start-line="253" selection-start-column="21" selection-end-line="253" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor>
-            <caret column="14" selection-start-column="14" selection-end-column="14" />
-          </first_editor>
+        <state split_layout="SPLIT">
+          <first_editor />
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/StartApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="814">
+          <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/ehcache/ehcache-shiro.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/layui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-792" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/atnc/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1169">
+          <caret line="2" column="3" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application-druid.yml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/atnc/login.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Config/Maven/repository/org/springframework/boot/spring-boot-autoconfigure/2.0.3.RELEASE/spring-boot-autoconfigure-2.0.3.RELEASE.jar!/org/springframework/boot/autoconfigure/SpringBootApplication.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/StartApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ProjectConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/CaptchaConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Config/Maven/repository/org/apache/shiro/shiro-spring/1.4.0/shiro-spring-1.4.0.jar!/org/apache/shiro/spring/web/ShiroFilterFactoryBean.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/DruidConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2489">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/atnc.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ShiroConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="252" column="44" selection-start-line="252" selection-start-column="39" selection-end-line="252" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+        <state relative-caret-position="1540">
+          <caret line="70" column="65" selection-start-line="70" selection-start-column="65" selection-end-line="70" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/customer/countrys/edit.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/include.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="200">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/customer/countrys/countrys.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/loginv2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-506">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        <state relative-caret-position="1650">
+          <caret line="75" column="65" lean-forward="true" selection-start-line="75" selection-end-line="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="51" column="43" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="106">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/authz/annotation/RequiresPermissions.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/common/CommonController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/controller/BaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="60" column="52" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/mapper/JobLogMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/monitor/job/service/JobLogServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/domain/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-          <folding>
-            <element signature="e#477#478#0" expanded="true" />
-            <element signature="e#524#525#0" expanded="true" />
-            <element signature="e#566#567#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/config/ShiroConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="248" column="72" lean-forward="true" selection-start-line="248" selection-start-column="72" selection-end-line="248" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/session/OnlineWebSessionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/page/PageDomain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/ruoyi/css/ry-ui.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/page/TableDataInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/web/session/SpringSessionValidationScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/realm/UserRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-235">
-          <caret line="70" column="62" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/web/page/TableSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/framework/shiro/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.7.RELEASE/spring-context-5.0.7.RELEASE.jar!/org/springframework/ui/ModelMap.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/role/controller/RoleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1914">
-          <caret line="114" column="44" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="44" />
+        <state relative-caret-position="-575">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/notice/controller/NoticeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        <state relative-caret-position="198">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/system/NoticeMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/system/menu/controller/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="61" column="13" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="61" selection-end-column="13" />
+        <state relative-caret-position="19">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/countrys/CountryMapper.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/domain/Country.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+        <state relative-caret-position="176">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/mapper/CountryMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/notice/add.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/service/CountryServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+        <state relative-caret-position="461">
+          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
           <folding>
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#622#623#0" expanded="true" />
             <element signature="e#1512#1513#0" expanded="true" />
             <element signature="e#1571#1572#0" expanded="true" />
           </folding>
@@ -972,92 +1088,192 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/service/CountryService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="451">
           <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/menu/add.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/mapper/CountryMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="109" column="16" selection-start-line="109" selection-start-column="16" selection-end-line="109" selection-end-column="81" />
+        <state relative-caret-position="1562">
+          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/ruoyi/js/ry-ui.js">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="386" column="31" lean-forward="true" selection-start-line="386" selection-start-column="31" selection-end-line="386" selection-end-column="31" />
+        <state relative-caret-position="-1565">
+          <caret line="50" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        <state relative-caret-position="22">
+          <caret line="1" selection-start-line="1" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/controller/CountryController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/menu/menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="69" column="29" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2133#2134#0" expanded="true" />
-            <element signature="e#2171#2172#0" expanded="true" />
-            <element signature="e#2461#2462#0" expanded="true" />
-            <element signature="e#2529#2530#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/country.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="979">
-          <caret line="89" column="36" lean-forward="true" selection-start-line="89" selection-start-column="36" selection-end-line="89" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/user/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4308" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/notice/notice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="62" column="27" lean-forward="true" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/notice/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="57" column="28" lean-forward="true" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/user/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="225" column="9" lean-forward="true" selection-start-line="225" selection-start-column="9" selection-end-line="225" selection-end-column="9" />
+        <state relative-caret-position="198">
+          <caret line="30" column="89" selection-start-line="30" selection-start-column="89" selection-end-line="30" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+        <state relative-caret-position="-913" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/project/customerInfo/countrys/controller/CountryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1375">
+          <caret line="66" column="44" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
+          <folding>
+            <element signature="e#1925#1926#0" expanded="true" />
+            <element signature="e#1993#1994#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/role/role.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="30" column="33" selection-start-line="25" selection-start-column="28" selection-end-line="30" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/country.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="38" column="39" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/system/notice/notice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1296">
+          <caret line="45" column="9" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/system/RoleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2005" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/system/PostMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1824">
+          <caret line="6" column="41" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/system/NoticeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/system/DeptMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1452" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/system/MenuMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2420">
+          <caret line="110" column="36" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/countrys/CountryMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="33" column="66" lean-forward="true" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>atncweb:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web (atncweb)|Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>atncweb</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

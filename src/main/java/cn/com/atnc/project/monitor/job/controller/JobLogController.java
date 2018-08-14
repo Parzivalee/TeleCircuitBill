@@ -21,7 +21,7 @@ import cn.com.atnc.framework.web.page.TableDataInfo;
 /**
  * 调度日志操作处理
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/monitor/jobLog")

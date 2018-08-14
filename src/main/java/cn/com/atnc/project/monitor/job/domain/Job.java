@@ -9,7 +9,7 @@ import cn.com.atnc.framework.web.domain.BaseEntity;
 /**
  * 定时任务调度信息 sys_job
  * 
- * @author ruoyi
+ * @author
  */
 public class Job extends BaseEntity implements Serializable
 {

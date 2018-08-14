@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 登录验证
  * 
- * @author ruoyi
  */
 @Controller
 public class LoginController extends BaseController
@@ -39,9 +38,9 @@ public class LoginController extends BaseController
 
     @PostMapping("/login")
     @ResponseBody
-    public AjaxResult ajaxLogin(String username, String password, Boolean rememberMe)
+    public AjaxResult ajaxLogin(String username, String password)
     {
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password, rememberMe);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();
         try
         {

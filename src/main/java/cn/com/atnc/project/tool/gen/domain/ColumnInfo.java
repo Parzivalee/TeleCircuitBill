@@ -3,7 +3,6 @@ package cn.com.atnc.project.tool.gen.domain;
 /**
  * ry数据库表列信息
  * 
- * @author ruoyi
  */
 public class ColumnInfo
 {

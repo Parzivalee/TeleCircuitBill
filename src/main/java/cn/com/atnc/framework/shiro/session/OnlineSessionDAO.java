@@ -20,7 +20,6 @@ import cn.com.atnc.project.monitor.online.service.IUserOnlineService;
 /**
  * 针对自定义的ShiroSession的db操作
  * 
- * @author ruoyi
  */
 public class OnlineSessionDAO extends EnterpriseCacheSessionDAO
 {

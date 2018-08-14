@@ -25,7 +25,7 @@ import cn.com.atnc.project.monitor.online.domain.UserOnline;
 /**
  * 在线用户监控
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/monitor/online")

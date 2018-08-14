@@ -247,6 +247,12 @@
 			<version>3.9</version>
 		</dependency>
 
+        <!--配置Actuator对系统进行自省和监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
 	</dependencies>
 
 	<build>

@@ -8,7 +8,6 @@ import cn.com.atnc.project.tool.gen.domain.ColumnInfo;
 /**
  * 代码生成 数据层
  * 
- * @author ruoyi
  */
 public interface GenMapper
 {

@@ -20,7 +20,7 @@ import com.google.code.kaptcha.Producer;
 /**
  * 图片验证码（支持算术形式）
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/captcha")

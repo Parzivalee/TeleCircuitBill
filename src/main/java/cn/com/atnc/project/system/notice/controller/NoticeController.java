@@ -22,7 +22,7 @@ import cn.com.atnc.project.system.notice.domain.Notice;
 /**
  * 公告 信息操作处理
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/system/notice")

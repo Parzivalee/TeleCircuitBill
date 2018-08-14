@@ -15,12 +15,11 @@ import org.apache.velocity.VelocityContext;
 /**
  * 代码生成器 工具类
  * 
- * @author ruoyi
  */
 public class GenUtils
 {
     /** 项目空间路径 */
-    private static final String PROJECT_PATH = "main/java/com/ruoyi/project";
+    private static final String PROJECT_PATH = "main/java/cn/com/atnc/project";
 
     /** mybatis空间路径 */
     private static final String MYBATIS_PATH = "main/resources/mybatis";

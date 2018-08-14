@@ -8,7 +8,7 @@ import cn.com.atnc.project.system.dept.domain.Dept;
 /**
  * 部门管理 服务层
  * 
- * @author ruoyi
+ * @author
  */
 public interface IDeptService
 {

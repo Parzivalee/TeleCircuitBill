@@ -13,7 +13,7 @@ import cn.com.atnc.common.utils.security.PermissionUtils;
 /**
  * 自定义异常处理器
  * 
- * @author ruoyi
+ * @author
  */
 @RestControllerAdvice
 public class DefaultExceptionHandler

@@ -5,7 +5,7 @@ import cn.com.atnc.framework.web.domain.BaseEntity;
 /**
  * 公告表 sys_notice
  * 
- * @author ruoyi
+ * @author
  */
 public class Notice extends BaseEntity
 {

@@ -28,7 +28,7 @@ import cn.com.atnc.project.system.user.service.IUserService;
 /**
  * 用户信息
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/system/user")

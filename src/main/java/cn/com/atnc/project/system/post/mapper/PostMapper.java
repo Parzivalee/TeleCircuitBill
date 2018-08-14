@@ -7,7 +7,7 @@ import cn.com.atnc.project.system.post.domain.Post;
 /**
  * 岗位信息 数据层
  * 
- * @author ruoyi
+ * @author
  */
 public interface PostMapper
 {

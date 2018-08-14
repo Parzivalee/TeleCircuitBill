@@ -23,7 +23,7 @@ import cn.com.atnc.project.system.dict.service.IDictTypeService;
 /**
  * 数据字典信息
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/system/dict")

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 字典表 数据层
  * 
- * @author ruoyi
+ * @author
  */
 @Mapper
 public interface DictTypeMapper

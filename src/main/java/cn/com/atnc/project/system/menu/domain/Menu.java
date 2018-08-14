@@ -8,7 +8,7 @@ import cn.com.atnc.framework.web.domain.BaseEntity;
 /**
  * 角色对象 sys_menu
  * 
- * @author ruoyi
+ * @author
  */
 public class Menu extends BaseEntity
 {

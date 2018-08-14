@@ -7,7 +7,7 @@ import cn.com.atnc.project.system.user.domain.UserPost;
 /**
  * 用户与岗位 表 数据层
  * 
- * @author ruoyi
+ * @author
  */
 public interface UserPostMapper
 {

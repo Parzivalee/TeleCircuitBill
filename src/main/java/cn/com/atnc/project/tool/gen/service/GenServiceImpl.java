@@ -27,7 +27,6 @@ import org.springframework.stereotype.Service;
 /**
  * 代码生成 服务层处理
  * 
- * @author ruoyi
  */
 @Service
 public class GenServiceImpl implements IGenService

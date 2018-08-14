@@ -11,6 +11,8 @@
         <result property="countryCode"     column="country_code"/>
         <result property="aviationCode"        column="aviation_code"/>
         <result property="continent"    column="continent"/>
+        <result property="creatime"    column="creatime" />
+        <result property="updtime" column="updtime" />
     </resultMap>
 
 
@@ -42,18 +44,21 @@
 
     <insert id="insertCountry" parameterType="Country">
         insert into cus_country(
+        <if test="countryId != null and countryId != 0 ">country_id,</if>
         <if test="countryCN != null and countryCN != '' ">countryCN, </if>
         <if test="countryEN != null and countryEN != '' ">countryEN, </if>
         <if test="countryCode != null and countryCode != '' ">country_code, </if>
         <if test="aviationCode != null and status != '' ">aviation_code, </if>
         <if test="continent != null and continent != ''">continent,</if>
         )values(
+        <if test="countryId != null and countryId != 0 ">#{countryId},</if>
         <if test="countryCN != null and countryCN != ''">#{countryCN}, </if>
         <if test="countryEN != null and countryEN != ''">#{countryEN}, </if>
         <if test="countryCode != null and countryCode != ''">#{countryCode}, </if>
         <if test="aviationCode != null and aviationCode != ''">#{aviationCode}, </if>
         <if test="continent != null and continent != ''">#{continent},</if>
-        sysdate()
         )
     </insert>
+
+
 </mapper>

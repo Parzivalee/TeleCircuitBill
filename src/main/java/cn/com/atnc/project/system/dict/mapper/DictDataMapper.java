@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 /**
  * 字典表 数据层
  * 
- * @author ruoyi
+ * @author
  */
 public interface DictDataMapper
 {

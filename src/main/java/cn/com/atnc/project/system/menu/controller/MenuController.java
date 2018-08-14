@@ -23,7 +23,7 @@ import cn.com.atnc.project.system.role.domain.Role;
 /**
  * 菜单信息
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/system/menu")

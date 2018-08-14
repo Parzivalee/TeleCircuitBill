@@ -10,7 +10,7 @@ import cn.com.atnc.project.monitor.operlog.mapper.OperLogMapper;
 /**
  * 操作日志 服务层处理
  * 
- * @author ruoyi
+ * @author
  */
 @Service
 public class OperLogServiceImpl implements IOperLogService

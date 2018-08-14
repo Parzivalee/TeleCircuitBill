@@ -6,7 +6,7 @@ import cn.com.atnc.project.monitor.operlog.domain.OperLog;
 /**
  * 操作日志 服务层
  * 
- * @author ruoyi
+ * @author
  */
 public interface IOperLogService
 {

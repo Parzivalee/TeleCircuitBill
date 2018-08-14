@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author
  */
 @Component
-@ConfigurationProperties(prefix = "ruoyi")
+@ConfigurationProperties(prefix = "atnc")
 public class ProjectConfig {
     /** 项目名称 */
     private String name;

@@ -23,7 +23,7 @@ import cn.com.atnc.framework.web.page.TableDataInfo;
 /**
  * 调度任务信息操作处理
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/monitor/job")

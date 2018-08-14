@@ -8,7 +8,6 @@ import cn.com.atnc.framework.web.domain.BaseEntity;
 /**
  * ry 数据库表
  * 
- * @author ruoyi
  */
 public class TableInfo extends BaseEntity
 {

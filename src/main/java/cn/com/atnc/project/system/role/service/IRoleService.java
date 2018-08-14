@@ -7,7 +7,6 @@ import cn.com.atnc.project.system.role.domain.Role;
 /**
  * 角色业务层
  * 
- * @author ruoyi
  */
 public interface IRoleService
 {

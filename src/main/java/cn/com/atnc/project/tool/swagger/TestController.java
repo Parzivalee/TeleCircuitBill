@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 /**
  * swagger 测试方法
  * 
- * @author ruoyi
+ * @author
  */
 @Api("用户信息管理")
 @RestController

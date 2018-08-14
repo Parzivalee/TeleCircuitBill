@@ -5,7 +5,7 @@ import cn.com.atnc.framework.web.domain.BaseEntity;
 /**
  * 部门对象 sys_dept
  * 
- * @author ruoyi
+ * @author
  */
 public class Dept extends BaseEntity
 {

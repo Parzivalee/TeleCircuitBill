@@ -6,7 +6,7 @@ import cn.com.atnc.project.system.dept.domain.Dept;
 /**
  * 部门管理 数据层
  * 
- * @author ruoyi
+ * @author
  */
 public interface DeptMapper
 {

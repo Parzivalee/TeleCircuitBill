@@ -12,7 +12,7 @@ import cn.com.atnc.common.support.Convert;
 /**
  * 定时任务调度日志信息 服务层
  * 
- * @author ruoyi
+ * @author
  */
 @Service
 public class JobLogServiceImpl implements IJobLogService

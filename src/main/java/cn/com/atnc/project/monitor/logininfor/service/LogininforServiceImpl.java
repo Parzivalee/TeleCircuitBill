@@ -11,7 +11,7 @@ import cn.com.atnc.common.support.Convert;
 /**
  * 系统访问日志情况信息 服务层处理
  * 
- * @author ruoyi
+ * @author
  */
 @Service
 public class LogininforServiceImpl implements ILogininforService

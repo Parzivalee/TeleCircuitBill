@@ -6,7 +6,7 @@ import cn.com.atnc.project.monitor.job.domain.Job;
 /**
  * 调度任务信息 数据层
  * 
- * @author ruoyi
+ * @author
  */
 public interface JobMapper
 {

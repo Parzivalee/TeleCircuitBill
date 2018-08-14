@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 部门信息
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/system/dept")

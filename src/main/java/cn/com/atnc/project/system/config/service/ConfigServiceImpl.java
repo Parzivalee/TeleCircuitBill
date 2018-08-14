@@ -14,7 +14,7 @@ import cn.com.atnc.project.system.config.mapper.ConfigMapper;
 /**
  * 参数配置 服务层实现
  * 
- * @author ruoyi
+ * @author
  */
 @Service
 public class ConfigServiceImpl implements IConfigService

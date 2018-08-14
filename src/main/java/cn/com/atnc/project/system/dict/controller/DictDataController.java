@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 数据字典信息
  * 
- * @author ruoyi
+ * @author
  */
 @Controller
 @RequestMapping("/system/dict/data")

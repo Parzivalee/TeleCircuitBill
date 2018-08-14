@@ -17,7 +17,7 @@ import cn.com.atnc.common.utils.security.ShiroUtils;
 /**
  * 定时任务调度信息 服务层
  * 
- * @author ruoyi
+ * @author
  */
 @Service
 public class JobServiceImpl implements IJobService

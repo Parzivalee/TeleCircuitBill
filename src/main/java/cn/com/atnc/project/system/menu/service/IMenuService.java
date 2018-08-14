@@ -10,7 +10,7 @@ import cn.com.atnc.project.system.role.domain.Role;
 /**
  * 菜单 业务层
  * 
- * @author ruoyi
+ * @author
  */
 public interface IMenuService
 {

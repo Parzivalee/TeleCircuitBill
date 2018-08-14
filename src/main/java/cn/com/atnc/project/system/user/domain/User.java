@@ -12,7 +12,7 @@ import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 /**
  * 用户对象 sys_user
  * 
- * @author ruoyi
+ * @author
  */
 public class User extends BaseEntity
 {

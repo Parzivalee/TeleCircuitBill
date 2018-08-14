@@ -22,7 +22,6 @@ import cn.com.atnc.project.system.user.service.IUserService;
 /**
  * 登录校验方法
  * 
- * @author ruoyi
  */
 @Component
 public class LoginService

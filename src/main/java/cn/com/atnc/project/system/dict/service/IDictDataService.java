@@ -7,7 +7,7 @@ import cn.com.atnc.project.system.dict.domain.DictData;
 /**
  * 字典 业务层
  * 
- * @author ruoyi
+ * @author
  */
 public interface IDictDataService
 {

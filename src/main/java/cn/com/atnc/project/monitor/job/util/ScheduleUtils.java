@@ -20,7 +20,7 @@ import cn.com.atnc.project.monitor.job.domain.Job;
 /**
  * 定时任务工具类
  * 
- * @author ruoyi
+ * @author
  *
  */
 public class ScheduleUtils

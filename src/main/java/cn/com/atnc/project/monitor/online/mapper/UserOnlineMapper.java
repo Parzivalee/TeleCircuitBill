@@ -7,7 +7,7 @@ import cn.com.atnc.project.monitor.online.domain.UserOnline;
 /**
  * 在线用户 数据层
  * 
- * @author ruoyi
+ * @author
  */
 public interface UserOnlineMapper
 {

@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 代码生成 操作处理
  * 
- * @author ruoyi
  */
 @Controller
 @RequestMapping("/tool/gen")
@@ -62,7 +61,7 @@ public class GenController extends BaseController
     {
         byte[] data = genService.generatorCode(tableName);
         response.reset();
-        response.setHeader("Content-Disposition", "attachment; filename=\"ruoyi.zip\"");
+        response.setHeader("Content-Disposition", "attachment; filename=\"atnc.zip\"");
         response.addHeader("Content-Length", "" + data.length);
         response.setContentType("application/octet-stream; charset=UTF-8");
 
@@ -81,7 +80,7 @@ public class GenController extends BaseController
         String[] tableNames = Convert.toStrArray(tables);
         byte[] data = genService.generatorCode(tableNames);
         response.reset();
-        response.setHeader("Content-Disposition", "attachment; filename=\"ruoyi.zip\"");
+        response.setHeader("Content-Disposition", "attachment; filename=\"atnc.zip\"");
         response.addHeader("Content-Length", "" + data.length);
         response.setContentType("application/octet-stream; charset=UTF-8");
 
