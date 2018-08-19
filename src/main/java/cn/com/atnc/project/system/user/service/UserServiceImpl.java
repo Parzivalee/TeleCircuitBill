@@ -18,6 +18,14 @@ import cn.com.atnc.project.system.user.domain.UserRole;
 import cn.com.atnc.project.system.user.mapper.UserMapper;
 import cn.com.atnc.project.system.user.mapper.UserPostMapper;
 import cn.com.atnc.project.system.user.mapper.UserRoleMapper;
+import cn.com.atnc.common.constant.UserConstants;
+import cn.com.atnc.common.support.Convert;
+import cn.com.atnc.common.utils.StringUtils;
+import cn.com.atnc.common.utils.security.ShiroUtils;
+import cn.com.atnc.framework.shiro.service.PasswordService;
+import cn.com.atnc.project.system.user.mapper.UserMapper;
+import cn.com.atnc.project.system.user.mapper.UserPostMapper;
+import cn.com.atnc.project.system.user.mapper.UserRoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

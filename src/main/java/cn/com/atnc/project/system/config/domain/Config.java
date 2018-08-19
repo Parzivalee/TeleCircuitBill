@@ -2,6 +2,8 @@ package cn.com.atnc.project.system.config.domain;
 
 import cn.com.atnc.framework.aspectj.lang.annotation.Excel;
 import cn.com.atnc.framework.web.domain.BaseEntity;
+import cn.com.atnc.framework.aspectj.lang.annotation.Excel;
+import cn.com.atnc.framework.web.domain.BaseEntity;
 
 /**
  * 参数配置表 sys_config

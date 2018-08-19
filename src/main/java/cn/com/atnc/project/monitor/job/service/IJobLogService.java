@@ -2,6 +2,7 @@ package cn.com.atnc.project.monitor.job.service;
 
 import java.util.List;
 import cn.com.atnc.project.monitor.job.domain.JobLog;
+import cn.com.atnc.project.monitor.job.domain.JobLog;
 
 /**
  * 定时任务调度日志信息信息 服务层

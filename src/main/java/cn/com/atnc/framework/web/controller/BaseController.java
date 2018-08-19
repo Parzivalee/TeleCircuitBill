@@ -8,6 +8,8 @@ import cn.com.atnc.framework.web.domain.AjaxResult;
 import cn.com.atnc.framework.web.page.PageDomain;
 import cn.com.atnc.framework.web.page.TableDataInfo;
 import cn.com.atnc.framework.web.page.TableSupport;
+import cn.com.atnc.common.utils.StringUtils;
+import cn.com.atnc.common.utils.security.ShiroUtils;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;

@@ -11,6 +11,7 @@ import cn.com.atnc.framework.web.controller.BaseController;
 import cn.com.atnc.framework.web.page.TableDataInfo;
 import cn.com.atnc.project.tool.gen.domain.TableInfo;
 import cn.com.atnc.project.tool.gen.service.IGenService;
+import cn.com.atnc.project.tool.gen.domain.TableInfo;
 import org.apache.commons.io.IOUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

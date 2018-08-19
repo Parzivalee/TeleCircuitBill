@@ -1,5 +1,7 @@
 package cn.com.atnc.project.monitor.job.util;
 
+import cn.com.atnc.common.constant.ScheduleConstants;
+import cn.com.atnc.common.exception.job.TaskException;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.JobBuilder;
@@ -219,7 +221,7 @@ public class ScheduleUtils
                 return cb.withMisfireHandlingInstructionDoNothing();
             default:
                 throw new TaskException("The task misfire policy '" + job.getMisfirePolicy()
-                        + "' cannot be used in cron schedule tasks", Code.CONFIG_ERROR);
+                        + "' cannot be used in cron schedule tasks", TaskException.Code.CONFIG_ERROR);
         }
     }
 }

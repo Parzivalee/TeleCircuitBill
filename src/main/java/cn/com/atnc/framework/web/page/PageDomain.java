@@ -1,6 +1,7 @@
 package cn.com.atnc.framework.web.page;
 
 import cn.com.atnc.common.utils.StringUtils;
+import cn.com.atnc.common.utils.StringUtils;
 
 /**
  * 分页数据

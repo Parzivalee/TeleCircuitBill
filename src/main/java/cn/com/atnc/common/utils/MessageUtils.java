@@ -1,5 +1,6 @@
 package cn.com.atnc.common.utils;
 
+import cn.com.atnc.common.utils.spring.SpringUtils;
 import org.springframework.context.MessageSource;
 import cn.com.atnc.common.utils.spring.SpringUtils;
 

@@ -3,6 +3,7 @@ package cn.com.atnc.project.monitor.online.mapper;
 import java.util.List;
 
 import cn.com.atnc.project.monitor.online.domain.UserOnline;
+import cn.com.atnc.project.monitor.online.domain.UserOnline;
 
 /**
  * 在线用户 数据层

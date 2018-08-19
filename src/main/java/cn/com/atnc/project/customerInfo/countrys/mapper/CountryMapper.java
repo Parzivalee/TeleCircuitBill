@@ -73,5 +73,12 @@ public interface CountryMapper {
      */
     int insertCountry(Country country);
 
+    /**
+     * 批量删除国家
+     *
+     * @param countryIds 需要删除的数据ID
+     * @return 结果
+     */
+    public int deleteCountryByIds(String[] countryIds);
 
 }

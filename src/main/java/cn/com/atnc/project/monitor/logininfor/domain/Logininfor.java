@@ -2,6 +2,9 @@ package cn.com.atnc.project.monitor.logininfor.domain;
 
 import cn.com.atnc.framework.aspectj.lang.annotation.Excel;
 import cn.com.atnc.framework.web.domain.BaseEntity;
+import cn.com.atnc.framework.aspectj.lang.annotation.Excel;
+import cn.com.atnc.framework.web.domain.BaseEntity;
+
 import java.util.Date;
 
 /**

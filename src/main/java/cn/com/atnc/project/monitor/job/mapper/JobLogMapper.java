@@ -2,6 +2,7 @@ package cn.com.atnc.project.monitor.job.mapper;
 
 import java.util.List;
 import cn.com.atnc.project.monitor.job.domain.JobLog;
+import cn.com.atnc.project.monitor.job.domain.JobLog;
 
 /**
  * 调度任务日志信息 数据层

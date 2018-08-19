@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.com.atnc.project.monitor.job.domain.JobLog;
 import cn.com.atnc.project.monitor.job.mapper.JobLogMapper;
+import cn.com.atnc.common.support.Convert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import cn.com.atnc.common.support.Convert;

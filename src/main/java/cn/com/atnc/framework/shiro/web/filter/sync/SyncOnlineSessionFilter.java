@@ -4,6 +4,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import cn.com.atnc.project.monitor.online.domain.OnlineSession;
+import cn.com.atnc.common.constant.ShiroConstants;
+import cn.com.atnc.framework.shiro.session.OnlineSessionDAO;
 import org.apache.shiro.web.filter.PathMatchingFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 

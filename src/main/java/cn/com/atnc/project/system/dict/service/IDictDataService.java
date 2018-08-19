@@ -3,6 +3,7 @@ package cn.com.atnc.project.system.dict.service;
 import java.util.List;
 
 import cn.com.atnc.project.system.dict.domain.DictData;
+import cn.com.atnc.project.system.dict.domain.DictData;
 
 /**
  * 字典 业务层

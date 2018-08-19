@@ -3,6 +3,7 @@ package cn.com.atnc.project.system.role.mapper;
 import java.util.List;
 
 import cn.com.atnc.project.system.role.domain.RoleMenu;
+import cn.com.atnc.project.system.role.domain.RoleMenu;
 
 /**
  * 角色与菜单关联表 数据层

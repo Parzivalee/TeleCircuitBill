@@ -4,6 +4,8 @@ import java.util.List;
 
 import cn.com.atnc.project.tool.gen.domain.TableInfo;
 import cn.com.atnc.project.tool.gen.domain.ColumnInfo;
+import cn.com.atnc.project.tool.gen.domain.ColumnInfo;
+import cn.com.atnc.project.tool.gen.domain.TableInfo;
 
 /**
  * 代码生成 数据层

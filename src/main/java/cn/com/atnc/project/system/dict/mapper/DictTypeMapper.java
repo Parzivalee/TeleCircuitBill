@@ -3,6 +3,7 @@ package cn.com.atnc.project.system.dict.mapper;
 import java.util.List;
 
 import cn.com.atnc.project.system.dict.domain.DictType;
+import cn.com.atnc.project.system.dict.domain.DictType;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

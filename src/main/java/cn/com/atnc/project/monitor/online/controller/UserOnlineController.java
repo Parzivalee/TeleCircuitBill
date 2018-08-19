@@ -3,6 +3,15 @@ package cn.com.atnc.project.monitor.online.controller;
 import java.util.List;
 
 import cn.com.atnc.project.monitor.online.service.IUserOnlineService;
+import cn.com.atnc.common.utils.security.ShiroUtils;
+import cn.com.atnc.framework.aspectj.lang.annotation.Log;
+import cn.com.atnc.framework.aspectj.lang.constant.BusinessType;
+import cn.com.atnc.framework.shiro.session.OnlineSessionDAO;
+import cn.com.atnc.framework.web.controller.BaseController;
+import cn.com.atnc.framework.web.domain.AjaxResult;
+import cn.com.atnc.framework.web.page.TableDataInfo;
+import cn.com.atnc.project.monitor.online.domain.OnlineSession;
+import cn.com.atnc.project.monitor.online.domain.UserOnline;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -2,6 +2,8 @@ package cn.com.atnc.project.monitor.job.domain;
 
 import cn.com.atnc.framework.aspectj.lang.annotation.Excel;
 import cn.com.atnc.framework.web.domain.BaseEntity;
+import cn.com.atnc.framework.aspectj.lang.annotation.Excel;
+import cn.com.atnc.framework.web.domain.BaseEntity;
 
 /**
  * 定时任务调度日志信息 sys_job_log

@@ -1,5 +1,6 @@
 package cn.com.atnc.project.system.dept.service;
 
+import cn.com.atnc.project.system.dept.service.IDeptService;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

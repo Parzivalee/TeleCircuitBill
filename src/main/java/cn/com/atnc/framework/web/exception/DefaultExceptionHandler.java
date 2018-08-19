@@ -1,6 +1,8 @@
 package cn.com.atnc.framework.web.exception;
 
 import cn.com.atnc.framework.web.domain.AjaxResult;
+import cn.com.atnc.common.exception.DemoModeException;
+import cn.com.atnc.common.utils.security.PermissionUtils;
 import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

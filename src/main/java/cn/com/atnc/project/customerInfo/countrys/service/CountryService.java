@@ -72,4 +72,6 @@ public interface CountryService {
      * @return 结果
      */
     int insertCountry(Country country);
+
+    int deleteCountryByIds(String ids);
 }

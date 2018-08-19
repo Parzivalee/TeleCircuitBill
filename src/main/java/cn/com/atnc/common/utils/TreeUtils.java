@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import cn.com.atnc.project.system.menu.domain.Menu;
+import cn.com.atnc.project.system.menu.domain.Menu;
 
 /**
  * 权限数据处理

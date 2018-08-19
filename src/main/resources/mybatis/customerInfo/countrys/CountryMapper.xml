@@ -11,27 +11,24 @@
         <result property="countryCode"     column="country_code"/>
         <result property="aviationCode"        column="aviation_code"/>
         <result property="continent"    column="continent"/>
-        <result property="creatime"    column="creatime" />
-        <result property="updtime" column="updtime" />
+        <result property="createTime"    column="create_time" />
+        <result property="updateTime" column="update_time" />
     </resultMap>
 
 
     <sql id="selectCountryVo">
-        select  country_id,countryCN,countryEN,country_code,aviation_code,continent
+        select country_id,countryCN,countryEN,country_code,aviation_code,continent,create_time,update_time
 		from cus_country
     </sql>
 
     <select id="selectCountryList" parameterType="Country" resultMap="CountryResult">
         <include refid="selectCountryVo"/>
         <where>
-            <if test="countryName != null and countryName != ''">
-                AND countryCN like concat('%', #{countryName}, '%') or countryEN like concat('%', #{countryName}, '%')
-            </if>
-            <if test="countryCode != null and countryCode != ''">
-                AND countryCode  like concat('%', #{countryCode}, '%')
-            </if>
             <if test="continent != null and continent != ''">
                 AND continent  like concat('%', #{continent}, '%')
+            </if>
+            <if test="countryName != null and countryName != ''">
+                AND countryCN like concat('%', #{countryName}, '%') or countryEN like concat('%', #{countryName}, '%')
             </if>
         </where>
     </select>
@@ -41,24 +38,50 @@
         where countryCN like concat('%', #{countryName}, '%') or countryEN like concat('%', #{countryName}, '%')
     </select>
 
+    <select id="selectCountryById" parameterType="Long" resultMap="CountryResult">
+        <include refid="selectCountryVo"/>
+        where country_id = #{countryId}
+    </select>
 
     <insert id="insertCountry" parameterType="Country">
         insert into cus_country(
         <if test="countryId != null and countryId != 0 ">country_id,</if>
-        <if test="countryCN != null and countryCN != '' ">countryCN, </if>
-        <if test="countryEN != null and countryEN != '' ">countryEN, </if>
-        <if test="countryCode != null and countryCode != '' ">country_code, </if>
-        <if test="aviationCode != null and status != '' ">aviation_code, </if>
+        <if test="countryCN != null and countryCN != '' ">countryCN,</if>
+        <if test="countryEN != null and countryEN != '' ">countryEN,</if>
+        <if test="countryCode != null and countryCode != '' ">country_code,</if>
+        <if test="aviationCode != null and aviationCode != '' ">aviation_code,</if>
         <if test="continent != null and continent != ''">continent,</if>
+        create_time
         )values(
         <if test="countryId != null and countryId != 0 ">#{countryId},</if>
-        <if test="countryCN != null and countryCN != ''">#{countryCN}, </if>
-        <if test="countryEN != null and countryEN != ''">#{countryEN}, </if>
-        <if test="countryCode != null and countryCode != ''">#{countryCode}, </if>
-        <if test="aviationCode != null and aviationCode != ''">#{aviationCode}, </if>
+        <if test="countryCN != null and countryCN != ''">#{countryCN},</if>
+        <if test="countryEN != null and countryEN != ''">#{countryEN},</if>
+        <if test="countryCode != null and countryCode != ''">#{countryCode},</if>
+        <if test="aviationCode != null and aviationCode != ''">#{aviationCode},</if>
         <if test="continent != null and continent != ''">#{continent},</if>
+        sysdate()
         )
     </insert>
 
+    <update id="updateCountry" parameterType="Country">
+        update cus_country
+        <set>
+            <if test="countryId != null and countryId != 0 ">country_id = #{countryId},</if>
+            <if test="countryCN != null and countryCN != '' ">countryCN = #{countryCN},</if>
+            <if test="countryEN != null and countryEN != '' ">countryEN = #{countryEN},</if>
+            <if test="countryCode != null and countryCode != '' ">country_code = #{countryCode},</if>
+            <if test="aviationCode != null and aviationCode != '' ">aviation_code = #{aviationCode},</if>
+            <if test="continent != null and continent != ''">continent = #{continent},</if>
+            update_time = sysdate()
+        </set>
+        where country_id = #{countryId}
+    </update>
+
+    <delete id="deleteCountryByIds" parameterType="String">
+        delete from cus_country where country_id in
+        <foreach item="countryId" collection="array" open="(" separator="," close=")">
+            #{countryId}
+        </foreach>
+    </delete>
 
 </mapper>

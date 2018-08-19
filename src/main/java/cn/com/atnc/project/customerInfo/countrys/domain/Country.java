@@ -1,10 +1,12 @@
 package cn.com.atnc.project.customerInfo.countrys.domain;
 
+import cn.com.atnc.framework.web.domain.BaseEntity;
+
 /**
  * 国家对象
  * @author lwj
  */
-public class Country {
+public class Country extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     private int countryId;
@@ -18,6 +20,18 @@ public class Country {
     private String aviationCode;
     //所属大洲
     private String continent;
+    //查询model
+    private String countryName;
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
 
     public int getCountryId() {
         return countryId;

@@ -2,6 +2,8 @@ package cn.com.atnc.common.utils.file;
 
 import java.io.File;
 import java.io.IOException;
+
+import cn.com.atnc.common.exception.file.FileNameLengthLimitExceededException;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.tomcat.util.http.fileupload.FileUploadBase.FileSizeLimitExceededException;
 import org.springframework.web.multipart.MultipartFile;

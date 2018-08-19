@@ -3,6 +3,9 @@ package cn.com.atnc.project.monitor.online.domain;
 import cn.com.atnc.common.utils.AddressUtils;
 import cn.com.atnc.framework.web.domain.BaseEntity;
 import cn.com.atnc.project.monitor.online.domain.OnlineSession.OnlineStatus;
+import cn.com.atnc.common.utils.AddressUtils;
+import cn.com.atnc.framework.web.domain.BaseEntity;
+
 import java.util.Date;
 
 /**
@@ -44,7 +47,7 @@ public class UserOnline extends BaseEntity
     private Long expireTime;
 
     /** 在线状态 */
-    private OnlineStatus status = OnlineStatus.on_line;
+    private OnlineSession.OnlineStatus status = OnlineSession.OnlineStatus.on_line;
 
     /** 备份的当前用户会话 */
     private OnlineSession session;
@@ -170,12 +173,12 @@ public class UserOnline extends BaseEntity
         this.expireTime = expireTime;
     }
 
-    public OnlineStatus getStatus()
+    public OnlineSession.OnlineStatus getStatus()
     {
         return status;
     }
 
-    public void setStatus(OnlineStatus status)
+    public void setStatus(OnlineSession.OnlineStatus status)
     {
         this.status = status;
     }

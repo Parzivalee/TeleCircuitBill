@@ -2,6 +2,8 @@ package cn.com.atnc.project.system.post.domain;
 
 import cn.com.atnc.framework.aspectj.lang.annotation.Excel;
 import cn.com.atnc.framework.web.domain.BaseEntity;
+import cn.com.atnc.framework.aspectj.lang.annotation.Excel;
+import cn.com.atnc.framework.web.domain.BaseEntity;
 
 /**
  * 岗位对象 sys_post

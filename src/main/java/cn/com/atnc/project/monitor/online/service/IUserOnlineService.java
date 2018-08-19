@@ -3,6 +3,7 @@ package cn.com.atnc.project.monitor.online.service;
 import java.util.Date;
 import java.util.List;
 import cn.com.atnc.project.monitor.online.domain.UserOnline;
+import cn.com.atnc.project.monitor.online.domain.UserOnline;
 
 /**
  * 在线用户 服务层

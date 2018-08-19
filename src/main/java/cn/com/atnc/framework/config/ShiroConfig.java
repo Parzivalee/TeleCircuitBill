@@ -83,6 +83,7 @@ public class ShiroConfig {
     @Bean
     public EhCacheManager getEhCacheManager()
     {
+        //lwj-20180819改
         net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("atncweb");
         EhCacheManager em = new EhCacheManager();
         if (StringUtils.isNull(cacheManager))
@@ -269,6 +270,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/system/**", "onlineSession,syncOnlineSession");
         filterChainDefinitionMap.put("/monitor/**", "onlineSession,syncOnlineSession");
         filterChainDefinitionMap.put("/tool/**", "onlineSession,syncOnlineSession");
+        //lwj-20180819添
+        filterChainDefinitionMap.put("/customerInfo/**","onlineSession,syncOnlineSession");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;

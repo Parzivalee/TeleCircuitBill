@@ -1,5 +1,6 @@
 package cn.com.atnc.project.customerInfo.countrys.service;
 
+import cn.com.atnc.common.support.Convert;
 import cn.com.atnc.project.customerInfo.countrys.domain.Country;
 import cn.com.atnc.project.customerInfo.countrys.mapper.CountryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,11 @@ public class CountryServiceImpl implements CountryService{
     @Override
     public int insertCountry(Country country) {
         return countryMapper.insertCountry(country);
+    }
+
+    @Override
+    public int deleteCountryByIds(String ids) {
+        return countryMapper.deleteCountryByIds(Convert.toStrArray(ids));
     }
 
 }

@@ -1,5 +1,6 @@
 package cn.com.atnc.common.utils;
 
+import cn.com.atnc.common.utils.AddressUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

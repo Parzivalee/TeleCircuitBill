@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.com.atnc.project.system.dept.domain.Dept;
+import cn.com.atnc.project.system.dept.domain.Dept;
 
 /**
  * 部门管理 服务层

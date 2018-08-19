@@ -13,7 +13,65 @@
 </head>
 
 <body class="gray-bg">
-    <script th:src="@{/js/jquery.min.js}"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
+<div class="row  border-bottom white-bg dashboard-header">
+    <div class="col-sm-12">
+        <blockquote class="text-warning" style="font-size:14px">
+            <h4 class="text-danger">尊敬的用户，欢迎您使用“民航空官网电路账务管理系统”</h4>
+        </blockquote>
+    </div>
+
+</div>
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-4">
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>公告信息</h5>
+                </div>
+                <div class="ibox-content">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>最新合同信息</h5>
+                </div>
+                <div class="ibox-content no-padding">
+                    <div class="panel-body">
+                        <!--<div class="panel-group" id="version">-->
+                            <!--<div class="panel panel-default">-->
+                                <!--<div class="panel-heading">-->
+                                    <!--<h5 class="panel-title">-->
+                                    <!--</h5>-->
+                                <!--</div>-->
+                                <!--<div id="v23" class="panel-collapse collapse in">-->
+                                    <!--<div class="panel-body">-->
+                                        <!--&lt;!&ndash;blablabalalablabalabalalab&ndash;&gt;-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!---->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>即将到期电路信息</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="alert alert-warning">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>

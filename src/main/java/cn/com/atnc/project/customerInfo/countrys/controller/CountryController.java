@@ -11,6 +11,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -68,110 +69,37 @@ public class CountryController extends BaseController {
     }
 
     /**
-     * 修改用户
-     *//*
-    @GetMapping("/edit/{userId}")
-    public String edit(@PathVariable("userId") Long userId, ModelMap mmap)
+     * 国家修改
+     */
+    @GetMapping("/edit/{countryId}")
+    public String edit(@PathVariable("countryId") Long countryId, ModelMap model)
     {
-        mmap.put("user", userService.selectUserById(userId));
-        mmap.put("roles", roleService.selectRolesByUserId(userId));
-        mmap.put("posts", postService.selectPostsByUserId(userId));
+        model.put("country", countryService.selectCountryById(countryId));
         return prefix + "/edit";
     }
 
-    *//**
+    /**
      * 修改保存用户
-     *//*
-    @RequiresPermissions("system:user:edit")
-    @Log(title = "用户管理", action = BusinessType.UPDATE)
+     */
+    @RequiresPermissions("customerInfo:countrys:edit")
+    @Log(title = "国家管理", action = BusinessType.UPDATE)
     @PostMapping("/edit")
     @Transactional(rollbackFor = Exception.class)
     @ResponseBody
-    public AjaxResult editSave(User user)
-    {
-        if (StringUtils.isNotNull(user.getUserId()) && User.isAdmin(user.getUserId()))
-        {
-            return error("不允许修改超级管理员用户");
-        }
-        return toAjax(userService.updateUser(user));
+    public AjaxResult editSave(Country country) {
+        return toAjax(countryService.updateCountry(country));
     }
 
-    @RequiresPermissions("system:user:resetPwd")
-    @Log(title = "重置密码", action = BusinessType.UPDATE)
-    @GetMapping("/resetPwd/{userId}")
-    public String resetPwd(@PathVariable("userId") Long userId, ModelMap mmap)
-    {
-        mmap.put("user", userService.selectUserById(userId));
-        return prefix + "/resetPwd";
-    }
-
-    @RequiresPermissions("system:user:resetPwd")
-    @Log(title = "重置密码", action = BusinessType.UPDATE)
-    @PostMapping("/resetPwd")
-    @ResponseBody
-    public AjaxResult resetPwd(User user)
-    {
-        return toAjax(userService.resetUserPwd(user));
-    }
-
-    @RequiresPermissions("system:user:remove")
-    @Log(title = "用户管理", action = BusinessType.DELETE)
+    /**
+     * 国家删除
+     */
+    @RequiresPermissions("customerInfo:countrys:remove")
+    @Log(title = "国家管理", action = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
     {
-        try
-        {
-            return toAjax(userService.deleteUserByIds(ids));
-        }
-        catch (Exception e)
-        {
-            return error(e.getMessage());
-        }
+        return toAjax(countryService.deleteCountryByIds(ids));
     }
 
-    *//**
-     * 校验用户名
-     *//*
-    @PostMapping("/checkLoginNameUnique")
-    @ResponseBody
-    public String checkLoginNameUnique(User user)
-    {
-        String uniqueFlag = "0";
-        if (user != null)
-        {
-            uniqueFlag = userService.checkLoginNameUnique(user.getLoginName());
-        }
-        return uniqueFlag;
-    }
-
-    *//**
-     * 校验手机号码
-     *//*
-    @PostMapping("/checkPhoneUnique")
-    @ResponseBody
-    public String checkPhoneUnique(User user)
-    {
-        String uniqueFlag = "0";
-        if (user != null)
-        {
-            uniqueFlag = userService.checkPhoneUnique(user);
-        }
-        return uniqueFlag;
-    }
-
-    *//**
-     * 校验email邮箱
-     *//*
-    @PostMapping("/checkEmailUnique")
-    @ResponseBody
-    public String checkEmailUnique(User user)
-    {
-        String uniqueFlag = "0";
-        if (user != null)
-        {
-            uniqueFlag = userService.checkEmailUnique(user);
-        }
-        return uniqueFlag;
-    }*/
 }

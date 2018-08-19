@@ -3,6 +3,7 @@ package cn.com.atnc.project.system.role.service;
 import java.util.List;
 import java.util.Set;
 import cn.com.atnc.project.system.role.domain.Role;
+import cn.com.atnc.project.system.role.domain.Role;
 
 /**
  * 角色业务层

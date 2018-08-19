@@ -1,6 +1,7 @@
 package cn.com.atnc.common.utils.security;
 
 import cn.com.atnc.common.utils.MessageUtils;
+import cn.com.atnc.common.constant.PermissionConstants;
 import org.apache.commons.lang3.StringUtils;
 import cn.com.atnc.common.constant.PermissionConstants;
 

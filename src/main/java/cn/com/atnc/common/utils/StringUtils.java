@@ -3,6 +3,7 @@ package cn.com.atnc.common.utils;
 import java.util.Collection;
 import java.util.Map;
 
+import cn.com.atnc.common.support.StrFormatter;
 import org.apache.commons.lang.text.StrBuilder;
 
 import cn.com.atnc.common.support.StrFormatter;

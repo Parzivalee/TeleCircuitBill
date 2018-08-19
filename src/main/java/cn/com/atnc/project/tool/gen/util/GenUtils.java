@@ -10,6 +10,8 @@ import cn.com.atnc.common.utils.StringUtils;
 import cn.com.atnc.framework.config.GenConfig;
 import cn.com.atnc.project.tool.gen.domain.ColumnInfo;
 import cn.com.atnc.project.tool.gen.domain.TableInfo;
+import cn.com.atnc.project.tool.gen.domain.ColumnInfo;
+import cn.com.atnc.project.tool.gen.domain.TableInfo;
 import org.apache.velocity.VelocityContext;
 
 /**

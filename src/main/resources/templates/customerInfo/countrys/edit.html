@@ -1,10 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-country-edit" th:object="${country}">
+        <input id="countryId" name="countryId" th:field="*{countryId}"  type="hidden">
 
+        <div class="form-group">
+            <label class="col-sm-3 control-label">国家中文：</label>
+            <div class="col-sm-8">
+                <input id="countryCN" name="countryCN" th:field="*{countryCN}" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">国家英文：</label>
+            <div class="col-sm-8">
+                <input id="countryEN" name="countryEN" th:field="*{countryEN}" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">国家代码：</label>
+            <div class="col-sm-8">
+                <input id="countryCode" name="countryCode" th:field="*{countryCode}" class="form-control" type="text">
+            </div>
+        </div><div class="form-group">
+        <label class="col-sm-3 control-label">航空代码：</label>
+        <div class="col-sm-8">
+            <input id="aviationCode" name="aviationCode" th:field="*{aviationCode}" class="form-control" type="text">
+        </div>
+    </div><div class="form-group">
+        <label class="col-sm-3 control-label">所属大洲：</label>
+        <div class="col-sm-8">
+            <input id="continent" name="continent" th:field="*{continent}" class="form-control" type="text">
+        </div>
+    </div>
+        <div class="form-group">
+            <div class="form-control-static col-sm-offset-9">
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/summernote/summernote.min.js}"></script>
+<script th:src="@{/ajax/libs/summernote/summernote-zh-CN.js}"></script>
+<script type="text/javascript">
+
+    var prefix = ctx + "customerInfo/countrys";
+    $("#form-country-edit").validate({
+            rules:{
+                countryCN: {
+                    required: true
+                },
+                countryEN: {
+                    required: true
+                },
+                continent: {
+                    required: true
+                }
+            },
+
+        submitHandler: function(form) {
+            $.operate.save(prefix + "/edit", $('#form-country-edit').serialize());
+        }
+    });
+</script>
 </body>
 </html>

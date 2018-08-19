@@ -3,6 +3,7 @@ package cn.com.atnc.project.tool.gen.service;
 import java.util.List;
 
 import cn.com.atnc.project.tool.gen.domain.TableInfo;
+import cn.com.atnc.project.tool.gen.domain.TableInfo;
 
 /**
  * 代码生成 服务层

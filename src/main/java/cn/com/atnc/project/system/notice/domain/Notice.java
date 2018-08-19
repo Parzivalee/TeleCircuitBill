@@ -1,6 +1,7 @@
 package cn.com.atnc.project.system.notice.domain;
 
 import cn.com.atnc.framework.web.domain.BaseEntity;
+import cn.com.atnc.framework.web.domain.BaseEntity;
 
 /**
  * 公告表 sys_notice

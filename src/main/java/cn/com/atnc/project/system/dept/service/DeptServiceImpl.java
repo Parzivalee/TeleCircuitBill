@@ -10,6 +10,8 @@ import cn.com.atnc.common.utils.StringUtils;
 import cn.com.atnc.common.utils.security.ShiroUtils;
 import cn.com.atnc.project.system.dept.domain.Dept;
 import cn.com.atnc.project.system.dept.mapper.DeptMapper;
+import cn.com.atnc.project.system.dept.domain.Dept;
+import cn.com.atnc.project.system.dept.mapper.DeptMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

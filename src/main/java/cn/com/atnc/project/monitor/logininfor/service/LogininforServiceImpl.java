@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.com.atnc.project.monitor.logininfor.domain.Logininfor;
 import cn.com.atnc.project.monitor.logininfor.mapper.LogininforMapper;
+import cn.com.atnc.common.support.Convert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import cn.com.atnc.common.support.Convert;
