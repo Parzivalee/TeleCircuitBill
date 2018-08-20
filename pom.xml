@@ -206,6 +206,12 @@
 			<version>${velocity.version}</version>
 		</dependency>
 
+		<!--lombok-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
 		<!--验证码 -->
 		<dependency>
 			<groupId>com.github.penggle</groupId>

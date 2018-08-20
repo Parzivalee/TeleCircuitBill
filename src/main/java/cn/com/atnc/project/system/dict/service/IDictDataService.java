@@ -10,8 +10,7 @@ import cn.com.atnc.project.system.dict.domain.DictData;
  * 
  * @author
  */
-public interface IDictDataService
-{
+public interface IDictDataService {
 
     /**
      * 根据条件分页查询字典数据
