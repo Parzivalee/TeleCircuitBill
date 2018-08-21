@@ -21,9 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author
  */
 @WebFilter(filterName = "xssFilter", urlPatterns = "/system/*")
-public class XssFilter implements Filter
-{
-
+public class XssFilter implements Filter {
     /**
      * 排除链接
      */
@@ -44,12 +42,10 @@ public class XssFilter implements Filter
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException
-    {
+            throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-        if (handleExcludeURL(req, resp))
-        {
+        if (handleExcludeURL(req, resp)) {
             chain.doFilter(request, response);
             return;
         }
@@ -57,15 +53,12 @@ public class XssFilter implements Filter
         chain.doFilter(xssRequest, response);
     }
 
-    private boolean handleExcludeURL(HttpServletRequest request, HttpServletResponse response)
-    {
-        if (excludes == null || excludes.isEmpty())
-        {
+    private boolean handleExcludeURL(HttpServletRequest request, HttpServletResponse response) {
+        if (excludes == null || excludes.isEmpty()) {
             return false;
         }
         String url = request.getServletPath();
-        for (String pattern : excludes)
-        {
+        for (String pattern : excludes) {
             Pattern p = Pattern.compile("^" + pattern);
             Matcher m = p.matcher(url);
             if (m.find())
@@ -77,8 +70,7 @@ public class XssFilter implements Filter
     }
 
     @Override
-    public void destroy()
-    {
+    public void destroy() {
 
     }
 

@@ -57,11 +57,12 @@ mybatis:
     # 加载全局的配置文件
     configLocation: classpath:mybatis/mybatis-config.xml
 # PageHelper
-pagehelper: 
-  helperDialect: mysql
+pagehelper:
+  # 使用Mysql数据源
+  #helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
-  params: count=countSql 
+  params: count=countSql
 # Shiro
 shiro:
   user:

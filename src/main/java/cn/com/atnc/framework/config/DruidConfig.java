@@ -117,7 +117,7 @@ public class DruidConfig
     }
 
     /**
-     * 注册一个StatViewServlet 相当于在web.xml中声明了一个servlet
+     * 注册一个StatViewServlet：相当于在web.xml中声明了一个servlet
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     @Bean

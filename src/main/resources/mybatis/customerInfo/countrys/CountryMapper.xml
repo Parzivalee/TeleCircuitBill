@@ -59,7 +59,7 @@
         <if test="countryCode != null and countryCode != ''">#{countryCode},</if>
         <if test="aviationCode != null and aviationCode != ''">#{aviationCode},</if>
         <if test="continent != null and continent != ''">#{continent},</if>
-        sysdate()
+        getdate()
         )
     </insert>
 
@@ -72,7 +72,7 @@
             <if test="countryCode != null and countryCode != '' ">country_code = #{countryCode},</if>
             <if test="aviationCode != null and aviationCode != '' ">aviation_code = #{aviationCode},</if>
             <if test="continent != null and continent != ''">continent = #{continent},</if>
-            update_time = sysdate()
+            update_time = getdate()
         </set>
         where country_id = #{countryId}
     </update>

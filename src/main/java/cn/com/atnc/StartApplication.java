@@ -13,8 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @MapperScan("cn.com.atnc.project.*.*.mapper")
 public class StartApplication {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(StartApplication.class, args);
     }

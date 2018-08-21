@@ -27,7 +27,7 @@ public class SystemLogUtils {
      * 注意操作如下： loginError 登录失败 loginSuccess 登录成功 passwordError 密码错误 changePassword 修改密码 changeStatus 修改状态
      *
      * @param username
-     * @param op
+     * @param status
      * @param msg
      * @param args
      */
@@ -35,7 +35,8 @@ public class SystemLogUtils {
     {
         StringBuilder s = new StringBuilder();
         s.append(LogUtils.getBlock(ShiroUtils.getIp()));
-        s.append(AddressUtils.getRealAddressByIP(ShiroUtils.getIp()));
+        //lwj-2018-08-21改，取消根据IP获取地理位置信息功能
+        //s.append(AddressUtils.getRealAddressByIP(ShiroUtils.getIp()));
         s.append(LogUtils.getBlock(username));
         s.append(LogUtils.getBlock(status));
         s.append(LogUtils.getBlock(msg));

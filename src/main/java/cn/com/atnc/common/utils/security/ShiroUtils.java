@@ -14,7 +14,6 @@ import cn.com.atnc.project.system.user.domain.User;
 /**
  * shiro 工具类
  * 
- * @author
  */
 public class ShiroUtils
 {
