@@ -24,13 +24,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectJobLogVo"/>
 		<where>
 			<if test="jobName != null and jobName != ''">
-				AND job_name like concat('%', #{jobName}, '%')
+				AND job_name like '%'+#{jobName}+'%'
 			</if>
 			<if test="status != null and status != ''">
 				AND status = #{status}
 			</if>
 			<if test="methodName != null and methodName != ''">
-				AND method_name like concat('%', #{methodName}, '%')
+				AND method_name like '%'+#{methodName}+'%'
 			</if>
 			<if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
 				and date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')

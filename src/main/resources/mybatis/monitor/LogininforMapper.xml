@@ -25,13 +25,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from sys_logininfor
 		<where>
 			<if test="ipaddr != null and ipaddr != ''">
-				AND ipaddr like concat('%', #{ipaddr}, '%')
+				AND ipaddr like '%'+#{ipaddr}+'%'
 			</if>
 			<if test="status != null and status != ''">
 				AND status = #{status}
 			</if>
 			<if test="loginName != null and loginName != ''">
-				AND login_name like concat('%', #{loginName}, '%')
+				AND login_name like '%'+#{loginName}+'%'
 			</if>
 			<if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
 				and date_format(login_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')

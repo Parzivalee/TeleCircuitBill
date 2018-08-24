@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				AND dict_type = #{dictType}
 			</if>
 			<if test="dictLabel != null and dictLabel != ''">
-				AND dict_label like concat('%', #{dictLabel}, '%')
+				AND dict_label like '%'+#{dictLabel}+'%'
 			</if>
 			<if test="status != null and status != ''">
 				AND status = #{status}

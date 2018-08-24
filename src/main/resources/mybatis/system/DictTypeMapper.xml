@@ -23,13 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <include refid="selectDictTypeVo"/>
 		<where>
 		    <if test="dictName != null and dictName != ''">
-				AND dict_name like concat('%', #{dictName}, '%')
+				AND dict_name like '%'+#{dictName}+'%'
 			</if>
 			<if test="status != null and status != ''">
 				AND status = #{status}
 			</if>
 			<if test="dictType != null and dictType != ''">
-				AND dict_type like concat('%', #{dictType}, '%')
+				AND dict_type like '%'+#{dictType}+'%'
 			</if>
 			<if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
 				and date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')

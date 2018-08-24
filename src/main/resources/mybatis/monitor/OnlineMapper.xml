@@ -45,10 +45,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from sys_user_online
 		<where>
 			<if test="ipaddr != null and ipaddr != ''">
-				AND ipaddr like concat('%', #{ipaddr}, '%')
+				AND ipaddr like '%'+#{ipaddr}+'%'
 			</if>
 			<if test="loginName != null and loginName != ''">
-				AND login_name like concat('%', #{loginName}, '%')
+				AND login_name like '%'+#{loginName}+'%'
 			</if>
 		</where>
 	</select>

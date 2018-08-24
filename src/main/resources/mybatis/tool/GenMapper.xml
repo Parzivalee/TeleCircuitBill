@@ -25,10 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectGenVo"/>
 		where table_comment <![CDATA[ <> ]]> '' and table_schema = (select database())
 		<if test="tableName != null and tableName != ''">
-			AND table_name like concat('%', #{tableName}, '%')
+			AND table_name like '%'+ #{tableName}+'%'
 		</if>
 		<if test="tableComment != null and tableComment != ''">
-			AND table_comment like concat('%', #{tableComment}, '%')
+			AND table_comment like '%'+ #{tableComment}+ '%'
 		</if>
 		<if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
 			and date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')

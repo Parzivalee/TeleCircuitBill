@@ -54,14 +54,13 @@ public class JobServiceImpl implements IJobService
     }
 
     /**
-     * 获取quartz调度器的计划任务列表
+     *
      * 
      * @param job 调度信息
-     * @return
+     * @return获取quartz调度器的计划任务列表
      */
     @Override
-    public List<Job> selectJobList(Job job)
-    {
+    public List<Job> selectJobList(Job job) {
         return jobMapper.selectJobList(job);
     }
 
@@ -72,8 +71,7 @@ public class JobServiceImpl implements IJobService
      * @return 调度任务对象信息
      */
     @Override
-    public Job selectJobById(Long jobId)
-    {
+    public Job selectJobById(Long jobId) {
         return jobMapper.selectJobById(jobId);
     }
 

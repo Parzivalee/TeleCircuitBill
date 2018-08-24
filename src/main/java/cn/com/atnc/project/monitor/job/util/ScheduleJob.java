@@ -33,6 +33,7 @@ public class ScheduleJob extends QuartzJobBean
 {
     private static final Logger log = LoggerFactory.getLogger(ScheduleJob.class);
 
+    //创建单线程的线程池
     private ExecutorService service = Executors.newSingleThreadExecutor();
 
     @Override

@@ -30,13 +30,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from sys_oper_log
 		<where>
 			<if test="title != null and title != ''">
-				AND title like concat('%', #{title}, '%')
+				AND title like '%'+#{title}+'%')
 			</if>
 			<if test="action != null and action != ''">
 				AND action = #{action}
 			</if>
 			<if test="operName != null and operName != ''">
-				AND oper_name like concat('%', #{operName}, '%')
+				AND oper_name like '%'+#{operName}+'%'
 			</if>
 			<if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
 				and date_format(oper_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')

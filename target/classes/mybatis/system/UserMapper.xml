@@ -48,13 +48,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		left join sys_dept d on u.dept_id = d.dept_id
 		where u.del_flag = '0'
 		<if test="loginName != null and loginName != ''">
-			AND u.login_name like concat('%', #{loginName}, '%')
+			AND u.login_name like '%'+ #{loginName}+'%'
 		</if>
 		<if test="status != null and status != ''">
 			AND u.status = #{status}
 		</if>
 		<if test="phonenumber != null and phonenumber != ''">
-			AND u.phonenumber like concat('%', #{phonenumber}, '%')
+			AND u.phonenumber like '%'+#{phonenumber}+'%'
 		</if>
 		<if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
 			AND date_format(u.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
@@ -127,7 +127,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="loginDate != null">login_date = #{loginDate},</if>
  			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
  			<if test="remark != null and remark != ''">remark = #{remark},</if>
- 			update_time = sysdate()
+ 			update_time = getdate()
  		</set>
  		where user_id = #{userId}
 	</update>
@@ -160,7 +160,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="status != null and status != ''">#{status},</if>
  			<if test="createBy != null and createBy != ''">#{createBy},</if>
  			<if test="remark != null and remark != ''">#{remark},</if>
- 			sysdate()
+ 			getdate()
  		)
 	</insert>
 	

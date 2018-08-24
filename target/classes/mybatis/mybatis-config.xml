@@ -5,10 +5,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	
 	<settings>
-		<setting name="cacheEnabled"             value="true" />  <!-- 全局映射器启用缓存 -->
-		<setting name="useGeneratedKeys"         value="true" />  <!-- 允许 JDBC 支持自动生成主键 -->
-		<setting name="defaultExecutorType"      value="REUSE" /> <!-- 配置默认的执行器 -->
-		<setting name="logImpl"                  value="SLF4J" /> <!-- 指定 MyBatis 所用日志的具体实现 -->
+        <!-- 全局地开启或关闭配置文件中的所有映射器已经配置的任何缓存。 -->
+		<setting name="cacheEnabled"             value="true" />
+        <!-- 允许 JDBC 支持自动生成主键,需要驱动支持 -->
+		<setting name="useGeneratedKeys"         value="true" />
+        <!--SIMPLE 就是普通的执行器；REUSE 执行器会重用预处理语句（prepared statements）； BATCH 执行器将重用语句并执行批量更新。-->
+		<setting name="defaultExecutorType"      value="REUSE" />
+        <!-- 指定 MyBatis 所用日志的具体实现，未指定时将自动查找 -->
+		<setting name="logImpl"                  value="SLF4J" />
 		<!-- <setting name="mapUnderscoreToCamelCase" value="true"/>  驼峰式命名 -->
 	</settings>
 	

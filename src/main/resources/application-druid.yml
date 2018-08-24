@@ -1,5 +1,5 @@
 #druid配置
-#Mysql数据源配置
+##Mysql数据源配置
 #spring:
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource

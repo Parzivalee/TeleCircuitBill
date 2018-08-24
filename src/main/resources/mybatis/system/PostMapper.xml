@@ -25,13 +25,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <include refid="selectPostVo"/>
 		<where>
 			<if test="postCode != null and postCode != ''">
-				AND post_code like concat('%', #{postCode}, '%')
+				AND post_code like '%'+#{postCode}+'%'
 			</if>
 			<if test="status != null and status != ''">
 				AND status = #{status}
 			</if>
 			<if test="postName != null and postName != ''">
-				AND post_name like concat('%', #{postName}, '%')
+				AND post_name like '%'+#{postName}+'%'
 			</if>
 		</where>
 	</select>

@@ -32,16 +32,14 @@ public class ScheduleUtils
     /**
      * 获取触发器key
      */
-    public static TriggerKey getTriggerKey(Long jobId)
-    {
+    public static TriggerKey getTriggerKey(Long jobId) {
         return TriggerKey.triggerKey(ScheduleConstants.TASK_CLASS_NAME + jobId);
     }
 
     /**
      * 获取jobKey
      */
-    public static JobKey getJobKey(Long jobId)
-    {
+    public static JobKey getJobKey(Long jobId) {
         return JobKey.jobKey(ScheduleConstants.TASK_CLASS_NAME + jobId);
     }
 
@@ -69,7 +67,9 @@ public class ScheduleUtils
         try
         {
             // 构建job信息
-            JobDetail jobDetail = JobBuilder.newJob(ScheduleJob.class).withIdentity(getJobKey(job.getJobId())).build();
+            JobDetail jobDetail = JobBuilder.newJob(ScheduleJob.class)
+                                            .withIdentity(getJobKey(job.getJobId()))
+                                            .build();
 
             // 表达式调度构建器
             CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule(job.getCronExpression());

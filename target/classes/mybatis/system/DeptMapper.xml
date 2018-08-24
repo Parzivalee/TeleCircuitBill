@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectDeptVo"/>
         <where>
 			<if test="deptName != null and deptName != ''">
-				AND dept_name like concat('%', #{deptName}, '%')
+				AND dept_name like '%'+#{deptName}+'%'
 			</if>
 			<if test="status != null and status != ''">
 				AND status = #{status}
@@ -86,7 +86,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="email != null and email != ''">#{email},</if>
  			<if test="status != null">#{status},</if>
  			<if test="createBy != null and createBy != ''">#{createBy},</if>
- 			sysdate()
+ 			getdate()
  		)
 	</insert>
 	
@@ -101,7 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="email != null and email != ''">email = #{email},</if>
  			<if test="status != null and status != ''">status = #{status},</if>
  			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
- 			update_time = sysdate()
+ 			update_time = getdate()
  		</set>
  		where dept_id = #{deptId}
 	</update>

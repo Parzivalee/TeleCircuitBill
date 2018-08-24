@@ -45,7 +45,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectMenuTree" parameterType="Long" resultType="String">
-		select concat(m.menu_id, m.perms) as perms
+-- 		select concat(m.menu_id, m.perms) as perms
+        select m.menu_id+m.perms as perms
 		from sys_menu m
 			left join sys_role_menu rm on m.menu_id = rm.menu_id
 		where rm.role_id = #{roleId}
@@ -56,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectMenuVo"/>
         <where>
 			<if test="menuName != null and menuName != ''">
-				AND menu_name like concat('%', #{menuName}, '%')
+				AND menu_name like '%'+#{menuName}+'%'
 			</if>
 			<if test="visible != null and visible != ''">
 				AND visible = #{visible}
@@ -101,7 +102,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="icon !=null and icon != ''">icon = #{icon},</if>
  			<if test="remark != null and remark != ''">remark = #{remark},</if>
  			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
- 			update_time = sysdate()
+ 			update_time = getdate()
  		</set>
  		where menu_id = #{menuId}
 	</update>
@@ -132,7 +133,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="icon != null and icon != ''">#{icon},</if>
  			<if test="remark != null and remark != ''">#{remark},</if>
  			<if test="createBy != null and createBy != ''">#{createBy},</if>
- 			sysdate()
+ 			getdate()
  		)
 	</insert>
 	

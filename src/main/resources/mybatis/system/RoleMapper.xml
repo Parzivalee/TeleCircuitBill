@@ -25,13 +25,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectRoleVo"/>
 		<where>
 			<if test="roleName != null and roleName != ''">
-				AND role_name like concat('%', #{roleName}, '%')
+				AND role_name like '%'+#{roleName}+'%'
 			</if>
 			<if test="status != null and status != ''">
 				AND status = #{status}
 			</if>
 			<if test="roleKey != null and roleKey != ''">
-				AND role_key like concat('%', #{roleKey}, '%')
+				AND role_key like '%'+#{roleKey}+'%')
 			</if>
 			<if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
 				and date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')

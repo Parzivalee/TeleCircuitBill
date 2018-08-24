@@ -25,17 +25,17 @@
         <include refid="selectCountryVo"/>
         <where>
             <if test="continent != null and continent != ''">
-                AND continent  like concat('%', #{continent}, '%')
+                AND continent  like '%'+#{continent}+'%'
             </if>
             <if test="countryName != null and countryName != ''">
-                AND countryCN like concat('%', #{countryName}, '%') or countryEN like concat('%', #{countryName}, '%')
+                AND countryCN like '%'+#{countryName}+'%' or countryEN like '%'+#{countryName}+'%'
             </if>
         </where>
     </select>
 
     <select id="selectCountryByCountryName" parameterType="String" resultMap="CountryResult">
         <include refid="selectCountryVo"/>
-        where countryCN like concat('%', #{countryName}, '%') or countryEN like concat('%', #{countryName}, '%')
+        where countryCN like '%'+#{countryName}+'%' or countryEN like '%'+#{countryName}+'%'
     </select>
 
     <select id="selectCountryById" parameterType="Long" resultMap="CountryResult">
