@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.atnc.project.customerInfo.countrys.mapper.CountryMapper">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.customerInfo.countrys.mapper.CountryMapper">
 
     <resultMap type="Country" id="CountryResult">
         <id     property="countryId"       column="country_id"/>

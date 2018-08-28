@@ -67,7 +67,7 @@
 		<logger name="org.springframework.jdbc" level="debug" />
 	-->
 
-	<logger name="cn.com.atnc" level="info" />
+	<logger name="cn.com.atnc.teleCircuitBill" level="info" />
 
 	<root level="info">
 		<appender-ref ref="console" />

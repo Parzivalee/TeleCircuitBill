@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.atnc.project.tool.gen.mapper.GenMapper">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.tool.gen.mapper.GenMapper">
 
 	<resultMap type="TableInfo" id="TableInfoResult">
 		<id     property="tableName"      column="table_name"      />
@@ -25,10 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectGenVo"/>
 		where table_comment <![CDATA[ <> ]]> '' and table_schema = (select database())
 		<if test="tableName != null and tableName != ''">
-			AND table_name like '%'+ #{tableName}+'%'
+			AND table_name like concat('%', #{tableName}, '%')
 		</if>
 		<if test="tableComment != null and tableComment != ''">
-			AND table_comment like '%'+ #{tableComment}+ '%'
+			AND table_comment like concat('%', #{tableComment}, '%')
 		</if>
 		<if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
 			and date_format(create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')

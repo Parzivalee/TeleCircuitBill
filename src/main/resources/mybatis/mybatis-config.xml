@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<setting name="defaultExecutorType"      value="REUSE" />
         <!-- 指定 MyBatis 所用日志的具体实现，未指定时将自动查找 -->
 		<setting name="logImpl"                  value="SLF4J" />
+
 		<!-- <setting name="mapUnderscoreToCamelCase" value="true"/>  驼峰式命名 -->
 	</settings>
 	

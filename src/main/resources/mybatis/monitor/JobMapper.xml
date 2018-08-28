@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.atnc.project.monitor.job.mapper.JobMapper">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.monitor.job.mapper.JobMapper">
 
 	<resultMap type="Job" id="JobResult">
 		<id     property="jobId"          column="job_id"          />
@@ -28,13 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectJobVo"/>
 		<where>
 			<if test="jobName != null and jobName != ''">
-				AND job_name like '%'+#{jobName}+'%'
+				AND job_name like concat('%', #{jobName}, '%')
 			</if>
 			<if test="status != null and status != ''">
 				AND status = #{status}
 			</if>
 			<if test="methodName != null and methodName != ''">
-				AND method_name like '%'+#{methodName}+'%'
+				AND method_name like concat('%', #{methodName}, '%')
 			</if>
 		</where>
 	</select>
@@ -71,7 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="status !=null">status = #{status},</if>
  			<if test="remark != null and remark != ''">remark = #{remark},</if>
  			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
- 			update_time = getdate()
+ 			update_time = sysdate()
  		</set>
  		where job_id = #{jobId}
 	</update>
@@ -100,7 +100,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="status != null and status != ''">#{status},</if>
  			<if test="remark != null and remark != ''">#{remark},</if>
  			<if test="createBy != null and createBy != ''">#{createBy},</if>
- 			getdate()
+ 			sysdate()
  		)
 	</insert>
 

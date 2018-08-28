@@ -17,7 +17,7 @@ server:
 #日志配置
 logging:
   level:
-    cn.com.atnc: debug
+    cn.com.atnc.teleCircuitBill: debug
     org.springframework: WARN
     org.spring.springboot.dao: debug
 #用户配置
@@ -51,7 +51,7 @@ spring:
 # MyBatis
 mybatis:
     # 搜索指定包别名
-    typeAliasesPackage: cn.com.atnc.project
+    typeAliasesPackage: cn.com.atnc.teleCircuitBill.project
     # 配置mapper的扫描，找到所有的mapper.xml映射文件
     mapperLocations: classpath:mybatis/**/*Mapper.xml
     # 加载全局的配置文件
@@ -59,7 +59,7 @@ mybatis:
 # PageHelper
 pagehelper:
   # 使用Mysql数据源
-  #helperDialect: mysql
+  helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
@@ -97,7 +97,7 @@ gen:
   # 作者
   author:
   # 默认生成包路径 module 需改成自己的模块名称 如 system monitor tool
-  packageName: cn.com.atnc.project.module
+  packageName: cn.com.atnc.teleCircuitBill.project.module
   # 自动去除表前缀，默认是true
   autoRemovePre: true
   # 表前缀(类名不会包含表前缀)

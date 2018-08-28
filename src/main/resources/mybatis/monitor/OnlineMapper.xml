@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.atnc.project.monitor.online.mapper.UserOnlineMapper">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.monitor.online.mapper.UserOnlineMapper">
 
 	<resultMap type="UserOnline" id="UserOnlineResult">
 		<id     property="sessionId"         column="sessionId"         />
@@ -45,10 +45,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from sys_user_online
 		<where>
 			<if test="ipaddr != null and ipaddr != ''">
-				AND ipaddr like '%'+#{ipaddr}+'%'
+				AND ipaddr like concat('%', #{ipaddr}, '%')
 			</if>
 			<if test="loginName != null and loginName != ''">
-				AND login_name like '%'+#{loginName}+'%'
+				AND login_name like concat('%', #{loginName}, '%')
 			</if>
 		</where>
 	</select>

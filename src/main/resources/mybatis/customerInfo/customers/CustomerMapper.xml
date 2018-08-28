@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.customerInfo.customers.mapper.CustomerMapper">
+
+    <resultMap type="Customer" id="CustomerResult">
+        <id     property="countryId"       column="id"/>
+        <result property="area"       column="area_id"/>
+        <result property="customerName"    column="customer_name"/>
+        <result property="countryCode"     column="customer_name_cn"/>
+        <result property="shortName"     column="customer_name_short"/>
+        <result property="code"        column="customer_code"/>
+        <result property="legalPerson"    column="customer_legal"/>
+        <result property="legalPersonPhone"    column="customer_legal_phone" />
+        <result property="delegation" column="customer_delegation" />
+        <result property="delegationPhone" column="customer_delegation_phone" />
+        <result property="bank" column="customer_accountbank" />
+        <result property="bankAccount" column="customer_accountnumber" />
+        <result property="address" column="customer_address" />
+        <result property="email" column="customer_postcode" />
+        <result property="phoneNumber" column="customer_phone" />
+        <result property="fax" column="customer_fax" />
+        <result property="url" column="customer_website" />
+        <result property="inlandoversea" column="customer_inlandoversea" />
+        <result property="access" column="customer_access" />
+        <result property="config" column="customer_config" />
+        <result property="rent" column="customer_rent" />
+        <result property="maintain" column="customer_maintain" />
+        <result property="level" column="customer_level" />
+        <result property="accessSum" column="customer_access_sum" />
+        <result property="configSum" column="customer_config_sum" />
+        <result property="rentSum" column="customer_rent_sum" />
+        <result property="maintainSum" column="customer_maintain_sum" />
+    </resultMap>
+
+
+    <sql id="selectCountryVo">
+        select country_id,countryCN,countryEN,country_code,aviation_code,continent,create_time,update_time
+		from cus_country
+    </sql>
+
+    <select id="selectCountryList" parameterType="Country" resultMap="CountryResult">
+        <include refid="selectCountryVo"/>
+        <where>
+            <if test="continent != null and continent != ''">
+                AND continent  like '%'+#{continent}+'%'
+            </if>
+            <if test="countryName != null and countryName != ''">
+                AND countryCN like '%'+#{countryName}+'%' or countryEN like '%'+#{countryName}+'%'
+            </if>
+        </where>
+    </select>
+</mapper>
