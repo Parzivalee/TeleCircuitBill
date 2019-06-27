@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.atmaccess.mapper.AtmAccessMapper">
+
+    <resultMap type="AtmAccessFee" id="AtmAccessFeeResult">
+        <id     property="atmAccessFeeId"       column="id"/>
+        <result property="siteBuyEquipment"    column="site_buy_equipment"/>
+        <result property="currencyType"    column="currency_type"/>
+        <result property="siteAccessAmount"    column="site_access_amount"/>
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <result property="isdel"   column="isdel"  />
+    </resultMap>
+
+    <sql id="selectAtmAccessFeeVo">
+        select *
+		from tele_atm_access_fee where isdel=0
+    </sql>
+
+    <select id="selectAtmAccessFeeById" parameterType="String" resultMap="AtmAccessFeeResult">
+        <include refid="selectAtmAccessFeeVo"/>
+        AND id = #{atmAccessFeeId}
+    </select>
+
+    <select id="selectAtmAccessFeeList" parameterType="AtmAccessFee" resultMap="AtmAccessFeeResult">
+        <include refid="selectAtmAccessFeeVo"/>
+        <if test="siteBuyEquipment != null and siteBuyEquipment != '' " >
+            AND site_buy_equipment=#{siteBuyEquipment}
+        </if>
+        <if test="currencyType != null and currencyType != '' ">
+            AND currency_type=#{currencyType}
+        </if>
+    </select>
+
+    <insert id="insertAtmAccessFee" parameterType="AtmAccessFee">
+        <selectKey keyProperty="atmAccessFeeId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_atm_access_fee(
+        <if test="atmAccessFeeId != null and atmAccessFeeId != ''">id,</if>
+        <if test="siteBuyEquipment != null and siteBuyEquipment != ''">site_buy_equipment,</if>
+        <if test="currencyType != null and currencyType != ''">currency_type,</if>
+        <if test="siteAccessAmount != null and siteAccessAmount != ''">site_access_amount,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="atmAccessFeeId != null and atmAccessFeeId != ''">#{atmAccessFeeId},</if>
+        <if test="siteBuyEquipment != null and siteBuyEquipment != ''">#{siteBuyEquipment},</if>
+        <if test="currencyType != null and currencyType != ''">#{currencyType},</if>
+        <if test="siteAccessAmount != null and siteAccessAmount != ''">#{siteAccessAmount},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateAtmAccessFee" parameterType="AtmAccessFee">
+        update tele_atm_access_fee
+        <set>
+            <if test="siteBuyEquipment != null and siteBuyEquipment != ''">site_buy_equipment = #{siteBuyEquipment},</if>
+            <if test="currencyType != null and currencyType != ''">currency_type = #{currencyType},</if>
+            <if test="siteAccessAmount != null and siteAccessAmount != ''">site_access_amount = #{siteAccessAmount},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{atmAccessFeeId}
+    </update>
+
+    <!--<delete id="deleteDomesticFeeByIds" parameterType="String">
+        delete from tele_circuit_month_fee where id in
+        <foreach item="domesticFeeId" collection="array" open="(" separator="," close=")">
+            #{domesticFeeId}
+        </foreach>
+    </delete>-->
+</mapper>

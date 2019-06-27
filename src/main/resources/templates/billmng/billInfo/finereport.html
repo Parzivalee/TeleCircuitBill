@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+    <div class="container-div">
+        <input id="url" name="url" th:field="*{url}"  type="hidden">
+        <iframe id="finereport" src=""></iframe>
+    </div>
+
+    <div th:include="include::footer"></div>
+    <script th:inline="javascript">
+        $(function () {
+            var url = $("#url").val();
+            $("#finereport").attr("src",url);
+        });
+    </script>
+</body>
+</html>

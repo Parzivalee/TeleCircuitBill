@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.system.exchangerate.mapper.ExchangerateMapper">
+    
+    <resultMap type="Exchangerate" id="ExchangerateResult">
+        <result property="id"    column="id"    />
+        <result property="rateTime"    column="rate_time"    />
+        <result property="rate"    column="rate_usa_to_rmb"    />
+        <result property="rateDescription"    column="rate_description"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isdel"    column="isdel"    />
+    </resultMap>
+	
+	<sql id="selectExchangerateVo">
+        select * from sys_exchangerate
+    </sql>
+	
+    <select id="selectExchangerateList" parameterType="Exchangerate" resultMap="ExchangerateResult">
+        <include refid="selectExchangerateVo"/>
+        <where>  
+            <if test="id != null and id != ''"> and id = #{id}</if>
+             <if test="rateTime != null and rateTime != ''"> and rate_time = #{rateTime}</if>
+             <if test="rate != null and rate != ''"> and rate_usa_to_rmb = #{rate}</if>
+             <if test="rateDescription != null and rateDescription != ''"> and rate_description = #{rateDescription}</if>
+             <if test="createBy != null and createBy != ''"> and create_by = #{createBy}</if>
+             <if test="createTime != null and createTime != ''"> and create_time = #{createTime}</if>
+             <if test="updateBy != null and updateBy != ''"> and update_by = #{updateBy}</if>
+             <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime}</if>
+             <if test="isdel != null and isdel != ''"> and isdel = #{isdel}</if>
+         </where>
+    </select>
+    
+    <select id="selectExchangerateById" parameterType="String" resultMap="ExchangerateResult">
+        <include refid="selectExchangerateVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="findExchangeRateByTime" parameterType="Date" resultMap="ExchangerateResult">
+        <include refid="selectExchangerateVo"/>
+        where rate_time=#{rateTime}
+    </select>
+        
+    <insert id="insertExchangerate" parameterType="Exchangerate">
+        insert into sys_exchangerate
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">id,</if>
+			<if test="rateTime != null and rateTime != '' ">rate_time,</if>
+			<if test="rate != null and rate != '' ">rate_usa_to_rmb,</if>
+			<if test="rateDescription != null and rateDescription != '' ">rate_description,</if>
+			<if test="createBy != null and createBy != '' ">create_by,</if>
+			<if test="createTime != null and createTime != '' ">create_time,</if>
+			<if test="updateBy != null and updateBy != '' ">update_by,</if>
+			<if test="updateTime != null and updateTime != '' ">update_time,</if>
+			<if test="isdel != null and isdel != '' ">isdel,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">#{id},</if>
+			<if test="rateTime != null and rateTime != ''">#{rateTime},</if>
+			<if test="rate != null and rate != ''">#{rate},</if>
+			<if test="rateDescription != null and rateDescription != ''">#{rateDescription},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+			<if test="createTime != null and createTime != ''">#{createTime},</if>
+			<if test="updateBy != null and updateBy != ''">#{updateBy},</if>
+			<if test="updateTime != null and updateTime != ''">#{updateTime},</if>
+			<if test="isdel != null and isdel != ''">#{isdel},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateExchangerate" parameterType="Exchangerate">
+        update sys_exchangerate
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="rateTime != null  ">rate_time = #{rateTime},</if>
+            <if test="rate != null  ">rate_usa_to_rmb = #{rate},</if>
+            <if test="rateDescription != null  and rateDescription != ''  ">rate_description = #{rateDescription},</if>
+            <if test="createBy != null  and createBy != ''  ">create_by = #{createBy},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            <if test="updateTime != null  ">update_time = #{updateTime},</if>
+            <if test="isdel != null  ">isdel = #{isdel},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteExchangerateById" parameterType="String">
+        delete from sys_exchangerate where id = #{id}
+    </delete>
+	
+    <delete id="deleteExchangerateByIds" parameterType="String">
+        delete from sys_exchangerate where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <!--逻辑删除-->
+    <!--<update id="deleteExchangerateByIds" parameterType="String">
+        update sys_exchangerate set isdel=1 where id in
+        <foreach collection="array" item="circuitId" open="(" separator="," close=")">
+            #{circuitId}
+        </foreach>
+    </update>-->
+    
+</mapper>

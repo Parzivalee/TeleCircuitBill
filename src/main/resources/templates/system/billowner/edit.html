@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-billowner-edit" th:object="${billowner}">
+            <input id="billOwnerId" name="billOwnerId" th:field="*{billOwnerId}"  type="hidden">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位名称：</label>
+                <div class="col-sm-8">
+                    <input id="billCompany" name="billCompany" th:field="*{billCompany}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位名称（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyEn" name="billCompanyEn" th:field="*{billCompanyEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">开户账号：</label>
+                <div class="col-sm-8">
+                    <input id="billAccountNumber" name="billAccountNumber" th:field="*{billAccountNumber}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">开户账号（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billAccountNumberEn" name="billAccountNumberEn" th:field="*{billAccountNumberEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">开户银行：</label>
+                <div class="col-sm-8">
+                    <input id="billAccountBank" name="billAccountBank" th:field="*{billAccountBank}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">开户银行（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billAccountBankEn" name="billAccountBankEn" th:field="*{billAccountBankEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位地址：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyAddress" name="billCompanyAddress" th:field="*{billCompanyAddress}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位地址（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyAddressEn" name="billCompanyAddressEn" th:field="*{billCompanyAddressEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位邮编：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyPostcode" name="billCompanyPostcode" th:field="*{billCompanyPostcode}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位邮编（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyPostcodeEn" name="billCompanyPostcodeEn" th:field="*{billCompanyPostcodeEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位电话：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyTele" name="billCompanyTele" th:field="*{billCompanyTele}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位电话（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyTeleEn" name="billCompanyTeleEn" th:field="*{billCompanyTeleEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位传真：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyFax" name="billCompanyFax" th:field="*{billCompanyFax}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">单位传真（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyFaxEn" name="billCompanyFaxEn" th:field="*{billCompanyFaxEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">联系人：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyLinkman" name="billCompanyLinkman" th:field="*{billCompanyLinkman}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">联系人（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyLinkmanEn" name="billCompanyLinkmanEn" th:field="*{billCompanyLinkmanEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">联系人邮编：</label>
+                <div class="col-sm-8">
+                    <input id="billCompanyLinkmanEmail" name="billCompanyLinkmanEmail" th:field="*{billCompanyLinkmanEmail}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">制表人：</label>
+                <div class="col-sm-8">
+                    <input id="billMaker" name="billMaker" th:field="*{billMaker}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">制表人（英文）：</label>
+                <div class="col-sm-8">
+                    <input id="billMakerEn" name="billMakerEn" th:field="*{billMakerEn}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">纳税人识别号：</label>
+                <div class="col-sm-8">
+                    <input id="taxpayerNumber" name="taxpayerNumber" th:field="*{taxpayerNumber}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">空管局信息：</label>
+                <div class="col-sm-8">
+                    <input id="airTrafficInfo" name="airTrafficInfo" th:field="*{airTrafficInfo}" class="form-control" type="text">
+                </div>
+            </div>
+
+			<div class="form-group">
+				<div class="form-control-static col-sm-offset-9">
+					<button type="submit" class="btn btn-primary">提交</button>
+					<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+				</div>
+			</div>
+		</form>
+    </div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "system/billowner"
+		$("#form-billowner-edit").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			submitHandler: function(form) {
+				$.operate.save(prefix + "/edit", $('#form-billowner-edit').serialize());
+			}
+		});
+	</script>
+</body>
+</html>

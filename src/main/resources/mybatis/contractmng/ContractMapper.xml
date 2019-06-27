@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.mapper.ContractMapper">
+
+    <resultMap type="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.domain.ContractInfo" id="ContractInfoResult">
+        <id     property="contractId"       column="id"/>
+        <result property="contractType"    column="contract_type"/>
+        <result property="contractSignType"    column="contract_sign_type"/>
+        <result property="contractNumber"    column="contract_number"/>
+        <result property="airTrafficContractNumber"    column="airtraffic_contract_number"/>
+        <result property="contractName"    column="contract_name"/>
+        <result property="contractConfigDate"    column="contract_config_time"/>
+        <result property="contractStartDate"    column="contract_start_time"/>
+        <result property="contractEndDate"    column="contract_end_time"/>
+        <result property="contractStopDate"    column="contract_stop_time"/>
+        <result property="isExpired"    column="is_expired"/>
+        <result property="isContractAutoPostpone"    column="contract_auto_postpone"/>
+        <result property="generateBill"    column="contract_is_generate_bill"/>
+        <result property="changeStatus"    column="is_change"/>
+        <result property="remark"    column="remark"/>
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <result property="isdel"   column="isdel"  />
+        <association property="customer"  column="customer_id" javaType="Customer" resultMap="CustomerResult" />
+        <association property="partA"  column="part_a" javaType="Customer" resultMap="PartAResult" />
+        <association property="partB"  column="part_b" javaType="Customer" resultMap="PartBResult" />
+    </resultMap>
+
+    <resultMap type="cn.com.atnc.teleCircuitBill.project.customerInfo.customers.domain.Customer" id="CustomerResult">
+        <id property="customerId" column="customerId" />
+        <result property="area" column="area_id"/>
+        <result property="customerName" column="customerName" />
+        <result property="isdel"   column="isdel"  />
+    </resultMap>
+
+    <resultMap type="cn.com.atnc.teleCircuitBill.project.customerInfo.customers.domain.Customer" id="PartAResult">
+        <id property="customerId" column="partAId" />
+        <result property="customerName" column="partAName" />
+    </resultMap>
+
+    <resultMap type="cn.com.atnc.teleCircuitBill.project.customerInfo.customers.domain.Customer" id="PartBResult">
+        <id property="customerId" column="partBId" />
+        <result property="customerName" column="partBName" />
+    </resultMap>
+
+    <sql id="selectContractVo">
+        select a.*,b.area_id,b.customer_name
+		from tele_contract_info a left join cus_customer b
+		on a.customer_id=b.id
+		where a.isdel=0 and b.isdel=0
+    </sql>
+
+    <select id="selectContractList" parameterType="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.domain.ContractInfo"
+            resultMap="ContractInfoResult">
+        select a.*,b.id customerId,b.area_id,b.customer_name customerName,c.id partAId,c.customer_name partAName,
+        d.id partBId, d.customer_name partBName from
+        tele_contract_info a
+        left join cus_customer b on a.customer_id = b.id
+        left join cus_customer c on a.part_a = c.id
+        left join cus_customer d on a.part_b = d.id
+        where a.isdel=0
+        <if test="contractType != null and contractType != ''">
+            AND contract_type=#{contractType}
+        </if>
+        <if test="contractSignType != null and contractSignType != ''">
+            AND contract_sign_type=#{contractSignType}
+        </if>
+        <if test="customer != null">
+            <if test="customer.customerName != null and customer.customerName != '' ">
+                AND b.customer_name like concat('%',#{customer.customerName},'%')
+            </if>
+            <if test="customer.area != null and customer.area != ''">
+                AND b.area_id =#{customer.area}
+            </if>
+        </if>
+        <if test="contractNumber != null and contractNumber != ''">
+            AND contract_number like concat('%',#{contractNumber},'%')
+        </if>
+        <if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
+            and date_format(tele_circuit_opentime,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+        </if>
+        <if test="params != null and params.endTime != ''"><!-- 结束时间检索 -->
+            and date_format(tele_circuit_opentime,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+        </if>
+        <if test="isExpired != null and isExpired != '' ">
+            and is_expired=#{isExpired}
+        </if>
+    </select>
+
+    <select id="selectContractByContractId" parameterType="String" resultMap="ContractInfoResult">
+        select a.*,b.id customerId,b.area_id, b.customer_name customerName, c.id partAId,c.customer_name partAName,
+         d.id partBId, d.customer_name partBName from
+        tele_contract_info a
+        left join cus_customer b on a.customer_id = b.id
+        left join cus_customer c on a.part_a = c.id
+        left join cus_customer d on a.part_b = d.id
+        where a.isdel=0
+        and a.id=#{contractId}
+    </select>
+
+    <select id="selectContractByContractType" parameterType="String" resultMap="ContractInfoResult">
+        select a.id,b.id customerId,b.customer_name customerName from
+        tele_contract_info a left join cus_customer b
+        on a.customer_id = b.id
+        where a.isdel=0
+        and a.contract_type = #{contractType}
+    </select>
+
+    <select id="selectContractListInDays" parameterType="String" resultMap="ContractInfoResult">
+        select * from tele_contract_info
+        where isdel=0
+        and date_format(contract_config_time,'%y%m%d') &gt;= date_format(#{day7before},'%y%m%d')
+        and date_format(contract_config_time,'%y%m%d') &lt;= date_format(#{today},'%y%m%d')
+    </select>
+
+    <select id="selectContractByCustomerId" parameterType="String" resultMap="ContractInfoResult">
+        select * from tele_contract_info
+        where isdel=0
+        and customer_id=#{customerId}
+    </select>
+
+    <insert id="insertContract" parameterType="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.domain.ContractInfo">
+        <selectKey keyProperty="contractId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_contract_info(
+        <if test="contractId != null and contractId != '' ">id,</if>
+        <if test="contractType != null and contractType != '' ">contract_type,</if>
+        <if test="contractSignType != null and contractSignType != '' ">contract_sign_type,</if>
+        <if test="customer != null">
+            <if test="customer.customerId != null and customer.customerId != '' ">customer_id,</if>
+        </if>
+        <if test="contractNumber != null and contractNumber != '' ">contract_number,</if>
+        <if test="airTrafficContractNumber != null and airTrafficContractNumber != '' ">airtraffic_contract_number,</if>
+        <if test="contractName != null and contractName != '' ">contract_name,</if>
+        <if test="partA != null">
+            <if test="partA.customerId != null and partA.customerId != '' ">part_a,</if>
+        </if>
+        <if test="partB != null">
+            <if test="partB.customerId != null and partB.customerId != '' ">part_b,</if>
+        </if>
+        <if test="contractConfigDate != null ">contract_config_time,</if>
+        <if test="contractStartDate != null ">contract_start_time,</if>
+        <if test="contractEndDate != null ">contract_end_time,</if>
+        <if test="contractStopDate != null ">contract_stop_time,</if>
+        <if test="isExpired != null and isExpired != '' ">is_expired,</if>
+        <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">contract_auto_postpone,</if>
+        <if test="generateBill != null and generateBill != ''">contract_is_generate_bill,</if>
+        <if test="remark != null and remark != ''">remark,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="contractId != null and contractId != '' ">#{contractId},</if>
+        <if test="contractType != null and contractType != '' ">#{contractType},</if>
+        <if test="contractSignType != null and contractSignType != '' ">#{contractSignType},</if>
+        <if test="customer != null">
+            <if test="customer.customerId != null and customer.customerId != '' ">#{customer.customerId},</if>
+        </if>
+        <if test="contractNumber != null and contractNumber != '' ">#{contractNumber},</if>
+        <if test="airTrafficContractNumber != null and airTrafficContractNumber != '' ">#{airTrafficContractNumber},</if>
+        <if test="contractName != null and contractName != '' ">#{contractName},</if>
+        <if test="partA != null">
+            <if test="partA.customerId != null and partA.customerId != '' ">#{partA.customerId},</if>
+        </if>
+        <if test="partB != null">
+            <if test="partB.customerId != null and partB.customerId != '' ">#{partB.customerId},</if>
+        </if>
+        <if test="contractConfigDate != null ">#{contractConfigDate},</if>
+        <if test="contractStartDate != null ">#{contractStartDate},</if>
+        <if test="contractEndDate != null ">#{contractEndDate},</if>
+        <if test="contractStopDate != null ">#{contractStopDate},</if>
+        <if test="isExpired != null and isExpired != '' ">#{isExpired},</if>
+        <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">#{isContractAutoPostpone},</if>
+        <if test="generateBill != null and generateBill != ''">#{generateBill},</if>
+        <if test="remark != null and remark != ''">#{remark},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateContract" parameterType="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.domain.ContractInfo">
+        update tele_contract_info
+        <set>
+            <if test="contractType != null and contractType != '' ">contract_type=#{contractType},</if>
+            <if test="contractSignType != null and contractSignType != '' ">contract_sign_type=#{contractSignType},</if>
+            <if test="customer != null">
+                <if test="customer.customerId != null and customer.customerId != '' ">customer_id=#{customer.customerId},</if>
+            </if>
+            <if test="contractNumber != null and contractNumber != '' ">contract_number=#{contractNumber},</if>
+            <if test="airTrafficContractNumber != null and airTrafficContractNumber != '' ">airtraffic_contract_number=#{airTrafficContractNumber},</if>
+            <if test="contractName != null and contractName != '' ">contract_name=#{contractName},</if>
+            <if test="partA != null">
+                <if test="partA.customerId != null and partA.customerId != '' ">part_a=#{partA.customerId},</if>
+            </if>
+            <if test="partB != null">
+                <if test="partB.customerId != null and partB.customerId != '' ">part_b=#{partB.customerId},</if>
+            </if>
+            <if test="contractConfigDate != null ">contract_config_time=#{contractConfigDate},</if>
+            <if test="contractStartDate != null ">contract_start_time=#{contractStartDate},</if>
+            <if test="contractEndDate != null ">contract_end_time=#{contractEndDate},</if>
+            <if test="contractStopDate != null ">contract_stop_time=#{contractStopDate},</if>
+            <if test="isExpired != null and isExpired != '' ">is_expired=#{isExpired},</if>
+            <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">contract_auto_postpone=#{isContractAutoPostpone},</if>
+            <if test="generateBill != null and generateBill != ''">contract_is_generate_bill=#{generateBill},</if>
+            <if test="remark != null and remark != ''">remark#{remark},</if>
+            <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{contractId}
+    </update>
+
+    <!--逻辑删除-->
+    <update id="removeContractByIds" parameterType="String">
+        update tele_contract_info set isdel=1 where id in
+        <foreach item="contractId" collection="array" open="(" separator="," close=")">
+            #{contractId}
+        </foreach>
+    </update>
+<!--<delete id="deleteCountryByIds" parameterType="String">-->
+        <!--delete from cus_country where country_id in-->
+        <!--<foreach item="countryId" collection="array" open="(" separator="," close=")">-->
+            <!--#{countryId}-->
+        <!--</foreach>-->
+    <!--</delete>-->
+
+    <select id="checkCircuitCodeNameUnique" parameterType="String" resultMap="ContractInfoResult">
+		select * from tele_contract_info where contract_number=#{contractNumber} and isdel=0
+	</select>
+</mapper>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.changemng.mapper.HistoryDataMapper">
+
+    <resultMap type="HistoryData" id="HistoryDataResult">
+        <id     property="historyId"       column="id"/>
+        <result property="changeType"    column="change_type"    />
+        <result property="changeNumber"    column="change_number"    />
+        <result property="operatorDate"    column="operator_date"    />
+        <result property="operating"    column="operating"    />
+        <result property="changeContent"    column="change_content"    />
+        <result property="basisFile"    column="basis_file"    />
+        <result property="iomsApplyNumber"    column="ioms_apply_number"    />
+        <result property="remark"    column="remark"    />
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+    </resultMap>
+
+    <sql id="selectHistoryDataVo">
+        select *
+		from tele_historydata
+    </sql>
+
+    <select id="selectCircuitChangeById" parameterType="String" resultMap="HistoryDataResult">
+        <include refid="selectHistoryDataVo"/>
+        where id = #{historyId} and change_type="circuit"
+    </select>
+
+    <select id="selectContractChangeById" parameterType="String" resultMap="HistoryDataResult">
+        <include refid="selectHistoryDataVo"/>
+        where id = #{historyId} and change_type="contract"
+    </select>
+
+    <select id="selectHistoryDataList" parameterType="HistoryData" resultMap="HistoryDataResult">
+        select * from tele_historydata
+        <where>
+            <if test="changeType != null and changeType != ''"> and change_type = #{changeType}</if>
+            <if test="changeNumber != null and changeNumber != '' ">
+                AND change_number like concat('%',#{changeNumber},'%')
+            </if>
+            <if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
+                and date_format(operator_date,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+            </if>
+            <if test="params != null and params.endTime != ''"><!-- 结束时间检索 -->
+                and date_format(operator_date,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+            </if>
+            <if test="operating != null and operating != ''"> and operating = #{operating}</if>
+            <if test="changeContent != null and changeContent != ''"> and change_content = #{changeContent}</if>
+            <if test="basisFile != null and basisFile != ''"> and basis_file = #{basisFile}</if>
+            <if test="iomsApplyNumber != null and iomsApplyNumber != ''"> and ioms_apply_number = #{iomsApplyNumber}</if>
+            <if test="remark != null and remark != ''"> and remark = #{remark}</if>
+
+        </where>
+        order by operator_date desc
+    </select>
+
+    <insert id="insertHistoryData" parameterType="HistoryData">
+        <selectKey keyProperty="historyId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_historydata(
+        <if test="historyId != null and historyId != ''">id,</if>
+        <if test="changeType != null and changeType != ''">change_type,</if>
+        <if test="changeNumber != null and changeNumber != ''">change_number,</if>
+        <if test="operatorDate != null">operator_date,</if>
+        <if test="operating != null and operating != ''">operating,</if>
+        <if test="changeContent != null and changeContent != ''">change_content,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="historyId != null and historyId != ''">#{historyId},</if>
+        <if test="changeType != null and changeType != ''">#{changeType},</if>
+        <if test="changeNumber != null and changeNumber != ''">#{changeNumber},</if>
+        <if test="operatorDate != null">#{operatorDate},</if>
+        <if test="operating != null and operating != '' ">#{operating},</if>
+        <if test="changeContent != null and changeContent != '' ">#{changeContent},</if>
+        <if test="createBy != null and createBy != '' ">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateHistoryData" parameterType="HistoryData">
+        update tele_historydata
+        <set>
+            <!--<if test="changeNumber != null  and changeNumber != ''  ">change_number = #{changeNumber},</if>
+            <if test="operatorDate != null  ">operator_date = #{operatorDate},</if>
+            <if test="operating != null  and operating != ''  ">operating = #{operating},</if>
+            <if test="changeContent != null  and changeContent != ''  ">change_content = #{changeContent},</if>-->
+            <if test="basisFile != null  and basisFile != ''  ">basis_file = #{basisFile},</if>
+            <if test="iomsApplyNumber != null  and iomsApplyNumber != ''  ">ioms_apply_number = #{iomsApplyNumber},</if>
+            <if test="remark != null  and remark != ''  ">remark = #{remark},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{historyId}
+    </update>
+
+</mapper>

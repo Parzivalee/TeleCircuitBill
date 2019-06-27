@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.system.billowner.mapper.BillownerMapper">
+    
+    <resultMap type="Billowner" id="BillownerResult">
+        <result property="billOwnerId"    column="id"    />
+        <result property="billCompany"    column="bill_company"    />
+        <result property="billCompanyEn"    column="bill_company_en"    />
+        <result property="billAccountNumber"    column="bill_account_number"    />
+        <result property="billAccountNumberEn"    column="bill_account_number_en"    />
+        <result property="billAccountBank"    column="bill_account_bank"    />
+        <result property="billAccountBankEn"    column="bill_account_bank_en"    />
+        <result property="billCompanyAddress"    column="bill_company_address"    />
+        <result property="billCompanyAddressEn"    column="bill_company_address_en"    />
+        <result property="billCompanyPostcode"    column="bill_company_postcode"    />
+        <result property="billCompanyPostcodeEn"    column="bill_company_postcode_en"    />
+        <result property="billCompanyTele"    column="bill_company_tele"    />
+        <result property="billCompanyTeleEn"    column="bill_company_tele_en"    />
+        <result property="billCompanyFax"    column="bill_company_fax"    />
+        <result property="billCompanyFaxEn"    column="bill_company_fax_en"    />
+        <result property="billCompanyLinkman"    column="bill_company_linkman"    />
+        <result property="billCompanyLinkmanEn"    column="bill_company_linkman_en"    />
+        <result property="billCompanyLinkmanEmail"    column="bill_company_linkman_email"    />
+        <result property="billMaker"    column="bill_maker"    />
+        <result property="billMakerEn"    column="bill_maker_en"    />
+        <result property="taxpayerNumber"    column="taxpayer_number"    />
+        <result property="airTrafficInfo"    column="airtraffic_info"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isdel"    column="isdel"    />
+    </resultMap>
+	
+	<sql id="selectBillownerVo">
+        select * from sys_billowner
+        where isdel=0
+    </sql>
+	
+    <select id="selectBillownerList" parameterType="Billowner" resultMap="BillownerResult">
+        <include refid="selectBillownerVo"/>
+        <if test="billCompany != null and billCompany != ''">
+            and bill_company like concat('%',#{billCompany},'%')
+            or bill_company_en like concat('%',#{billCompany},'%')
+        </if>
+    </select>
+    
+    <select id="selectBillownerById" parameterType="String" resultMap="BillownerResult">
+        <include refid="selectBillownerVo"/>
+        and id = #{billOwnerId}
+    </select>
+        
+    <insert id="insertBillowner" parameterType="Billowner">
+        <selectKey keyProperty="billOwnerId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into sys_billowner
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="billOwnerId != null and billOwnerId != '' ">id,</if>
+			<if test="billCompany != null and billCompany != '' ">bill_company,</if>
+			<if test="billCompanyEn != null and billCompanyEn != '' ">bill_company_en,</if>
+			<if test="billAccountNumber != null and billAccountNumber != '' ">bill_account_number,</if>
+			<if test="billAccountNumberEn != null and billAccountNumberEn != '' ">bill_account_number_en,</if>
+			<if test="billAccountBank != null and billAccountBank != '' ">bill_account_bank,</if>
+			<if test="billAccountBankEn != null and billAccountBankEn != '' ">bill_account_bank_en,</if>
+			<if test="billCompanyAddress != null and billCompanyAddress != '' ">bill_company_address,</if>
+			<if test="billCompanyAddressEn != null and billCompanyAddressEn != '' ">bill_company_address_en,</if>
+			<if test="billCompanyPostcode != null and billCompanyPostcode != '' ">bill_company_postcode,</if>
+			<if test="billCompanyPostcodeEn != null and billCompanyPostcodeEn != '' ">bill_company_postcode_en,</if>
+			<if test="billCompanyTele != null and billCompanyTele != '' ">bill_company_tele,</if>
+			<if test="billCompanyTeleEn != null and billCompanyTeleEn != '' ">bill_company_tele_en,</if>
+			<if test="billCompanyFax != null and billCompanyFax != '' ">bill_company_fax,</if>
+			<if test="billCompanyFaxEn != null and billCompanyFaxEn != '' ">bill_company_fax_en,</if>
+			<if test="billCompanyLinkman != null and billCompanyLinkman != '' ">bill_company_linkman,</if>
+			<if test="billCompanyLinkmanEn != null and billCompanyLinkmanEn != '' ">bill_company_linkman_en,</if>
+			<if test="billCompanyLinkmanEmail != null and billCompanyLinkmanEmail != '' ">bill_company_linkman_email,</if>
+			<if test="billMaker != null and billMaker != '' ">bill_maker,</if>
+			<if test="billMakerEn != null and billMakerEn != '' ">bill_maker_en,</if>
+			<if test="taxpayerNumber != null and taxpayerNumber != '' ">taxpayer_number,</if>
+			<if test="airTrafficInfo != null and airTrafficInfo != '' ">airtraffic_info,</if>
+			<if test="createBy != null and createBy != '' ">create_by,</if>
+            create_time
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="billOwnerId != null and billOwnerId != ''">#{billOwnerId},</if>
+			<if test="billCompany != null and billCompany != ''">#{billCompany},</if>
+			<if test="billCompanyEn != null and billCompanyEn != ''">#{billCompanyEn},</if>
+			<if test="billAccountNumber != null and billAccountNumber != ''">#{billAccountNumber},</if>
+			<if test="billAccountNumberEn != null and billAccountNumberEn != ''">#{billAccountNumberEn},</if>
+			<if test="billAccountBank != null and billAccountBank != ''">#{billAccountBank},</if>
+			<if test="billAccountBankEn != null and billAccountBankEn != ''">#{billAccountBankEn},</if>
+			<if test="billCompanyAddress != null and billCompanyAddress != ''">#{billCompanyAddress},</if>
+			<if test="billCompanyAddressEn != null and billCompanyAddressEn != ''">#{billCompanyAddressEn},</if>
+			<if test="billCompanyPostcode != null and billCompanyPostcode != ''">#{billCompanyPostcode},</if>
+			<if test="billCompanyPostcodeEn != null and billCompanyPostcodeEn != ''">#{billCompanyPostcodeEn},</if>
+			<if test="billCompanyTele != null and billCompanyTele != ''">#{billCompanyTele},</if>
+			<if test="billCompanyTeleEn != null and billCompanyTeleEn != ''">#{billCompanyTeleEn},</if>
+			<if test="billCompanyFax != null and billCompanyFax != ''">#{billCompanyFax},</if>
+			<if test="billCompanyFaxEn != null and billCompanyFaxEn != ''">#{billCompanyFaxEn},</if>
+			<if test="billCompanyLinkman != null and billCompanyLinkman != ''">#{billCompanyLinkman},</if>
+			<if test="billCompanyLinkmanEn != null and billCompanyLinkmanEn != ''">#{billCompanyLinkmanEn},</if>
+			<if test="billCompanyLinkmanEmail != null and billCompanyLinkmanEmail != ''">#{billCompanyLinkmanEmail},</if>
+			<if test="billMaker != null and billMaker != ''">#{billMaker},</if>
+			<if test="billMakerEn != null and billMakerEn != ''">#{billMakerEn},</if>
+			<if test="taxpayerNumber != null and taxpayerNumber != ''">#{taxpayerNumber},</if>
+			<if test="airTrafficInfo != null and airTrafficInfo != ''">#{airTrafficInfo},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+         </trim>
+    </insert>
+	 
+    <update id="updateBillowner" parameterType="Billowner">
+        update sys_billowner
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="billCompany != null  and billCompany != ''  ">bill_company = #{billCompany},</if>
+            <if test="billCompanyEn != null  and billCompanyEn != ''  ">bill_company_en = #{billCompanyEn},</if>
+            <if test="billAccountNumber != null  and billAccountNumber != ''  ">bill_account_number = #{billAccountNumber},</if>
+            <if test="billAccountNumberEn != null  and billAccountNumberEn != ''  ">bill_account_number_en = #{billAccountNumberEn},</if>
+            <if test="billAccountBank != null  and billAccountBank != ''  ">bill_account_bank = #{billAccountBank},</if>
+            <if test="billAccountBankEn != null  and billAccountBankEn != ''  ">bill_account_bank_en = #{billAccountBankEn},</if>
+            <if test="billCompanyAddress != null  and billCompanyAddress != ''  ">bill_company_address = #{billCompanyAddress},</if>
+            <if test="billCompanyAddressEn != null  and billCompanyAddressEn != ''  ">bill_company_address_en = #{billCompanyAddressEn},</if>
+            <if test="billCompanyPostcode != null  and billCompanyPostcode != ''  ">bill_company_postcode = #{billCompanyPostcode},</if>
+            <if test="billCompanyPostcodeEn != null  and billCompanyPostcodeEn != ''  ">bill_company_postcode_en = #{billCompanyPostcodeEn},</if>
+            <if test="billCompanyTele != null  and billCompanyTele != ''  ">bill_company_tele = #{billCompanyTele},</if>
+            <if test="billCompanyTeleEn != null  and billCompanyTeleEn != ''  ">bill_company_tele_en = #{billCompanyTeleEn},</if>
+            <if test="billCompanyFax != null  and billCompanyFax != ''  ">bill_company_fax = #{billCompanyFax},</if>
+            <if test="billCompanyFaxEn != null  and billCompanyFaxEn != ''  ">bill_company_fax_en = #{billCompanyFaxEn},</if>
+            <if test="billCompanyLinkman != null  and billCompanyLinkman != ''  ">bill_company_linkman = #{billCompanyLinkman},</if>
+            <if test="billCompanyLinkmanEn != null  and billCompanyLinkmanEn != ''  ">bill_company_linkman_en = #{billCompanyLinkmanEn},</if>
+            <if test="billCompanyLinkmanEmail != null  and billCompanyLinkmanEmail != ''  ">bill_company_linkman_email = #{billCompanyLinkmanEmail},</if>
+            <if test="billMaker != null  and billMaker != ''  ">bill_maker = #{billMaker},</if>
+            <if test="billMakerEn != null  and billMakerEn != ''  ">bill_maker_en = #{billMakerEn},</if>
+            <if test="taxpayerNumber != null  and taxpayerNumber != ''  ">taxpayer_number = #{taxpayerNumber},</if>
+            <if test="airTrafficInfo != null  and airTrafficInfo != ''  ">airtraffic_info = #{airTrafficInfo},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </trim>
+        where id = #{billOwnerId} and isdel=0
+    </update>
+
+	<!--<delete id="deleteBillownerById" parameterType="String">
+        delete from sys_billowner where id = #{billOwnerId}
+    </delete>
+	
+    <delete id="deleteBillownerByIds" parameterType="String">
+        delete from sys_billowner where id in 
+        <foreach item="billOwnerId" collection="array" open="(" separator="," close=")">
+            #{billOwnerId}
+        </foreach>
+    </delete>-->
+    <!--逻辑删除-->
+    <update id="deleteBillownerByIds" parameterType="String">
+        update sys_billowner set isdel=1 where id in
+        <foreach collection="array" item="billOwnerId" open="(" separator="," close=")">
+            #{billOwnerId}
+        </foreach>
+    </update>
+    
+</mapper>

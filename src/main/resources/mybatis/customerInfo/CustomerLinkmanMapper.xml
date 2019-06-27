@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.customerInfo.customerLinkman.mapper.CustomerLinkmanMapper">
+    
+    <resultMap type="CustomerLinkman" id="CustomerLinkmanResult">
+        <result property="linkmanId"    column="id"    />
+        <result property="linkmanName"    column="linkman_name"    />
+        <result property="linkmanDep"    column="linkman_dep"    />
+        <result property="linkmanDuty"    column="linkman_duty"    />
+        <result property="linkmanTel"    column="linkman_tel"    />
+        <result property="linkmanMobile"    column="linkman_mobile"    />
+        <result property="linkmanEmail"    column="linkman_email"    />
+        <result property="linkmanFax"    column="linkman_fax"    />
+        <result property="linkmanPostcode"    column="linkman_postcode"    />
+        <result property="linkmanAddress"    column="linkman_address"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isdel"    column="isdel"    />
+        <association property="customer" column="customer_id" javaType="Customer" resultMap="CustomerResult" />
+    </resultMap>
+
+    <resultMap type="Customer" id="CustomerResult">
+        <id property="customerId" column="customerId" />
+        <result property="area" column="area_id"/>
+        <result property="customerName" column="customer_name" />
+        <result property="isdel"   column="isdel"  />
+    </resultMap>
+	
+	<sql id="selectCustomerLinkmanVo">
+        select a.*,b.customer_name
+        from cus_customer_linkman a left join cus_customer b
+        on a.customer_id = b.id
+        where a.isdel=0
+    </sql>
+	
+    <select id="selectCustomerLinkmanList" parameterType="CustomerLinkman" resultMap="CustomerLinkmanResult">
+        <include refid="selectCustomerLinkmanVo"/>
+        <if test="linkmanName != null and linkmanName != ''">
+              and a.linkman_name = #{linkmanName}
+        </if>
+    </select>
+    
+    <select id="selectCustomerLinkmanById" parameterType="String" resultMap="CustomerLinkmanResult">
+        select a.*,b.id customerId,b.customer_name
+        from cus_customer_linkman a left join cus_customer b
+        on a.customer_id=b.id
+        where a.id = #{linkmanId} and a.isdel=0
+    </select>
+        
+    <insert id="insertCustomerLinkman" parameterType="CustomerLinkman">
+        <selectKey keyProperty="linkmanId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into cus_customer_linkman
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="linkmanId != null">id,</if>
+            <if test="customer != null and customer.customerId != null">customer_id,</if>
+			<if test="linkmanName != null and linkmanName != '' ">linkman_name,</if>
+			<if test="linkmanDep != null and linkmanDep != '' ">linkman_dep,</if>
+			<if test="linkmanDuty != null and linkmanDuty != '' ">linkman_duty,</if>
+			<if test="linkmanTel != null and linkmanTel != '' ">linkman_tel,</if>
+			<if test="linkmanMobile != null and linkmanMobile != '' ">linkman_mobile,</if>
+			<if test="linkmanEmail != null and linkmanEmail != '' ">linkman_email,</if>
+			<if test="linkmanFax != null and linkmanFax != '' ">linkman_fax,</if>
+			<if test="linkmanPostcode != null and linkmanPostcode != '' ">linkman_postcode,</if>
+			<if test="linkmanAddress != null and linkmanAddress != '' ">linkman_address,</if>
+			<if test="createBy != null and createBy != '' ">create_by,</if>
+            create_time
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="linkmanId != null">#{linkmanId},</if>
+            <if test="customer != null and customer.customerId != null">#{customer.customerId},</if>
+			<if test="linkmanName != null and linkmanName != ''">#{linkmanName},</if>
+			<if test="linkmanDep != null and linkmanDep != ''">#{linkmanDep},</if>
+			<if test="linkmanDuty != null and linkmanDuty != ''">#{linkmanDuty},</if>
+			<if test="linkmanTel != null and linkmanTel != ''">#{linkmanTel},</if>
+			<if test="linkmanMobile != null and linkmanMobile != ''">#{linkmanMobile},</if>
+			<if test="linkmanEmail != null and linkmanEmail != ''">#{linkmanEmail},</if>
+			<if test="linkmanFax != null and linkmanFax != ''">#{linkmanFax},</if>
+			<if test="linkmanPostcode != null and linkmanPostcode != ''">#{linkmanPostcode},</if>
+			<if test="linkmanAddress != null and linkmanAddress != ''">#{linkmanAddress},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+         </trim>
+    </insert>
+	 
+    <update id="updateCustomerLinkman" parameterType="CustomerLinkman">
+        update cus_customer_linkman
+        <set>
+            <if test="linkmanName != null and linkmanName != '' ">linkman_name = #{linkmanName},</if>
+            <if test="customer != null">
+                <if test="customer.customerId != null and customer.customerId != '' ">customer_id=#{customer.customerId},</if>            </if>
+            <if test="linkmanDep != null  and linkmanDep != ''  ">linkman_dep = #{linkmanDep},</if>
+            <if test="linkmanDuty != null  and linkmanDuty != ''  ">linkman_duty = #{linkmanDuty},</if>
+            <if test="linkmanTel != null  and linkmanTel != ''  ">linkman_tel = #{linkmanTel},</if>
+            <if test="linkmanMobile != null  and linkmanMobile != ''  ">linkman_mobile = #{linkmanMobile},</if>
+            <if test="linkmanEmail != null  and linkmanEmail != ''  ">linkman_email = #{linkmanEmail},</if>
+            <if test="linkmanFax != null  and linkmanFax != ''  ">linkman_fax = #{linkmanFax},</if>
+            <if test="linkmanPostcode != null  and linkmanPostcode != ''  ">linkman_postcode = #{linkmanPostcode},</if>
+            <if test="linkmanAddress != null  and linkmanAddress != ''  ">linkman_address = #{linkmanAddress},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            update_time=sysdate()
+        </set>
+        where id = #{linkmanId}
+    </update>
+
+	<!--<delete id="deleteCustomerLinkmanById" parameterType="String">
+        delete from cus_customer_linkman where id = #{linkmanId}
+    </delete>
+	
+    <delete id="deleteCustomerLinkmanByIds" parameterType="String">
+        delete from cus_customer_linkman where id in 
+        <foreach item="linkmanId" collection="array" open="(" separator="," close=")">
+            #{linkmanId}
+        </foreach>
+    </delete>-->
+
+    <!--逻辑删除-->
+    <update id="deleteCustomerLinkmanByIds" parameterType="String">
+        update cus_customer_linkman set isdel=1 where id in
+        <foreach item="linkmanId" collection="array" open="(" separator="," close=")">
+            #{linkmanId}
+        </foreach>
+    </update>
+    
+</mapper>

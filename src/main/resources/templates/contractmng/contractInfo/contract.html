@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<!--fileInput 文件上传插件样式-->
+<link th:href="@{/css/fileinput/fileinput.min.css}" rel="stylesheet" type="text/css"/>
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 select-info">
+            <form id="contract-form">
+                <div class="select-list gd">
+                    <ul>
+                        <li>
+                            合同类型：
+                            <select name="contractType" th:with="type=${@dict.getType('tele_contract_type')}">
+                                <option value="">所有</option>
+                                <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                        </select>
+                        </li>
+                        <li>
+                            合同签订类型：
+                            <select name="contractSignType" th:with="type=${@dict.getType('contract_sign_type')}">
+                                <option value="">所有</option>
+                                <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            单位名称：<input type="text" name="customer.customerName"/>
+                        </li>
+                        <li>
+                            所属地区：<select name="customer.area" th:with="type=${@dict.getType('cus_area')}">
+                            <option value="">所有</option>
+                            <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                        </select>
+                        </li>
+                        <li>
+                            合同编号：<input type="text" name="contractNumber"/>
+                        </li>
+                        <li class="time">
+                            <label>合同签订时间： </label>
+                            <input type="text" class="layui-input" id="startTime" placeholder="开始时间" name="params[beginTime]"/>
+                            <span>-</span>
+                            <input type="text" class="layui-input" id="endTime" placeholder="结束时间" name="params[endTime]"/>
+                        </li>
+                        <li>
+                            是否过期：
+                            <select name="isExpired" >
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
+                                <option value="">所有</option>
+                            </select>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <!--<a class="btn btn-success btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i>&nbsp;下载</a>-->
+                        </li>
+                    </ul>
+
+                </div>
+                <p><em>合同类型标红说明为解除合同</em></p>
+            </form>
+        </div>
+
+        <div class="btn-group hidden-xs" id="toolbar" role="group">
+            <a class="btn btn-outline btn-success btn-rounded" onclick="$.operate.add()" shiro:hasPermission="contractmng:contract:add">
+                <i class="fa fa-plus"></i> 新增
+            </a>
+            <a class="btn btn-outline btn-danger btn-rounded" onclick="$.operate.batRemove()" shiro:hasPermission="contractmng:contract:remove">
+                <i class="fa fa-trash-o"></i> 删除
+            </a>
+
+        </div>
+
+
+        <div class="col-sm-12 select-info table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<!--fileinput 文件上传插件 -->
+<script th:src="@{/js/plugins/fileinput/fileinput.min.js}" ></script>
+<script th:src="@{/js/plugins/fileinput/zh.js}"></script>
+<script th:inline="javascript">
+    var circuitFlag=[[${@permission.hasPermi('contractmng:contract:editcircuit')}]];
+    var accessFlag=[[${@permission.hasPermi('contractmng:contract:contractaccess')}]];
+    var editFlag = [[${@permission.hasPermi('contractmng:contract:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('contractmng:contract:remove')}]];
+    var uploadFlag = [[${@permission.hasPermi('contractmng:contract:upload')}]];
+    var changeFlag = [[${@permission.hasPermi('contractmng:contract:change')}]];
+    var contractType = [[${@dict.getType('tele_contract_type')}]];
+    var areaType = [[${@dict.getType('cus_area')}]];
+    var statusFlag = [[${@dict.getType('contract_status_type')}]];
+    var prefix = ctx + "contractmng/contractInfo";
+
+    $(function() {
+        var options = {
+            id: "contractId",
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            changeUrl: prefix + "/change/{id}",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            editcircuitUrl: prefix + "/editcircuit/{id}",
+            uploadFileUrl: prefix+"/upload/{id}",
+            accessContractUrl: prefix+"/contractaccess/{id}",
+            search: false,
+            showExport: false,
+            modalName: "合同",
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'contractNumber',
+                    title: '合同编号'
+                },
+                {
+                    field: 'contractName',
+                    title: '合同名称'
+                },
+                {
+                    field: 'contractType',
+                    title: '合同类型',
+                    formatter: function(value, row, index) {
+                        if (row.contractSignType=="new") {
+                            return $.table.selectDictData(contractType, value);
+                        }else {
+                            var actions = [];
+                            $.each(contractType, function (index, dict) {
+                                if (dict.dictValue == value) {
+                                    actions.push("<span style='color: red;'>" + dict.dictLabel + "</span>");
+                                    return false;
+                                }
+                            });
+                            return actions.join('');
+                        }
+                    }
+                },
+                {
+                    field: 'customer.customerName',
+                    title: '单位名称',
+                },
+                {
+                    field: 'partA.customerName',
+                    title: '甲方'
+                },
+                {
+                    field: 'partB.customerName',
+                    title: '乙方'
+                },
+                {
+                    field: 'customer.area',
+                    title: '所属地区',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictData(areaType, value);
+                    }
+                },
+                {
+                    field: 'status',
+                    title: '是否生效',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictLabel(statusFlag, value);
+                    }
+                },
+                {
+                    field: 'contractType',
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        if (value == 'Access' ) {
+                            actions.push('<a class="btn btn-info btn-xs' + accessFlag + '" href="#" onclick="$.operate.accessInfo(\'' + row.contractId + '\')"><i class="fa fa-cog"></i>入网信息</a> ');
+                        }else {
+                            if (row.contractSignType=="remove") {
+                                //签订类型为解除时隐藏
+                            }else {
+                                actions.push('<a class="btn btn-info btn-xs' + circuitFlag + '" href="#" onclick="$.operate.editcircuit(\'' + row.contractId + '\')"><i class="fa fa-cog"></i>电路管理</a> ');
+                            }
+                        }
+                        actions.push('<a class="btn btn-warning btn-xs ' + changeFlag + '" href="#" onclick="$.operate.change(\'' + row.contractId+'\')"><i class="fa fa-building"></i>变更</a> ');
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.contractId + '\')"><i class="fa fa-edit"></i>编辑</a> <br>');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.contractId + '\')"><i class="fa fa-remove"></i>删除</a> ');
+                        actions.push('<a class="btn btn-primary btn-xs ' + uploadFlag + '" href="#" onclick="$.operate.uploadFiles(\'' + row.contractId+'\')"><i class="fa fa-upload"></i>上传</a>');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+</script>
+</body>
+</html>

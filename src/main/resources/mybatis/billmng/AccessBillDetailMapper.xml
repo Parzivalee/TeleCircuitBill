@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.billmng.mapper.AccessBillDetailMapper">
+    
+    <resultMap type="AccessBillDetail" id="AccessBillDetailResult">
+        <result property="accessBillDetailId"    column="id"    />
+        <result property="accessType" column="access_type" />
+        <result property="billAccessSum"    column="access_sum"    />
+        <result property="billAccessFee"    column="access_fee"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isdel"    column="isdel"    />
+        <association property="bill" column="bill_fee_id" javaType="Bill" resultMap="BillResult" />
+        <association property="contractAccessInfo" column="contract_access_info_id" javaType="ContractAccessInfo" resultMap="ContractAccessInfoResult" />
+    </resultMap>
+
+    <resultMap id="BillResult" type="Bill">
+        <id property="billId" column="id"/>
+    </resultMap>
+
+    <resultMap id="ContractAccessInfoResult" type="ContractAccessInfo">
+        <id property="contractAccessId" column="id"/>
+    </resultMap>
+	
+	<sql id="selectAccessBillDetailVo">
+        select * from bill_accessfee_detail
+    </sql>
+	
+    <select id="selectAccessBillDetailList" parameterType="AccessBillDetail" resultMap="AccessBillDetailResult">
+        <include refid="selectAccessBillDetailVo"/>
+        <where>  
+            <if test="accessBillDetailId != null and accessBillDetailId != ''"> and id = #{accessBillDetailId}</if>
+             <if test="bill != null and bill.billId != ''"> and bill_fee_id = #{bill.billId}</if>
+             <if test="contractAccessInfo != null and contractAccessInfo.contractAccessId != ''"> and contract_access_info_id = #{contractAccessInfo.contractAccessId}</if>
+             <if test="billAccessSum != null and billAccessSum != ''"> and access_sum = #{billAccessSum}</if>
+             <if test="billAccessFee != null and billAccessFee != ''"> and access_fee = #{accessFee}</if>
+         </where>
+    </select>
+    
+    <select id="selectAccessBillDetailById" parameterType="String" resultMap="AccessBillDetailResult">
+        <include refid="selectAccessBillDetailVo"/>
+        where id = #{accessBillDetailId}
+    </select>
+
+    <select id="selectAccessBillDetailByBillId" parameterType="String" resultMap="AccessBillDetailResult">
+        <include refid="selectAccessBillDetailVo"/>
+        where bill_fee_id = #{billId}
+    </select>
+        
+    <insert id="insertAccessBillDetail" parameterType="AccessBillDetail">
+        <selectKey keyProperty="accessBillDetailId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into bill_accessfee_detail
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="accessBillDetailId != null and accessBillDetailId != '' ">id,</if>
+			<if test="bill != null and bill.billId != '' ">bill_fee_id,</if>
+			<if test="contractAccessInfo != null and contractAccessInfo.contractAccessId != '' ">contract_access_info_id,</if>
+            <if test="accessType != null and accessType != '' ">access_type,</if>
+			<if test="billAccessSum != null and billAccessSum != '' ">access_sum,</if>
+			<if test="billAccessFee != null and billAccessFee != '' ">access_fee,</if>
+			<if test="createBy != null and createBy != '' ">create_by,</if>
+            create_time
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="accessBillDetailId != null and accessBillDetailId != ''">#{accessBillDetailId},</if>
+			<if test="bill != null and bill.billId != ''">#{bill.billId},</if>
+			<if test="contractAccessInfo != null and contractAccessInfo.contractAccessId != ''">#{contractAccessInfo.contractAccessId},</if>
+            <if test="accessType != null and accessType != '' ">access_type,</if>
+			<if test="billAccessSum != null and billAccessSum != ''">#{billAccessSum},</if>
+			<if test="billAccessFee != null and billAccessFee != ''">#{billAccessFee},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+         </trim>
+    </insert>
+	 
+    <update id="updateAccessBillDetail" parameterType="AccessBillDetail">
+        update bill_accessfee_detail
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="bill != null  and bill.billId != ''  ">bill_fee_id = #{bill.billId},</if>
+            <if test="contractAccessInfo != null  and contractAccessInfo.contractAccessId != ''  ">contract_access_info_id = #{contractAccessInfo.contractAccessId},</if>
+            <if test="billAccessSum != null  ">access_sum = #{billAccessSum},</if>
+            <if test="accessFee != null  ">access_fee = #{accessFee},</if>
+            update_time=sysdate()
+        </trim>
+        where id = #{accessBillDetailId}
+    </update>
+
+	<delete id="deleteAccessBillDetailById" parameterType="String">
+        delete from bill_accessfee_detail where id = #{accessBillDetailId}
+    </delete>
+	
+    <delete id="deleteAccessBillDetailByIds" parameterType="String">
+        delete from bill_accessfee_detail where id in 
+        <foreach item="accessBillDetailId" collection="array" open="(" separator="," close=")">
+            #{accessBillDetailId}
+        </foreach>
+    </delete>
+    
+</mapper>

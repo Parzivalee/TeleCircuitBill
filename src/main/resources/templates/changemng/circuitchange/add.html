@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-change-add">
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">合同/电路：</label>
+				<div class="col-sm-8">
+					<input id="changeType" name="changeType" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">编号：</label>
+				<div class="col-sm-8">
+					<input id="changeNumber" name="changeNumber" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">操作日期：</label>
+				<div class="col-sm-8">
+					<input id="operatorDate" name="operatorDate" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">操作：</label>
+				<div class="col-sm-8">
+					<input id="operating" name="operating" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">变更内容：</label>
+				<div class="col-sm-8">
+					<input id="changeContent" name="changeContent" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">依据文件：</label>
+				<div class="col-sm-8">
+					<input id="basisFile" name="basisFile" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">运维平台申请编号：</label>
+				<div class="col-sm-8">
+					<input id="iomsApplyNumber" name="iomsApplyNumber" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">	
+				<label class="col-sm-3 control-label">说明：</label>
+				<div class="col-sm-8">
+					<input id="remark" name="remark" class="form-control" type="text">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="form-control-static col-sm-offset-9">
+					<button type="submit" class="btn btn-primary">提交</button>
+					<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+				</div>
+			</div>
+		</form>
+	</div>
+    <div th:include="include::footer"></div>
+    <script type="text/javascript">
+		var prefix = ctx + "module/change";
+		$("#form-change-add").validate({
+			rules:{
+				xxxx:{
+					required:true,
+				},
+			},
+			submitHandler: function(form) {
+				$.operate.save(prefix + "/add", $('#form-change-add').serialize());
+			}
+		});
+	</script>
+</body>
+</html>

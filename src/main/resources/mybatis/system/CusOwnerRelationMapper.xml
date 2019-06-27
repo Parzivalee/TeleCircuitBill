@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.system.cusownerrelation.mapper.CusOwnerRelationMapper">
+    
+    <resultMap type="CusOwnerRelation" id="CusOwnerRelationResult">
+        <result property="id"    column="id"    />
+        <association property="customer"  column="customer_id" javaType="Customer" resultMap="CustomerResult" />
+        <association property="monthBillOwner"  column="month_bill_owner_id" javaType="Billowner" resultMap="Billowner1Result" />
+        <association property="configBillOwner"  column="config_bill_owner_id" javaType="Billowner" resultMap="Billowner2Result" />
+        <association property="accessBillOwner"  column="access_bill_owner_id" javaType="Billowner" resultMap="Billowner3Result" />
+    </resultMap>
+
+    <resultMap type="Customer" id="CustomerResult">
+        <id property="customerId" column="id" />
+        <result property="customerName" column="customer_name" />
+    </resultMap>
+
+    <resultMap type="Billowner" id="Billowner1Result">
+        <id property="billOwnerId" column="month_bill_owner_id" />
+        <result property="billCompany" column="month_company"/>
+    </resultMap>
+
+    <resultMap type="Billowner" id="Billowner2Result">
+        <id property="billOwnerId" column="config_bill_owner_id" />
+        <result property="billCompany" column="config_company"/>
+    </resultMap>
+
+    <resultMap type="Billowner" id="Billowner3Result">
+        <id property="billOwnerId" column="access_bill_owner_id" />
+        <result property="billCompany" column="access_company"/>
+    </resultMap>
+
+	<sql id="selectCusOwnerRelationVo">
+        select a.*,b.customer_name,
+        (select c.bill_company from sys_billowner c where c.id=a.access_bill_owner_id) access_company,
+        (select d.bill_company from sys_billowner d where d.id=a.month_bill_owner_id) month_company,
+        (select e.bill_company from sys_billowner e where e.id=a.config_bill_owner_id) config_company
+        from cus_owner_relation a
+        left join cus_customer b on a.customer_id = b.id
+
+
+    </sql>
+	
+    <select id="selectCusOwnerRelationList" parameterType="CusOwnerRelation" resultMap="CusOwnerRelationResult">
+        <include refid="selectCusOwnerRelationVo"/>
+        <where>  
+            <if test="id != null and id != ''"> and id = #{id}</if>
+             <if test="customer != null and customer != ''"> and customer_id = #{customer}</if>
+             <if test="monthBillOwner != null and monthBillOwner != ''"> and month_bill_owner_id = #{monthBillOwner}</if>
+             <if test="configBillOwner != null and configBillOwner != ''"> and config_bill_owner_id = #{configBillOwner}</if>
+             <if test="accessBillOwner != null and accessBillOwner != ''"> and access_bill_owner_id = #{accessBillOwner}</if>
+         </where>
+    </select>
+    
+    <select id="selectCusOwnerRelationById" parameterType="String" resultMap="CusOwnerRelationResult">
+        <include refid="selectCusOwnerRelationVo"/>
+        where id = #{id}
+    </select>
+
+    <select id="selectCusOwnerRelationByCustomerId" parameterType="String" resultMap="CusOwnerRelationResult">
+        select *
+        from cus_owner_relation
+        where customer_id = #{customerId}
+    </select>
+        
+    <insert id="insertCusOwnerRelation" parameterType="CusOwnerRelation">
+        <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into cus_owner_relation
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != '' ">id,</if>
+			<if test="customerId != null and customer.customerId != '' ">customer_id,</if>
+			<if test="monthBillOwner != null and monthBillOwner.monthBillOwnerId != '' ">month_bill_owner_id,</if>
+			<if test="configBillOwner != null and configBillOwner.configBillOwnerId != '' ">config_bill_owner_id,</if>
+			<if test="accessBillOwner != null and accessBillOwner.accessBillOwnerId != '' ">access_bill_owner_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">#{id},</if>
+			<if test="customer != null and customer.customerId != ''">#{customer.customerId},</if>
+			<if test="monthBillOwner != null and monthBillOwner.monthBillOwnerId != ''">#{monthBillOwner.monthBillOwnerId},</if>
+			<if test="configBillOwner != null and configBillOwner.configBillOwnerId != ''">#{configBillOwner.configBillOwnerId},</if>
+			<if test="accessBillOwner != null and accessBillOwner.accessBillOwnerId != ''">#{accessBillOwner.accessBillOwnerId},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateCusOwnerRelation" parameterType="CusOwnerRelation">
+        update cus_owner_relation
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="customer != null  and customer.customerId != ''  ">customer_id = #{customer.customerId},</if>
+            <if test="monthBillOwner != null  and monthBillOwner.monthBillOwnerId != ''  ">month_bill_owner_id = #{monthBillOwner.monthBillOwnerId},</if>
+            <if test="configBillOwner != null  and configBillOwner.configBillOwnerId != ''  ">config_bill_owner_id = #{configBillOwner.configBillOwnerId},</if>
+            <if test="accessBillOwner != null  and accessBillOwner.accessBillOwnerId != ''  ">access_bill_owner_id = #{accessBillOwner.accessBillOwnerId},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteCusOwnerRelationById" parameterType="String">
+        delete from cus_owner_relation where id = #{id}
+    </delete>
+	
+    <delete id="deleteCusOwnerRelationByIds" parameterType="String">
+        delete from cus_owner_relation where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

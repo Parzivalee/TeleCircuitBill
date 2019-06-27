@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.billmng.mapper.BillDetailMapper">
+    
+    <resultMap type="BillDetail" id="BillDetailResult">
+        <result property="billDetailId"    column="id"    />
+        <result property="monthSum"    column="month_sum"    />
+        <result property="monthBillStart"    column="month_start"    />
+        <result property="monthBillEnd"    column="month_end"    />
+        <result property="accountPeriod"    column="account_period"    />
+        <result property="monthEveryFee"    column="month_every_fee"    />
+        <result property="monthTotalFee"    column="month_totalfee"    />
+        <result property="monthDetailCheckCode"    column="month_detail_checkcode"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="isdel"    column="isdel"    />
+        <association property="bill" column="bill_fee_id" javaType="Bill" resultMap="BillResult" />
+        <association property="association" column="contract_telecircuit_relation_id" javaType="Association" resultMap="AssociationResult" />
+    </resultMap>
+
+    <resultMap id="BillResult" type="Bill">
+        <id property="billId" column="id"/>
+    </resultMap>
+
+    <resultMap id="AssociationResult" type="Association">
+        <id property="associationId" column="id"/>
+    </resultMap>
+	
+	<sql id="selectBillDetailVo">
+        select  * from bill_fee_detail
+    </sql>
+	
+    <select id="selectBillDetailList" parameterType="BillDetail" resultMap="BillDetailResult">
+        <include refid="selectBillDetailVo"/>
+        <where>  
+            <if test="id != null and id != ''"> and id = #{id}</if>
+             <if test="bill != null and bill.billId != ''"> and bill_fee_id = #{bill.billId}</if>
+             <if test="association != null and association.associationId != ''"> and contract_telecircuit_relation_id = #{association.associationId}</if>
+             <if test="monthSum != null and monthSum != ''"> and month_sum = #{monthSum}</if>
+             <if test="monthBillStart != null"> and month_start = #{monthBillStart}</if>
+             <if test="monthBillEnd != null"> and month_end = #{monthBillEnd}</if>
+             <if test="monthEveryFee != null and monthEveryFee != ''"> and month_every_fee = #{monthEveryFee}</if>
+             <if test="monthTotalFee != null and monthTotalFee != ''"> and month_totalfee = #{monthTotalFee}</if>
+             <if test="monthDetailCheckCode != null and monthDetailCheckCode != ''"> and month_detail_checkcode = #{monthDetailCheckCode}</if>
+         </where>
+    </select>
+    
+    <select id="selectBillDetailById" parameterType="String" resultMap="BillDetailResult">
+        <include refid="selectBillDetailVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertBillDetail" parameterType="BillDetail">
+        <selectKey keyProperty="billDetailId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into bill_fee_detail
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="billDetailId != null and billDetailId != '' ">id,</if>
+			<if test="bill != null and bill.billId != '' ">bill_fee_id,</if>
+			<if test="association != null and association.associationId != '' ">contract_telecircuit_relation_id,</if>
+			<if test="monthSum != null and monthSum != '' ">month_sum,</if>
+			<if test="monthBillStart != null ">month_start,</if>
+			<if test="monthBillEnd != null ">month_end,</if>
+			<if test="accountPeriod != null and accountPeriod != '' ">account_period,</if>
+			<if test="monthEveryFee != null and monthEveryFee != '' ">month_every_fee,</if>
+			<if test="monthTotalFee != null and monthTotalFee != '' ">month_totalfee,</if>
+			<if test="monthDetailCheckCode != null and monthDetailCheckCode != '' ">month_detail_checkcode,</if>
+			<if test="createBy != null and createBy != '' ">create_by,</if>
+            create_time
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="billDetailId != null and billDetailId != ''">#{billDetailId},</if>
+			<if test="bill != null and bill.billId != ''">#{bill.billId},</if>
+			<if test="association != null and association.associationId != ''">#{association.associationId},</if>
+			<if test="monthSum != null ">#{monthSum},</if>
+			<if test="monthBillStart != null">#{monthBillStart},</if>
+			<if test="monthBillEnd != null">#{monthBillEnd},</if>
+			<if test="accountPeriod != null and accountPeriod != ''">#{accountPeriod},</if>
+			<if test="monthEveryFee != null and monthEveryFee != ''">#{monthEveryFee},</if>
+			<if test="monthTotalFee != null and monthTotalFee != ''">#{monthTotalFee},</if>
+			<if test="monthDetailCheckCode != null and monthDetailCheckCode != ''">#{monthDetailCheckCode},</if>
+			<if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+         </trim>
+    </insert>
+	 
+    <update id="updateBillDetail" parameterType="BillDetail">
+        update bill_fee_detail
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="bill != null  and bill.billId != ''  ">bill_fee_id = #{bill.billId},</if>
+            <if test="association != null  and association.associationId != ''  ">contract_telecircuit_relation_id = #{association.associationId},</if>
+            <if test="monthSum != null  ">month_sum = #{monthSum},</if>
+            <if test="monthBillStart != null  and monthBillStart != ''  ">month_start = #{monthBillStart},</if>
+            <if test="monthBillEnd != null  and monthBillEnd != ''  ">month_end = #{monthBillEnd},</if>
+            <if test="accountPeriod != null  and accountPeriod != ''  ">account_period = #{accountPeriod},</if>
+            <if test="monthEveryFee != null  ">month_every_fee = #{monthEveryFee},</if>
+            <if test="monthTotalFee != null  ">month_totalfee = #{monthTotalFee},</if>
+            <if test="monthDetailCheckCode != null  and monthDetailCheckCode != ''  ">month_detail_checkcode = #{monthDetailCheckCode},</if>
+            <if test="updateBy != null  and updateBy != ''  ">update_by = #{updateBy},</if>
+            update_time=sysdate()
+        </trim>
+        where id = #{billDetailId}
+    </update>
+
+	<delete id="deleteBillDetailById" parameterType="String">
+        delete from bill_fee_detail where id = #{id}
+    </delete>
+	
+    <delete id="deleteBillDetailByIds" parameterType="String">
+        delete from bill_fee_detail where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

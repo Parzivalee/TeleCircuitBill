@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link href="/ajax/libs/iCheck/custom.css" th:href="@{/ajax/libs/iCheck/custom.css}" rel="stylesheet"/>
+<link th:href="@{/css/formSelects-v4.css}" rel="stylesheet" >
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-bill-add">
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">账单类型：</label>
+            <div class="col-sm-8">
+                <select id="billType" name="bill.billType" class="form-control m-b" th:with="type=${@dict.getType('bill_type')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}" th:value="${dict['dictValue']}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" id="box-select-second">
+            <label class="col-sm-3 control-label">客户名称：</label>
+            <div class="col-sm-8">
+                <select id="customer" name="bill.customer" class="form-control m-b">
+                </select>
+            </div>
+        </div>
+        <div id="billType1">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">入网信息：</label>
+                <div class="col-sm-8">
+                    <select name="accessType" id="accessType" class="form-control m-b">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="billType2">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">电路：</label>
+                <div class="col-sm-8">
+                    <select name="association.circuit" id="circuit" xm-select="circuitList" xm-select-search >
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">账单起始日期：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="text" autocomplete="off" name="monthBillStart" id="monthBillStart" class="form-control" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">账单结束日期：</label>
+                <div class="col-sm-8">
+                    <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input type="text" autocomplete="off" name="monthBillEnd" id="monthBillEnd" class="form-control" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-control-static col-sm-offset-9">
+                <button type="submit" class="btn btn-primary">开帐</button>
+                <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script th:src="@{/ajax/libs//datapicker/bootstrap-datepicker.js}"></script>
+<script th:src="@{/ajax/libs/beautifyhtml/beautifyhtml.js}"></script>
+<script th:src="@{/js/plugins/formselects/formSelects-v4.min.js}"></script>
+<script th:inline="javascript">
+    var formSelects = layui.formSelects;
+
+    $(function() {
+        $("#billType1").hide();
+        $("#billType2").hide();
+    });
+
+    $("#form-bill-add").validate({
+        rules:{
+            billType: {
+                required:true
+            },
+            customer: {
+                required:true
+            },
+            monthBillStart: {
+                required:true
+            },
+            monthBillEnd: {
+                required:true
+            },
+            billInfo: {
+                required:true
+            }
+        },
+        messages: {
+
+        },
+        submitHandler:function(form){
+            add();
+        }
+    });
+
+    $(".input-group.date").datepicker({
+        dateFormat: 'yyyy-MM-dd',
+        todayBtn: "linked",
+        keyboardNavigation: !1,
+        forceParse: !1,
+        calendarWeeks: !0,
+        autoclose: !0});
+
+    //当账单类型的值被选中时，触发二级菜单
+    $('#billType').on('select2:select', function (e) {
+        //清除客户的列表数据
+        $("#customer").empty();
+        //级联select:一级输入的值发生改变，触发二级的选项改变
+        //获取一级select的值
+        var value = e.params.data.id;
+
+        //如果一级select的值为null，隐藏二级select,并返回
+        if(value == ''){
+            /*$("#customer").fadeOut("fast");*/
+            return;
+        }
+
+        //远程获取二级菜单下拉列表的值
+        $.ajax({
+            type: 'GET',
+            url: ctx + 'billmng/findCustomerList',
+            cache : false,
+            data:{
+                billType:value
+            },
+            dataType:'json',
+            success:function(secondData){
+                $("#customer").append('<option value="">请选择</option>');
+                for (var i = 0; i < secondData.length; i++) {
+                    $("#customer").append('<option value="'+secondData[i].customerId+' ">'+secondData[i].customerName+'</option>');
+                }
+                //二级select客户列表显示
+                //$("#box-select-second").fadeIn("slow");*/
+            },
+            error:function(){
+                alert("请求失败!");
+            }
+        });
+
+        if (value=="AccessBill") {
+            //入网账单
+            $("#billType1").show();
+            $("#billType2").hide();
+            //当客户被选中时，获取合同入网信息
+            $("#customer").change(function() {
+                //先清空原来的下拉列表
+                $("#accessType").empty();
+                var customerId = $("#customer").val();
+                //远程获取电路下拉列表的值
+                $.ajax({
+                    type: 'POST',
+                    url: ctx + 'billmng/findcontractaccesslist',
+                    cache : false,
+                    data:{
+                        customerId: customerId
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        for (var i = 0; i < data.length; i++) {
+                            $("#accessType").append(
+                                '<option value="'+data[i].contractAccessId+' ">'+data[i].contractAccessTypeName+"/"+data[i].contractAccessSum+"/"+data[i].contractAccessFee+'</option>');
+                        }
+
+                    },
+                    error:function(){
+                        alert("请求失败!");
+                    }
+                });
+            });
+        }else {
+            //所选账单为技术服务/分成账单
+            $("#billType1").hide();
+            $("#billType2").show();
+            //当客户被选中时，获取对应的电路下拉列表
+            $("#customer").change(function() {
+                //先清空原来的下拉列表
+                $("#circuit").empty();
+                var customerId = $("#customer").val();
+
+                //远程获取电路下拉列表的值
+                $.ajax({
+                    type: 'GET',
+                    url: ctx + 'billmng/findcircuitlist',
+                    cache : false,
+                    data:{
+                        billType: $("#billType").val(),
+                        customerId: customerId
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        $("#circuit").append('<option value="">请选择</option>');
+                        for (var i = 0; i < data.length; i++) {
+                            $("#circuit").append(
+                                '<option value="'+data[i].associationId+' ">'+data[i].circuit.circuitName+"("+data[i].circuit.circuitCode+")"+'</option>');
+                            formSelects.render();
+                        }
+
+                    },
+                    error:function(){
+                        alert("请求失败!");
+                    }
+                });
+            });
+        }
+    });
+
+
+
+    function add() {
+        var billType = $("#billType option:selected").val();
+        var customerId = $("#customer option:selected").val();
+        var circuitList = formSelects.value("circuitList","val");
+        var circuitString = circuitList.join(",");
+        var monthBillStart = $("input[name='monthBillStart']").val();
+        var monthBillEnd = $("input[name='monthBillEnd']").val();
+
+        if (billType=="AccessBill") {
+            if ($("#accessType").val()==null || $("#accessType").val()=="") {
+                alert("入网信息不能为空！");
+                return;
+            }
+            //入网账单提交
+            $.ajax({
+                cache : true,
+                type : "POST",
+                url : ctx + "billmng/addacessbill",
+                data : {
+                    "billType": billType,
+                    "customerId": customerId,
+                    "accessTypeId": $("#accessType").val()
+                },
+                dataType:'json',
+                async : false,
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                    $.operate.saveSuccess(data);
+                }
+            });
+        }else {
+            //租用、分成账单提交
+            $.ajax({
+                cache : true,
+                type : "POST",
+                url : ctx + "billmng/add",
+                data : {
+                    "billType": billType,
+                    "customerId": customerId,
+                    "associationIds": circuitString,
+                    "monthBillStart": monthBillStart,
+                    "monthBillEnd": monthBillEnd
+                },
+                dataType:'json',
+                async : false,
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                    $.operate.saveSuccess(data);
+                }
+            });
+        }
+
+    };
+
+</script>
+</body>
+</html>

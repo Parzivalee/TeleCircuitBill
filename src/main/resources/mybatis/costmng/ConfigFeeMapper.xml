@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.costmng.configfeemng.mapper.ConfigFeeMapper">
+
+    <resultMap type="ConfigFee" id="ConfigFeeResult">
+        <result property="configFeeId"    column="id"    />
+        <result property="teleCircuitType"    column="tele_circuit_type"    />
+        <result property="circuitConfigfee"    column="circuit_configfee"    />
+        <result property="circuitConfigfeeUnit"    column="circuit_configfee_unit"   />
+    </resultMap>
+	
+	<sql id="selectConfigFeeVo">
+        select id, tele_circuit_type, circuit_configfee, circuit_configfee_unit
+        from tele_config_fee
+    </sql>
+	
+    <select id="selectConfigFeeList" parameterType="ConfigFee" resultMap="ConfigFeeResult">
+        <include refid="selectConfigFeeVo"/>
+        <where>  
+             <if test="teleCircuitType != null and teleCircuitType != ''"> and tele_circuit_type = #{teleCircuitType}</if>
+         </where>
+    </select>
+    
+    <select id="selectConfigFeeById" parameterType="String" resultMap="ConfigFeeResult">
+        <include refid="selectConfigFeeVo"/>
+        where id = #{configFeeId}
+    </select>
+        
+    <insert id="insertConfigFee" parameterType="ConfigFee">
+        insert into tele_config_fee
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="configFeeId != null and configFeeId != '' ">id,</if>
+			<if test="teleCircuitType != null and teleCircuitType != '' ">tele_circuit_type,</if>
+			<if test="circuitConfigfee != null and circuitConfigfee != '' ">circuit_configfee,</if>
+			<if test="circuitConfigfeeUnit != null and circuitConfigfeeUnit != '' ">circuit_configfee_unit,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="configFeeId != null and configFeeId != ''">#{configFeeId},</if>
+			<if test="teleCircuitType != null and teleCircuitType != ''">#{teleCircuitType},</if>
+			<if test="circuitConfigfee != null and circuitConfigfee != ''">#{circuitConfigfee},</if>
+			<if test="circuitConfigfeeUnit != null and circuitConfigfeeUnit != ''">#{circuitConfigfeeUnit},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateConfigFee" parameterType="ConfigFee">
+        update tele_config_fee
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="teleCircuitType != null  and teleCircuitType != ''  ">tele_circuit_type = #{teleCircuitType},</if>
+            <if test="circuitConfigfee != null  and circuitConfigfee != ''  ">circuit_configfee = #{circuitConfigfee},</if>
+            <if test="circuitConfigfeeUnit != null  and circuitConfigfeeUnit != ''  ">circuit_configfee_unit = #{circuitConfigfeeUnit},</if>
+        </trim>
+        where id = #{configFeeId}
+    </update>
+
+	<delete id="deleteConfigFeeById" parameterType="String">
+        delete from tele_config_fee where id = #{configFeeId}
+    </delete>
+	
+    <delete id="deleteConfigFeeByIds" parameterType="String">
+        delete from tele_config_fee where id in 
+        <foreach item="configFeeId" collection="array" open="(" separator="," close=")">
+            #{configFeeId}
+        </foreach>
+    </delete>
+    
+</mapper>

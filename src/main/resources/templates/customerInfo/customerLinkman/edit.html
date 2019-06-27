@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link th:href="@{/ajax/libs/iCheck/custom.css}" rel="stylesheet"/>
+<body class="white-bg">
+    <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+        <form class="form-horizontal m" id="form-customerLinkman-edit" th:object="${customerLinkman}">
+            <input id="linkmanId" name="linkmanId" th:field="*{linkmanId}"  type="hidden">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">姓名：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanName" name="linkmanName" th:field="*{linkmanName}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label ">客户单位：</label>
+                <div class="col-sm-8">
+                    <select id="customer" class="form-control m-b">
+                        <option value="">请选择</option>
+                        <option th:each="customer:${customers}" th:text="${customer.customerName}"
+                                th:value="${customer.customerId}" th:selected="${customer.customerId == customerIdSelected}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">职务：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanDep" name="linkmanDep" th:field="*{linkmanDep}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">职务：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanDuty" name="linkmanDuty" th:field="*{linkmanDuty}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">电话：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanTel" name="linkmanTel" th:field="*{linkmanTel}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">手机：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanMobile" name="linkmanMobile" th:field="*{linkmanMobile}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">Email：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanEmail" name="linkmanEmail" th:field="*{linkmanEmail}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">传真：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanFax" name="linkmanFax" th:field="*{linkmanFax}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">邮编：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanPostcode" name="linkmanPostcode" th:field="*{linkmanPostcode}" class="form-control" type="text">
+                </div>
+            </div>
+            <div class="form-group">	
+                <label class="col-sm-3 control-label">单位地址：</label>
+                <div class="col-sm-8">
+                    <input id="linkmanAddress" name="linkmanAddress" th:field="*{linkmanAddress}" class="form-control" type="text">
+                </div>
+            </div>
+			<div class="form-group">
+				<div class="form-control-static col-sm-offset-9">
+					<button type="submit" class="btn btn-primary">提交</button>
+					<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+				</div>
+			</div>
+		</form>
+    </div>
+    <div th:include="include::footer"></div>
+    <script th:src="@{/ajax/libs/select/select2.js}"></script>
+    <script th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+    <script>
+		$("#form-customerLinkman-edit").validate({
+			rules:{
+                linkmanName:{
+                    required:true,
+                },
+                customer:{
+                    required:true,
+                }
+			},
+            messages: {
+
+            },
+			submitHandler: function(form) {
+                edit();
+            }
+		});
+
+        function edit() {
+            var linkmanId = $("#linkmanId").val();
+            var linkmanName = $("input[name='linkmanName']").val();
+            var customer = $("#customer option:selected").val();
+            var linkmanDep = $("input[name='linkmanDep']").val();
+            var linkmanDuty = $("input[name='linkmanDuty']").val();
+            var linkmanTel = $("input[name='linkmanTel']").val();
+            var linkmanMobile = $("input[name='linkmanMobile']").val();
+            var linkmanEmail = $("input[name='linkmanEmail']").val();
+            var linkmanPostcode = $("input[name='linkmanPostcode']").val();
+            var linkmanAddress = $("input[name='linkmanAddress']").val();
+
+            $.ajax({
+                cache : true,
+                type : "POST",
+                url : ctx + "customerInfo/linkman/edit",
+                data : {
+                    "linkmanId": linkmanId,
+                    "linkmanName": linkmanName,
+                    "customerId": customer,
+                    "linkmanDep": linkmanDep,
+                    "linkmanDuty": linkmanDuty,
+                    "linkmanTel": linkmanTel,
+                    "linkmanMobile": linkmanMobile,
+                    "linkmanEmail": linkmanEmail,
+                    "linkmanPostcode": linkmanPostcode,
+                    "linkmanAddress": linkmanAddress
+                },
+                async : false,
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                    $.operate.saveSuccess(data);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

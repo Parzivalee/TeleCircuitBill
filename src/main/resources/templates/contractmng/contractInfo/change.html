@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link th:href="@{/ajax/libs/iCheck/custom.css}" rel="stylesheet"/>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-contract-change" th:object="${contract}">
+        <input id="contractId" name="contractId" th:field="*{contractId}" type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">变更合同编号：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="contractNumberNew"
+                       id="contractNumberNew" th:field="*{contractNumber}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">终止日期：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" autocomplete="off" name="contractStopDate" id="contractStopDate"
+                           class="form-control" value="" th:field="*{contractStopDate}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-control-static col-sm-offset-9">
+                <button type="submit" class="btn btn-primary">变更</button>
+                <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script th:src="@{/ajax/libs//datapicker/bootstrap-datepicker.js}"></script>
+<script th:src="@{/ajax/libs/beautifyhtml/beautifyhtml.js}"></script>
+<script>
+    $("#form-contract-change").validate({
+        rules: {
+            contractNumber: {
+                required: true,
+                remote: {
+                    url: ctx + "contractmng/contractInfo/checkContractNumberUnique",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        name: function () {
+                            return $.common.trim($("#contractNumber").val());
+                        },
+                        contractId: $("#contractId").val()
+
+                    },
+                    dataFilter: function (data, type) {
+                        if (data == "0") return true;
+                        else return false;
+                    }
+                }
+            },
+            contractStopDate: {
+                required:true
+            }
+        },
+        messages: {
+            "contractNumber": {
+                remote: "合同编号已经存在"
+            },
+        },
+        submitHandler: function (form) {
+            change();
+        }
+    });
+
+    //配置datepicker插件
+    $(".input-group.date").datepicker({
+        dateFormat: 'yyyy-MM-dd',
+        todayBtn: "linked",
+        keyboardNavigation: !1,
+        forceParse: !1,
+        calendarWeeks: !0,
+        autoclose: !0
+    });
+
+    function change() {
+        var contractNumberNew = $("input[name='contractNumberNew']").val();
+        var contractStopDate = $("input[name='contractStopDate']").val();
+
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: ctx + "contractmng/contractInfo/change",
+            data: {
+                "contractIdOld": $("#contractId").val(),
+                "contractNumberNew": contractNumberNew,
+                "contractStopDate": contractStopDate,
+            },
+            async: false,
+            error: function (request) {
+                $.modal.alertError("系统错误");
+            },
+            success: function (data) {
+                $.operate.saveSuccess(data);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

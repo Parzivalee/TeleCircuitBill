@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link th:href="@{/ajax/libs/iCheck/custom.css}" rel="stylesheet"/>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-contract-add">
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">合同类型：</label>
+            <div class="col-sm-8">
+                <select id="contractType" class="form-control m-b" th:with="type=${@dict.getType('tele_contract_type')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}" th:value="${dict['dictValue']}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">合同签订类型：</label>
+            <div class="col-sm-8">
+                <select id="contractSignType" class="form-control m-b" th:with="type=${@dict.getType('contract_sign_type')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}" th:value="${dict['dictValue']}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">客户：</label>
+            <div class="col-sm-8">
+                <select id="customer" class="form-control m-b">
+                    <option value="">请选择</option>
+                    <option th:each="customer:${customers}" th:text="${customer.customerName}" th:value="${customer.customerId}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">合同编号：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="contractNumber" id="contractNumber">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">空管局合同编号：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="airTrafficContractNumber" id="airTrafficContractNumber">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">合同名称：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="contractName" id="contractName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">甲方：</label>
+            <!--<div class="col-sm-8">
+                <input class="form-control" type="text" name="partA" id="partA">
+            </div>-->
+            <div class="col-sm-8">
+                <select id="partA" name="partA" class="form-control m-b">
+                    <option value="">请选择</option>
+                    <option th:each="customer:${customers}" th:text="${customer.customerName}" th:value="${customer.customerId}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">乙方：</label>
+            <!--<div class="col-sm-8">
+                <input class="form-control" type="text" name="partB" id="partB">
+            </div>-->
+            <div class="col-sm-8">
+                <select id="partB" name="partB" class="form-control m-b">
+                    <option value="">请选择</option>
+                    <option th:each="customer:${customers}" th:text="${customer.customerName}" th:value="${customer.customerId}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">签订日期：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" autocomplete="off" name="contractConfigDate" id="contractConfigDate" class="form-control" value="">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">生效日期：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" autocomplete="off" name="contractStartDate" id="contractStartDate" class="form-control" value="">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">结束日期：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" autocomplete="off" name="contractEndDate" id="contractEndDate" class="form-control" value="">
+                </div>
+            </div>
+        </div>
+        <!--<div class="form-group">
+            <label class="col-sm-3 control-label">终止日期：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" name="contractStopDate" id="contractStopDate" class="form-control" value="">
+                </div>
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">是否自动顺延：</label>
+            <div class="col-sm-8" th:with="type=${@dict.getType('sys_yes_no')}">
+                <div th:each="dict : ${type}" th:class="${dict['cssClass']}">
+                    <input type="radio" th:id="${dict['dictCode']}" name="isContractAutoPostpone" th:value="${dict['dictValue']}" th:checked="${dict['isDefault'] == 'Y' ? true : false}">
+                    <label th:for="${dict['dictCode']}" th:text="${dict['dictLabel']}"></label>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">备注：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="remark" id="remark">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-control-static col-sm-offset-9">
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script th:src="@{/ajax/libs//datapicker/bootstrap-datepicker.js}"></script>
+
+<script>
+    $("#form-contract-add").validate({
+        rules:{
+            contractType: {
+                required:true
+            },
+            contractSignType: {
+                required:true
+            },
+            customer: {
+                required:true
+            },
+            contractNumber: {
+                required:true,
+                remote: {
+                    url: ctx + "contractmng/contractInfo/checkContractNumberUnique",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        name : function() {
+                            return $.common.trim($("#contractNumber").val());
+                        }
+                    },
+                    dataFilter: function(data, type) {
+                        if (data == "0") return true;
+                        else return false;
+                    }
+                }
+            },
+            airTrafficContractNumber: {
+                required:true
+            },
+            contractName: {
+                required:true
+            },
+            partA: {
+                required:true
+            },
+            partB: {
+                required:true
+            },
+            contractConfigDate: {
+                required:true
+            },
+            contractStartDate: {
+                required:true
+            },
+            contractEndDate: {
+                //required:true
+            },
+            contractStopDate:{
+                required: true
+            },
+            /*isContractAutoPostpone: {
+                required:true
+            }*/
+            remark: {
+
+            }
+        },
+        messages: {
+            "contractNumber": {
+                remote: "合同编号已经存在"
+            },
+        },
+        submitHandler:function(form){
+            add();
+        }
+    });
+
+    $(".input-group.date").datepicker({
+        dateFormat: 'yyyy-MM-dd',
+        todayBtn: "linked",
+        keyboardNavigation: !1,
+        forceParse: !1,
+        calendarWeeks: !0,
+        autoclose: !0});
+
+
+    function add() {
+        var contractType = $("#contractType option:selected").val();
+        var contractSignType = $("#contractSignType option:selected").val();
+        var customer = $("#customer option:selected").val();
+        var contractNumber = $("input[name='contractNumber']").val();
+        var airTrafficContractNumber = $("input[name='airTrafficContractNumber']").val();
+        var contractName = $("input[name='contractName']").val();
+        var partA = $("#partA option:selected").val();
+        var partB = $("#partB option:selected").val();
+        var contractConfigDate = $("input[name='contractConfigDate']").val();
+        var contractStartDate = $("input[name='contractStartDate']").val();
+        var contractEndDate = $("input[name='contractEndDate']").val();
+        var contractStopDate = $("input[name='contractStopDate']").val();
+        var isContractAutoPostpone = $("input[name='isContractAutoPostpone']:checked").val();
+        var remark = $("#remark").val();
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "contractmng/contractInfo/add",
+            data : {
+                "contractType": contractType,
+                "contractSignType": contractSignType,
+                "customerId": customer,
+                "contractNumber": contractNumber,
+                "airTrafficContractNumber": airTrafficContractNumber,
+                "contractName": contractName,
+                "partAId": partA,
+                "partBId": partB,
+                "contractConfigDate": contractConfigDate,
+                "contractStartDate": contractStartDate,
+                "contractEndDate": contractEndDate,
+                "contractStopDate":contractStopDate,
+                "isContractAutoPostpone": isContractAutoPostpone,
+                "remark": remark
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.saveSuccess(data);
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

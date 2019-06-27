@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.mapper.AttachmentMapper">
+
+    <resultMap type="ContractAttachment" id="ContractAttachmentResult">
+        <id     property="attachmentId"       column="id"/>
+        <result property="attachmentType"    column="attachment_type"/>
+        <result property="uploadDate"    column="upload_date"/>
+        <result property="elecDocumentName"    column="elec_document_name"/>
+        <result property="elecDocumentPath"    column="elec_document_path"/>
+        <result property="scanDocumentName"     column="scan_document_name"    />
+        <result property="scanDocumentPath"   column="scan_document_path"  />
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <result property="isdel"   column="isdel"  />
+        <association property="contractInfo" column="contract_id" javaType="ContractInfo" resultMap="ContractInfoResult" />
+    </resultMap>
+
+    <resultMap type="ContractInfo" id="ContractInfoResult">
+        <id     property="contractId"   column="id"/>
+    </resultMap>
+
+    <sql id="selectContractAttachmentVo">
+        select *
+		from tele_contract_attachment where isdel=0
+    </sql>
+
+    <select id="findAttachmentByContractId" parameterType="String" resultMap="ContractAttachmentResult">
+        select a.*,b.id from tele_contract_attachment a
+        left join tele_contract_info b
+        on a.contract_id=b.id
+        where a.contract_id = #{contractId} and a.isdel=0
+    </select>
+
+    <insert id="insertContractAttachment" parameterType="ContractAttachment">
+        <selectKey keyProperty="attachmentId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_contract_attachment(
+        <if test="attachmentId != null and attachmentId != ''">id,</if>
+        <if test="contractInfo != null and contractInfo.contractId != ''">contract_id,</if>
+        <if test="attachmentType != null and attachmentType != ''">attachment_type,</if>
+        <if test="elecDocumentName != null and elecDocumentName != ''">elec_document_name,</if>
+        <if test="elecDocumentPath != null and elecDocumentPath != ''">elec_document_path,</if>
+        <if test="scanDocumentName != null and scanDocumentName != ''">scan_document_name,</if>
+        <if test="scanDocumentPath != null and scanDocumentPath != ''">scan_document_path,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        upload_date,
+        create_time
+        )values(
+        <if test="attachmentId != null and attachmentId != ''">#{attachmentId},</if>
+        <if test="contractInfo != null and contractInfo.contractId != ''">#{contractInfo.contractId},</if>
+        <if test="attachmentType != null and attachmentType != ''">#{attachmentType},</if>
+        <if test="elecDocumentName != null and elecDocumentName != ''">#{elecDocumentName},</if>
+        <if test="elecDocumentPath != null and elecDocumentPath != ''">#{elecDocumentPath},</if>
+        <if test="scanDocumentName != null and scanDocumentName != ''">#{scanDocumentName},</if>
+        <if test="scanDocumentPath != null and scanDocumentPath != ''">#{scanDocumentPath},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate(),
+        sysdate()
+        )
+    </insert>
+
+    <!--<update id="updateCAccessFee" parameterType="CAccessFee">
+        update tele_c_access_fee
+        <set>
+            <if test="siteArea != null and siteArea != ''">site_area = #{siteArea},</if>
+            <if test="currencyType != null and currencyType != ''">currency_type = #{currencyType},</if>
+            <if test="siteType != null and siteType != ''">site_type = #{siteType},</if>
+            <if test="siteAccessAmount != null and siteAccessAmount != ''">site_access_amount = #{siteAccessAmount},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{cAccessFeeId}
+    </update>-->
+
+    <!--<delete id="deleteDomesticFeeByIds" parameterType="String">
+        delete from tele_circuit_month_fee where id in
+        <foreach item="domesticFeeId" collection="array" open="(" separator="," close=")">
+            #{domesticFeeId}
+        </foreach>
+    </delete>-->
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.mapper.ContractAccessInfoMapper">
+    
+    <resultMap type="ContractAccessInfo" id="ContractAccessInfoResult">
+        <result property="contractAccessId"    column="id"    />
+        <result property="contractAccessType"    column="access_type"    />
+        <result property="contractAccessFee"    column="access_fee"    />
+        <result property="contractAccessSum"    column="access_sum"    />
+        <result property="generateAccessBill"    column="is_generate_access_bill"    />
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <result property="isdel"   column="isdel"  />
+        <association property="contractInfo" column="contract_id" javaType="ContractInfo" resultMap="ContractInfoResult" />
+        <association property="customer"  column="customer_id" javaType="Customer" resultMap="CustomerResult" />
+    </resultMap>
+
+    <resultMap type="ContractInfo" id="ContractInfoResult">
+        <id     property="contractId"   column="id"/>
+    </resultMap>
+
+    <resultMap type="Customer" id="CustomerResult">
+        <id property="customerId" column="customerId" />
+        <result property="customerName" column="customer_name" />
+        <result property="code" column="customer_code" />
+    </resultMap>
+	
+	<sql id="selectContractAccessInfoVo">
+        select * from tele_contract_access_info
+    </sql>
+	
+    <!--<select id="selectContractAccessInfoList" parameterType="ContractAccessInfo" resultMap="ContractAccessInfoResult">
+        <include refid="selectContractAccessInfoVo"/>
+        <where>  
+            <if test="id != null and id != ''"> and id = #{id}</if>
+             <if test="ContractInfo != null and ContractInfo.contractId != ''"> and contract_id = #{tbContractInfoId}</if>
+             <if test="accessType != null and contractAccessType != ''"> and access_type = #{contractAccessType}</if>
+             <if test="contractAccessFee != null and contractAccessFee != ''"> and access_fee = #{contractAccessFee}</if>
+             <if test="accessSum != null and accessSum != ''"> and access_sum = #{accessSum}</if>
+             <if test="generateAccessBill != null and generateAccessBill != ''"> and is_generate_access_bill = #{generateAccessBill}</if>
+         </where>
+    </select>-->
+
+    <select id="selectContractAccessInfoByContractId" parameterType="String" resultMap="ContractAccessInfoResult">
+        select a.*,b.id from tele_contract_access_info a
+        left join tele_contract_info b
+        on a.contract_id=b.id
+        where a.contract_id = #{contractId} and a.isdel=0
+    </select>
+
+    <select id="selectContractAccessInfoByCustomerId" parameterType="String" resultMap="ContractAccessInfoResult">
+        select * from tele_contract_access_info
+        where customer_id = #{customerId} and isdel=0 and is_generate_access_bill=0
+    </select>
+    
+    <select id="selectContractAccessInfoById" parameterType="String" resultMap="ContractAccessInfoResult">
+        select a.*,b.id customerId,b.customer_code
+        from tele_contract_access_info a
+        left join cus_customer b on a.customer_id=b.id
+        where a.id = #{contractAccessId} and a.isdel=0
+    </select>
+        
+    <insert id="insertContractAccessInfo" parameterType="ContractAccessInfo">
+        <selectKey keyProperty="contractAccessId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_contract_access_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="contractAccessId != null">id,</if>
+            <if test="contractInfo != null  and contractInfo.contractId != ''  ">contract_id,</if>
+            <if test="customer != null  and customer.customerId != ''  ">customer_id,</if>
+            <if test="contractAccessType != null and contractAccessType != '' ">access_type,</if>
+			<if test="contractAccessFee != null and contractAccessFee != '' ">access_fee,</if>
+			<if test="contractAccessSum != null and contractAccessSum != '' ">access_sum,</if>
+			<if test="generateAccessBill != null and generateAccessBill != '' ">is_generate_access_bill,</if>
+            <if test="createBy != null and createBy != ''">create_by,</if>
+            create_time
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="contractAccessId != null">#{contractAccessId},</if>
+            <if test="contractInfo != null  and contractInfo.contractId != ''  ">#{contractInfo.contractId},</if>
+            <if test="customer != null  and customer.customerId  != ''  ">#{customer.customerId },</if>
+            <if test="contractAccessType != null and contractAccessType != ''">#{contractAccessType},</if>
+			<if test="contractAccessFee != null and contractAccessFee != ''">#{contractAccessFee},</if>
+			<if test="contractAccessSum != null and contractAccessSum != ''">#{contractAccessSum},</if>
+			<if test="generateAccessBill != null and generateAccessBill != ''">#{generateAccessBill},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+         </trim>
+    </insert>
+	 
+    <update id="updateContractAccessInfo" parameterType="ContractAccessInfo">
+        update tele_contract_access_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="contractInfo != null  and contractInfo.contractId != ''  ">contract_id = #{contractInfo.contractId},</if>
+            <if test="customer != null  and customer.customerId  != ''  ">customer_id=#{customer.customerId },</if>
+            <if test="contractAccessType != null  ">access_type = #{contractAccessType},</if>
+            <if test="contractAccessFee != null  and contractAccessFee != ''  ">access_fee = #{contractAccessFee},</if>
+            <if test="contractAccessSum != null  ">access_sum = #{contractAccessSum},</if>
+            <if test="generateAccessBill != null  ">is_generate_access_bill = #{generateAccessBill},</if>
+            update_time=sysdate()
+        </trim>
+        where id = #{contractAccessId}
+    </update>
+
+    <!--逻辑删除-->
+    <update id="deleteContractAccessInfoById" parameterType="String">
+        update tele_contract_access_info set isdel=1 where id=#{contractAccessId}
+    </update>
+
+	<!--<delete id="deleteContractAccessInfoById" parameterType="String">
+        delete from tele_contract_access_info where id = #{contractAccessId}
+    </delete>
+	
+    <delete id="deleteContractAccessInfoByIds" parameterType="String">
+        delete from tele_contract_access_info where id in 
+        <foreach item="contractAccessId" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>-->
+    
+</mapper>

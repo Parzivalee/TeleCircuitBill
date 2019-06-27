@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<!--fileInput 文件上传插件样式-->
+<link th:href="@{/css/fileinput/fileinput.min.css}" rel="stylesheet" type="text/css"/>
+<body class="white-bg">
+<div th:include="include :: footer"></div>
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-contract-access">
+        <input id="contractId" name="contractId" th:value="${contractId}"  type="hidden">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">入网类型：</label>
+            <div class="col-sm-10">
+                <select id="contractAccessType" class="form-control m-b" th:with="type=${@dict.getType('contract_access_type')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}" th:value="${dict['dictValue']}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">入网数量：</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="contractAccessSum" id="contractAccessSum">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">入网费用：</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="contractAccessFee" id="contractAccessFee">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">添加</button>
+            <button type="button" class="btn btn-danger" onclick="$.modal.close()">关闭</button>
+        </div>
+
+        合同-入网信息 列表
+        <div class="col-sm-12 select-info table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+    </form>
+</div>
+<!--fileinput 文件上传插件 -->
+<script th:src="@{/js/plugins/fileinput/fileinput.min.js}" ></script>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script th:src="@{/js/plugins/fileinput/zh.js}"></script>
+<script th:inline="javascript">
+    var prefix = ctx + "contractmng/contractInfo";
+    var accessType = [[${@dict.getType('contract_access_type')}]];
+    var removeFlag = [[${@permission.hasPermi('contractmng:contract:cancelAccessInfo')}]];
+
+    var options = {
+        url: ctx + "contractmng/contractInfo/contractaccessinfo",
+        queryParams:paramsList,
+        removeUrl: prefix + "/removeAccessInfo",
+        search: false,
+        showExport: false,
+        showRefresh: false,
+        showToggle: false,
+        showColumns: false,
+        modalName:"合同-入网",
+        columns: [
+            {
+                field: 'contractAccessType',
+                title: '入网类型',
+                formatter: function(value, row, index) {
+                    return $.table.selectDictData(accessType, value);
+                },
+                align: 'center'
+            },
+            {
+                field: 'contractAccessSum',
+                title: '入网数量',
+                align: 'center'
+            },
+            {
+                field: 'contractAccessFee',
+                title: '入网费用',
+                align: 'center'
+
+            },
+            {
+                title: '操作',
+                align: 'center',
+                formatter: function(value, row, index) {
+                    var actions = [];
+                    actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.contractAccessId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                    return actions.join('');
+                }
+            }
+        ]
+    };
+    function paramsList(params) {
+        var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+            contractId: $("#contractId").val()
+        };
+        return temp;
+    };
+    $(function () {
+
+        $.table.init(options);
+    });
+
+    $("#form-contract-access").validate({
+        rules:{
+            contractAccessType: {
+                required:true
+            },
+            contractAccessSum: {
+                digits:true,
+                required:true
+            },
+            contractAccessFee: {
+                required:true
+            },
+
+        },
+        messages: {
+
+        },
+        submitHandler:function(form){
+            add();
+        }
+    });
+
+    $("#contractAccessFee").focus(function() {
+        if ($("#contractAccessSum").val()!="" && $("#contractAccessType").val()!="" ) {
+            $.ajax({
+                cache : true,
+                type : "POST",
+                url : ctx + "contractmng/contractInfo/findaccessfee",
+                data : {
+                    "contractAccessType": $("#contractAccessType").val(),
+                    "contractId":$("#contractId").val()
+                },
+                async : false,
+                error : function(request) {
+                    $.modal.alertError("系统错误");
+                },
+                success : function(data) {
+                    var contractAccessSum = $("#contractAccessSum").val();
+                    $("#contractAccessFee").val(data*contractAccessSum);
+                }
+            });
+        }
+    });
+
+    function add() {
+        var contractAccessType = $("#contractAccessType option:selected").val();
+        var contractAccessSum = $("input[name='contractAccessSum']").val();
+        var contractAccessFee = $("input[name='contractAccessFee']").val();
+        var contractId = $("input[name='contractId']").val();
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: ctx + "contractmng/contractInfo/contractaccess",
+            data: {
+                "contractAccessType": contractAccessType,
+                "contractAccessSum": contractAccessSum,
+                "contractAccessFee": contractAccessFee,
+                "contractId": contractId
+            },
+            async: false,
+            error: function (request) {
+                $.modal.alertError("系统错误");
+            },
+            success: function (data) {
+                alert("添加成功");
+                $("#bootstrap-table").bootstrapTable('destroy');
+                $.table.init(options);
+
+            }
+        });
+
+    };
+
+
+</script>
+</body>
+</html>
+
+

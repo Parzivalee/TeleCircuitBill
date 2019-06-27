@@ -6,127 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c48b51aa-cf5a-4f5b-a63c-8c123632f65d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/controller/CircuitController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/domain/Circuit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/mapper/CircuitMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/service/CircuitService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/service/CircuitServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/domestic/controller/DomesticFeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/domestic/domain/DomesticFee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/domestic/mapper/DomesticFeeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/domestic/service/DomesticFeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/domestic/service/DomesticFeeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/oversea/controller/OverseaFeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/oversea/domain/OverseaFee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/oversea/mapper/OverseaFeeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/oversea/service/OverseaFeeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/circuitfeemng/oversea/service/OverseaFeeServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/netaccessmng/caccess/controller/CAccessController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/netaccessmng/caccess/domain/CAccessFee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/netaccessmng/caccess/mapper/CAccessMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/netaccessmng/caccess/service/CAccessService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/costmng/netaccessmng/caccess/service/CAccessServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/domain/Area.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/circuitmng/CircuitMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/costmng/CAccessMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/costmng/DomesticFeeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/costmng/OverseaFeeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/CustomerMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/circuit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/circuitfeemng/domestic/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/circuitfeemng/domestic/domesticfee.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/circuitfeemng/domestic/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/circuitfeemng/oversea/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/circuitfeemng/oversea/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/circuitfeemng/oversea/overseafee.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/netaccessmng/caccess/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/netaccessmng/caccess/caccessfee.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/netaccessmng/caccess/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/costmng/netaccessmng/kuaccess/kuaccessfee.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/lwj.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/lwj.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/quartz.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/ruoyi.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/ruoyi.pdm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/ry_20180723.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/StartApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/StartApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/support/Convert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/support/Convert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/DateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/SystemLogUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/SystemLogUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/file/FileUploadUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/file/FileUploadUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/poi/ExcelUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/poi/ExcelUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/security/ShiroUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/security/ShiroUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/enums/customerInfo/CustomerCountryArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/enums/customerInfo/CustomerCountryArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/enums/customerInfo/CustomerLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/enums/customerInfo/CustomerLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/aspectj/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/aspectj/LogAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/ProjectConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/ProjectConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/web/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/web/controller/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/web/domain/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/web/domain/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/countrys/controller/CountryController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/countrys/domain/Country.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/countrys/mapper/CountryMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/countrys/service/CountryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/countrys/service/CountryServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/domain/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/mapper/CustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/mapper/CustomerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/service/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/service/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/monitor/online/domain/UserOnline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/monitor/online/domain/UserOnline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/notice/controller/NoticeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/notice/controller/NoticeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/notice/mapper/NoticeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/notice/mapper/NoticeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/post/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/post/mapper/PostMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/role/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/role/mapper/RoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/mapper/UserPostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/mapper/UserPostMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/mapper/UserRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/mapper/UserRoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/banner.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/countrys/CountryMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/customerInfo/customers/CustomerMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/system/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/system/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/add.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/country.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/countrys/edit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/customers/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/customers/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/customers/customer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/customers/customer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/customers/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/customerInfo/customers/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/include.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/include.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/loginv2.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/loginv2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/system/user/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/system/user/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/tool/gen/gen.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/tool/gen/gen.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-druid.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-druid.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/banner.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/system/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/system/UserMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/include.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/include.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/system/user/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/system/user/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/tool/gen/gen.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/tool/gen/gen.html" afterDir="false" />
-    </list>
+    <list default="true" id="c48b51aa-cf5a-4f5b-a63c-8c123632f65d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -165,8 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/batchimport.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="134" column="12" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
+            <state relative-caret-position="69">
+              <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
             </state>
           </provider>
         </entry>
@@ -901,7 +781,7 @@
       <workItem from="1558610482462" duration="35606000" />
       <workItem from="1559742072355" duration="919000" />
       <workItem from="1560392494391" duration="40529000" />
-      <workItem from="1561182871328" duration="13515000" />
+      <workItem from="1561182871328" duration="13688000" />
     </task>
     <servers />
   </component>
@@ -917,7 +797,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118662000" />
+    <option name="totallyTimeSpent" value="118835000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -945,7 +825,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50061053" side_tool="true" weight="0.39916405" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3291536" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="15" weight="0.3291536" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1342,8 +1222,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/batchimport.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="134" column="12" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
+        <state relative-caret-position="69">
+          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
         </state>
       </provider>
     </entry>

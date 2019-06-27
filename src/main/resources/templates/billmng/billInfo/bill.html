@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 select-info">
+            <form id="bill-form">
+                <div class="select-list gd">
+                    <ul>
+                        <li>
+                            客户名称：<input type="text" name="customer.customerName"/>
+                        </li>
+                        <li>
+                            账单编号：<input type="text" name="billNumber"/>
+                        </li>
+                        <li>
+                            账单明细类型：<select name="billType" th:with="type=${@dict.getType('bill_type')}">
+                            <option value="">所有</option>
+                            <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                        </select>
+                        </li>
+                        <li>
+                            是否到账：<select name="isReceive" th:with="type=${@dict.getType('sys_yes_no')}">
+                            <option value="">所有</option>
+                            <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                        </select>
+                        </li>
+                        <li class="time">
+                            <label>开帐时间： </label>
+                            <input type="text" class="layui-input" id="startTime" placeholder="开始时间" name="params[beginTime]"/>
+                            <span>-</span>
+                            <input type="text" class="layui-input" id="endTime" placeholder="结束时间" name="params[endTime]"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <!--<a class="btn btn-success btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i>&nbsp;下载</a>-->
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="btn-group hidden-xs" id="toolbar" role="group">
+            <a class="btn btn-outline btn-success btn-rounded" onclick="$.operate.add()" shiro:hasPermission="billmng:bill:add">
+                <i class="fa fa-plus"></i>开帐
+            </a>
+            <a class="btn btn-outline btn-danger btn-rounded" onclick="$.operate.batRemove()" shiro:hasPermission="billmng:bill:remove">
+                <i class="fa fa-trash-o"></i> 删除
+            </a>
+        </div>
+
+        <div class="col-sm-12 select-info table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('billmng:bill:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('billmng:bill:remove')}]];
+    var detailFlag = [[${@permission.hasPermi('billmng:bill:detail')}]];
+    var billType = [[${@dict.getType('bill_type')}]];
+    var isReceived = [[${@dict.getType('sys_yes_no')}]];
+
+    var prefix = ctx + "billmng";
+
+    $(function() {
+        var options = {
+            id: 'billId',
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            search: false,
+            showExport: false,
+            modalName:'账单',
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field: 'billNumber',
+                    title: '账单编号',
+                    align: 'center'
+                },
+                {
+                    field: 'customer.customerName',
+                    title: '客户名称',
+                    align: 'center'
+                },
+                {
+                    field: 'billType',
+                    title: '账单类型',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictData(billType, value);
+                    },
+                    align: 'center'
+                },
+                {
+                    field: 'billTime',
+                    title: '开帐时间',
+                    align: 'center',
+                    sortable: true
+                },
+                {
+                    field: 'billFeeTotal',
+                    title: '账单费用',
+                    align: 'center'
+                },
+                {
+                    field: 'isReceive',
+                    title: '是否到账',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictLabel(isReceived, value);
+                    },
+                    align: 'center'
+                },{
+                    field: 'billReceiveTime',
+                    title: '到账时间',
+                    align: 'center',
+                    showColumns: false
+                },
+                /*{
+                    field: 'billInfo',
+                    title: '账单信息',
+                },*/
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.billId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.billId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        actions.push('<div class="btn-group"><button type="button" class="btn btn-info btn-xs dropdown-toggle' + detailFlag + '" data-toggle="dropdown" ><i class="fa fa-info"></i>账单预览 <span class="caret"></span></button>');
+                        if (row.billType=="HireBill") {
+                            actions.push('<ul class="dropdown-menu" role="menu"><li><a onclick="previewBill(\'' + row.billId + '\',\'HireBill\')" href="#">技术服务账单</a></li></ul></div>');
+                        }else if (row.billType=="DevideBill") {
+                            actions.push('<ul class="dropdown-menu" role="menu"><li><a onclick="previewBill(\''+row.billId+'\',\'divideBill\')" href="#">分成明细</a></li><li><a onclick="previewBill(\''+row.billId+'\',\'settlementBill\')" href="#">结算账单</a></li></ul></div>')
+                        }else {
+                            actions.push('<ul class="dropdown-menu" role="menu"><li><a onclick="previewBill(\''+row.billId+'\',\'AccessBill\')" href="#">入网账单</a></li></ul></div>');
+                        }
+
+
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+    function previewBill(billId,billType) {
+        $.ajax({
+            type: 'GET',
+            url: ctx + 'billmng/previewbill',
+            cache : false,
+            data:{
+                billId:billId,
+                billType:billType
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success:function(data){
+                /*var index = layer.open({
+                    type: 2,
+                    fix: false,
+                    //不固定
+                    shade: 0.3,
+                    content: data
+                });
+                layer.full(index);*/
+                $.modal.openFull("报表预览", data);
+            }
+        });
+    };
+
+</script>
+</body>
+</html>

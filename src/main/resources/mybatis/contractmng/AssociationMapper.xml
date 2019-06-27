@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.mapper.AssociationMapper">
+    <resultMap type="Association" id="AssociationResult">
+        <id     property="associationId"       column="id"/>
+        <result property="startTime"    column="opentime"/>
+        <result property="endTime"    column="endtime"/>
+        <result property="isEnd"    column="isend"/>
+        <result property="feePercent" column="fee_percent"/>
+        <result property="feeSum" column="fee_sum"/>
+        <result property="feeCir" column="fee_cir"/>
+        <result property="feePort" column="fee_port"/>
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <association property="contract"  column="tb_contract_info_id" javaType="ContractInfo" resultMap="ContractInfoResult" />
+        <association property="circuit"  column="tb_telecircuit_info_id" javaType="Circuit" resultMap="CircuitResult" />
+        <association property="customer"  column="customer_id" javaType="Customer" resultMap="CustomerResult" />
+    </resultMap>
+
+    <resultMap type="ContractInfo" id="ContractInfoResult">
+        <id property="contractId" column="contract_id" />
+        <result property="contractType" column="contract_type"/>
+        <result property="contractNumber" column="contract_number"/>
+
+    </resultMap>
+
+    <resultMap type="Circuit" id="CircuitResult">
+        <id property="circuitId" column="circuit_id" />
+        <result property="circuitName" column="tele_circuit_name" />
+        <result property="circuitType"    column="tele_circuit_type"/>
+        <result property="circuitServiceType"    column="tele_service_type"/>
+        <result property="circuitArea"    column="tele_circuit_area"/>
+        <result property="circuitName"    column="tele_circuit_name"/>
+        <result property="circuitSpeed"    column="tele_circuit_speed"/>
+        <result property="circuitFee"    column="tele_circuit_fee"/>
+        <result property="circuitFeeCir"    column="tele_circuit_fee_cir"/>
+        <result property="circuitFeePort"    column="tele_circuit_fee_port"/>
+        <result property="configFee"    column="tele_circuit_config_fee"/>
+        <result property="divideRatio" column="divide_mode"/>
+        <result property="isFirstConfig"    column="is_first_config"/>
+        <result property="homeEnd"    column="tele_circuit_homeend"/>
+        <result property="oppEnd"    column="tele_circuit_oppend"/>
+        <result property="useInfo"    column="tele_circuit_use"/>
+        <result property="configTime"   column="tele_circuit_configtime"/>
+        <result property="openTime"    column="tele_circuit_opentime"/>
+        <result property="cancelTime"    column="tele_circuit_canceltime"/>
+        <result property="circuitCode"    column="circuit_code"/>
+        <result property="isGenerateConfigBill"    column="is_generate_config_bill"/>
+        <result property="iomsApplyNumber"    column="ioms_apply_number"/>
+        <result property="basisFile"    column="basis_file"/>
+        <!--<result property="area" column="area_id"/>
+        <result property="customerName" column="customer_name" />
+        <result property="isdel"   column="isdel"  />-->
+    </resultMap>
+
+    <resultMap type="Customer" id="CustomerResult">
+        <id property="customerId" column="customerId" />
+        <result property="customerName" column="customer_name" />
+    </resultMap>
+
+    <sql id="selectAssociationVo">
+        select *
+		from tele_contract_circuit_relation
+    </sql>
+
+    <select id="selectAssociationByContractId" parameterType="String" resultMap="AssociationResult">
+        select a.*,b.id circuit_id,b.*,c.id contract_id,c.contract_number
+        from tele_contract_circuit_relation a
+        left join tele_circuit_info b on a.tb_telecircuit_info_id=b.id
+        left join tele_contract_info c on a.tb_contract_info_id=c.id
+        where tb_contract_info_id=#{contractId} and isend=0
+    </select>
+
+    <select id="findAssociationsByCircuitId" parameterType="String" resultMap="AssociationResult">
+        select a.*,b.id contract_id,b.contract_type,b.contract_number
+        from tele_contract_circuit_relation a left join tele_contract_info b
+        on a.tb_contract_info_id = b.id
+        where tb_telecircuit_info_id=#{circuit.circuitId}
+    </select>
+
+    <select id="selectAssociationByAssociationId" parameterType="String" resultMap="AssociationResult">
+        select a.*,b.*,c.*
+        from tele_contract_circuit_relation a
+        left join tele_circuit_info b on a.tb_telecircuit_info_id=b.id
+        left join tele_contract_info c on a.tb_contract_info_id = c.id
+        where a.id=#{associationId}
+    </select>
+
+    <select id="selectAssociationByCustomerId" parameterType="String" resultMap="AssociationResult">
+        select a.*,b.id circuit_id,b.tele_circuit_name,b.circuit_code,c.id contract_id,c.contract_number
+        from tele_contract_circuit_relation a
+        left join tele_circuit_info b
+        on a.tb_telecircuit_info_id = b.id
+        left join tele_contract_info c
+        on a.tb_contract_info_id = c.id
+        where a.customer_id=#{cusotmerId}
+    </select>
+
+    <select id="selectCircuitByCustomerAndContract" parameterType="String" resultMap="AssociationResult">
+        select a.*,b.id circuit_id
+        from tele_contract_circuit_relation a
+        left join tele_circuit_info b
+        on a.tb_telecircuit_info_id = b.id
+        where a.customer_id=#{customerId} and a.tb_contract_info_id=#{contractId}
+    </select>
+
+    <select id="selectAssociationByConditions" parameterType="String" resultMap="AssociationResult">
+        select a.*,b.id contract_id,c.id circuit_id,c.tele_circuit_name,c.circuit_code
+        from tele_contract_circuit_relation a
+        left join tele_contract_info b on a.tb_contract_info_id=b.id
+        left join tele_circuit_info c on a.tb_telecircuit_info_id = c.id
+        where b.contract_type=#{contractType} and b.contract_is_generate_bill = 0 and a.customer_id=#{customerId}
+    </select>
+
+    <insert id="insertAssociation" parameterType="Association">
+        <selectKey keyProperty="associationId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_contract_circuit_relation(
+            <if test="associationId != null and associationId != '' ">id,</if>
+            <if test="contract != null and contract.contractId != '' ">tb_contract_info_id,</if>
+            <if test="circuit != null and circuit.circuitId != '' ">tb_telecircuit_info_id,</if>
+            <if test="customer != null and customer.customerId != '' ">customer_id,</if>
+            <if test="startTime != null">opentime,</if>
+            <if test="endTime != null">endtime,</if>
+            <if test="isEnd != null and isEnd != '' ">isend,</if>
+            <if test="feePercent != null and feePercent != '' ">fee_percent,</if>
+            <if test="feeSum != null and feeSum != '' ">fee_sum,</if>
+            <if test="feeCir != null and feeCir != '' ">fee_cir,</if>
+            <if test="feePort != null and feePort != '' ">fee_port,</if>
+            <if test="createBy != null and createBy != '' ">create_by,</if>
+            create_time
+        )values(
+            <if test="associationId != null and associationId != '' ">#{associationId},</if>
+            <if test="contract != null and contract.contractId != '' ">#{contract.contractId},</if>
+            <if test="circuit != null and circuit.circuitId != '' ">#{circuit.circuitId},</if>
+            <if test="customer != null and customer.customerId != '' ">#{customer.customerId},</if>
+            <if test="startTime != null">#{startTime},</if>
+            <if test="endTime != null">#{endTime},</if>
+            <if test="isEnd != null and isEnd != ''">#{isEnd},</if>
+            <if test="feePercent != null and feePercent != ''">#{feePercent},</if>
+            <if test="feeSum != null and feeSum != ''">#{feeSum},</if>
+            <if test="feeCir != null and feeCir != ''">#{feeCir},</if>
+            <if test="feePort != null and feePort != ''">#{feePort},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+        )
+    </insert>
+
+    <update id="updateAssociation" parameterType="Association">
+        update tele_contract_circuit_relation
+        <set>
+            <if test="contract != null and contract.contractId != '' ">tb_contract_info_id=#{contract.contractId},</if>
+            <if test="circuit != null and circuit.circuitId != '' ">tb_telecircuit_info_id=#{circuit.circuitId},</if>
+            <if test="startTime != null">opentime=#{startTime},</if>
+            <if test="endTime != null">endtime=#{endTime},</if>
+            <if test="isEnd != null">isend=#{isEnd},</if>
+            <if test="feePercent != null and feePercent != ''">fee_percent=#{feePercent},</if>
+            <if test="feeSum != null and feeSum != ''">fee_sum=#{feeSum},</if>
+            <if test="feeCir != null and feeCir != ''">fee_cir=#{feeCir},</if>
+            <if test="feePort != null and feePort != ''">fee_port=#{feePort},</if>
+            <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{associationId}
+    </update>
+
+    <!--<delete id="deleteCountryByIds" parameterType="String">-->
+    <!--delete from cus_country where country_id in-->
+    <!--<foreach item="countryId" collection="array" open="(" separator="," close=")">-->
+    <!--#{countryId}-->
+    <!--</foreach>-->
+    <!--</delete>-->
+</mapper>

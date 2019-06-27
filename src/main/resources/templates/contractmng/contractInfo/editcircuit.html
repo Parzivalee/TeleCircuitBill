@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link th:href="@{/css/formSelects-v4.css}" rel="stylesheet" >
+<body class="gray-bg">
+<div class="container-div">
+    <div class="row">
+        <input id="contractId" name="contractId" th:value="${contractId}"  type="hidden">
+        <input id="contractType" name="contractType" th:value="${contractType}"  type="hidden">
+        <input id="circuitIds" th:value="${circuitIds}"  type="hidden">
+        <input id="divideRatio" name="divideRatio" th:value="${divideRatio}"  type="hidden">
+        <div class="wrapper wrapper-content animated fadeInRight ibox-content">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">电路：</label>
+                <div class="col-sm-10">
+                    <select name="association.circuit" id="circuit" xm-select="circuitSelects" xm-select-search >
+                        <option th:each="circuit:${circuits}" th:value="${circuit.circuitId}" th:text="${circuit.circuitName}+'('+${circuit.circuitCode}+')'"></option>
+                    </select>
+                </div>
+            </div>
+
+            已选中电路信息
+            <div class="col-sm-12 select-info table-striped">
+                <table id="bootstrap-table" data-mobile-responsive="true"></table>
+            </div>
+            <div class="modal-footer">
+                <br>
+                <button type="button" class="btn btn-primary" onclick="saveCircuit()">保存</button>
+                <button type="button" class="btn btn-danger" onclick="$.modal.close()">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="include :: footer"></div>
+
+<script th:src="@{/js/plugins/formselects/formSelects-v4.min.js}"></script>
+<script th:inline="javascript">
+
+    $(function() {
+        var options = {
+            id: "contractId",
+            url: prefix + "/findselectedcircuit/",
+            queryParams:paramsList,
+            search: false,
+            showExport: false,
+            showToggle: false,
+            showColumns:false,
+            columns: [
+                {
+                    field: 'circuitName',
+                    title: '电路名称',
+                    align: 'center'
+                },
+                {
+                    field: 'circuitCode',
+                    title: '电路编号'
+                },
+                {
+                    field: 'circuitType',
+                    title: '电路类型',
+                    formatter: function (value, row, index) {
+                        return $.table.selectDictData(circuitType, value);
+                    },
+                    align: 'center'
+                },
+                {
+                    field: 'feePercent',
+                    visible:false
+                },
+                {
+                    field: 'divideRatio',
+                    title: '费用占比',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        var contractType = $("#contractType").val();
+                        if (contractType=="Hire") {
+                            var result = "<select id='feePercent' name='feePercent' class='form-control feePercent'><option value=''>请选择</option>";
+                            if (row.feePercent=="100%") {
+                                result+="<option value='100%' selected='selected'>100%</option></select>";
+                            }else {
+                                result+="<option value='100%'>100%</option></select>";
+                            }
+
+                            return result;
+
+                        }else if (contractType=="Maintain") {
+                            if (value=="3/7") {
+                                var result = "<select id='feePercent' name='feePercent' class='form-control feePercent'><option value=''>请选择</option>";
+                                if (row.feePercent=="70%") {
+                                    result+="<option value='70%' selected='selected'>70%</option></select>";
+                                }else {
+                                    result+="<option value='70%'>70%</option></select>";
+                                }
+
+                                return result;
+                            }else if (value=="3/4/3") {
+                                var result = "<select id='feePercent' name='feePercent' class='form-control feePercent'><option value=''>请选择</option>";
+                                if (row.feePercent=="30%") {
+                                    result+="<option value='30%' selected='selected'>30%</option>"+
+                                    "<option value='40%'>40%</option></select>";
+                                }else if (row.feePercent=="40%"){
+                                    result+="<option value='30%'>30%</option>"+
+                                        "<option value='40%' selected='selected'>40%</option></select>";
+                                }else {
+                                    result+="<option value='30%'>30%</option>"+
+                                        "<option value='40%'>40%</option></select>";
+                                }
+
+                                return result;
+                            }else {
+                                return "请设置电路的分成比例！";
+                            }
+                        }
+                    },
+                    events: {'change .feePercent': function (e, value, row, index) {
+                            var valueSelected = $(this).children('option:selected').val();
+                            $('#bootstrap-table').bootstrapTable('updateCell', {
+                                index: index,
+                                field: 'feePercent',
+                                value: valueSelected
+                            })
+                        }
+                    }
+                }]
+        };
+
+        function paramsList(params) {
+            var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                contractId: $("#contractId").val()
+            };
+            return temp;
+        };
+        $.table.init(options);
+    });
+
+    var prefix = ctx + "contractmng/contractInfo";
+    var circuitType = [[${@dict.getType('tele_circuit_type')}]];
+
+    var formSelects = layui.formSelects;
+    formSelects.render('circuitSelects');
+    //设置默认选中值
+    var circuitIds = [[${circuitIds}]];
+    formSelects.value('circuitSelects',circuitIds);
+
+    //关闭多选框时，获取选中的value值
+    formSelects.closed("circuitSelects",function(id) {
+        let circuitList = formSelects.value("circuitSelects","val").toString();
+
+        var opt = {
+            url: prefix+"/findselectedcircuitchecked",
+            silent: true,
+            query:{
+                circuitIds: circuitList,
+                contractId: $("#contractId").val()
+            }
+        };
+        console.log("circuitList"+circuitList);
+
+        $("#bootstrap-table").bootstrapTable('refresh', opt);
+    });
+
+    function saveCircuit() {
+        /*if ($("#feePercent").val()=="") {
+            alert("请选择勾选电路的费用占比！");
+        }else {}*/
+        var circuitSelectedlists = $("#bootstrap-table").bootstrapTable("getData");
+        //先获取选中的电路Id，更新合同电路关联表(取消的电路)
+        var circuitList = formSelects.value("circuitSelects","val").toString();
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: ctx + "contractmng/contractInfo/cancelassociationold",
+            data: {
+                circuitIds: circuitList,
+                contractId: $("#contractId").val()
+            },
+            async: false,
+            error: function (request) {
+                $.modal.alertError("取消原有电路时出错！");
+            },
+            success: function (data) {
+                //$.operate.saveSuccess(data);
+                //终止取消的电路-合同信息成功，继续新增电路
+                for (var i in circuitSelectedlists) {
+                    var circuitId = circuitSelectedlists[i].circuitId;
+                    var feePercent = circuitSelectedlists[i].feePercent;
+                    var contractId = $("#contractId").val();
+                    $.ajax({
+                        cache: true,
+                        type: "POST",
+                        url: ctx + "contractmng/contractInfo/editcircuit",
+                        data: {
+                            "circuitId": circuitId,
+                            "feePercent": feePercent,
+                            "contractId": contractId
+                        },
+                        async: false,
+                        error: function (request) {
+                            $.modal.alertError("系统错误");
+                        },
+                        success: function (data) {
+                            $.operate.saveSuccess(data);
+                        }
+                    });
+                };
+            }
+        });
+
+
+
+        /*$.ajax({
+            cache: true,
+            type: "POST",
+            url: ctx + "contractmng/contractInfo/add",
+            data: {
+                "circuitSelectList": circuitSelectList,
+                "contractId": $("#contractId").val()
+            },
+            async: false,
+            error: function (request) {
+                $.modal.alertError("系统错误");
+            },
+            success: function (data) {
+                $.operate.saveSuccess(data);
+            }
+        });*/
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.billmng.mapper.BillMapper">
+
+    <resultMap type="Bill" id="BillResult">
+        <id     property="billId"       column="id"/>
+        <result property="billType"    column="bill_type"/>
+        <result property="billYear"    column="billYear"/>
+        <result property="billQuarter"    column="billQuarter"/>
+        <result property="billPeriod"    column="billPeriod"/>
+        <result property="billNumber"    column="bill_number"/>
+        <result property="billTime"    column="bill_time"/>
+        <result property="billReceiveTime"    column="bill_receive_time"/>
+        <result property="billFeeTotal"    column="bill_fee_total"/>
+        <result property="isReceive"    column="bill_is_receive"/>
+        <result property="isCancel"    column="bill_is_cancel"/>
+        <result property="billCheckCode"    column="bill_check_code"/>
+        <result property="isMakeIOBill"    column="bill_is_make_iobill"/>
+        <result property="billInfo"    column="bill_info"/>
+        <result property="invoiceCode"    column="invoiceCode"/>
+        <result property="invoiceTime"    column="invoiceTime"/>
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <result property="isdel" column="isdel" />
+        <association property="customer"  column="customer_id" javaType="Customer" resultMap="CustomerResult" />
+        <association property="billOwner"  column="bill_owner_id" javaType="Billowner" resultMap="BillownerResult" />
+    </resultMap>
+
+    <resultMap type="Customer" id="CustomerResult">
+        <id property="customerId" column="customerId" />
+        <result property="customerName" column="customer_name" />
+        <result property="isdel"   column="isdel"  />
+    </resultMap>
+
+    <resultMap type="Billowner" id="BillownerResult">
+        <id property="billOwnerId" column="billOwnerId" />
+        <result property="billCompany" column="bill_company" />
+    </resultMap>
+
+    <sql id="selectBillVo">
+        select *
+		from bill_fee a
+		left join cus_customer b on a.customer_id=b.id
+		left join sys_billowner c on a.bill_owner_id=c.id
+		where a.isdel=0
+    </sql>
+
+    <select id="selectBillList" parameterType="Bill" resultMap="BillResult">
+        <include refid="selectBillVo" />
+        <if test="billNumber != null and billNumber != ''">
+            AND a.bill_number like concat('%',#{billNumber},'%')
+        </if>
+        <if test="billType != null and billType != ''">
+            AND a.bill_type=#{billType}
+        </if>
+        <if test="customer != null">
+            <if test="customer.customerName != null and customer.customerName != ''">
+                AND b.customer_name like concat('%',#{customer.customerName},'%')
+            </if>
+        </if>
+        <if test="isReceive != null and isReceive != '' ">
+            and a.bill_is_receive=#{isReceive}
+        </if>
+        <!--<if test="billOwner != null">
+            <if test="billOwner.companyName != null and billOwner.companyName != ''">
+                AND c.bill_company like concat('%',#{billOwner.companyName},'%')
+            </if>
+        </if>-->
+        <if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
+        and date_format(bill_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+        </if>
+        <if test="params != null and params.endTime != ''"><!-- 结束时间检索 -->
+        and date_format(bill_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+        </if>
+        order by a.bill_time desc
+    </select>
+
+    <select id="findBillsByBillNumber" parameterType="String" resultMap="BillResult">
+        select * from bill_fee
+        where bill_number=#{billNumber} and isdel=0
+    </select>
+
+    <select id="findBillByBillId" parameterType="String" resultMap="BillResult">
+        select a.*,b.id customerId, b.customer_name
+        from bill_fee a
+        left join cus_customer b on a.customer_id = b.id
+        where a.id=#{billId} and a.isdel=0
+    </select>
+
+    <select id="findBillsByBillNumberAndBillCheckCode" resultMap="BillResult">
+        select * from bill_fee
+        where bill_number=#{0} and bill_check_code=#{1} and isdel=0
+    </select>
+
+    <select id="findBillsByCustomerAndBillPeriod" resultType="java.lang.Integer">
+        select count(*) from bill_fee
+        where customer_id=#{customerId} and billPeriod=#{billPeriod} and isdel=0
+    </select>
+
+    <insert id="insertBill" parameterType="Bill">
+        <selectKey keyProperty="billId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into bill_fee(
+        <if test="billId != null">id,</if>
+        <if test="billType != null and billType != '' ">bill_type,</if>
+        <if test="customer != null and customer.customerId != null" >customer_id,</if>
+        <if test="billYear != null and billYear != '' ">billYear,</if>
+        <if test="billQuarter != null and billQuarter != '' ">billQuarter,</if>
+        <if test="billPeriod != null and billPeriod != '' ">billPeriod,</if>
+        <if test="billNumber != null and billNumber != '' ">bill_number,</if>
+        <if test="billOwner != null and billOwner.billOwnerId != '' ">bill_owner_id,</if>
+        <if test="billTime != null">bill_time,</if>
+        <if test="billReceiveTime != null">bill_receive_time,</if>
+        <if test="billFeeTotal != null and billFeeTotal != ''">bill_fee_total,</if>
+        <if test="isReceive != null and isReceive != ''">bill_is_receive,</if>
+        <if test="isCancel != null and isCancel != ''">bill_is_cancel,</if>
+        <if test="billCheckCode != null and billCheckCode != ''">bill_check_code,</if>
+        <if test="isMakeIOBill != null and isMakeIOBill != ''">bill_is_make_iobill,</if>
+        <if test="billInfo != null and billInfo != ''">bill_info,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="billId != null ">#{billId},</if>
+        <if test="billType != null and billType != ''">#{billType},</if>
+        <if test="customer != null and customer.customerId != null" >#{customer.customerId},</if>
+        <if test="billYear != null and billYear != ''">#{billYear},</if>
+        <if test="billQuarter != null and billQuarter != ''">#{billQuarter},</if>
+        <if test="billPeriod != null and billPeriod != ''">#{billPeriod},</if>
+        <if test="billNumber != null and billNumber != ''">#{billNumber},</if>
+        <if test="billOwner != null and billOwner.billOwnerId != ''">#{billOwner.billOwnerId},</if>
+        <if test="billTime != null">#{billTime},</if>
+        <if test="billReceiveTime != null">#{billReceiveTime},</if>
+        <if test="billFeeTotal != null and billFeeTotal != ''">#{billFeeTotal},</if>
+        <if test="isReceive != null and isReceive != ''">#{isReceive},</if>
+        <if test="isCancel != null and isCancel != ''">#{isCancel},</if>
+        <if test="billCheckCode != null and billCheckCode != ''">#{billCheckCode},</if>
+        <if test="isMakeIOBill != null and isMakeIOBill != ''">#{isMakeIOBill},</if>
+        <if test="billInfo != null and billInfo != ''">#{billInfo},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateBill" parameterType="Bill">
+        update bill_fee
+        <set>
+            <if test="billType != null and billType != '' ">bill_type=#{billType},</if>
+            <if test="customer != null and customer.customerId != null" >customer_id=#{customer.customerId},</if>
+            <if test="billYear != null and billYear != '' ">billYear=#{billYear},</if>
+            <if test="billQuarter != null and billQuarter != '' ">billQuarter=#{billQuarter},</if>
+            <if test="billPeriod != null and billPeriod != '' ">billPeriod=#{billPeriod},</if>
+            <if test="billNumber != null and billNumber != '' ">bill_number=#{billNumber},</if>
+            <if test="billOwner != null and billOwner.billOwnerId != '' ">bill_owner_id=#{billOwner.billOwnerId},</if>
+            <if test="billTime != null">bill_time=#{billTime},</if>
+            <if test="billReceiveTime != null">bill_receive_time=#{billReceiveTime},</if>
+            <if test="billFeeTotal != null and billFeeTotal != ''">bill_fee_total=#{billFeeTotal},</if>
+            <if test="isReceive != null and isReceive != ''">bill_is_receive=#{isReceive},</if>
+            <if test="isCancel != null and isCancel != ''">bill_is_cancel=#{isCancel},</if>
+            <if test="billCheckCode != null and billCheckCode != ''">bill_check_code=#{billCheckCode},</if>
+            <if test="isMakeIOBill != null and isMakeIOBill != ''">bill_is_make_iobill=#{isMakeIOBill},</if>
+            <if test="billInfo != null and billInfo != ''">bill_info=#{billInfo},</if>
+            <if test="invoiceCode != null and invoiceCode != ''">invoiceCode=#{invoiceCode},</if>
+            <if test="invoiceTime != null">invoiceTime=#{invoiceTime},</if>
+            <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{billId} and isdel=0
+    </update>
+
+    <update id="removeBillByIds" parameterType="String">
+        update bill_fee set isdel=1 where id in
+        <foreach item="billId" collection="array" open="(" separator="," close=")">
+          #{billId}
+        </foreach>
+    </update>
+</mapper>

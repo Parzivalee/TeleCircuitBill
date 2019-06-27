@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<!--fileInput 文件上传插件样式-->
+<link th:href="@{/css/fileinput/fileinput.min.css}" rel="stylesheet" type="text/css"/>
+<body class="white-bg">
+<div th:include="include :: footer"></div>
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-file-upload">
+        <input id="contractId" name="contractId" th:value="${contractId}"  type="hidden">
+        <div class="form-group">
+            <label class="col-sm-2 control-label ">客户：</label>
+            <div class="col-sm-10">
+                <select id="customer" class="form-control m-b">
+                    <option value="">请选择</option>
+                    <option th:each="customer:${customers}" th:text="${customer.customerName}" th:value="${customer.customerId}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">合同类型：</label>
+            <div class="col-sm-8">
+                <select id="contractType" class="form-control m-b">
+                    <option value="">请选择</option>
+                    <option value="Hire">技术服务合同</option>
+                    <option value="Maintain">维护合同</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">合同：</label>
+            <div class="col-sm-10">
+                <select name="contract" id="contract" class="form-control m-b">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary" onclick="showFile()">选择文件</button>
+            </div>
+            <div class="col-sm-10">
+                <input type="text" id="show-name" class="form-control"/>
+                <input type="file" name="excel" id="excel" style="display: none;"/>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="form-control-static col-sm-offset-9">
+                <button type="button" class="btn btn-primary" onclick="testExcel()">检测</button>
+                <!--<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">新增电路：</label>
+            <div class="col-sm-10">
+                <input readonly="readonly" class="form-control" id="newCircuitCode" style="outline:none;">
+                <br>
+            </div>
+            <label class="col-sm-2 control-label">变更电路：</label>
+            <div class="col-sm-10">
+                <textarea readonly="readonly" class="form-control" id="changeCircuitCode"></textarea>
+                <br>
+            </div>
+            <label class="col-sm-2 control-label">删除电路：</label>
+            <div class="col-sm-10">
+                <input readonly="readonly" class="form-control" id="deleteCircuitCode" style="outline:none;">
+                <br>
+            </div>
+        </div>
+
+        <!--<div class="modal-footer">
+            <button type="button" class="btn btn-success" onclick="submitExcel()">导入</button>
+            <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+        </div>-->
+
+    </form>
+</div>
+<!--fileinput 文件上传插件 -->
+<script th:src="@{/js/plugins/fileinput/fileinput.min.js}" ></script>
+<script th:src="@{/js/plugins/fileinput/zh.js}"></script>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script th:inline="javascript">
+    var prefix = ctx + "circuitmng/circuitInfo";
+
+    function showFile() {
+        $("#excel").click();    //通过按钮触发input file 的click事件
+        $("#excel").change(function() {
+            //var path = $("#input[type=file]").val();    //获取文件的路径
+            $("#show-name").val($("#excel").val());
+        });
+    };
+
+    //当客户被选中时，触发二级菜单
+    $('#customer').on('select2:select', function (e) {
+        $("#contract").empty();
+        //级联select:一级输入的值发生改变，触发二级的选项改变
+        //获取一级select的值
+        var value = e.params.data.id;
+
+        //如果一级select的值为null，隐藏二级select,并返回
+        if(value == ''){
+            /*$("#customer").fadeOut("fast");*/
+            return;
+        }
+        //远程获取二级菜单下拉列表的值
+        $.ajax({
+            type: 'GET',
+            url: prefix+"/findContractList",
+            cache : false,
+            data:{
+                customerId:value
+            },
+            dataType:'json',
+            success:function(secondData){
+                $("#contract").append('<option value="" >不选择</option>')
+                for (var i = 0; i < secondData.length; i++) {
+                    $("#contract").append('<option value="'+secondData[i].contractId+' ">'+secondData[i].contractNumber+'</option>');
+                }
+            },
+            error:function(){
+                alert("请求失败!");
+            }
+        });
+    });
+
+
+    function testExcel() {
+        if ($("#contractType option:selected").val() == "") {
+            alert("请选择合同类型！");
+            return;
+        }
+        let formData = new FormData();
+        formData.append("excel",$("#excel")[0].files[0]);
+        formData.append("customer",$("#customer").val());
+        formData.append("contract",$("#contract").val());
+        if (formData!=null) {
+            $.ajax({
+                url: prefix+"/batchimporttest",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                error: function(request) {
+                    alert("excel提交出错，请重试！");
+                },
+                success: function (data) {
+                    var newResult = "";
+                    var changeResult = "";
+                    var deleteResult = "";
+                    for (var key in data) {
+                        var info = data[key];
+                        for (var i in info) {
+                            if (info[i] == "change") {
+                                changeResult+=key+" "+i;
+                            }else if (info[i] == "new") {
+                                newResult+=key+",";
+                            }else if (info[i] == "delete") {
+                                deleteResult+=key+",";
+                            }
+                        }
+                        //换行符
+                        changeResult+="\n";
+                    }
+                    $("#newCircuitCode").val(newResult);
+                    $("#deleteCircuitCode").val(deleteResult);
+                    $("#changeCircuitCode").text(changeResult);
+                }
+            });
+        }
+
+    };
+
+    function submitExcel() {
+        if ($("#newCircuitCode").val()==null && $("#changeCircuitCode").text()==null) {
+            alert("请先进行电路检测！");
+        }else {
+            var formData = new FormData();
+            formData.append("excel",$("#excel")[0].files[0]);
+            formData.append("customer",$("#customer").val());
+            formData.append("contract",$("#contract").val());
+            if (formData!= null) {
+                $.ajax({
+                    url: prefix+"/batchimport",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    error: function(request) {
+                        alert("excel提交出错，请重试！");
+                    },
+                    success: function (data) {
+                        alert("批量导入成功！");
+                        //关闭弹出框
+                        $.modal.close();
+                    }
+
+                });
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
