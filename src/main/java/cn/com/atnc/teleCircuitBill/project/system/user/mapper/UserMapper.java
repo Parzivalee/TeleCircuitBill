@@ -1,6 +1,7 @@
 package cn.com.atnc.teleCircuitBill.project.system.user.mapper;
 
 import cn.com.atnc.teleCircuitBill.project.system.user.domain.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * 
  * @author
  */
+@Repository
 public interface UserMapper {
 
     /**

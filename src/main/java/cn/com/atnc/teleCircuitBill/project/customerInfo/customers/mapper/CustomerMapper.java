@@ -16,7 +16,20 @@ public interface CustomerMapper {
      * 查询所有客户信息
      *
      * @param customer
-     * @return
+     * @return List<Customer>
      */
-    List<Customer> selectCountryList(Customer customer);
+    List<Customer> selectCustomerList(Customer customer);
+
+    /**
+     * 新增客户信息
+     * @param customer
+     * @return int
+     */
+    int insertCustomer(Customer customer);
+
+    Customer findCustomerByCustomerId(String customerId);
+
+    int updateCustomer(Customer customer);
+
+    int deleteCountryByIds(String[] toStrArray);
 }

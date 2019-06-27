@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableTransactionManagement
-@MapperScan("cn.com.atnc.teleCircuitBill.project.*.*.mapper")
+@MapperScan({"cn.com.atnc.teleCircuitBill.project.*.mapper",
+                "cn.com.atnc.teleCircuitBill.project.*.*.mapper",
+                "cn.com.atnc.teleCircuitBill.project.*.*.*.mapper"})
 public class StartApplication {
     public static void main(String[] args) {
         // System.setProperty("spring.devtools.restart.enabled", "false");

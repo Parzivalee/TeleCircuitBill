@@ -2,9 +2,24 @@
   <dictionary name="lwj">
     <words>
       <w>atnc</w>
-      <w>countrys</w>
-      <w>shiro</w>
-      <w>updtime</w>
+      <w>batchimport</w>
+      <w>batchimporttest</w>
+      <w>circuitmng</w>
+      <w>contractmng</w>
+      <w>editcircuit</w>
+      <w>findcircuitfee</w>
+      <w>findcircuitlist</w>
+      <w>findcontractaccesslist</w>
+      <w>findselectedcircuit</w>
+      <w>findselectedcircuitchecked</w>
+      <w>findspeedlist</w>
+      <w>ioms</w>
+      <w>isdel</w>
+      <w>permi</w>
+      <w>selectedlists</w>
+      <w>speedlist</w>
+      <w>speedlistbyid</w>
+      <w>tele</w>
     </words>
   </dictionary>
 </component>

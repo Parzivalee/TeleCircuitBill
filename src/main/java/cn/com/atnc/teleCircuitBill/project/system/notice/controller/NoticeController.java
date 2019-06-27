@@ -26,8 +26,7 @@ import cn.com.atnc.teleCircuitBill.project.system.notice.domain.Notice;
  */
 @Controller
 @RequestMapping("/system/notice")
-public class NoticeController extends BaseController
-{
+public class NoticeController extends BaseController {
     private String prefix = "system/notice";
 
     @Autowired

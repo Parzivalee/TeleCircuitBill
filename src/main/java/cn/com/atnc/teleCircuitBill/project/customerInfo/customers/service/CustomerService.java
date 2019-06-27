@@ -12,7 +12,35 @@ public interface CustomerService {
     /**
      * 查询所有客户对象
      * @param customer
+     * @return List<Customer>
+     */
+    List<Customer> selectCustomerList(Customer customer);
+
+    /**
+     * 新增客户
+     * @param customer
      * @return
      */
-    List<Customer> selectCountryList(Customer customer);
+    int insertCustomer(Customer customer);
+
+    /**
+     * 根据customerId查找客户信息
+     * @param customerId
+     * @return Customer
+     */
+    Customer findCustomerByCustomerId(String customerId);
+
+    /**
+     * 修改客户
+     * @param customer
+     * @return
+     */
+    int updateCustomer(Customer customer);
+
+    /**
+     * 删除客户
+     * @param ids
+     * @return
+     */
+    int deleteCountryByIds(String ids);
 }

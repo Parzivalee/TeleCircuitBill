@@ -3,12 +3,14 @@ package cn.com.atnc.teleCircuitBill.project.system.user.mapper;
 import java.util.List;
 
 import cn.com.atnc.teleCircuitBill.project.system.user.domain.UserPost;
+import org.springframework.stereotype.Repository;
 
 /**
  * 用户与岗位 表 数据层
  * 
  * @author
  */
+@Repository
 public interface UserPostMapper
 {
 

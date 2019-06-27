@@ -8,27 +8,34 @@
 <div class="container-div">
     <div class="row">
         <div class="col-sm-12 select-info">
-            <form id="role-form">
+            <form id="customer-form">
                 <div class="select-list gd">
                     <ul>
                         <li>
-                            区域管局：<input type="text" name="roleName"/>
+                            区域管局：<select name="area" th:with="type=${@dict.getType('cus_area')}">
+                            <option value="">所有</option>
+                            <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                        </select>
                         </li>
                         <li>
-                            名称：<input type="text" name="roleKey"/>
+                            名称：<input type="text" name="customerName"/>
                         </li>
                         <li>
-                            等级：<input type="text" name="roleKey"/>
+                            客户区域：<select name="region" th:with="type=${@dict.getType('cus_region')}">
+                            <option value="">所有</option>
+                            <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                        </select>
                         </li>
-                        <li class="time">
-                            <label>创建时间： </label>
-                            <input type="text" class="layui-input" id="startTime" placeholder="开始时间" name="params[beginTime]"/>
-                            <span>-</span>
-                            <input type="text" class="layui-input" id="endTime" placeholder="结束时间" name="params[endTime]"/>
+                        <li>
+                            等级：
+                            <select name="level" th:with="type=${@dict.getType('cus_level')}">
+                                <option value="">所有</option>
+                                <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                            </select>
                         </li>
                         <li>
                             <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                            <a class="btn btn-success btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i>&nbsp;下载</a>
+                            <!--<a class="btn btn-success btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i>&nbsp;下载</a>-->
                         </li>
                     </ul>
                 </div>
@@ -36,10 +43,10 @@
         </div>
 
         <div class="btn-group hidden-xs" id="toolbar" role="group">
-            <a class="btn btn-outline btn-success btn-rounded" onclick="$.operate.add()" shiro:hasPermission="customerInfo:customer:add">
+            <a class="btn btn-outline btn-success btn-rounded" onclick="$.operate.add()" shiro:hasPermission="customerInfo:customers:add">
                 <i class="fa fa-plus"></i> 新增
             </a>
-            <a class="btn btn-outline btn-danger btn-rounded" onclick="$.operate.batRemove()" shiro:hasPermission="customerInfo:customere:remove">
+            <a class="btn btn-outline btn-danger btn-rounded" onclick="$.operate.batRemove()" shiro:hasPermission="customerInfo:customers:remove">
                 <i class="fa fa-trash-o"></i> 删除
             </a>
         </div>
@@ -50,15 +57,19 @@
     </div>
 </div>
 <div th:include="include :: footer"></div>
+<script th:src="@{/ajax/libs/jquery-layout/jquery.layout-latest.js}"></script>
 <script th:inline="javascript">
-    var editFlag = [[${@permission.hasPermi('customerInfo:customer:edit')}]];
-    var removeFlag = [[${@permission.hasPermi('customerInfo:customer:remove')}]];
-    var datas = [[${@dict.getType('sys_normal_disable')}]];
+    var editFlag = [[${@permission.hasPermi('customerInfo:customers:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('customerInfo:customers:remove')}]];
+    var area = [[${@dict.getType('cus_area')}]];
+    var region = [[${@dict.getType('cus_region')}]];
+    var level = [[${@dict.getType('cus_level')}]];
     var prefix = ctx + "customerInfo/customers"
 
 
     $(function() {
         var options = {
+            id: "customerId",
             url: prefix + "/list",
             createUrl: prefix + "/add",
             updateUrl: prefix + "/edit/{id}",
@@ -66,52 +77,60 @@
             exportUrl: prefix + "/export",
             search: false,
             showExport: false,
+            modalName: '客户信息',
             columns: [{
                 checkbox: true
             },
                 {
-                    field: 'areaAuthority',
-                    title: '区域管局'
-                },
-                {
-                    field: 'companyName',
+                    field: 'customerName',
                     title: '名称',
                 },
                 {
-                    field: 'translateName',
-                    title: '译名',
+                    field: 'area',
+                    title: '区域管局',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictData(area, value);
+                    }
                 },
                 {
-                    field: 'roleKey',
-                    title: '法人',
-                    sortable: true
+                    field: 'shortName',
+                    title: '简称',
                 },
                 {
-                    field: 'roleSort',
-                    title: '委托人',
-                    sortable: true
+                    field: 'code',
+                    title: '代码',
                 },
                 {
-
+                    field: 'region',
+                    title: '客户区域',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictData(region, value);
+                    },
+                    align: 'center'
                 },
                 {
-                    field: 'createTime',
-                    title: '创建时间',
-                    sortable: true
+                    field: 'level',
+                    title: '客户等级',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictData(level, value);
+                    },
+                    align: 'center'
                 },
                 {
                     title: '操作',
                     align: 'center',
                     formatter: function(value, row, index) {
                         var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.roleId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.roleId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.customerId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.customerId + '\')"><i class="fa fa-remove"></i>删除</a>');
                         return actions.join('');
                     }
                 }]
         };
         $.table.init(options);
     });
+
+
 </script>
 </body>
 </html>

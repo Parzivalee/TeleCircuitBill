@@ -1,6 +1,8 @@
 package cn.com.atnc.teleCircuitBill.project.system.notice.mapper;
 
 import cn.com.atnc.teleCircuitBill.project.system.notice.domain.Notice;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 /**
@@ -8,6 +10,7 @@ import java.util.List;
  * 
  * @author
  */
+@Repository
 public interface NoticeMapper
 {
     /**

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-    <title>ATNC后台管理系统首页</title>
-    <meta name="keywords" content="ATNC后台管理系统首页">
-    <meta name="description" content="ATNC后台管理系统首页">
+    <title>电路账务管理系统首页</title>
+    <meta name="keywords" content="电路账务管理系统首页">
+    <meta name="description" content="电路账务管理系统首页">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
@@ -32,7 +32,7 @@
             <ul class="nav" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                         <img th:src="(${user.avatar} == '') ? '/img/profile.jpg' : '/profile/' + ${user.avatar}" alt="image" class="img-circle" height="60" width="60"/></span>
+                         <img th:src="(${user.avatar} == '') ? '/teleCircuitBill/img/profile.jpg' : '/profile/' + ${user.avatar}" alt="image" class="img-circle" height="60" width="60"/></span>
                          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <span class="clear"><span class="block m-t-xs"><strong class="font-bold">[[${user.userName}]]</strong></span>
                          <span class="text-muted text-xs block"><span th:if="${not #strings.isEmpty(user.dept)}">[[${user.dept.deptName}]]</span> <b class="caret"></b></span> </span> </a>
@@ -43,12 +43,6 @@
                          </ul>
                     </div>
                 </li>
-                 <!--<li class="active">
-                    <a href="index.html"><i class="fa fa-home"></i> <span class="nav-label">首页</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li class="active"><a class="menuItem" th:href="@{/system/main}">航路信息</a></li>
-                    </ul>
-                </li>-->
                 <li th:each="menu : ${menus}">
                 	<a href="#">
                 		<i class="fa fa fa-bar-chart-o" th:class="${menu.icon}"></i>
@@ -82,13 +76,13 @@
                     </a>
                     <form role="search" class="navbar-form-custom" method="post" action="">
                         <div class="form-group">
-                            <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
+                            <!--<input type="text" placeholder="" class="form-control" name="top-search" id="top-search">-->
                         </div>
                     </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
 	                <li>
-	                    <span class="m-r-sm text-muted welcome-message">欢迎来到ATNC后台管理系统</span>
+	                    <span class="m-r-sm text-muted welcome-message">欢迎来到电路账务管理系统</span>
 	                </li>
 	                <li><a id="fullScreen"><i class="fa fa-arrows-alt"></i>全屏</a></li>
                     <li><a th:href="@{logout}"><i class="fa fa-sign-out"></i>退出</a></li>
@@ -136,7 +130,7 @@
 <script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
 <script th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
 <!--<script src="http://tajs.qq.com/stats?sId=62048022"></script>-->
-<script th:src="@{/atnc/js/ry-ui.min.js?v=2.2.0}"></script>
+<script th:src="@{/atnc/js/ry-ui.js}"></script>
 <script th:src="@{/atnc/index.js}"></script>
 <script th:src="@{/ajax/libs/fullscreen/jquery.fullscreen.js}"></script>
 </body>

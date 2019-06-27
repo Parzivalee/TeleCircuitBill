@@ -9,13 +9,16 @@
         <div class="form-group">
             <label class="col-sm-3 control-label ">区域管局：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" id="areaAuthority" name="areaAuthority"/>
+                <select id="area" class="form-control m-b" th:with="type=${@dict.getType('cus_area')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}" th:value="${dict['dictValue']}"></option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">名称：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="companyName" id="companyName">
+                <input class="form-control" type="text" name="customerName" id="customerName">
             </div>
         </div>
         <div class="form-group">
@@ -51,13 +54,13 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">委托人：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="consignor" id="consignor">
+                <input class="form-control" type="text" name="delegation" id="delegation">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">委托人电话：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="consignorPhone" id="consignorPhone">
+                <input class="form-control" type="text" name="delegationPhone" id="delegationPhone">
             </div>
         </div>
         <div class="form-group">
@@ -105,19 +108,19 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">地区：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="region" id="region">
+                <select id="region" class="form-control m-b" th:with="type=${@dict.getType('cus_region')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}" th:value="${dict['dictValue']}"></option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">等级：</label>
             <div class="col-sm-8">
-                <input class="form-control" type="text" name="level" id="level">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label">类别：</label>
-            <div class="col-sm-8">
-                <input class="form-control" type="text" name="type" id="type">
+                <select id="level" class="form-control m-b" th:with="type=${@dict.getType('cus_level')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}" th:value="${dict['dictValue']}"></option>
+                </select>
             </div>
         </div>
 
@@ -135,7 +138,21 @@
 <script>
     $("#form-user-add").validate({
         rules:{
-
+            area:{
+                required:true
+            },
+            customerName:{
+                required:true
+            },
+            code:{
+                required:true
+            },
+            region:{
+                required:true
+            },
+            level:{
+                required:true
+            }
         },
         messages: {
 
@@ -146,33 +163,48 @@
     });
 
     function add() {
-        // var userId = $("input[name='userId']").val();
-        // var deptId = $("input[name='deptId']").val();
-        // var loginName = $("input[name='loginName']").val();
-        // var userName = $("input[name='userName']").val();
-        // var password = $("input[name='password']").val();
-        // var email = $("input[name='email']").val();
-        // var phonenumber = $("input[name='phonenumber']").val();
-        // var sex = $("#sex option:selected").val();
-        // var status = $("input[name='status']").is(':checked') == true ? 0 : 1;
-        // var roleIds = $.form.selectCheckeds("role");
-        // var postIds = $.form.selectSelects("post");
+        var area = $("#area option:selected").val();
+        var customerName = $("input[name='customerName']").val();
+        var translateName = $("input[name='translateName']").val();
+        var shortName = $("input[name='shortName']").val();
+        var code = $("input[name='code']").val();
+        var legalPerson = $("input[name='legalPerson']").val();
+        var legalPersonPhone = $("input[name='legalPersonPhone']").val();
+        var delegation = $("input[name='delegation']").val();
+        var delegationPhone = $("input[name='delegationPhone']").val();
+        var bank = $("input[name='bank']").val();
+        var bankAccount = $("input[name='bankAccount']").val();
+        var address = $("input[name='address']").val();
+        var email = $("input[name='email']").val();
+        var phoneNumber = $("input[name='phoneNumber']").val();
+        var fax = $("input[name='fax']").val();
+        var url = $("input[name='url']").val();
+        var region = $("#region option:selected").val();
+        //var type = $("input[name='type']").val();
+        var level = $("#level option:selected").val();
         $.ajax({
             cache : true,
             type : "POST",
-            url : ctx + "system/user/add",
+            url : ctx + "customerInfo/customers/add",
             data : {
-                "areaAuthority": userId,
-                "deptId": deptId,
-                "loginName": loginName,
-                "userName": userName,
-                "password": password,
+                "area": area,
+                "customerName": customerName,
+                "translateName": translateName,
+                "shortName": shortName,
+                "code": code,
+                "legalPerson": legalPerson,
+                "legalPersonPhone": legalPersonPhone,
+                "delegation": delegation,
+                "delegationPhone": delegationPhone,
+                "bank": bank,
+                "bankAccount": bankAccount,
+                "address": address,
                 "email": email,
-                "phonenumber": phonenumber,
-                "sex": sex,
-                "status": status,
-                "roleIds": roleIds,
-                "postIds": postIds
+                "phoneNumber": phoneNumber,
+                "fax": fax,
+                "url": url,
+                "region": region,
+                "level": level,
             },
             async : false,
             error : function(request) {

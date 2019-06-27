@@ -62,7 +62,7 @@ public class UserOnline extends BaseEntity
         online.setLastAccessTime(session.getLastAccessTime());
         online.setExpireTime(session.getTimeout());
         online.setIpaddr(session.getHost());
-        online.setLonginLocation(AddressUtils.getRealAddressByIP(session.getHost()));
+        //online.setLonginLocation(AddressUtils.getRealAddressByIP(session.getHost()));
         online.setBrowser(session.getBrowser());
         online.setOs(session.getOs());
         online.setStatus(session.getStatus());

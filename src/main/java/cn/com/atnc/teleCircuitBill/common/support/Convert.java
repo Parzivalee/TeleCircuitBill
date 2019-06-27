@@ -292,7 +292,7 @@ public class Convert
     /**
      * 转换为Integer数组<br>
      * 
-     * @param split 被转换的值
+     * @param str 被转换的值
      * @return 结果
      */
     public static Integer[] toIntArray(String str)
@@ -303,7 +303,7 @@ public class Convert
     /**
      * 转换为Long数组<br>
      * 
-     * @param split 被转换的值
+     * @param str 被转换的值
      * @return 结果
      */
     public static Long[] toLongArray(String str)
@@ -337,8 +337,8 @@ public class Convert
     /**
      * 转换为Long数组<br>
      * 
-     * @param isIgnoreConvertError 是否忽略转换错误，忽略则给值null
-     * @param values 被转换的值
+     * @param split 是否忽略转换错误，忽略则给值null
+     * @param str 被转换的值
      * @return 结果
      */
     public static Long[] toLongArray(String split, String str)
@@ -360,7 +360,7 @@ public class Convert
     /**
      * 转换为String数组<br>
      * 
-     * @param split 被转换的值
+     * @param str 被转换的值
      * @return 结果
      */
     public static String[] toStrArray(String str)

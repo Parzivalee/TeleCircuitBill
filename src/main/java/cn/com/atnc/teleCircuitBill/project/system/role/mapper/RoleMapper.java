@@ -3,12 +3,14 @@ package cn.com.atnc.teleCircuitBill.project.system.role.mapper;
 import java.util.List;
 
 import cn.com.atnc.teleCircuitBill.project.system.role.domain.Role;
+import org.springframework.stereotype.Repository;
 
 /**
  * 角色表 数据层
  * 
  * @author
  */
+@Repository
 public interface RoleMapper
 {
 

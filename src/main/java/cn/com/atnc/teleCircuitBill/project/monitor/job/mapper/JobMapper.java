@@ -2,12 +2,14 @@ package cn.com.atnc.teleCircuitBill.project.monitor.job.mapper;
 
 import java.util.List;
 import cn.com.atnc.teleCircuitBill.project.monitor.job.domain.Job;
+import org.springframework.stereotype.Repository;
 
 /**
  * 调度任务信息 数据层
  * 
  * @author
  */
+@Repository
 public interface JobMapper
 {
 

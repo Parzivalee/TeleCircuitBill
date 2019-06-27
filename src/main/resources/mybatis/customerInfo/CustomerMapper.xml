@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.customerInfo.customers.mapper.CustomerMapper">
+
+    <resultMap type="Customer" id="CustomerResult">
+        <id     property="customerId"       column="id"/>
+        <result property="area" column="area_id" />
+        <result property="customerName"    column="customer_name"/>
+        <result property="translateName"     column="customer_name_cn"/>
+        <result property="shortName"     column="customer_name_short"/>
+        <result property="code"        column="customer_code"/>
+        <result property="legalPerson"    column="customer_legal"/>
+        <result property="legalPersonPhone"    column="customer_legal_phone" />
+        <result property="delegation" column="customer_delegation" />
+        <result property="delegationPhone" column="customer_delegation_phone" />
+        <result property="bank" column="customer_accountbank" />
+        <result property="bankAccount" column="customer_accountnumber" />
+        <result property="address" column="customer_address" />
+        <result property="email" column="customer_postcode" />
+        <result property="phoneNumber" column="customer_phone" />
+        <result property="fax" column="customer_fax" />
+        <result property="url" column="customer_website" />
+        <result property="region" column="customer_inlandoversea"/>
+        <result property="access" column="customer_access" />
+        <result property="config" column="customer_config" />
+        <result property="rent" column="customer_rent" />
+        <result property="maintain" column="customer_maintain" />
+        <result property="level" column="customer_level" />
+        <result property="accessSum" column="customer_access_sum" />
+        <result property="configSum" column="customer_config_sum" />
+        <result property="rentSum" column="customer_rent_sum" />
+        <result property="maintainSum" column="customer_maintain_sum" />
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <result property="isdel" column="isdel" />
+    </resultMap>
+
+
+    <sql id="selectCustomerVo">
+        select * from cus_customer
+        where isdel=0
+    </sql>
+
+    <select id="selectCustomerList" parameterType="Customer" resultMap="CustomerResult">
+        <include refid="selectCustomerVo"/>
+            <if test="area != null and area != '' ">
+                AND area_id=#{area}
+            </if>
+            <if test="customerName != null and customerName != ''">
+                AND customer_name like concat('%',#{customerName},'%')
+            </if>
+            <if test="region != null and region != ''">
+                AND customer_inlandoversea=#{region}
+            </if>
+            <if test="level != null and level != ''">
+                AND customer_level=#{level}
+            </if>
+    </select>
+
+    <select id="findCustomerByCustomerId" parameterType="String" resultMap="CustomerResult">
+        <include refid="selectCustomerVo"/>
+        and id=#{customerId}
+    </select>
+
+    <insert id="insertCustomer" parameterType="Customer">
+        <selectKey keyProperty="customerId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into cus_customer(
+        <if test="customerId != null">id,</if>
+        <if test="area != null and area != '' ">area_id,</if>
+        <if test="customerName != null and customerName != ''">customer_name,</if>
+        <if test="translateName != null and translateName != ''">customer_name_cn,</if>
+        <if test="shortName != null and shortName != ''">customer_name_short,</if>
+        <if test="code != null and code != ''">customer_code,</if>
+        <if test="legalPerson != null and legalPerson != ''">customer_legal,</if>
+        <if test="legalPersonPhone != null and legalPersonPhone != ''">customer_legal_phone,</if>
+        <if test="delegation != null and delegation != ''">customer_delegation,</if>
+        <if test="delegationPhone != null and delegationPhone != ''">customer_delegation_phone,</if>
+        <if test="bank != null and bank != ''">customer_accountbank,</if>
+        <if test="bankAccount != null and bankAccount != ''">customer_accountnumber,</if>
+        <if test="address != null and address != ''">customer_address,</if>
+        <if test="email != null and email != ''">customer_postcode,</if>
+        <if test="phoneNumber != null and phoneNumber != ''">customer_phone,</if>
+        <if test="fax != null and fax != ''">customer_fax,</if>
+        <if test="url != null and url != ''">customer_website,</if>
+        <if test="region != null and region != ''">customer_inlandoversea,</if>
+        <if test="access != null and access != ''">customer_access,</if>
+        <if test="config != null and config != ''">customer_config,</if>
+        <if test="rent != null and rent != ''">customer_rent,</if>
+        <if test="maintain != null and maintain != ''">customer_maintain,</if>
+        <if test="level != null and level != ''">customer_level,</if>
+        <if test="accessSum != null and accessSum != ''">customer_access_sum,</if>
+        <if test="configSum != null and configSum != ''">customer_config_sum,</if>
+        <if test="rentSum != null and rentSum != ''">customer_rent_sum,</if>
+        <if test="maintainSum != null and maintainSum != ''">customer_maintain_sum,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="customerId != null">#{customerId},</if>
+        <if test="area != null and area != '' ">#{area},</if>
+        <if test="customerName != null and customerName != ''">#{customerName},</if>
+        <if test="translateName != null and translateName != ''">#{translateName},</if>
+        <if test="shortName != null and shortName != ''">#{shortName},</if>
+        <if test="code != null and code != ''">#{code},</if>
+        <if test="legalPerson != null and legalPerson != ''">#{legalPerson},</if>
+        <if test="legalPersonPhone != null and legalPersonPhone != ''">#{legalPersonPhone},</if>
+        <if test="delegation != null and delegation != ''">#{delegation},</if>
+        <if test="delegationPhone != null and delegationPhone != ''">#{delegationPhone},</if>
+        <if test="bank != null and bank != ''">#{bank},</if>
+        <if test="bankAccount != null and bankAccount != ''">#{bankAccount},</if>
+        <if test="address != null and address != ''">#{address},</if>
+        <if test="email != null and email != ''">#{email},</if>
+        <if test="phoneNumber != null and phoneNumber != ''">#{phoneNumber},</if>
+        <if test="fax != null and fax != ''">#{fax},</if>
+        <if test="url != null and url != ''">#{url},</if>
+        <if test="region != null and region != ''">#{region},</if>
+        <if test="access != null and access != ''">#{access},</if>
+        <if test="config != null and config != ''">#{config},</if>
+        <if test="rent != null and rent != ''">#{rent},</if>
+        <if test="maintain != null and maintain != ''">#{maintain},</if>
+        <if test="level != null and level != ''">#{level},</if>
+        <if test="accessSum != null and accessSum != ''">#{accessSum},</if>
+        <if test="configSum != null and configSum != ''">#{configSum},</if>
+        <if test="rentSum != null and rentSum != ''">#{rentSum},</if>
+        <if test="maintainSum != null and maintainSum != ''">#{maintainSum},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateCustomer" parameterType="Customer">
+        update cus_customer
+        <set>
+            <if test="area != null and area != 0">area_id=#{area},</if>
+            <if test="customerName != null and customerName != ''">customer_name=#{customerName},</if>
+            <if test="translateName != null and translateName != ''">customer_name_cn=#{translateName},</if>
+            <if test="shortName != null and shortName != ''">customer_name_short=#{shortName},</if>
+            <if test="code != null and code != ''">customer_code=#{code},</if>
+            <if test="legalPerson != null and legalPerson != ''">customer_legal=#{legalPerson},</if>
+            <if test="legalPersonPhone != null and legalPersonPhone != ''">customer_legal_phone=#{legalPersonPhone},</if>
+            <if test="delegation != null and delegation != ''">customer_delegation=#{delegation},</if>
+            <if test="delegationPhone != null and delegationPhone != ''">customer_delegation_phone=#{delegationPhone},</if>
+            <if test="bank != null and bank != ''">customer_accountbank=#{bank},</if>
+            <if test="bankAccount != null and bankAccount != ''">customer_accountnumber=#{bankAccount},</if>
+            <if test="address != null and address != ''">customer_address=#{address},</if>
+            <if test="email != null and email != ''">customer_postcode=#{email},</if>
+            <if test="phoneNumber != null and phoneNumber != ''">customer_phone=#{phoneNumber},</if>
+            <if test="fax != null and fax != ''">customer_fax=#{fax},</if>
+            <if test="url != null and url != ''">customer_website=#{url},</if>
+            <if test="region != null and region != ''">customer_inlandoversea=#{region},</if>
+            <if test="access != null and access != ''">customer_access=#{access},</if>
+            <if test="config != null and config != ''">customer_config=#{config},</if>
+            <if test="rent != null and rent != ''">customer_rent=#{rent},</if>
+            <if test="maintain != null and maintain != ''">customer_maintain=#{maintain},</if>
+            <if test="level != null and level != ''">customer_level=#{level},</if>
+            <if test="accessSum != null and accessSum != ''">customer_access_sum=#{accessSum},</if>
+            <if test="configSum != null and configSum != ''">customer_config_sum=#{configSum},</if>
+            <if test="rentSum != null and rentSum != ''">customer_rent_sum=#{rentSum},</if>
+            <if test="maintainSum != null and maintainSum != ''">customer_maintain_sum=#{maintainSum},</if>
+            <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>
+            update_time=sysdate()
+        </set>
+        where id=#{customerId}
+    </update>
+
+    <!--逻辑删除-->
+    <update id="deleteCountryByIds" parameterType="String">
+        update cus_customer set isdel=1 where id in
+        <foreach collection="array" item="customerId" open="(" separator="," close=")">
+            #{customerId}
+        </foreach>
+    </update>
+</mapper>

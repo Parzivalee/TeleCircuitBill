@@ -1,10 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link th:href="@{/ajax/libs/iCheck/custom.css}" rel="stylesheet"/>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-customer-edit" th:object="${customer}">
+        <input id="customerId" name="customerId" th:field="*{customerId}"  type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">区域管局：</label>
+            <div class="col-sm-8">
+                <select id="area" class="form-control m-b" th:with="type=${@dict.getType('cus_area')}">
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}"
+                            th:value="${dict['dictValue']}" th:field="*{area}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">名称：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="customerName" th:field="*{customerName}" id="customerName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">译名：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="translateName" th:field="*{translateName}" id="translateName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">简称：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="shortName" th:field="*{shortName}" id="shortName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">代码：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="code" th:field="*{code}" id="code">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">法人：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="legalPerson" th:field="*{legalPerson}" id="legalPerson">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">法人电话：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="legalPersonPhone" th:field="*{legalPersonPhone}" id="legalPersonPhone">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">委托人：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="delegation" th:field="*{delegation}" id="delegation">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">委托人电话：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="delegationPhone" th:field="*{delegationPhone}" id="delegationPhone">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">开户银行：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="bank" th:field="*{bank}" id="bank">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">银行账号：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="bankAccount" th:field="*{bankAccount}" id="bankAccount">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">地址：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="address" th:field="*{address}" id="address">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">邮编：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="email" th:field="*{email}" id="email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">电话：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">传真：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="fax" th:field="*{fax}" id="fax">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">网址：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="url" th:field="*{url}" id="url">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">地区：</label>
+            <div class="col-sm-8">
+                <select id="region" class="form-control m-b" th:with="type=${@dict.getType('cus_region')}">
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}"
+                            th:value="${dict['dictValue']}" th:field="*{region}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">等级：</label>
+            <div class="col-sm-8">
+                <select id="level" class="form-control m-b" th:with="type=${@dict.getType('cus_level')}">
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}"
+                            th:value="${dict['dictValue']}" th:field="*{level}"></option>
+                </select>
+            </div>
+        </div>
+       <!-- <div class="form-group">
+            <label class="col-sm-3 control-label">类别：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="type" th:field="*{type}" id="type">
+            </div>
+        </div>-->
 
+        <div class="form-group">
+            <div class="form-control-static col-sm-offset-9">
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script th:src="@{/ajax/libs//datapicker/bootstrap-datepicker.js}"></script>
+<script th:src="@{/ajax/libs/beautifyhtml/beautifyhtml.js}"></script>
+<script>
+    $("#form-customer-edit").validate({
+        rules: {
+            area: {
+                required: true
+            },
+            customerName: {
+                required: true
+            },
+            code: {
+                required: true
+            },
+            region: {
+                required: true
+            },
+            level: {
+                required: true
+            }
+        },
+        messages: {
+
+        },
+        submitHandler:function(form){
+            edit();
+        }
+    });
+
+    //配置datepicker插件
+    $(".input-group.date").datepicker({
+        dateFormat: 'yyyy-MM-dd',
+        todayBtn: "linked",
+        keyboardNavigation: !1,
+        forceParse: !1,
+        calendarWeeks: !0,
+        autoclose: !0
+    });
+
+    function edit() {
+        var area = $("#area option:selected").val();
+        var customerName = $("input[name='customerName']").val();
+        var translateName = $("input[name='translateName']").val();
+        var shortName = $("input[name='shortName']").val();
+        var code = $("input[name='code']").val();
+        var legalPerson = $("input[name='legalPerson']").val();
+        var legalPersonPhone = $("input[name='legalPersonPhone']").val();
+        var delegation = $("input[name='delegation']").val();
+        var delegationPhone = $("input[name='delegationPhone']").val();
+        var bank = $("input[name='bank']").val();
+        var bankAccount = $("input[name='bankAccount']").val();
+        var address = $("input[name='address']").val();
+        var email = $("input[name='email']").val();
+        var phoneNumber = $("input[name='phoneNumber']").val();
+        var fax = $("input[name='fax']").val();
+        var url = $("input[name='url']").val();
+        var region = $("#region option:selected").val();
+        var level = $("#level option:selected").val();
+
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: ctx + "customerInfo/customers/edit",
+            data: {
+                "customerId": $("#customerId").val(),
+                "area": area,
+                "customerName": customerName,
+                "translateName": translateName,
+                "shortName": shortName,
+                "code": code,
+                "legalPerson": legalPerson,
+                "legalPersonPhone": legalPersonPhone,
+                "delegation": delegation,
+                "delegationPhone": delegationPhone,
+                "bank": bank,
+                "bankAccount": bankAccount,
+                "address": address,
+                "email": email,
+                "phoneNumber": phoneNumber,
+                "fax": fax,
+                "url": url,
+                "region": region,
+                "level": level,
+            },
+            async: false,
+            error: function (request) {
+                $.modal.alertError("系统错误");
+            },
+            success: function (data) {
+                $.operate.saveSuccess(data);
+            }
+        });
+    }
+
+</script>
 </body>
 </html>

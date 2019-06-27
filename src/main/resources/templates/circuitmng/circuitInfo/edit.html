@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link th:href="@{/ajax/libs/iCheck/custom.css}" rel="stylesheet"/>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <input id="speedList" name="speedList" th:value="${speedList}" type="hidden" />
+    <form class="form-horizontal m" id="form-circuit-edit" th:object="${circuit}">
+        <input id="circuitId" name="circuitId" th:field="*{circuitId}"  type="hidden">
+        <input id="speed" name="circuitSpeed" th:field="*{circuitSpeed}" type="hidden">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">电路编号：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="circuitCode" id="circuitCode" th:field="*{circuitCode}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">电路名称：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="circuitName" id="circuitName" th:field="*{circuitName}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">电路类型：</label>
+            <div class="col-sm-8">
+                <select id="circuitType" class="form-control m-b" th:with="type=${@dict.getType('tele_circuit_type')}">
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}"
+                            th:value="${dict['dictValue']}" th:field="*{circuitType}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">电路业务类型：</label>
+            <div class="col-sm-8">
+                <select id="circuitServiceType" class="form-control m-b" th:with="type=${@dict.getType('tele_service_type')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}"
+                            th:value="${dict['dictValue']}" th:field="*{circuitServiceType}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label ">所属区域：</label>
+            <div class="col-sm-8">
+                <select id="circuitArea" class="form-control m-b" th:with="type=${@dict.getType('cus_area')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}"
+                            th:value="${dict['dictValue']}" th:field="*{circuitArea}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">电路速率：</label>
+            <div class="col-sm-8">
+                <select class="form-control" type="text" name="circuitSpeed" id="circuitSpeed" >
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">本端节点：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="homeEnd" id="homeEnd" th:field="*{homeEnd}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">对端节点：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="oppEnd" id="oppEnd" th:field="*{oppEnd}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">通信技术服务费：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="circuitFee" id="circuitFee" th:field="*{circuitFee}" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">电路费用：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="circuitFeeCir" id="circuitFeeCir" th:field="*{circuitFeeCir}" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">端口费用：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="circuitFeePort" id="circuitFeePort" th:field="*{circuitFeePort}" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">电路配置费：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="configFee" id="configFee" th:field="*{configFee}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">分成方式：</label>
+            <div class="col-sm-8">
+                <select id="divideRatio" class="form-control m-b" th:with="type=${@dict.getType('divide_ratio')}">
+                    <option value="">请选择</option>
+                    <option th:each="dict : ${type}" th:text="${dict['dictLabel']}"
+                            th:value="${dict['dictValue']}" th:field="*{divideRatio}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">电路用途：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="useInfo" id="useInfo" th:field="*{useInfo}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">配置时间：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" autocomplete="off" name="configTime" id="configTime" class="form-control" th:field="*{configTime}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">启付时间：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" autocomplete="off" name="openTime" id="openTime" class="form-control" th:field="*{openTime}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">取消时间：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" autocomplete="off" name="cancelTime" id="cancelTime" class="form-control" th:field="*{cancelTime}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">运维平台申请编号：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="iomsApplyNumber" id="iomsApplyNumber" th:field="*{iomsApplyNumber}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">依据文件：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="basisFile" id="basisFile" th:field="*{basisFile}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">说明：</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="description" id="description" th:field="*{description}">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="form-control-static col-sm-offset-9">
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script th:src="@{/ajax/libs//datapicker/bootstrap-datepicker.js}"></script>
+<script th:src="@{/ajax/libs/beautifyhtml/beautifyhtml.js}"></script>
+<script>
+    $(function() {
+        //清除速率的列表数据
+        $("#circuitSpeed").empty();
+
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "circuitmng/circuitInfo/speedlistbyid",
+            async : false,
+            data: {
+                circuitId: $("#circuitId").val()
+            },
+            dataType: "json",
+            error : function(request) {
+                $.modal.alertError("查找速率错误");
+            },
+            success : function(data) {
+                var speed = $("#speed").val();
+                for (var i = 0; i < data.length; i++) {
+                    //判断电路类型是境内电路还是境外电路
+                    if ($("#circuitType").val().indexOf("境外") != -1) {
+                        //判断速率是否相等，相等则默认选中
+                        if (data[i].rate == speed) {
+                            //境外电路类型
+                            $("#circuitSpeed").append('<option selected="selected" value="' + data[i].overseaFeeId + ' ">' + data[i].rate + '</option>');
+                        }else {
+                            //境外电路类型
+                            $("#circuitSpeed").append('<option value="' + data[i].overseaFeeId + ' ">' + data[i].rate + '</option>');
+                        }
+                    } else {
+                        if (data[i].rate == speed) {
+                            //境内电路类型
+                            $("#circuitSpeed").append('<option selected="selected" value="' + data[i].domesticFeeId + ' ">' + data[i].rate + '</option>');
+                        }else {
+                            //境内电路类型
+                            $("#circuitSpeed").append('<option value="' + data[i].domesticFeeId + ' ">' + data[i].rate + '</option>');
+                        }
+                    }
+                }
+            }
+        });
+
+    });
+
+    $('#circuitType').on('select2:select', function (e) {
+        //清除速率的列表数据
+        $("#circuitSpeed").empty();
+        //清空费用项的数据
+        $("#circuitFee").val("");           //通信技术服务费
+        $("#circuitFeeCir").val("");     //电路费用
+        $("#circuitFeePort").val("");   //端口费
+        //获取一级select的值
+        var value = e.params.data.id;
+        //获取速率的列表值
+        $.ajax({
+            type: 'POST',
+            url: ctx + 'circuitmng/circuitInfo/findspeedlist',
+            cache : false,
+            data:{
+                circuitType:value
+            },
+            dataType:'json',
+            success:function(secondData){
+                $("#circuitSpeed").append('<option value="">请选择</option>');
+                for (var i = 0; i < secondData.length; i++) {
+                    if ($("#circuitType").val().indexOf("境外")!=-1) {
+                        //境外电路类型
+                        $("#circuitSpeed").append('<option value="'+secondData[i].overseaFeeId+' ">'+secondData[i].rate+'</option>');
+                    }else {
+                        $("#circuitSpeed").append('<option value="'+secondData[i].domesticFeeId+' ">'+secondData[i].rate+'</option>');
+                    }
+                }
+            }
+        });
+
+    });
+
+    $('#circuitSpeed').on('select2:select', function (e) {
+        //获取一级select的值
+        var value = e.params.data.id;
+        var circuitType = $("#circuitType").val();
+        $.ajax({
+            type: 'POST',
+            url: ctx + 'circuitmng/circuitInfo/findcircuitfee',
+            cache : false,
+            data:{
+                circuitId:value,
+                circuitType:circuitType
+            },
+            dataType:'json',
+            success:function(data){
+                $("#circuitFee").val(data.circuitFee);           //通信技术服务费
+                $("#circuitFeeCir").val(data.circuitFeeCir);     //电路费用
+                $("#circuitFeePort").val(data.circuitFeePort);   //端口费
+            }
+        });
+
+    });
+
+    $("#form-circuit-edit").validate({
+        rules:{
+            circuitType: {
+                required:true
+            },
+            circuitServiceType: {
+                required:true
+            },
+            circuitArea: {
+                required:true
+            },
+            circuitCode: {
+                required:true,
+                remote: {
+                    url: ctx + "circuitmng/circuitInfo/checkCircuitCodeNameUnique",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        name : function() {
+                            return $.common.trim($("#circuitCode").val());
+                        },
+                        circuitId: $("#circuitId").val()
+                    },
+                    dataFilter: function(data, type) {
+                        if (data == "0") return true;
+                        else return false;
+                    }
+                }
+            },
+            circuitName: {
+                required:true
+            },
+            circuitSpeed: {
+                required:true
+            },
+            circuitFee: {
+                required:true
+            },
+            circuitFeeCir: {
+                required:true
+            },
+            circuitFeePort: {
+                required:true
+            },
+            homeEnd: {
+                required:true
+            },
+            oppEnd: {
+                required:true
+            },
+            openTime: {
+                required:true
+            },
+            configTime: {
+                required:true
+            },
+            divideRatio:{
+
+            }
+        },
+        messages: {
+            "circuitCode": {
+                remote: "电路编号已经存在"
+            },
+        },
+        submitHandler:function(form){
+            edit();
+        }
+    });
+
+    //配置datepicker插件
+    $(".input-group.date").datepicker({
+        dateFormat: 'yyyy-MM-dd',
+        todayBtn: "linked",
+        keyboardNavigation: !1,
+        forceParse: !1,
+        calendarWeeks: !0,
+        autoclose: !0});
+
+    function edit() {
+        var circuitType = $("#circuitType option:selected").val();
+        var circuitServiceType = $("#circuitServiceType option:selected").val();
+        var circuitArea = $("#circuitArea option:selected").val();
+        var circuitCode = $("input[name='circuitCode']").val();
+        var circuitName = $("input[name='circuitName']").val();
+        var circuitSpeed = $("#circuitSpeed").find("option:selected").text();
+        var circuitFee = $("input[name='circuitFee']").val();
+        var circuitFeeCir = $("input[name='circuitFeeCir']").val();
+        var circuitFeePort = $("input[name='circuitFeePort']").val();
+        var configFee = $("input[name='configFee']").val();
+        var isFirstConfig = $("#isFirstConfig option:selected").val();
+        var homeEnd = $("input[name='homeEnd']").val();
+        var oppEnd = $("input[name='oppEnd']").val();
+        var useInfo = $("input[name='useInfo']").val();
+        var openTime = $("#openTime").val();
+        var configTime = $("#configTime").val();
+        var cancelTime = $("#cancelTime").val();
+        var divideRatio = $("#divideRatio option:selected").val();
+        let iomsApplyNumber = $("#iomsApplyNumber").val();
+        let basisFile = $("#basisFile").val();
+        let description = $("#description").val();
+
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : ctx + "circuitmng/circuitInfo/edit",
+            data : {
+                "circuitId": $("#circuitId").val(),
+                "circuitType": circuitType,
+                "circuitServiceType": circuitServiceType,
+                "circuitArea": circuitArea,
+                "circuitCode": circuitCode,
+                "circuitName": circuitName,
+                "circuitSpeed": circuitSpeed,
+                "circuitFee": circuitFee,
+                "circuitFeeCir": circuitFeeCir,
+                "circuitFeePort": circuitFeePort,
+                "configFee": configFee,
+                "isFirstConfig": isFirstConfig,
+                "homeEnd": homeEnd,
+                "oppEnd": oppEnd,
+                "useInfo": useInfo,
+                "openTime": openTime,
+                "configTime": configTime,
+                "cancelTime": cancelTime,
+                "divideRatio": divideRatio,
+                "iomsApplyNumber": iomsApplyNumber,
+                "basisFile": basisFile,
+                "description": description
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.saveSuccess(data);
+
+                $("#speed").empty();
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

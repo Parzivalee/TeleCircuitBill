@@ -34,10 +34,10 @@
 
             <form class="m-t" id="signupForm">
                 <div class="form-group">
-                    <input type="text" name="username" class="form-control uname" placeholder="用户名" value="admin">
+                    <input type="text" name="username" class="form-control uname" placeholder="用户名"  ……>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" class="form-control pword m-b" placeholder="密码" value="admin123">
+                    <input type="password" name="password" class="form-control pword m-b" placeholder="密码" >
                 </div>
 
                 <div class="row" th:if="${captchaEbabled==true}">
@@ -68,7 +68,7 @@
     <script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
     <script src="../static/ajax/libs/iCheck/icheck.min.js" th:src="@{/ajax/libs/iCheck/icheck.min.js}"></script>
     <script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
-    <script src="../static/atnc/js/ry-ui.min.js" th:src="@{/atnc/js/ry-ui.min.js?v=2.2.0}"></script>
+    <script src="../static/atnc/js/ry-ui.js" th:src="@{/atnc/js/ry-ui.js?v=2.2.0}"></script>
     <script src="../static/atnc/login.js" th:src="@{/atnc/login.js}"></script>
 </body>
 </html>

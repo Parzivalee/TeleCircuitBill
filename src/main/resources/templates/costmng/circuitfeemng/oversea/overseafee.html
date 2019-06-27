@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 select-info">
+            <form id="overseafee-form">
+                <div class="select-list gd">
+                    <ul>
+                        <li>
+                            电路类型：
+                            <select name="circuitType" th:with="type=${@dict.getType('tele_circuit_type')}">
+                                <option value="">所有</option>
+                                <option th:each="e : ${type}" th:text="${e['dictLabel']}" th:value="${e['dictValue']}"></option>
+                            </select>
+                        </li>
+                        <li>
+                            速率：<input type="text" name="rate"/>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <!--<a class="btn btn-success btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i>&nbsp;下载</a>-->
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="btn-group hidden-xs" id="toolbar" role="group">
+            <a class="btn btn-outline btn-success btn-rounded" onclick="$.operate.add()" shiro:hasPermission="circuitcost:oversea:add">
+                <i class="fa fa-plus"></i> 新增
+            </a>
+            <a class="btn btn-outline btn-danger btn-rounded" onclick="$.operate.batRemove()" shiro:hasPermission="circuitcost:oversea:remove">
+                <i class="fa fa-trash-o"></i> 删除
+            </a>
+        </div>
+
+        <div class="col-sm-12 select-info table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var editFlag = [[${@permission.hasPermi('circuitcost:oversea:edit')}]];
+    var removeFlag = [[${@permission.hasPermi('circuitcost:oversea:remove')}]];
+    var circuitType = [[${@dict.getType('tele_circuit_type')}]];
+    var prefix = ctx + "costmng/circuitcost/oversea";
+
+    $(function() {
+        var options = {
+            id: 'overseaFeeId',
+            url: prefix + "/list",
+            createUrl: prefix + "/add",
+            updateUrl: prefix + "/edit/{id}",
+            removeUrl: prefix + "/remove",
+            exportUrl: prefix + "/export",
+            search: false,
+            showExport: false,
+            modalName: '电路月租资费',
+            columns: [
+                {
+                checkbox: true
+                },
+                {
+                    field: 'circuitType',
+                    title: '电路类型',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictData(circuitType, value);
+                    }
+                },
+                {
+                    field: 'rate',
+                    title: '速率（kpbs）',
+                    sortable: true
+                },
+                {
+                    field: 'price',
+                    title: '单价（美元/月/条）',
+                    sortable: true
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    formatter: function(value, row, index) {
+                        var actions = [];
+                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.overseaFeeId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.overseaFeeId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                        return actions.join('');
+                    }
+                }]
+        };
+        $.table.init(options);
+    });
+
+</script>
+</body>
+</html>

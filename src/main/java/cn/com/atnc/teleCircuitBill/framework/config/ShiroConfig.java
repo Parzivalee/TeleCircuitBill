@@ -3,6 +3,8 @@ package cn.com.atnc.teleCircuitBill.framework.config;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.servlet.Filter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import cn.com.atnc.teleCircuitBill.common.utils.StringUtils;
 import cn.com.atnc.teleCircuitBill.framework.shiro.realm.UserRealm;
@@ -27,6 +29,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import org.springframework.http.HttpStatus;
 
 /**
  * 权限配置加载
@@ -354,4 +357,20 @@ public class ShiroConfig {
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
     }
+
+    /**
+     * 为response设置header，实现跨域
+     * @param request
+     * @param response
+     *//*
+    public void setHeader(HttpServletRequest request, HttpServletResponse response){
+        //跨域的header设置
+        response.setHeader("Access-control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Methods", request.getMethod());
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("Access-Control-Allow-Headers", request.getHeader("Access-Control-Request-Headers"));
+        //防止乱码，适用于传输JSON数据
+        response.setHeader("Content-Type","application/json;charset=UTF-8");
+        response.setStatus(HttpStatus.OK.value());
+    }*/
 }

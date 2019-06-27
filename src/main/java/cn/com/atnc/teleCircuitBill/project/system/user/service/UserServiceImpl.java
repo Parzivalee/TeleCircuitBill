@@ -75,7 +75,7 @@ public class UserServiceImpl implements IUserService
     /**
      * 通过手机号码查询用户
      * 
-     * @param userName 用户名
+     * @param phoneNumber 手机号码
      * @return 用户对象信息
      */
     @Override

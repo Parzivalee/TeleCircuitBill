@@ -85,6 +85,7 @@
 		var removeFlag = [[${@permission.hasPermi('system:user:remove')}]];
 		var resetPwdFlag = [[${@permission.hasPermi('system:user:resetPwd')}]];
 		var datas = [[${@dict.getType('sys_normal_disable')}]];
+		var sex  = [[${@dict.getType('sys_user_sex')}]];
 		var prefix = ctx + "system/user"
 
 		$(document).ready(function(){
@@ -117,6 +118,13 @@
 		            title: '登录名称',
 		            sortable: true
 		        },
+                {
+                    field: 'sex',
+                    title:'性别',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictData(sex, value);
+                    }
+                },
 		        {
 		            field: 'userName',
 		            title: '用户名称'
@@ -206,7 +214,7 @@
 		/*用户管理-部门*/
 		function dept() {
 			var url = ctx + "system/dept";
-			createMenuItem(url, "部门管理");
+                createMenuItem(url, "部门管理");
 		}
 
 		/*用户管理-重置密码*/

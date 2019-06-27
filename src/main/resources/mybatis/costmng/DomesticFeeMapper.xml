@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.costmng.circuitfeemng.domestic.mapper.DomesticFeeMapper">
+
+    <resultMap type="DomesticFee" id="DomesticFeeResult">
+        <id     property="domesticFeeId"       column="id"/>
+        <result property="circuitType"    column="tele_circuit_type"/>
+        <result property="rate"    column="cir"/>
+        <result property="portFee"    column="port_fee"/>
+        <result property="vcMonthFee"    column="vc_month_fee"/>
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+    </resultMap>
+
+    <sql id="selectDomesticFeeVo">
+        select *
+		from tele_circuit_month_fee
+    </sql>
+
+    <select id="selectDomesticFeeById" parameterType="String" resultMap="DomesticFeeResult">
+        <include refid="selectDomesticFeeVo"/>
+        where id = #{domesticFeeId}
+    </select>
+
+    <select id="selectDomesticFeeList" parameterType="DomesticFee" resultMap="DomesticFeeResult">
+        <include refid="selectDomesticFeeVo"/>
+        <where>
+            <if test="circuitType != null and circuitType != '' " >
+                AND tele_circuit_type=#{circuitType}
+            </if>
+            <if test="rate != null and rate != 0 ">
+                AND cir=#{rate}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertDomesticFee" parameterType="DomesticFee">
+        <selectKey keyProperty="domesticFeeId" resultType="java.lang.String" order="BEFORE">
+           select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_circuit_month_fee(
+        <if test="domesticFeeId != null and domesticFeeId != ''">id,</if>
+        <if test="circuitType != null and circuitType != ''">tele_circuit_type,</if>
+        <if test="rate != null and rate != ''">cir,</if>
+        <if test="portFee != null and portFee != ''">port_fee,</if>
+        <if test="vcMonthFee != null and vcMonthFee != ''">vc_month_fee,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="domesticFeeId != null and domesticFeeId != ''">#{domesticFeeId},</if>
+        <if test="circuitType != null and circuitType != ''">#{circuitType},</if>
+        <if test="rate != null and rate != ''">#{rate},</if>
+        <if test="portFee != null and portFee != ''">#{portFee},</if>
+        <if test="vcMonthFee != null and vcMonthFee != ''">#{vcMonthFee},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+    <update id="updateDomesticFee" parameterType="DomesticFee">
+        update tele_circuit_month_fee
+        <set>
+            <if test="circuitType != null and circuitType != ''">tele_circuit_type = #{circuitType},</if>
+            <if test="rate != null and rate != ''">cir = #{rate},</if>
+            <if test="portFee != null and portFee != ''">port_fee = #{portFee},</if>
+            <if test="vcMonthFee != null and vcMonthFee != ''">vc_month_fee = #{vcMonthFee},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{domesticFeeId}
+    </update>
+
+    <delete id="deleteDomesticFeeByIds" parameterType="String">
+        delete from tele_circuit_month_fee where id in
+        <foreach item="domesticFeeId" collection="array" open="(" separator="," close=")">
+            #{domesticFeeId}
+        </foreach>
+    </delete>
+</mapper>

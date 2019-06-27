@@ -1,19 +1,26 @@
 # 项目相关配置
-ATNCWeb:
+telecircuitbill:
   #名称
-  name: ATNCWeb
+  name: TeleCircuitBill
   #版本
   version: 1.0
   #版权年份
   copyrightYear: 2018
   #头像上传路径
-  profile: D:/profile/
+  profile: /Users/lwj/Documents/project/profile/
+
+#文件上传路径
+web:
+  upload-path: /Users/lwj/Documents/project/profile/
 #开发环境配置
 server:
   #端口
-  port: 8081
+  port: 8088
   tomcat:
     uri-encoding: utf-8
+    basedir: /Users/lwj/Documents/project/profile/
+  servlet:
+    context-path: /teleCircuitBill
 #日志配置
 logging:
   level:
@@ -36,7 +43,7 @@ spring:
     basename: i18n/messages
   jackson:
     time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd
   profiles: 
     active: druid
   #文件上传
@@ -48,6 +55,11 @@ spring:
     restart:
       #禁用devtools模块的热部署功能
       enabled: true
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: ["classpath:/META-INF/resources/","classpath:/resources/","classpath:/static/",
+                      "classpath:/public/","file:${web.upload-path}"]
 # MyBatis
 mybatis:
     # 搜索指定包别名
@@ -102,3 +114,16 @@ gen:
   autoRemovePre: true
   # 表前缀(类名不会包含表前缀)
   tablePrefix: sys_
+
+# Bill Code Type
+bill:
+  dlzf: DLZF
+  config: DLPZ
+  access: DLRW
+  dlfc: JS
+
+# 帆软报表地址配置
+fineReport:
+  url: http://localhost:8075/webroot/decision/view/report?viewlet=KFDL%2F
+
+

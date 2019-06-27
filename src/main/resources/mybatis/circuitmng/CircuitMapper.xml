@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.circuitmng.circuitInfo.mapper.CircuitMapper">
+
+    <resultMap type="cn.com.atnc.teleCircuitBill.project.circuitmng.circuitInfo.domain.Circuit" id="CircuitResult">
+        <id     property="circuitId"       column="id"/>
+        <result property="circuitType"    column="tele_circuit_type"/>
+        <result property="circuitServiceType"    column="tele_service_type"/>
+        <result property="circuitArea"    column="tele_circuit_area"/>
+        <result property="circuitName"    column="tele_circuit_name"/>
+        <result property="circuitSpeed"    column="tele_circuit_speed"/>
+        <result property="circuitFee"    column="tele_circuit_fee"/>
+        <result property="circuitFeeCir"    column="tele_circuit_fee_cir"/>
+        <result property="circuitFeePort"    column="tele_circuit_fee_port"/>
+        <result property="configFee"    column="tele_circuit_config_fee"/>
+        <result property="divideRatio" column="divide_mode"/>
+        <result property="isFirstConfig"    column="is_first_config"/>
+        <result property="homeEnd"    column="tele_circuit_homeend"/>
+        <result property="oppEnd"    column="tele_circuit_oppend"/>
+        <result property="useInfo"    column="tele_circuit_use"/>
+        <result property="configTime"   column="tele_circuit_configtime"/>
+        <result property="openTime"    column="tele_circuit_opentime"/>
+        <result property="cancelTime"    column="tele_circuit_canceltime"/>
+        <result property="isExpired"    column="is_expired"/>
+        <result property="circuitCode"    column="circuit_code"/>
+        <result property="isGenerateConfigBill"    column="is_generate_config_bill"/>
+        <result property="iomsApplyNumber"    column="ioms_apply_number"/>
+        <result property="basisFile"    column="basis_file"/>
+        <result property="description"    column="description"/>
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <result property="isdel" column="isdel" />
+    </resultMap>
+
+    <sql id="selectCircuitVo">
+        select *
+		from tele_circuit_info where isdel=0
+    </sql>
+
+    <select id="selectCircuitList" parameterType="cn.com.atnc.teleCircuitBill.project.circuitmng.circuitInfo.domain.Circuit" resultMap="CircuitResult">
+        <include refid="selectCircuitVo"/>
+        <if test="circuitType != null and circuitType != ''">
+            AND tele_circuit_type=#{circuitType}
+        </if>
+        <if test="circuitServiceType != null and circuitServiceType != ''">
+            AND tele_service_type=#{circuitServiceType}
+        </if>
+        <if test="circuitName != null and circuitName != ''">
+            AND tele_circuit_name like concat('%',#{circuitName},'%')
+        </if>
+        <if test="circuitSpeed != null and circuitSpeed != ''">
+            AND tele_circuit_speed = #{circuitSpeed}
+        </if>
+        <if test="circuitCode != null and circuitCode != ''">
+            AND circuit_code like concat('%',#{circuitCode},'%')
+        </if>
+        <if test="isExpired != null and isExpired != '' ">
+            and is_expired=#{isExpired}
+        </if>
+            <!--<if test="params != null and params.beginTime != ''">&lt;!&ndash; 开始时间检索 &ndash;&gt;-->
+                <!--and date_format(tele_circuit_opentime,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')-->
+            <!--</if>-->
+            <!--<if test="params != null and params.endTime != ''">&lt;!&ndash; 结束时间检索 &ndash;&gt;-->
+                <!--and date_format(tele_circuit_opentime,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')-->
+            <!--</if>-->
+        order by create_time desc
+    </select>
+
+    <select id="selectCircuitByContractId" parameterType="String" resultMap="CircuitResult">
+        select a.* from
+        tele_circuit_info a left join tele_contract_circuit_relation b
+        on a.id=b.tb_telecircuit_info_id
+        where b.tb_contract_info_id=#{contractId} and a.isdel=0 and b.isend="0"
+    </select>
+
+    <select id="selectCircuitById" parameterType="String" resultMap="CircuitResult">
+        select * from tele_circuit_info
+        where id=#{circuitId} and isdel=0
+    </select>
+
+    <select id="selectCircuitByCircuitCode" parameterType="String" resultMap="CircuitResult">
+        select * from tele_circuit_info
+        where circuit_code=#{circuitCode} and isdel=0
+    </select>
+
+    <select id="selectCircuitByConditions" resultMap="CircuitResult">
+        select * from tele_circuit_info
+        where circuit_code=#{customerId} and isdel=0
+    </select>
+
+    <select id="selectCircuitListInDays" parameterType="String" resultMap="CircuitResult">
+        select * from tele_circuit_info
+        where isdel=0
+        and date_format(tele_circuit_canceltime,'%y%m%d') &gt;= date_format(#{day7before},'%y%m%d')
+        and date_format(tele_circuit_canceltime,'%y%m%d') &lt;= date_format(#{today},'%y%m%d')
+
+    </select>
+
+    <insert id="insertCircuit" parameterType="cn.com.atnc.teleCircuitBill.project.circuitmng.circuitInfo.domain.Circuit">
+        <selectKey keyProperty="circuitId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_circuit_info(
+            <if test="circuitId != null and circuitId != ''">id,</if>
+            <if test="circuitType != null and circuitType != ''">tele_circuit_type,</if>
+            <if test="circuitServiceType != null and circuitServiceType != ''">tele_service_type,</if>
+            <if test="circuitArea != null and circuitArea != ''">tele_circuit_area,</if>
+            <if test="circuitName != null and circuitName != ''">tele_circuit_name,</if>
+            <if test="circuitSpeed != null and circuitSpeed != ''">tele_circuit_speed,</if>
+            <if test="circuitFee != null and circuitFee != ''">tele_circuit_fee,</if>
+            <if test="circuitFeeCir != null and circuitFeeCir != ''">tele_circuit_fee_cir,</if>
+            <if test="circuitFeePort != null and circuitFeePort != ''">tele_circuit_fee_port,</if>
+            <if test="configFee != null and configFee != ''">tele_circuit_config_fee,</if>
+            <if test="divideRatio != null and divideRatio != ''">divide_mode,</if>
+            <if test="isFirstConfig != null and isFirstConfig != ''">is_first_config,</if>
+            <if test="homeEnd != null and homeEnd != ''">tele_circuit_homeend,</if>
+            <if test="oppEnd != null and oppEnd != ''">tele_circuit_oppend,</if>
+            <if test="useInfo != null and useInfo != ''">tele_circuit_use,</if>
+            <if test="configTime != null">tele_circuit_configtime,</if>
+            <if test="openTime != null">tele_circuit_opentime,</if>
+            <if test="cancelTime != null">tele_circuit_canceltime,</if>
+            <if test="isExpired != null and isExpired != '' ">is_expired,</if>
+            <if test="circuitCode != null and circuitCode != ''">circuit_code,</if>
+            <if test="isGenerateConfigBill != null and isGenerateConfigBill != ''">is_generate_config_bill,</if>
+            <if test="iomsApplyNumber != null and iomsApplyNumber != ''">ioms_apply_number,</if>
+            <if test="basisFile != null and basisFile != ''">basis_file,</if>
+            <if test="description != null and description != ''">description,</if>
+            <if test="createBy != null and createBy != ''">create_by,</if>
+            create_time
+            )values(
+            <if test="circuitId != null and circuitId != ''">#{circuitId},</if>
+            <if test="circuitType != null and circuitType != ''">#{circuitType},</if>
+            <if test="circuitServiceType != null and circuitServiceType != ''">#{circuitServiceType},</if>
+            <if test="circuitArea != null and circuitArea != ''">#{circuitArea},</if>
+            <if test="circuitName != null and circuitName != ''">#{circuitName},</if>
+            <if test="circuitSpeed != null and circuitSpeed != ''">#{circuitSpeed},</if>
+            <if test="circuitFee != null and circuitFee != ''">#{circuitFee},</if>
+            <if test="circuitFeeCir != null and circuitFeeCir != ''">#{circuitFeeCir},</if>
+            <if test="circuitFeePort != null and circuitFeePort != ''">#{circuitFeePort},</if>
+            <if test="configFee != null and configFee != ''">#{configFee},</if>
+            <if test="divideRatio != null and divideRatio != ''">#{divideRatio},</if>
+            <if test="isFirstConfig != null and isFirstConfig != ''">#{isFirstConfig},</if>
+            <if test="homeEnd != null and homeEnd != ''">#{homeEnd},</if>
+            <if test="oppEnd != null and oppEnd != ''">#{oppEnd},</if>
+            <if test="useInfo != null and useInfo != ''">#{useInfo},</if>
+            <if test="configTime != null">#{configTime},</if>
+            <if test="openTime != null">#{openTime},</if>
+            <if test="cancelTime != null">#{cancelTime},</if>
+            <if test="isExpired != null and isExpired != '' ">#{isExpired},</if>
+            <if test="circuitCode != null and circuitCode != ''">#{circuitCode},</if>
+            <if test="isGenerateConfigBill != null and isGenerateConfigBill != ''">#{isGenerateConfigBill},</if>
+            <if test="iomsApplyNumber != null and iomsApplyNumber != ''">#{iomsApplyNumber},</if>
+            <if test="basisFile != null and basisFile != ''">#{basisFile},</if>
+            <if test="description != null and description != ''">#{description},</if>
+            <if test="createBy != null and createBy != ''">#{createBy},</if>
+            sysdate()
+        )
+    </insert>
+
+    <update id="updateCircuit" parameterType="cn.com.atnc.teleCircuitBill.project.circuitmng.circuitInfo.domain.Circuit">
+        update tele_circuit_info
+        <set>
+            <if test="circuitType != null and circuitType != ''">tele_circuit_type=#{circuitType},</if>
+            <if test="circuitServiceType != null and circuitServiceType != ''">tele_service_type=#{circuitServiceType},</if>
+            <if test="circuitArea != null and circuitArea != ''">tele_circuit_area=#{circuitArea},</if>
+            <if test="circuitName != null and circuitName != ''">tele_circuit_name=#{circuitName},</if>
+            <if test="circuitSpeed != null and circuitSpeed != ''">tele_circuit_speed=#{circuitSpeed},</if>
+            <if test="circuitFee != null and circuitFee != ''">tele_circuit_fee=#{circuitFee},</if>
+            <if test="circuitFeeCir != null and circuitFeeCir != ''">tele_circuit_fee_cir=#{circuitFeeCir},</if>
+            <if test="circuitFeePort != null and circuitFeePort != ''">tele_circuit_fee_port=#{circuitFeePort},</if>
+            <if test="configFee != null and configFee != ''">tele_circuit_config_fee=#{configFee},</if>
+            <if test="divideRatio != null and divideRatio != ''">divide_mode=#{divideRatio},</if>
+            <if test="isFirstConfig != null and isFirstConfig != ''">is_first_config=#{isFirstConfig},</if>
+            <if test="homeEnd != null and homeEnd != ''">tele_circuit_homeend=#{homeEnd},</if>
+            <if test="oppEnd != null and oppEnd != ''">tele_circuit_oppend=#{oppEnd},</if>
+            <if test="useInfo != null and useInfo != ''">tele_circuit_use=#{useInfo},</if>
+            <if test="configTime != null">tele_circuit_configtime=#{configTime},</if>
+            <if test="openTime != null">tele_circuit_opentime=#{openTime},</if>
+            <if test="cancelTime != null">tele_circuit_canceltime=#{cancelTime},</if>
+            <if test="isExpired != null and isExpired != '' ">is_expired=#{isExpired},</if>
+            <if test="circuitCode != null and circuitCode != ''">circuit_code=#{circuitCode},</if>
+            <if test="isGenerateConfigBill != null and isGenerateConfigBill != ''">is_generate_config_bill=#{isGenerateConfigBill},</if>
+            <if test="iomsApplyNumber != null and iomsApplyNumber != ''">ioms_apply_number=#{iomsApplyNumber},</if>
+            <if test="basisFile != null and basisFile != ''">basis_file=#{basisFile},</if>
+            <if test="description != null and description != ''">description=#{description},</if>
+            <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{circuitId}
+    </update>
+
+    <!--逻辑删除-->
+    <update id="removeCircuitByIds" parameterType="String">
+        update tele_circuit_info set isdel=1 where id in
+        <foreach collection="array" item="circuitId" open="(" separator="," close=")">
+            #{circuitId}
+        </foreach>
+    </update>
+
+    <select id="checkCircuitCodeNameUnique" parameterType="String" resultMap="CircuitResult">
+		select * from tele_circuit_info where circuit_code=#{circuitCode} and isdel=0
+	</select>
+</mapper>

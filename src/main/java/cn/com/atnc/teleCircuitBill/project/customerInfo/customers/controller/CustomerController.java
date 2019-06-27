@@ -5,7 +5,6 @@ import cn.com.atnc.teleCircuitBill.framework.aspectj.lang.constant.BusinessType;
 import cn.com.atnc.teleCircuitBill.framework.web.controller.BaseController;
 import cn.com.atnc.teleCircuitBill.framework.web.domain.AjaxResult;
 import cn.com.atnc.teleCircuitBill.framework.web.page.TableDataInfo;
-import cn.com.atnc.teleCircuitBill.project.customerInfo.countrys.domain.Country;
 import cn.com.atnc.teleCircuitBill.project.customerInfo.customers.domain.Customer;
 import cn.com.atnc.teleCircuitBill.project.customerInfo.customers.service.CustomerService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -52,13 +51,13 @@ public class CustomerController extends BaseController {
     public TableDataInfo list(Customer customer)
     {
         startPage();
-        List<Customer> list = customerService.selectCountryList(customer);
+        List<Customer> list = customerService.selectCustomerList(customer);
         return getDataTable(list);
     }
 
 
     /**
-     * 国家新增-get
+     * 客户新增-get
      */
     @GetMapping("/add")
     public String add() {
@@ -66,50 +65,52 @@ public class CustomerController extends BaseController {
     }
 
     /**
-     * 国家新增-post
+     * 客户新增-post
      */
-    @RequiresPermissions("customerInfo:countrys:add")
-    @Log(title = "国家管理", action = BusinessType.INSERT)
+    @RequiresPermissions("customerInfo:customers:add")
+    @Log(title = "客户管理", action = BusinessType.INSERT)
     @PostMapping("/add")
     @Transactional(rollbackFor = Exception.class)
     @ResponseBody
-    public AjaxResult addSave(Country country)
+    public AjaxResult addSave(Customer customer)
     {
-        return toAjax(countryService.insertCountry(country));
+        return toAjax(customerService.insertCustomer(customer));
     }
 
     /**
-     * 国家修改
+     * 客户修改-GET
      */
-    @GetMapping("/edit/{countryId}")
-    public String edit(@PathVariable("countryId") Long countryId, ModelMap model)
+    @GetMapping("/edit/{customerId}")
+    public String edit(@PathVariable("customerId") String customerId, ModelMap model)
     {
-        model.put("country", countryService.selectCountryById(countryId));
+        model.put("customer", customerService.findCustomerByCustomerId(customerId));
         return prefix + "/edit";
     }
 
     /**
-     * 修改保存用户
+     * 修改保存用户-POST
      */
-    @RequiresPermissions("customerInfo:countrys:edit")
-    @Log(title = "国家管理", action = BusinessType.UPDATE)
+    @RequiresPermissions("customerInfo:customers:edit")
+    @Log(title = "客户管理", action = BusinessType.UPDATE)
     @PostMapping("/edit")
     @Transactional(rollbackFor = Exception.class)
     @ResponseBody
-    public AjaxResult editSave(Country country) {
-        return toAjax(countryService.updateCountry(country));
+    public AjaxResult editSave(Customer customer) {
+        return toAjax(customerService.updateCustomer(customer));
     }
 
     /**
-     * 国家删除
+     * 删除客户
+     * @param ids
+     * @return
      */
-    @RequiresPermissions("customerInfo:countrys:remove")
-    @Log(title = "国家管理", action = BusinessType.DELETE)
+    @RequiresPermissions("customerInfo:customers:remove")
+    @Log(title = "客户管理", action = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids)
     {
-        return toAjax(countryService.deleteCountryByIds(ids));
+        return toAjax(customerService.deleteCountryByIds(ids));
     }
 
 }

@@ -37,6 +37,12 @@ public class FileUploadUtils
      */
     public static final String IMAGE_JPG_EXTENSION = ".jpg";
 
+    private static final String DOCUMENT_PDF_EXTENSSION = ".pdf";
+
+    private static final String DOCUMENT_DOC_EXTENSSION = ".doc";
+
+    private static final String DOCUMENT_DOCX_EXTENSSION = ".docx";
+
     private static int counter = 0;
 
     public static void setDefaultBaseDir(String defaultBaseDir)
@@ -60,6 +66,7 @@ public class FileUploadUtils
     {
         try
         {
+
             return upload(getDefaultBaseDir(), file, FileUploadUtils.IMAGE_JPG_EXTENSION);
         }
         catch (Exception e)

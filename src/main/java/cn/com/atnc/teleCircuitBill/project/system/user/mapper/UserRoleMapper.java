@@ -3,11 +3,14 @@ package cn.com.atnc.teleCircuitBill.project.system.user.mapper;
 import java.util.List;
 
 import cn.com.atnc.teleCircuitBill.project.system.user.domain.UserRole;
+import org.springframework.stereotype.Repository;
+
 /**
  * 用户表 数据层
  * 
  * @author
  */
+@Repository
 public interface UserRoleMapper
 {
 

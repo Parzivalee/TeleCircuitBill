@@ -11,6 +11,7 @@
             init: function(options) {
                 $.table._option = options;
                 $.table._params = $.common.isEmpty(options.queryParams) ? $.table.queryParams : options.queryParams;
+
                 _sortOrder = $.common.isEmpty(options.sortOrder) ? "asc" : options.sortOrder;
                 _sortName = $.common.isEmpty(options.sortName) ? "" : options.sortName;
                 $('#bootstrap-table').bootstrapTable({
@@ -35,7 +36,7 @@
         			showToggle: $.common.visible(options.showToggle),   // 是否显示详细视图和列表视图的切换按钮
         			showExport: $.common.visible(options.showExport),   // 是否支持导出文件
                     queryParams: $.table._params,                       // 传递参数（*）
-                    columns: options.columns                            // 显示列信息（*）
+                    columns: options.columns,                          // 显示列信息（*)
                 });
             },
             // 查询条件
@@ -99,7 +100,7 @@
         	        return row[$.table._option.columns[1].field];
         	    });
             },
-            // 回显数据字典
+            // 回显数据字典(标签)
             selectDictLabel: function(_datas, _value) {
             	var actions = [];
                 $.each(_datas, function(index, dict) {
@@ -109,7 +110,20 @@
                     }
                 });
                 return actions.join('');
+            },
+            //回显数据字典（值）
+            selectDictData: function(_datas, _value) {
+                var actions = [];
+                $.each(_datas, function(index, dict) {
+                    if (dict.dictValue == _value) {
+                        actions.push("<span>" + dict.dictLabel + "</span>");
+                        return false;
+                    }
+                });
+                return actions.join('');
             }
+
+
         },
         // 表格树封装处理
         treeTable: {
@@ -380,6 +394,11 @@
             	var url = $.common.isEmpty(id) ? $.table._option.createUrl : $.table._option.createUrl.replace("{id}", id);
                 $.modal.open("添加" + $.table._option.modalName, url);
             },
+			//变更
+			change: function(id) {
+        		var url = $.table._option.changeUrl.replace("{id}", id);
+				$.modal.open("变更" + $.table._option.modalName, url);
+			},
             // 修改信息
             edit: function(id) {
             	var url = $.table._option.updateUrl.replace("{id}", id);
@@ -427,6 +446,32 @@
                 	$.modal.alertError(result.msg);
                 }
             	$.modal.closeLoading();
+            },
+            // 合同所在电路管理
+            editcircuit: function (id) {
+                var url = $.table._option.editcircuitUrl.replace("{id}", id);
+                $.modal.open("合同下电路配置", url);
+			},
+
+			// 查看账单详情
+			viewDetail: function(id) {
+
+			},
+			//上传文件
+            uploadFiles: function (id) {
+                var url = $.table._option.uploadFileUrl.replace("{id}", id);
+                $.modal.open("上传附件", url);
+            },
+
+            //电路检测
+            batchImport: function(id) {
+                var url = $.table._option.batchImportUrl.replace("{id}", id);
+                $.modal.open("电路检测", url);
+			},
+			//入网信息管理
+			accessInfo: function(id) {
+                var url = $.table._option.accessContractUrl.replace("{id}", id);
+                $.modal.open("合同-入网信息", url);
             }
         },
         // 通用方法封装处理

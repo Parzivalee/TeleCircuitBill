@@ -1,9 +1,6 @@
 package cn.com.atnc.teleCircuitBill.common.utils.poi;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -29,14 +26,15 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.CellRangeAddressList;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.ResourceUtils;
 
 import cn.com.atnc.teleCircuitBill.common.utils.StringUtils;
 import cn.com.atnc.teleCircuitBill.framework.shiro.web.session.OnlineWebSessionManager;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Excel相关处理
@@ -47,6 +45,8 @@ public class ExcelUtil<T>
 {
 
     private static final Logger log = LoggerFactory.getLogger(OnlineWebSessionManager.class);
+    private static final String xls = "xls";
+    private static final String xlsx = "xlsx";
 
     public Class<T> clazz;
 
@@ -55,17 +55,18 @@ public class ExcelUtil<T>
         this.clazz = clazz;
     }
 
-    public List<T> importExcel(String sheetName, InputStream input) throws Exception
-    {
-        List<T> list = new ArrayList<T>();
 
-        Workbook workbook = WorkbookFactory.create(input);
-        Sheet sheet = workbook.getSheet(sheetName);
-        if (StringUtils.isNotEmpty(sheetName))
+    public List<T> importExcel(MultipartFile file) throws Exception
+    {
+        List<T> list = new ArrayList<>();
+
+        Workbook workbook = getWorkbook(file);
+        Sheet sheet = workbook.getSheetAt(0);
+        /*if (StringUtils.isNotEmpty(sheetName))
         {
             // 如果指定sheet名,则取指定sheet中的内容.
             sheet = workbook.getSheet(sheetName);
-        }
+        }*/
         if (sheet == null)
         {
             // 如果传入的sheet名不存在则默认指向第1个sheet.
@@ -78,102 +79,77 @@ public class ExcelUtil<T>
             // 有数据时才处理 得到类的所有field.
             Field[] allFields = clazz.getDeclaredFields();
             // 定义一个map用于存放列的序号和field.
-            Map<Integer, Field> fieldsMap = new HashMap<Integer, Field>();
-            for (int col = 0; col < allFields.length; col++)
-            {
+            Map<Integer, Field> fieldsMap = new HashMap<>();
+            int count=0;
+            for (int col = 0; col < allFields.length; col++) {
                 Field field = allFields[col];
                 // 将有注解的field存放到map中.
                 if (field.isAnnotationPresent(Excel.class))
                 {
                     // 设置类的私有字段属性可访问.
                     field.setAccessible(true);
-                    fieldsMap.put(col, field);
+                    fieldsMap.put(count, field);
+                    count++;
                 }
             }
-            for (int i = 1; i < rows; i++)
-            {
+            for (int i = 1; i < rows; i++) {
                 // 从第2行开始取数据,默认第一行是表头.
                 Row row = sheet.getRow(i);
-                int cellNum = sheet.getRow(0).getPhysicalNumberOfCells();
-                T entity = null;
-                for (int j = 0; j < cellNum; j++)
-                {
-                    Cell cell = row.getCell(j);
-                    if (cell == null)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        // 先设置Cell的类型，然后就可以把纯数字作为String类型读进来了 by zhuyangyong 20171228
-                        row.getCell(j).setCellType(Cell.CELL_TYPE_STRING);
-                        cell = row.getCell(j);
-                    }
-
-                    String c = cell.getStringCellValue();
-                    if (StringUtils.isEmpty(c))
-                    {
-                        continue;
-                    }
-
-                    // 如果不存在实例则新建.
-                    entity = (entity == null ? clazz.newInstance() : entity);
-                    // 从map中得到对应列的field.
-                    Field field = fieldsMap.get(j);
-                    // 取得类型,并根据对象类型设置值.
-                    Class<?> fieldType = field.getType();
-                    if (String.class == fieldType)
-                    {
-                        field.set(entity, String.valueOf(c));
-                    }
-                    else if ((Integer.TYPE == fieldType) || (Integer.class == fieldType))
-                    {
-                        field.set(entity, Integer.parseInt(c));
-                    }
-                    else if ((Long.TYPE == fieldType) || (Long.class == fieldType))
-                    {
-                        field.set(entity, Long.valueOf(c));
-                    }
-                    else if ((Float.TYPE == fieldType) || (Float.class == fieldType))
-                    {
-                        field.set(entity, Float.valueOf(c));
-                    }
-                    else if ((Short.TYPE == fieldType) || (Short.class == fieldType))
-                    {
-                        field.set(entity, Short.valueOf(c));
-                    }
-                    else if ((Double.TYPE == fieldType) || (Double.class == fieldType))
-                    {
-                        field.set(entity, Double.valueOf(c));
-                    }
-                    else if (Character.TYPE == fieldType)
-                    {
-                        if ((c != null) && (c.length() > 0))
-                        {
-                            field.set(entity, Character.valueOf(c.charAt(0)));
+                if (row != null) {
+                    int cellNum = sheet.getRow(0).getPhysicalNumberOfCells();
+                    T entity = null;
+                    for (int j = 0; j < cellNum; j++) {
+                        Cell cell = row.getCell(j);
+                        if (cell == null) {
+                            continue;
+                        } else {
+                            // 先设置Cell的类型，然后就可以把纯数字作为String类型读进来了 by zhuyangyong 20171228
+                            row.getCell(j).setCellType(Cell.CELL_TYPE_STRING);
+                            cell = row.getCell(j);
                         }
-                    }
-                    else if (java.util.Date.class == fieldType)
-                    {
-                        if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
-                        {
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                            cell.setCellValue(sdf.format(cell.getNumericCellValue()));
-                            c = sdf.format(cell.getNumericCellValue());
+
+                        String c = cell.getStringCellValue();
+                        if (StringUtils.isEmpty(c)) {
+                            continue;
                         }
-                        else
-                        {
+
+                        // 如果不存在实例则新建.
+                        entity = (entity == null ? clazz.newInstance() : entity);
+                        // 从map中得到对应列的field.
+                        Field field = fieldsMap.get(j);
+                        // 取得类型,并根据对象类型设置值.
+                        Class<?> fieldType = field.getType();
+                        if (String.class == fieldType) {
+                            field.set(entity, String.valueOf(c));
+                        } else if ((Integer.TYPE == fieldType) || (Integer.class == fieldType)) {
+                            field.set(entity, Integer.parseInt(c));
+                        } else if ((Long.TYPE == fieldType) || (Long.class == fieldType)) {
+                            field.set(entity, Long.valueOf(c));
+                        } else if ((Float.TYPE == fieldType) || (Float.class == fieldType)) {
+                            field.set(entity, Float.valueOf(c));
+                        } else if ((Short.TYPE == fieldType) || (Short.class == fieldType)) {
+                            field.set(entity, Short.valueOf(c));
+                        } else if ((Double.TYPE == fieldType) || (Double.class == fieldType)) {
+                            field.set(entity, Double.valueOf(c));
+                        } else if (Character.TYPE == fieldType) {
+                            if ((c != null) && (c.length() > 0)) {
+                                field.set(entity, Character.valueOf(c.charAt(0)));
+                            }
+                        } else if (java.util.Date.class == fieldType) {
+                            if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                cell.setCellValue(sdf.format(cell.getNumericCellValue()));
+                                c = sdf.format(cell.getNumericCellValue());
+                            } else {
+                                c = cell.getStringCellValue();
+                            }
+                        } else if (java.math.BigDecimal.class == fieldType) {
                             c = cell.getStringCellValue();
                         }
                     }
-                    else if (java.math.BigDecimal.class == fieldType)
-                    {
-                        c = cell.getStringCellValue();
+                    if (entity != null) {
+                        list.add(entity);
                     }
-                }
-                if (entity != null)
-                {
-                    list.add(entity);
                 }
             }
         }
@@ -432,6 +408,70 @@ public class ExcelUtil<T>
     public String getfile() throws FileNotFoundException
     {
         return ResourceUtils.getURL("classpath:").getPath() + "static/file/";
+    }
+
+    /**
+     * 根据后缀名获得不同的workbook实现类对象
+     * @param file
+     * @return
+     */
+    public static Workbook getWorkbook(MultipartFile file) {
+        //获得文件名
+        String fileName = file.getOriginalFilename();
+        //创建Workbook工作薄，表示整个excel
+        Workbook workbook = null;
+        try {
+            //获得excel文件的IO流
+            InputStream is = file.getInputStream();
+            //根据文件后缀名的不同（xls/xlsx）获得不同的Workbook实现类对象
+            if (fileName.endsWith(xls)) {
+                //2003
+                workbook = new HSSFWorkbook(is);
+            }else if (fileName.endsWith(xlsx)) {
+                workbook = new XSSFWorkbook(is);
+            }
+
+        } catch (IOException e) {
+            log.info(e.getMessage());
+        }
+
+        return workbook;
+    }
+
+    public static String getCellValue(Cell cell) {
+        String cellValue = "";
+        if(cell == null){
+            return cellValue;
+        }
+        //把数字当成String来读，避免出现1读成1.0的情况
+        if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){
+            cell.setCellType(Cell.CELL_TYPE_STRING);
+        }
+        //判断数据的类型
+        switch (cell.getCellType()){
+            case Cell.CELL_TYPE_NUMERIC: //数字
+                cellValue = String.valueOf(cell.getNumericCellValue());
+                break;
+            case Cell.CELL_TYPE_STRING: //字符串
+                cellValue = String.valueOf(cell.getStringCellValue());
+                break;
+            case Cell.CELL_TYPE_BOOLEAN: //Boolean
+                cellValue = String.valueOf(cell.getBooleanCellValue());
+                break;
+            case Cell.CELL_TYPE_FORMULA: //公式
+                cellValue = String.valueOf(cell.getCellFormula());
+                break;
+            case Cell.CELL_TYPE_BLANK: //空值
+                cellValue = "";
+                break;
+            case Cell.CELL_TYPE_ERROR: //故障
+                cellValue = "非法字符";
+                break;
+            default:
+                cellValue = "未知类型";
+                break;
+        }
+        return cellValue;
     }
 
 }

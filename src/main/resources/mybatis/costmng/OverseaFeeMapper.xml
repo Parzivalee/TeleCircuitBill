@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.atnc.teleCircuitBill.project.costmng.circuitfeemng.oversea.mapper.OverseaFeeMapper">
+
+    <resultMap type="OverseaFee" id="OverseaFeeResult">
+        <id     property="overseaFeeId"       column="id"/>
+        <result property="circuitType"    column="tele_circuit_type"/>
+        <result property="rate"    column="rate"/>
+        <result property="price"    column="price"/>
+        <result property="createBy"     column="create_by"    />
+        <result property="createTime"   column="create_time"  />
+        <result property="updateBy"     column="update_by"    />
+        <result property="updateTime"   column="update_time"  />
+        <result property="isdel"   column="isdel"  />
+    </resultMap>
+
+    <sql id="selectOverseaFeeVo">
+        select *
+		from tele_tariff_oversea where isdel=0
+    </sql>
+
+    <select id="selectOverseaFeeById" parameterType="String" resultMap="OverseaFeeResult">
+        <include refid="selectOverseaFeeVo"/>
+        and id = #{overseaFeeId}
+    </select>
+
+    <select id="selectOverseaFeeList" parameterType="OverseaFee" resultMap="OverseaFeeResult">
+        <include refid="selectOverseaFeeVo"/>
+            <if test='circuitType != null and circuitType != ""' >
+                AND tele_circuit_type=#{circuitType}
+            </if>
+            <if test="rate != null and rate != ''">
+                AND rate=#{rate}
+            </if>
+    </select>
+
+    <insert id="insertOverseaFee" parameterType="OverseaFee">
+        <selectKey keyProperty="overseaFeeId" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
+        insert into tele_tariff_oversea(
+        <if test="overseaFeeId != null">id,</if>
+        <if test="circuitType != null and circuitType != ''">tele_circuit_type,</if>
+        <if test="rate != null and rate != ''">rate,</if>
+        <if test="price != null and price != ''">price,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        create_time
+        )values(
+        <if test="overseaFeeId != null">#{overseaFeeId},</if>
+        <if test="circuitType != null and circuitType != ''">#{circuitType},</if>
+        <if test="rate != null and rate != ''">#{rate},</if>
+        <if test="price != null and price != ''">#{price},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        sysdate()
+        )
+    </insert>
+
+   <update id="updateOverseaFee" parameterType="OverseaFee">
+        update tele_tariff_oversea
+        <set>
+            <if test="circuitType != null and circuitType != ''">tele_circuit_type = #{circuitType},</if>
+            <if test="rate != null and rate != ''">rate = #{rate},</if>
+            <if test="price != null and price != ''">price = #{price},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            update_time = sysdate()
+        </set>
+        where id = #{overseaFeeId}
+    </update>
+
+    <!--<delete id="deleteDomesticFeeByIds" parameterType="String">
+        delete from tele_circuit_month_fee where id in
+        <foreach item="domesticFeeId" collection="array" open="(" separator="," close=")">
+            #{domesticFeeId}
+        </foreach>
+    </delete>-->
+    <!--逻辑删除-->
+    <update id="deleteOverseaFeeByIds" parameterType="String">
+        update tele_tariff_oversea set isdel=1 where id in
+        <foreach item="overseaFeeId" collection="array" open="(" separator="," close=")">
+            #{overseaFeeId}
+        </foreach>
+    </update>
+</mapper>

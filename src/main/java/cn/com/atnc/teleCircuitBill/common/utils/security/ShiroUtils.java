@@ -18,8 +18,7 @@ import cn.com.atnc.teleCircuitBill.project.system.user.domain.User;
 public class ShiroUtils
 {
 
-    public static Subject getSubjct()
-    {
+    public static Subject getSubjct() {
         return SecurityUtils.getSubject();
     }
 
