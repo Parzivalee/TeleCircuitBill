@@ -31,4 +31,6 @@ public interface ContractMapper {
     List<ContractInfo> selectContractListInDays(@Param("day7before") Date day7before, @Param("today") Date today);
 
     List<ContractInfo> checkCircuitCodeNameUnique(String contractNumber);
+
+    List<ContractInfo> selectContractsByCustomerAndType(String customerId, String contractType);
 }

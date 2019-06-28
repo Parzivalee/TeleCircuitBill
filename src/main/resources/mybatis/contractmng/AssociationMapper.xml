@@ -97,7 +97,17 @@
         on a.tb_telecircuit_info_id = b.id
         left join tele_contract_info c
         on a.tb_contract_info_id = c.id
-        where a.customer_id=#{cusotmerId}
+        where a.customer_id=#{customerId}
+    </select>
+
+    <select id="selectAssociationByCustomerAndType" parameterType="String" resultMap="AssociationResult">
+        select a.*,b.id circuit_id,b.tele_circuit_name,b.circuit_code,c.id contract_id,c.contract_number
+        from tele_contract_circuit_relation a
+        left join tele_circuit_info b
+        on a.tb_telecircuit_info_id = b.id
+        left join tele_contract_info c
+        on a.tb_contract_info_id = c.id
+        where a.customer_id=#{customerId} and c.contract_type=#{contractType}
     </select>
 
     <select id="selectCircuitByCustomerAndContract" parameterType="String" resultMap="AssociationResult">

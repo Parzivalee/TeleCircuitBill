@@ -123,6 +123,12 @@
         and customer_id=#{customerId}
     </select>
 
+    <select id="selectContractsByCustomerAndType" parameterType="String" resultMap="ContractInfoResult">
+        select * from tele_contract_info
+        where isdel=0
+        and customer_id=#{customerId} and contract_type=#{contractType}
+    </select>
+
     <insert id="insertContract" parameterType="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.domain.ContractInfo">
         <selectKey keyProperty="contractId" resultType="java.lang.String" order="BEFORE">
             select replace(uuid(), '-', '')

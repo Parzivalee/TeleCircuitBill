@@ -27,11 +27,12 @@ public interface AssociationService {
     List<Association> findAssociationsByCircuitId(String circuitId);
 
     /**
-     * 根据客户id查找电路-合同关联信息
+     * 根据客户id与合同类型查找电路-合同关联信息
      * @param customerId
+     * @param contractType
      * @return
      */
-    List<Association> selectAssociationByCustomerId(String customerId);
+    List<Association> selectAssociationByCustomerAndType(String customerId,String contractType);
 
     /**
      * 根据账单类型和客户id查找电路-合同关联信息

@@ -23,6 +23,8 @@ public interface AssociationMapper {
 
     List<Association> selectAssociationByCustomerId(String customerId);
 
+    List<Association> selectAssociationByCustomerAndType(String customerId,String contractType);
+
     Association selectAssociationByAssociationId(String associationId);
 
     int updateAssociation(Association association);

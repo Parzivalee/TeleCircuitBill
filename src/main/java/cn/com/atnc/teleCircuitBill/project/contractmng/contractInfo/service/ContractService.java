@@ -100,4 +100,12 @@ public interface ContractService {
      * 判断合同是否过期
      */
     void checkContractIsExpired();
+
+    /**
+     * 根据客户和合同类型查找生效的合同
+     * @param customerId
+     * @param contractType
+     * @return
+     */
+    List<ContractInfo> selectContractsByCustomerAndType(String customerId, String contractType);
 }

@@ -346,4 +346,9 @@ public class ContractServiceImpl implements ContractService {
 
     }
 
+    @Override
+    public List<ContractInfo> selectContractsByCustomerAndType(String customerId, String contractType) {
+        return contractMapper.selectContractsByCustomerAndType(customerId,contractType);
+    }
+
 }

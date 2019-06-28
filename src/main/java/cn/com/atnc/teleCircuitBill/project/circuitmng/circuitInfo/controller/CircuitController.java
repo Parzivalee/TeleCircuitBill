@@ -263,30 +263,32 @@ public class CircuitController extends BaseController {
     }
 
     /**
-     * 根据客户选择合同列表
+     * 电路检测——根据客户选择合同列表
      * @param customerId
      * @param map
      * @return
      */
     @GetMapping("/findContractList")
     @ResponseBody
-    public Set<ContractInfo> getContractList(@RequestParam("customerId") String customerId,ModelMap map) {
-        List<Association> associationList = associationService.selectAssociationByCustomerId(customerId);
-        Set<ContractInfo> contractInfoSet = new HashSet<>();
+    public List<ContractInfo> getContractList(@RequestParam("customerId") String customerId,
+                                             @RequestParam("contractType") String contractType, ModelMap map) {
+        System.out.println(customerId);
+        System.out.println(contractType);
+        List<ContractInfo> contractList = contractService.selectContractsByCustomerAndType(customerId,contractType);
+        /*Set<ContractInfo> contractInfoSet = new HashSet<>();
         if (associationList!=null) {
             for (Association association: associationList) {
                 if (association.getContract()!=null) {
                     ContractInfo contractInfo = contractService.selectContractByContractId(association.getContract().getContractId());
-                    if (contractInfo!=null) {
-                        if (contractInfo.getContractType()!="Access") {
-                            contractInfoSet.add(contractInfo);
-                        }
-                    }
+
+                    contractInfoSet.add(contractInfo);
+
                 }
             }
-        }
-        map.put("contracts",contractInfoSet);
-        return contractInfoSet;
+        }*/
+        System.err.println(contractList.size());
+        map.put("contracts",contractList);
+        return contractList;
     }
 
     /**
@@ -306,9 +308,9 @@ public class CircuitController extends BaseController {
         MultipartFile excel = fileRequest.getFile("excel");
 
         String customerId = request.getParameter("customer");
-        String contractId = request.getParameter("contract");
+        String contractIds = request.getParameter("contract");
         System.out.println(customerId);
-        System.out.println(contractId);
+        System.out.println(contractIds);
 
 
         ExcelUtil<Circuit> excelUtil = new ExcelUtil<>(Circuit.class);
@@ -316,7 +318,7 @@ public class CircuitController extends BaseController {
         System.out.println(circuitList.size());
         //用Map保存新增或者变更的电路信息
         Map<String, Map<String, String>> circuitMapList = new HashMap<>();
-        if (customerId == null && contractId == null) {
+        if (customerId == null && contractIds == null) {
             //遍历获取的list
             for (Circuit circuit : circuitList) {
                 //判断电路编号是否存在
@@ -443,7 +445,7 @@ public class CircuitController extends BaseController {
             return circuitMapList;
         } else {
             //根据条件查找数据库中的电路列表(待比较list)
-            List<Circuit> circuitListDB = circuitService.selectCircuitByCustomerAndContract(customerId, contractId);
+            List<Circuit> circuitListDB = circuitService.selectCircuitByCustomerAndContract(customerId, contractIds);
             Set<String> circuitCodeDBSet = new HashSet<>();
             for (Circuit circuit1 : circuitListDB) {
                 circuitCodeDBSet.add(circuit1.getCircuitCode());

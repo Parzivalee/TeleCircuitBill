@@ -53,8 +53,8 @@ public class AssociationServiceImpl implements AssociationService {
     }
 
     @Override
-    public List<Association> selectAssociationByCustomerId(String customerId) {
-        return associationMapper.selectAssociationByCustomerId(customerId);
+    public List<Association> selectAssociationByCustomerAndType(String customerId,String contractType) {
+        return associationMapper.selectAssociationByCustomerAndType(customerId,contractType);
     }
 
     @Override
