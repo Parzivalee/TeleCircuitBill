@@ -148,4 +148,5 @@ public class AssociationServiceImpl implements AssociationService {
         association.setUpdateBy(ShiroUtils.getLoginName());
         return associationMapper.updateAssociation(association);
     }
+
 }

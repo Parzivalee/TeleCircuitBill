@@ -33,4 +33,5 @@ public interface AssociationMapper {
                                                      @Param("contractId") String contractId);
 
     List<Association> selectAssociationByConditions(@Param("contractType") String contractType,@Param("customerId") String customerId);
+
 }

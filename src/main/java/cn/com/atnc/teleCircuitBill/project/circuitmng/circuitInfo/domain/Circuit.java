@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 电路详情实体类
@@ -43,7 +44,7 @@ public class Circuit extends BaseEntity {
     private String circuitCode;
 
     //电路类型
-    @Excel(name="电路信息")
+    @Excel(name="电路类型")
     private String circuitType;
 
     //电路名称（电路编号）
@@ -53,7 +54,7 @@ public class Circuit extends BaseEntity {
     @Excel(name="速率")
     private String circuitSpeed;
 
-    //通信技术服务费=电路费用 + （端口费用*2）
+    //通信技术服务费=电路费用 + 端口费用
     private Double circuitFee;
 
     //电路费用
@@ -122,4 +123,17 @@ public class Circuit extends BaseEntity {
 
     //冗余字段（用于显示合同挂接电路的费用字段）
     private transient String feePercent;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Circuit circuit = (Circuit) o;
+        return Objects.equals(circuitId, circuit.circuitId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(circuitId);
+    }
 }

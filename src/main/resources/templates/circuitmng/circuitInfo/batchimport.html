@@ -160,9 +160,9 @@
 
 
     function testExcel() {
-        console.log("contract"+$("#contract").val());
         let formData = new FormData();
         formData.append("excel",$("#excel")[0].files[0]);
+        formData.append("contractType",$("#contractType option:selected").val());
         formData.append("customer",$("#customer").val());
         formData.append("contract",$("#contract").val());
         if (formData!=null) {

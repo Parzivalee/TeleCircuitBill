@@ -56,8 +56,7 @@ public class ExcelUtil<T>
     }
 
 
-    public List<T> importExcel(MultipartFile file) throws Exception
-    {
+    public List<T> importExcel(MultipartFile file) throws Exception {
         List<T> list = new ArrayList<>();
 
         Workbook workbook = getWorkbook(file);

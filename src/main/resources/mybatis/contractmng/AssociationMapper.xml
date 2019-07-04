@@ -115,7 +115,7 @@
         from tele_contract_circuit_relation a
         left join tele_circuit_info b
         on a.tb_telecircuit_info_id = b.id
-        where a.customer_id=#{customerId} and a.tb_contract_info_id=#{contractId}
+        where a.customer_id=#{customerId} and a.tb_contract_info_id=#{contractId} and isend=0
     </select>
 
     <select id="selectAssociationByConditions" parameterType="String" resultMap="AssociationResult">
