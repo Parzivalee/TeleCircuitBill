@@ -88,8 +88,12 @@ public class ContractServiceImpl implements ContractService {
         }
         customerService.updateCustomer(customer);
         contract.setCreateBy(ShiroUtils.getLoginName());
+        //是否生成账单
         contract.setGenerateBill(0);
+        //是否过期
         contract.setIsExpired(0);
+        //是否变更
+        contract.setChangeStatus(0);
         return contractMapper.insertContract(contract);
     }
 
@@ -266,7 +270,12 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public int changeContract(ContractInfo contract, String contractNumberNew) {
         ContractInfo contractOld = contractMapper.selectContractByContractId(contract.getContractId());
-        contractOld.setContractStopDate(contract.getContractStopDate());
+        if (contract.getContractStopDate() != null) {
+            contractOld.setContractStopDate(contract.getContractStopDate());
+        }else {
+            System.out.println("合同终止日期为空");
+            return 0;
+        }
         contractOld.setChangeStatus(1);
         contractOld.setUpdateBy(ShiroUtils.getLoginName());
         //将原有合同设置为已变更

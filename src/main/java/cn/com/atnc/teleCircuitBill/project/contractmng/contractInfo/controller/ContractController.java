@@ -208,8 +208,9 @@ public class ContractController extends BaseController {
     @PostMapping("/change")
     @Transactional(rollbackFor = Exception.class)
     @ResponseBody
-    public AjaxResult changeSave(ContractInfo contract,@RequestParam("contractNumberNew") String contractNumberNew) {
-
+    public AjaxResult changeSave(ContractInfo contract,@RequestParam("contractIdOld") String contractIdOld,
+            @RequestParam("contractNumberNew") String contractNumberNew) {
+        contract.setContractId(contractIdOld);
         return toAjax(contractService.changeContract(contract,contractNumberNew));
     }
 

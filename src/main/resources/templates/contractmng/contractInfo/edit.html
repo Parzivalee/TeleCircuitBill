@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-3 control-label ">客户：</label>
+            <label class="col-sm-3 control-label ">客户名称：</label>
             <div class="col-sm-8">
                 <select id="customer" name="customer" class="form-control m-b">
                     <option value="">请选择</option>
@@ -240,7 +240,7 @@
         var contractEndDate = $("input[name='contractEndDate']").val();
         var contractStopDate = $("input[name='contractStopDate']").val();
         var isContractAutoPostpone = $("input[name='isContractAutoPostpone']:checked").val();
-
+        var remark = $("#remark").val();
 
         $.ajax({
             cache: true,
@@ -260,7 +260,8 @@
                 "contractStartDate": contractStartDate,
                 "contractEndDate": contractEndDate,
                 "contractStopDate": contractStopDate,
-                "isContractAutoPostpone": isContractAutoPostpone
+                "isContractAutoPostpone": isContractAutoPostpone,
+                "remark": remark
             },
             async: false,
             error: function (request) {

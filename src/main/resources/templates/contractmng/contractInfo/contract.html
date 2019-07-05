@@ -27,7 +27,7 @@
                             </select>
                         </li>
                         <li>
-                            单位名称：<input type="text" name="customer.customerName"/>
+                            客户名称：<input type="text" name="customer.customerName"/>
                         </li>
                         <li>
                             所属地区：<select name="customer.area" th:with="type=${@dict.getType('cus_area')}">
@@ -142,7 +142,7 @@
                 },
                 {
                     field: 'customer.customerName',
-                    title: '单位名称',
+                    title: '客户名称',
                 },
                 {
                     field: 'partA.customerName',

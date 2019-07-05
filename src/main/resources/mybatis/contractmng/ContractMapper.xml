@@ -81,14 +81,15 @@
             AND contract_number like concat('%',#{contractNumber},'%')
         </if>
         <if test="params != null and params.beginTime != ''"><!-- 开始时间检索 -->
-            and date_format(tele_circuit_opentime,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+            and date_format(contract_config_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
         </if>
         <if test="params != null and params.endTime != ''"><!-- 结束时间检索 -->
-            and date_format(tele_circuit_opentime,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+            and date_format(contract_config_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
         </if>
         <if test="isExpired != null and isExpired != '' ">
             and is_expired=#{isExpired}
         </if>
+        order by contract_config_time DESC
     </select>
 
     <select id="selectContractByContractId" parameterType="String" resultMap="ContractInfoResult">
@@ -156,6 +157,7 @@
         <if test="isExpired != null and isExpired != '' ">is_expired,</if>
         <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">contract_auto_postpone,</if>
         <if test="generateBill != null and generateBill != ''">contract_is_generate_bill,</if>
+        <if test="changeStatus != null and changeStatus != ''">is_change,</if>
         <if test="remark != null and remark != ''">remark,</if>
         <if test="createBy != null and createBy != ''">create_by,</if>
         create_time
@@ -182,6 +184,7 @@
         <if test="isExpired != null and isExpired != '' ">#{isExpired},</if>
         <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">#{isContractAutoPostpone},</if>
         <if test="generateBill != null and generateBill != ''">#{generateBill},</if>
+        <if test="changeStatus != null and changeStatus != ''">#{changeStatus},</if>
         <if test="remark != null and remark != ''">#{remark},</if>
         <if test="createBy != null and createBy != ''">#{createBy},</if>
         sysdate()
@@ -212,7 +215,8 @@
             <if test="isExpired != null and isExpired != '' ">is_expired=#{isExpired},</if>
             <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">contract_auto_postpone=#{isContractAutoPostpone},</if>
             <if test="generateBill != null and generateBill != ''">contract_is_generate_bill=#{generateBill},</if>
-            <if test="remark != null and remark != ''">remark#{remark},</if>
+            <if test="changeStatus != null and changeStatus != ''">is_change=#{changeStatus},</if>
+            <if test="remark != null and remark != ''">remark=#{remark},</if>
             <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>
             update_time = sysdate()
         </set>

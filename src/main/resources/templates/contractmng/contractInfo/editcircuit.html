@@ -162,9 +162,10 @@
     });
 
     function saveCircuit() {
-        /*if ($("#feePercent").val()=="") {
-            alert("请选择勾选电路的费用占比！");
-        }else {}*/
+        if ($("#feePercent").val()=="" || $("#feePercent").val()==null) {
+            alert("请选择电路的费用占比！");
+            return;
+        }
         var circuitSelectedlists = $("#bootstrap-table").bootstrapTable("getData");
         //先获取选中的电路Id，更新合同电路关联表(取消的电路)
         var circuitList = formSelects.value("circuitSelects","val").toString();
