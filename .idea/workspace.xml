@@ -6,7 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c48b51aa-cf5a-4f5b-a63c-8c123632f65d" name="Default Changelist" comment="" />
+    <list default="true" id="c48b51aa-cf5a-4f5b-a63c-8c123632f65d" name="Default Changelist" comment="合同变更模块bug修改">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,56 +36,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/controller/CircuitController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="298" column="29" selection-start-line="298" selection-start-column="29" selection-end-line="298" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/batchimport.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/statisticsmng/controller/StatisticsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+            <state relative-caret-position="1426">
+              <caret line="84" column="47" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/add.html">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="293" column="33" selection-start-line="293" selection-start-column="33" selection-end-line="293" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/add.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1157">
-              <caret line="219" column="27" lean-forward="true" selection-start-line="219" selection-start-column="27" selection-end-line="219" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/circuit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="55" column="87" lean-forward="true" selection-start-line="55" selection-start-column="87" selection-end-line="55" selection-end-column="87" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="468" column="34" selection-start-line="468" selection-start-column="34" selection-end-line="468" selection-end-column="34" />
+            <state relative-caret-position="700">
+              <caret line="126" column="73" lean-forward="true" selection-start-line="126" selection-start-column="73" selection-end-line="126" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -98,17 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>elec_document</find>
-      <find>dlzf</find>
-      <find>druid</find>
-      <find>img</find>
-      <find>checkCircuitCodeNameUnique</find>
-      <find>circuitId</find>
-      <find>contractId</find>
-      <find>visib</find>
-      <find>circuit_code</find>
-      <find>ryTask</find>
-      <find>ryParams</find>
       <find>findspeedlist</find>
       <find>option</find>
       <find>ajax</find>
@@ -128,34 +84,42 @@
       <find>cors</find>
       <find>format</find>
       <find>isExpired</find>
+      <find>批量导入电路</find>
+      <find>circuitSelects</find>
+      <find>circuitIds</find>
+      <find>contractType</find>
+      <find>select</find>
+      <find>contractNumberNew</find>
+      <find>circuitListDB</find>
+      <find>insertCon</find>
+      <find>changeStatus</find>
+      <find>@</find>
+      <find>@Value</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="lwj" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/SwaggerConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/billmng/billInfo/edit.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/mapper/CircuitMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/mapper/ContractMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/monitor/job/mapper/JobMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/monitor/job/controller/JobController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/controller/CircuitController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/finereport/Circuit.cpt" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/aspectj/lang/constant/BusinessType.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/change.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/main.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/billmng/billInfo/finereport.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/billmng/billInfo/bill.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/accessInfo.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/circuit.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/edit.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/editcircuit.html" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/controller/ContractController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/add.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/upload.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/DruidConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/DateUtils.java" />
@@ -164,21 +128,12 @@
         <option value="$PROJECT_DIR$/src/test/java/cn/com/atnc/teleCircuitBill/project/system/circuit/service/CircuitServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/service/CircuitServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/circuitmng/CircuitMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/contractmng/ContractMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/monitor/job/task/RyTask.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/contract.html" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/service/BillServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/billmng/billInfo/add.html" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/AssociationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/AssociationServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/controller/BillController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/mapper/AssociationMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis/contractmng/AssociationMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/add.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/edit.html" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/domain/Circuit.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/domain/AccessBillDetail.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/domain/ActualBillDate.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/domain/Association.java" />
@@ -186,8 +141,32 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/domain/ContractInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/customerInfo/customers/domain/Customer.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/atnc/js/ry-ui.js" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/mapper/ContractMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/poi/ExcelUtil.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/batchimport.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/contractmng/AssociationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/mapper/AssociationMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/AssociationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/AssociationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/controller/CircuitController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/domain/Circuit.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/add.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/edit.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/contract.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/editcircuit.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/change.html" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/controller/ContractController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/contractmng/ContractMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractServiceImpl.java" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
@@ -211,6 +190,12 @@
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="atncweb" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="spring-boot" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="atncweb" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
           <item name="war" type="36feed69:MavenProjectsStructure$PluginNode" />
         </path>
       </expand>
@@ -219,8 +204,8 @@
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
-    <option name="width" value="1680" />
-    <option name="height" value="944" />
+    <option name="width" value="1920" />
+    <option name="height" value="939" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -228,6 +213,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -301,7 +288,20 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="atnc" type="462c0819:PsiDirectoryNode" />
               <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="atnc" type="462c0819:PsiDirectoryNode" />
+              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
@@ -314,282 +314,6 @@
               <item name="atnc" type="462c0819:PsiDirectoryNode" />
               <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="contractmng" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="contractmng" type="462c0819:PsiDirectoryNode" />
-              <item name="contractInfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="contractmng" type="462c0819:PsiDirectoryNode" />
-              <item name="contractInfo" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="circuitfeemng" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="circuitfeemng" type="462c0819:PsiDirectoryNode" />
-              <item name="oversea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="circuitfeemng" type="462c0819:PsiDirectoryNode" />
-              <item name="oversea" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="configfeemng" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="configfeemng" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="configfeemng" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="netaccessmng" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="netaccessmng" type="462c0819:PsiDirectoryNode" />
-              <item name="caccess" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="costmng" type="462c0819:PsiDirectoryNode" />
-              <item name="netaccessmng" type="462c0819:PsiDirectoryNode" />
-              <item name="caccess" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
-              <item name="customers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
-              <item name="customers" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="customerInfo" type="462c0819:PsiDirectoryNode" />
-              <item name="customers" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="monitor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="monitor" type="462c0819:PsiDirectoryNode" />
-              <item name="job" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cn" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="atnc" type="462c0819:PsiDirectoryNode" />
-              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="monitor" type="462c0819:PsiDirectoryNode" />
-              <item name="job" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
@@ -609,7 +333,14 @@
               <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="atnc" type="462c0819:PsiDirectoryNode" />
+              <item name="teleCircuitBill" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+              <item name="statisticsmng" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
@@ -617,45 +348,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="circuitmng" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="circuitmng" type="462c0819:PsiDirectoryNode" />
-              <item name="circuitInfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="contractmng" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeleCircuitBill" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="contractmng" type="462c0819:PsiDirectoryNode" />
-              <item name="contractInfo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="teleCircuitBill" type="b2602c69:ProjectViewProjectNode" />
@@ -671,8 +363,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -691,7 +381,8 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -781,8 +472,50 @@
       <workItem from="1558610482462" duration="35606000" />
       <workItem from="1559742072355" duration="919000" />
       <workItem from="1560392494391" duration="40529000" />
-      <workItem from="1561182871328" duration="13688000" />
+      <workItem from="1561182871328" duration="35277000" />
+      <workItem from="1561989776472" duration="295000" />
+      <workItem from="1562039790216" duration="68000" />
+      <workItem from="1562124311997" duration="1632000" />
+      <workItem from="1562219106332" duration="3847000" />
+      <workItem from="1562225474897" duration="9432000" />
+      <workItem from="1562662712902" duration="248000" />
+      <workItem from="1562662989064" duration="748000" />
+      <workItem from="1562676635280" duration="4232000" />
+      <workItem from="1563192771051" duration="881000" />
+      <workItem from="1563285227710" duration="1590000" />
+      <workItem from="1563590906655" duration="180000" />
+      <workItem from="1563591111889" duration="692000" />
+      <workItem from="1563685576095" duration="1014000" />
     </task>
+    <task id="LOCAL-00001" summary="2019-06-27">
+      <created>1561605776497</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1561605776501</updated>
+    </task>
+    <task id="LOCAL-00002" summary="电路检测模块需求更改">
+      <created>1561683827817</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1561683827817</updated>
+    </task>
+    <task id="LOCAL-00003" summary="电路检测模块bug提交">
+      <created>1562217124109</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1562217124109</updated>
+    </task>
+    <task id="LOCAL-00004" summary="合同变更模块bug修改">
+      <created>1562314562458</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1562314562458</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -797,13 +530,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118835000" />
+    <option name="totallyTimeSpent" value="165283000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Alibaba Cloud Explorer" weight="0.24481075" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31684983" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2802198" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -811,23 +544,24 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Alibaba Cloud View" weight="0.3291536" />
+      <window_info id="Alibaba Cloud Explorer" order="8" weight="0.24481075" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35736677" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4993895" visible="true" weight="0.39916405" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4993895" weight="0.55118924" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.498779" weight="0.39916405" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" weight="0.32977587" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3291536" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50061053" side_tool="true" weight="0.39916405" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.39916405" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.3291536" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.4993895" weight="0.32870865" />
+      <window_info anchor="bottom" id="Docker" order="14" weight="0.34836528" />
       <window_info anchor="bottom" id="Messages" order="15" weight="0.3291536" />
+      <window_info anchor="bottom" id="Alibaba Cloud View" order="16" weight="0.32870865" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -838,242 +572,92 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" weight="0.32967034" />
-      <window_info anchor="right" id="Maven" order="10" weight="0.32967034" />
+      <window_info anchor="right" id="Maven" order="10" weight="0.3778999" />
+      <window_info anchor="right" id="Alibaba Log Console" order="11" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2019-06-27" />
+    <MESSAGE value="电路检测模块需求更改" />
+    <MESSAGE value="电路检测模块bug提交" />
+    <MESSAGE value="合同变更模块bug修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="合同变更模块bug修改" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractServiceImpl.java</url>
+          <line>318</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="circuitListDB" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/com/atnc/teleCircuitBill/project/system/dept/service/DeptServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="20" column="32" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/5.0.7.RELEASE/spring-test-5.0.7.RELEASE.jar!/org/springframework/test/context/junit4/statements/RunAfterTestExecutionCallbacks.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/service/CircuitService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="84" column="9" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/com/atnc/teleCircuitBill/project/system/circuit/service/CircuitServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/service/CircuitServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="311" column="24" selection-start-line="311" selection-start-column="24" selection-end-line="311" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1460#1461#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/monitor/job/task/RyTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="39" column="49" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/mapper/CircuitMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/contract.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2328">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/billmng/billInfo/bill.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="157" column="43" selection-start-line="157" selection-start-column="32" selection-end-line="157" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="52" column="21" lean-forward="true" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/system/user/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding>
-            <element signature="e#2249#2250#0" expanded="true" />
-            <element signature="e#2281#2282#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/security/ShiroUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
-          <folding>
-            <element signature="e#1881#1882#0" expanded="true" />
-            <element signature="e#1928#1929#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/controller/ContractController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="212" column="44" selection-start-line="212" selection-start-column="44" selection-end-line="212" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/service/BillServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="310" column="58" selection-start-line="310" selection-start-column="58" selection-end-line="310" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/mapper/ContractMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/circuitmng/CircuitMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="94" column="88" selection-start-line="94" selection-start-column="75" selection-end-line="94" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/controller/BillController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="203" column="69" lean-forward="true" selection-start-line="203" selection-start-column="69" selection-end-line="203" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/AssociationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/contractmng/ContractMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3618">
-          <caret line="56" column="34" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/AssociationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="67" column="75" selection-start-line="67" selection-start-column="63" selection-end-line="67" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/mapper/AssociationMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="32" column="113" selection-start-line="32" selection-start-column="103" selection-end-line="32" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/contractmng/AssociationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="111" column="86" lean-forward="true" selection-start-line="111" selection-start-column="86" selection-end-line="111" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/statisticsmng/controller/StatisticsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/billmng/billInfo/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="190" column="35" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="394" column="19" selection-start-line="394" selection-start-column="19" selection-end-line="394" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/domain/Circuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1324">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1098,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/domain/Bill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-121">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/domain/BillDetail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -1123,16 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/domain/ContractInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1172">
-          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1185,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/controller/CircuitController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="298" column="29" selection-start-line="298" selection-start-column="29" selection-end-line="298" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/circuit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="386">
@@ -1213,17 +773,254 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/add.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/utils/poi/ExcelUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1157">
-          <caret line="219" column="27" lean-forward="true" selection-start-line="219" selection-start-column="27" selection-end-line="219" selection-end-column="68" />
+        <state relative-caret-position="1947">
+          <caret line="155" column="19" selection-start-line="155" selection-start-column="15" selection-end-line="155" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/AssociationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="36" column="7" lean-forward="true" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/AssociationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2852">
+          <caret line="151" column="1" lean-forward="true" selection-start-line="151" selection-start-column="1" selection-end-line="151" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/contractmng/AssociationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="113" column="34" lean-forward="true" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/Objects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
+          <folding>
+            <element signature="e#3914#3915#0" expanded="true" />
+            <element signature="e#3960#3961#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/service/CircuitService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/controller/CircuitController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9821">
+          <caret line="464" column="32" selection-start-line="464" selection-start-column="32" selection-end-line="464" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#27398#27399#0" expanded="true" />
+            <element signature="e#27463#27464#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/mapper/ContractMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/ShiroConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/SwaggerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/circuitmng/circuitInfo/batchimport.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+        <state relative-caret-position="575">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/config/ScheduleConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="38" column="34" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/domain/Circuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" selection-start-column="30" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/mapper/AssociationMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/circuitmng/circuitInfo/service/CircuitServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5451">
+          <caret line="251" column="58" selection-start-line="251" selection-start-column="41" selection-end-line="251" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1460#1461#0" expanded="true" />
+            <element signature="e#1523#1524#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/contract.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="144" column="32" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/editcircuit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="165" column="33" lean-forward="true" selection-start-line="165" selection-start-column="33" selection-end-line="165" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/common/xss/XssFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-552">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/circuitmng/CircuitMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="958">
+          <caret line="94" column="88" selection-start-line="94" selection-start-column="75" selection-end-line="94" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2655">
+          <caret line="352" selection-start-line="352" selection-end-line="352" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/domain/ContractInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="42" column="35" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/service/BillServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/billmng/domain/Bill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/service/ContractService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2139">
+          <caret line="96" column="8" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5336">
+          <caret line="232" column="29" selection-start-line="232" selection-start-column="29" selection-end-line="232" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/change.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2116">
+          <caret line="92" column="30" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/contractmng/contractInfo/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3036">
+          <caret line="132" column="10" selection-start-line="132" selection-start-column="6" selection-end-line="132" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/web/domain/AjaxResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-495">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/framework/web/domain/BaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/contractmng/contractInfo/controller/ContractController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="199" column="34" lean-forward="true" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/contractmng/ContractMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="126" column="73" lean-forward="true" selection-start-line="126" selection-start-column="73" selection-end-line="126" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/atnc/teleCircuitBill/project/statisticsmng/controller/StatisticsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1426">
+          <caret line="84" column="47" selection-start-line="84" selection-start-column="35" selection-end-line="84" selection-end-column="47" />
         </state>
       </provider>
     </entry>
