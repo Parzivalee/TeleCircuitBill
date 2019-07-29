@@ -252,7 +252,7 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public String checkContractNumberUnique(String contractNumber,String contractId) {
-        List<ContractInfo> contracts = contractMapper.checkCircuitCodeNameUnique(contractNumber);
+        List<ContractInfo> contracts = contractMapper.selectContractByContractNumber(contractNumber);
 
         if (contracts.size() == 0) {
             return UserConstants.USER_NAME_UNIQUE;
@@ -300,18 +300,23 @@ public class ContractServiceImpl implements ContractService {
         contractNew.setChangeStatus(0);
         contractNew.setCreateBy(ShiroUtils.getLoginName());
 
+        int flag = contractMapper.insertContract(contractNew);
+        //获取新生成的合同的id
+        ContractInfo contractNew1 = contractMapper.selectContractByContractNumber(contractNumberNew).get(0);
+
+
         //如果是技术服务合同或维护合同改变relation表。入网合同则不需要
         List<Association> associationList = associationMapper.selectAssociationByContractId(contractOld.getContractId());
 
         associationList.stream().forEach(association -> {
-            //终止原有的关联表，并生成新的合同-电路关联
+            //终止原有的关联表，并生成新的合同-电路关联表
             association.setEndTime(contract.getContractStopDate());
             association.setIsEnd(1);
             association.setUpdateBy(ShiroUtils.getLoginName());
             associationMapper.updateAssociation(association);
 
             Association associationNew = new Association();
-            associationNew.setContract(contractNew);
+            associationNew.setContract(contractNew1);
             associationNew.setCircuit(association.getCircuit());
             associationNew.setCustomer(association.getCustomer());
             associationNew.setStartTime(contract.getContractStopDate());
@@ -325,7 +330,7 @@ public class ContractServiceImpl implements ContractService {
             associationMapper.insertAssociation(associationNew);
         });
 
-        return contractMapper.insertContract(contractNew);
+        return flag;
 
     }
 

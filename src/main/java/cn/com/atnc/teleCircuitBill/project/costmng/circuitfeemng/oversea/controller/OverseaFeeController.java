@@ -25,7 +25,7 @@ import java.util.List;
 @RequestMapping("costmng/circuitcost/oversea")
 public class OverseaFeeController extends BaseController {
 
-    private String prefix = "/costmng/circuitfeemng/oversea";
+    private String prefix = "costmng/circuitfeemng/oversea";
 
     @Autowired
     private OverseaFeeService overseaFeeService;

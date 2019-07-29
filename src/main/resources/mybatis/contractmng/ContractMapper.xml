@@ -237,7 +237,7 @@
         <!--</foreach>-->
     <!--</delete>-->
 
-    <select id="checkCircuitCodeNameUnique" parameterType="String" resultMap="ContractInfoResult">
+    <select id="selectContractByContractNumber" parameterType="String" resultMap="ContractInfoResult">
 		select * from tele_contract_info where contract_number=#{contractNumber} and isdel=0
 	</select>
 </mapper>

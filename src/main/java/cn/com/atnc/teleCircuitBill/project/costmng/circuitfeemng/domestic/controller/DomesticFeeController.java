@@ -26,7 +26,7 @@ import java.util.List;
 @Controller
 @RequestMapping("costmng/circuitcost/domestic")
 public class DomesticFeeController extends BaseController {
-    private String prefix = "/costmng/circuitfeemng/domestic";
+    private String prefix = "costmng/circuitfeemng/domestic";
 
     @Autowired
     private DomesticFeeService domesticFeeService;

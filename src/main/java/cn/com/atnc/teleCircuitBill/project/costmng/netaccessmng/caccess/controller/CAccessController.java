@@ -25,7 +25,7 @@ import java.util.List;
 @RequestMapping("costmng/netaccessmng/caccess")
 public class CAccessController extends BaseController {
 
-    private String prefix = "/costmng/netaccessmng/caccess";
+    private String prefix = "costmng/netaccessmng/caccess";
 
     @Autowired
     private CAccessService cAccessService;

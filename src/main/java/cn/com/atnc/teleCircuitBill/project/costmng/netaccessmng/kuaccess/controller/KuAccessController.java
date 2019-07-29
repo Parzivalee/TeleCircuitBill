@@ -22,9 +22,9 @@ import java.util.List;
  * @date 2018-10-31
  */
 @Controller
-@RequestMapping("costmng/netaccessmng/kuaccess")
+@RequestMapping("costmng/neta·ccessmng/kuaccess")
 public class KuAccessController extends BaseController {
-    private String prefix = "/costmng/netaccessmng/kuaccess";
+    private String prefix = "costmng/netaccessmng/kuaccess";
 
     @Autowired
     private KuAccessService kuAccessService;

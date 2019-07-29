@@ -24,7 +24,7 @@ import java.util.List;
 @Controller
 @RequestMapping("customerInfo/customers")
 public class CustomerController extends BaseController {
-    private String prefix = "customerInfo/customers/";
+    private String prefix = "customerInfo/customers";
 
     @Autowired
     private CustomerService customerService;

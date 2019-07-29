@@ -25,7 +25,7 @@ import java.util.List;
 @RequestMapping("costmng/netaccessmng/atmaccess")
 @Controller
 public class AtmAccessController extends BaseController {
-    private String prefix = "/costmng/netaccessmng/atmaccess";
+    private String prefix = "costmng/netaccessmng/atmaccess";
 
     @Autowired
     private AtmAccessService atmAccessService;

@@ -1,5 +1,6 @@
 package cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.domain;
 
+import cn.com.atnc.teleCircuitBill.framework.aspectj.lang.annotation.Excel;
 import cn.com.atnc.teleCircuitBill.framework.web.domain.BaseEntity;
 import cn.com.atnc.teleCircuitBill.project.customerInfo.customers.domain.Customer;
 import lombok.Getter;
@@ -57,4 +58,5 @@ public class ContractInfo extends BaseEntity {
     public Integer generateBill;
     //是否变更
     public Integer changeStatus;
+
 }

@@ -82,6 +82,6 @@ public class StatisticsController extends BaseController {
     @GetMapping("/contractinfolist")
     public String contractinfolist()
     {
-        return redirect(reportUrl+"git.cpt&op=write");
+        return redirect(reportUrl+"ContractInfo.cpt&op=write");
     }
 }

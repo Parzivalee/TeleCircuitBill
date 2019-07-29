@@ -295,31 +295,31 @@ public class BillController extends BaseController {
             if (accessBillDetails!=null) {
                 AccessBillDetail accessBillDetail = accessBillDetails.get(0);
                 if (accessBillDetail.getAccessType().equals("CTes")) {
-                    url+="access-tes.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="access-tes.cpt&billId="+bill.getBillId();
                 }else if (accessBillDetail.getAccessType().equals("CPes")) {
-                    url+="access-pes.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="access-pes.cpt&billId="+bill.getBillId();
                 }else if (accessBillDetail.getAccessType().equals("KUFir")) {
-                    url+="access-ku1.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="access-ku1.cpt&billId="+bill.getBillId();
                 }else if (accessBillDetail.getAccessType().equals("KUSec")) {
-                    url+="access-ku2.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="access-ku2.cpt&billId="+bill.getBillId();
                 }else if (accessBillDetail.getAccessType().equals("KUThi")) {
-                    url+="access-ku3.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="access-ku3.cpt&billId="+bill.getBillId();
                 }else if (accessBillDetail.getAccessType().equals("KUFou")) {
-                    url+="access-ku4.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="access-ku4.cpt&billId="+bill.getBillId();
                 }else if (accessBillDetail.getAccessType().equals("ATMWithEquip")) {
-                    url+="access-atm.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="access-atm.cpt&billId="+bill.getBillId();
                 }else if (accessBillDetail.getAccessType().equals("ATMWithoutEquip")) {
-                    url+="access-atm.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="access-atm.cpt&billId="+bill.getBillId();
                 }
             }
         }else if (bill.getBillType().equals("DevideBill")) {
             //分成结算表
             if (billType.equals("divideBill")) {
                 //分成账单
-                url+="bill-fc.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                url+="bill-fc.cpt&billId="+bill.getBillId();
             }else if (billType.equals("settlementBill")) {
                 //结算账单
-                url+="bill-js.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                url+="bill-js.cpt&billId="+bill.getBillId();
             }
 
         }else if (bill.getBillType().equals("HireBill")){
@@ -328,20 +328,21 @@ public class BillController extends BaseController {
             if (customer!=null) {
                 if (customer.getRegion().equals("0")) {
                     //境内
-                    url+="bill-inland.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="bill-inland.cpt&billId="+bill.getBillId();
 
                 }else if (customer.getRegion().equals("1")) {
                     //境外
-                    url+="bill-hk.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="bill-hk.cpt&billId="+bill.getBillId();
 
                 }else if (customer.getRegion().equals("2")) {
                     //港澳台
-                    url+="bill-oversea.cpt&billnumber="+bill.getBillNumber()+"&_filename_="+bill.getBillNumber();
+                    url+="bill-oversea.cpt&billId="+bill.getBillId();
                 }
             }
         }
         //map.put("url",url);
         //return prefix + "/finereport";
+        System.out.println(url);
         return url;
     }
 }
