@@ -20,4 +20,6 @@ public interface CAccessMapper {
     CAccessFee selectCAccessFeeById(String cAccessFeeId);
 
     int updateCAccessFee(CAccessFee cAccessFee);
+
+    int deleteCAccessFeeByIds(String[] cAccessFeeIds);
 }

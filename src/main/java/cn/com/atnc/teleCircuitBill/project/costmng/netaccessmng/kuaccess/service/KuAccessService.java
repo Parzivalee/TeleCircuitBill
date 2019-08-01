@@ -39,4 +39,11 @@ public interface KuAccessService {
      */
     int updateKuAccessFee(KuAccessFee kuAccessFee);
 
+    /**
+     * 删除记录
+     * @param ids
+     * @return
+     */
+    int deleteByIds(String ids);
+
 }

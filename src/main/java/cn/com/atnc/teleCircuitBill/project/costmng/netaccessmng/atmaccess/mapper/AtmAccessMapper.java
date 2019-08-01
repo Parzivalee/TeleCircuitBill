@@ -20,4 +20,6 @@ public interface AtmAccessMapper {
     AtmAccessFee selectAtmAccessFeeById(String atmAccessFeeId);
 
     int updateAtmAccessFee(AtmAccessFee atmAccessFee);
+
+    int deleteByIds(String[] toStrArray);
 }

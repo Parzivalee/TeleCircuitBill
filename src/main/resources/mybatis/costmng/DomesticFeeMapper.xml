@@ -10,6 +10,7 @@
         <result property="rate"    column="cir"/>
         <result property="portFee"    column="port_fee"/>
         <result property="vcMonthFee"    column="vc_month_fee"/>
+        <result property="totalMonthFee"    column="total_month_fee"/>
         <result property="createBy"     column="create_by"    />
         <result property="createTime"   column="create_time"  />
         <result property="updateBy"     column="update_by"    />
@@ -18,24 +19,22 @@
 
     <sql id="selectDomesticFeeVo">
         select *
-		from tele_circuit_month_fee
+		from tele_circuit_month_fee where isdel=0
     </sql>
 
     <select id="selectDomesticFeeById" parameterType="String" resultMap="DomesticFeeResult">
         <include refid="selectDomesticFeeVo"/>
-        where id = #{domesticFeeId}
+        and id = #{domesticFeeId}
     </select>
 
     <select id="selectDomesticFeeList" parameterType="DomesticFee" resultMap="DomesticFeeResult">
         <include refid="selectDomesticFeeVo"/>
-        <where>
             <if test="circuitType != null and circuitType != '' " >
                 AND tele_circuit_type=#{circuitType}
             </if>
             <if test="rate != null and rate != 0 ">
                 AND cir=#{rate}
             </if>
-        </where>
     </select>
 
     <insert id="insertDomesticFee" parameterType="DomesticFee">
@@ -48,6 +47,7 @@
         <if test="rate != null and rate != ''">cir,</if>
         <if test="portFee != null and portFee != ''">port_fee,</if>
         <if test="vcMonthFee != null and vcMonthFee != ''">vc_month_fee,</if>
+        <if test="totalMonthFee != null and totalMonthFee != ''">total_month_fee,</if>
         <if test="createBy != null and createBy != ''">create_by,</if>
         create_time
         )values(
@@ -56,6 +56,7 @@
         <if test="rate != null and rate != ''">#{rate},</if>
         <if test="portFee != null and portFee != ''">#{portFee},</if>
         <if test="vcMonthFee != null and vcMonthFee != ''">#{vcMonthFee},</if>
+        <if test="totalMonthFee != null and totalMonthFee != ''">#{totalMonthFee},</if>
         <if test="createBy != null and createBy != ''">#{createBy},</if>
         sysdate()
         )
@@ -68,16 +69,17 @@
             <if test="rate != null and rate != ''">cir = #{rate},</if>
             <if test="portFee != null and portFee != ''">port_fee = #{portFee},</if>
             <if test="vcMonthFee != null and vcMonthFee != ''">vc_month_fee = #{vcMonthFee},</if>
+            <if test="totalMonthFee != null and totalMonthFee != ''">total_month_fee = #{totalMonthFee},</if>
             <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
             update_time = sysdate()
         </set>
         where id = #{domesticFeeId}
     </update>
 
-    <delete id="deleteDomesticFeeByIds" parameterType="String">
-        delete from tele_circuit_month_fee where id in
+    <update id="deleteDomesticFeeByIds" parameterType="String">
+        update tele_circuit_month_fee set isdel=1 where id in
         <foreach item="domesticFeeId" collection="array" open="(" separator="," close=")">
             #{domesticFeeId}
         </foreach>
-    </delete>
+    </update>
 </mapper>

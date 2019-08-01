@@ -1,8 +1,8 @@
 package cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.kuaccess.service;
 
 
+import cn.com.atnc.teleCircuitBill.common.support.Convert;
 import cn.com.atnc.teleCircuitBill.common.utils.security.ShiroUtils;
-import cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.caccess.domain.CAccessFee;
 import cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.kuaccess.domain.KuAccessFee;
 import cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.kuaccess.mapper.KuAccessMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +41,10 @@ public class KuAccessServiceImpl implements KuAccessService {
     public int updateKuAccessFee(KuAccessFee kuAccessFee) {
         kuAccessFee.setUpdateBy(ShiroUtils.getLoginName());
         return kuAccessMapper.updateKuAccessFee(kuAccessFee);
+    }
+
+    @Override
+    public int deleteByIds(String ids) {
+        return kuAccessMapper.deleteByIds(Convert.toStrArray(ids));
     }
 }

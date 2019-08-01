@@ -27,13 +27,14 @@ public class DomesticFeeServiceImpl implements DomesticFeeService {
      */
     @Override
     public List<DomesticFee> selectDomesticFeeList(DomesticFee domesticFee) {
-        List<DomesticFee> domesticFees =  domesticFeeMapper.selectDomesticFeeList(domesticFee);
+        /*List<DomesticFee> domesticFees =  domesticFeeMapper.selectDomesticFeeList(domesticFee);
         //获取每条电路的总月租资费
         for (DomesticFee domesticFee1:domesticFees) {
             domesticFee1.setTotalMonthFee(domesticFee1.getPortFee()+domesticFee1.getVcMonthFee());
         }
 
-        return domesticFees;
+        return domesticFees;*/
+        return  domesticFeeMapper.selectDomesticFeeList(domesticFee);
     }
 
     /**
@@ -44,6 +45,7 @@ public class DomesticFeeServiceImpl implements DomesticFeeService {
     @Override
     public int insertDomesticFee(DomesticFee domesticFee) {
         domesticFee.setCreateBy(ShiroUtils.getLoginName());
+        domesticFee.setTotalMonthFee(domesticFee.getPortFee()+domesticFee.getVcMonthFee());
         return domesticFeeMapper.insertDomesticFee(domesticFee);
     }
 
@@ -54,7 +56,7 @@ public class DomesticFeeServiceImpl implements DomesticFeeService {
      */
     @Override
     public int deleteDomesticFeeByIds(String ids) {
-        Long[] domesticFeeIds = Convert.toLongArray(ids);
+        String[] domesticFeeIds = Convert.toStrArray(ids);
         return domesticFeeMapper.deleteDomesticFeeByIds(domesticFeeIds);
     }
 

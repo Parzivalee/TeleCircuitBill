@@ -1,6 +1,7 @@
 package cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.caccess.domain;
 
 import cn.com.atnc.teleCircuitBill.framework.web.domain.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class CAccessFee extends BaseEntity {
     private static final long serialVersionUID = -5914509768188026637L;
 
     //Id
+    @JsonProperty("cAccessFeeId")
     private String cAccessFeeId;
     //站点位置
     private String siteArea;

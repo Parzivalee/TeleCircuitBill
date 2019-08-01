@@ -22,7 +22,7 @@ import java.util.List;
  * @date 2018-10-31
  */
 @Controller
-@RequestMapping("costmng/neta·ccessmng/kuaccess")
+@RequestMapping("costmng/netaccessmng/kuaccess")
 public class KuAccessController extends BaseController {
     private String prefix = "costmng/netaccessmng/kuaccess";
 
@@ -95,5 +95,19 @@ public class KuAccessController extends BaseController {
     public AjaxResult editSave(KuAccessFee kuAccessFee)
     {
         return toAjax(kuAccessService.updateKuAccessFee(kuAccessFee));
+    }
+
+    /**
+     * 删除记录
+     * @param ids
+     * @return
+     */
+    @RequiresPermissions("netaccessmng:kuaccess:remove")
+    @Log(title = "Ku波段入网资费管理", action = BusinessType.DELETE)
+    @PostMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids)
+    {
+        return toAjax(kuAccessService.deleteByIds(ids));
     }
 }

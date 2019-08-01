@@ -76,10 +76,10 @@
         where id = #{kuAccessFeeId}
     </update>
 
-    <!--<delete id="deleteDomesticFeeByIds" parameterType="String">
-        delete from tele_circuit_month_fee where id in
-        <foreach item="domesticFeeId" collection="array" open="(" separator="," close=")">
-            #{domesticFeeId}
+    <update id="deleteByIds" parameterType="String">
+        update tele_ku_access_fee set isdel=1 where id in
+        <foreach item="kuAccessFeeId" collection="array" open="(" separator="," close=")">
+            #{kuAccessFeeId}
         </foreach>
-    </delete>-->
+    </update>
 </mapper>

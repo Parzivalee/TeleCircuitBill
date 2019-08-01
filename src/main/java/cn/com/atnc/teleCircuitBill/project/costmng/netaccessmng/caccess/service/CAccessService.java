@@ -38,4 +38,10 @@ public interface CAccessService {
      */
     int updateCAccessFee(CAccessFee cAccessFee);
 
+    /**
+     * 删除记录
+     * @param ids
+     * @return
+     */
+    int deleteCAccessFeeById(String ids);
 }

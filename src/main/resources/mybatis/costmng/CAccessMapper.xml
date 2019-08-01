@@ -5,7 +5,7 @@
 <mapper namespace="cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.caccess.mapper.CAccessMapper">
 
     <resultMap type="CAccessFee" id="CAccessFeeResult">
-        <id     property="cAccessFeeId"       column="id"/>
+        <id     property="cAccessFeeId"     column="id"/>
         <result property="siteArea"    column="site_area"/>
         <result property="currencyType"    column="currency_type"/>
         <result property="siteType"    column="site_type"/>
@@ -21,6 +21,7 @@
         select *
 		from tele_c_access_fee where isdel=0
     </sql>
+
 
     <select id="selectCAccessFeeById" parameterType="String" resultMap="CAccessFeeResult">
         <include refid="selectCAccessFeeVo"/>
@@ -76,10 +77,10 @@
         where id = #{cAccessFeeId}
     </update>
 
-    <!--<delete id="deleteDomesticFeeByIds" parameterType="String">
-        delete from tele_circuit_month_fee where id in
-        <foreach item="domesticFeeId" collection="array" open="(" separator="," close=")">
-            #{domesticFeeId}
+    <update id="deleteCAccessFeeByIds" parameterType="String">
+        update tele_c_access_fee set isdel=1 where id in
+        <foreach item="cAccessFeeId" collection="array" open="(" separator="," close=")">
+            #{cAccessFeeId}
         </foreach>
-    </delete>-->
+    </update>
 </mapper>

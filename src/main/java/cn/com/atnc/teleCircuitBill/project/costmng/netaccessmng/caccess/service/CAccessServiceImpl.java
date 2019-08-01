@@ -1,5 +1,6 @@
 package cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.caccess.service;
 
+import cn.com.atnc.teleCircuitBill.common.support.Convert;
 import cn.com.atnc.teleCircuitBill.common.utils.security.ShiroUtils;
 import cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.caccess.domain.CAccessFee;
 import cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.caccess.mapper.CAccessMapper;
@@ -39,6 +40,11 @@ public class CAccessServiceImpl implements CAccessService {
     public int updateCAccessFee(CAccessFee cAccessFee) {
         cAccessFee.setUpdateBy(ShiroUtils.getLoginName());
         return cAccessMapper.updateCAccessFee(cAccessFee);
+    }
+
+    @Override
+    public int deleteCAccessFeeById(String ids) {
+        return cAccessMapper.deleteCAccessFeeByIds(Convert.toStrArray(ids));
     }
 
 

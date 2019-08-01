@@ -21,4 +21,6 @@ public interface KuAccessMapper {
     KuAccessFee selectKuAccessFeeById(String kuAccessFeeId);
 
     int updateKuAccessFee(KuAccessFee kuAccessFee);
+
+    int deleteByIds(String[] toStrArray);
 }

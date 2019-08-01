@@ -26,6 +26,6 @@ public class DomesticFee extends BaseEntity {
     //虚电路费
     private Double vcMonthFee;
     //电路月租费
-    private transient Double totalMonthFee;
+    private Double totalMonthFee;
 
 }

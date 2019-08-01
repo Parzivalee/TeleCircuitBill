@@ -1,5 +1,6 @@
 package cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.atmaccess.service;
 
+import cn.com.atnc.teleCircuitBill.common.support.Convert;
 import cn.com.atnc.teleCircuitBill.common.utils.security.ShiroUtils;
 import cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.atmaccess.domain.AtmAccessFee;
 import cn.com.atnc.teleCircuitBill.project.costmng.netaccessmng.atmaccess.mapper.AtmAccessMapper;
@@ -38,5 +39,10 @@ public class AtmAccessServiceImpl implements AtmAccessService {
     public int updateAtmAccessFee(AtmAccessFee atmAccessFee) {
         atmAccessFee.setUpdateBy(ShiroUtils.getLoginName());
         return atmAccessMapper.updateAtmAccessFee(atmAccessFee);
+    }
+
+    @Override
+    public int deleteByIds(String ids) {
+        return atmAccessMapper.deleteByIds(Convert.toStrArray(ids));
     }
 }

@@ -82,8 +82,8 @@ public class CAccessController extends BaseController {
     @GetMapping("/edit/{cAccessFeeId}")
     public String edit(@PathVariable("cAccessFeeId") String cAccessFeeId, ModelMap mmap)
     {
+        System.err.println("cAccessFeeId: "+cAccessFeeId);
         CAccessFee cAccessFee = cAccessService.selectCAccessFeeById(cAccessFeeId);
-        System.out.println(cAccessFee);
         mmap.put("cAccessFee", cAccessFee);
         return prefix + "/edit";
     }
@@ -98,5 +98,19 @@ public class CAccessController extends BaseController {
     public AjaxResult editSave(CAccessFee cAccessFee)
     {
         return toAjax(cAccessService.updateCAccessFee(cAccessFee));
+    }
+
+    /**
+     * 删除记录
+     * @param ids
+     * @return
+     */
+    @RequiresPermissions("netaccessmng:caccess:remove")
+    @Log(title = "C波段入网资费管理", action = BusinessType.DELETE)
+    @PostMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids)
+    {
+        return toAjax(cAccessService.deleteCAccessFeeById(ids));
     }
 }

@@ -16,7 +16,7 @@ public interface DomesticFeeMapper {
 
     int insertDomesticFee(DomesticFee domesticFee);
 
-    int deleteDomesticFeeByIds(Long[] domesticFeeIds);
+    int deleteDomesticFeeByIds(String[] domesticFeeIds);
 
     DomesticFee selectDomesticFeeById(String domesticFeeId);
 

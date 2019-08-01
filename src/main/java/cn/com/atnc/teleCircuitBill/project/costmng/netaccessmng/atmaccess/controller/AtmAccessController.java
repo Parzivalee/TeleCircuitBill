@@ -97,4 +97,18 @@ public class AtmAccessController extends BaseController {
     {
         return toAjax(atmAccessService.updateAtmAccessFee(atmAccessFee));
     }
+
+    /**
+     * 删除记录
+     * @param ids
+     * @return
+     */
+    @RequiresPermissions("netaccessmng:atmaccess:remove")
+    @Log(title = "ATM数据网节点入网管理", action = BusinessType.DELETE)
+    @PostMapping("/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids)
+    {
+        return toAjax(atmAccessService.deleteByIds(ids));
+    }
 }
