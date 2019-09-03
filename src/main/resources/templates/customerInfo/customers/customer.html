@@ -35,7 +35,7 @@
                         </li>
                         <li>
                             <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
-                            <!--<a class="btn btn-success btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i>&nbsp;下载</a>-->
+                            <a class="btn btn-success btn-rounded btn-sm" onclick="$.table.exportExcel()"><i class="fa fa-download"></i>&nbsp;下载</a>
                         </li>
                     </ul>
                 </div>
@@ -93,6 +93,10 @@
                     }
                 },
                 {
+                    field: 'translateName',
+                    title: '译名',
+                },
+                {
                     field: 'shortName',
                     title: '简称',
                 },
@@ -101,8 +105,74 @@
                     title: '代码',
                 },
                 {
+                    field: 'legalPerson',
+                    title: '法人',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'legalPersonPhone',
+                    title: '法人电话',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'delegation',
+                    title: '委托人',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'delegationPhone',
+                    title: '委托人电话',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'bank',
+                    title: '开户银行',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'bankAccount',
+                    title: '银行账号',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'address',
+                    title: '地址',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'email',
+                    title: '邮编',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'phoneNumber',
+                    title: '电话',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'fax',
+                    title: '传真',
+                    align: 'center',
+                    visible:false
+                },
+                {
+                    field: 'url',
+                    title: '网址',
+                    align: 'center',
+                    visible:false
+                },
+                {
                     field: 'region',
-                    title: '客户区域',
+                    title: '地区',
                     formatter: function(value, row, index) {
                         return $.table.selectDictData(region, value);
                     },
@@ -110,7 +180,7 @@
                 },
                 {
                     field: 'level',
-                    title: '客户等级',
+                    title: '等级',
                     formatter: function(value, row, index) {
                         return $.table.selectDictData(level, value);
                     },

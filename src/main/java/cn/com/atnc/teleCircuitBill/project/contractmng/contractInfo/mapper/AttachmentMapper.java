@@ -14,4 +14,8 @@ public interface AttachmentMapper {
     List<ContractAttachment> findAttachmentByContractId(String contractId);
 
     int insertContractAttachment(ContractAttachment contractAttachment);
+
+    int removeContractAttachmentById(String id);
+
+    ContractAttachment findAttachmentById(String attachmentId);
 }

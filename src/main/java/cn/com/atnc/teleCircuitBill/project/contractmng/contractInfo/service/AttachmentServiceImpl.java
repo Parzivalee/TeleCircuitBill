@@ -26,4 +26,14 @@ public class AttachmentServiceImpl implements IAttachmentService {
         newAttachment.setCreateBy(ShiroUtils.getLoginName());
         return attachmentMapper.insertContractAttachment(newAttachment);
     }
+
+    @Override
+    public int removeContractAttachmentById(String id) {
+        return attachmentMapper.removeContractAttachmentById(id);
+    }
+
+    @Override
+    public ContractAttachment findAttachmentById(String attachmentId) {
+        return attachmentMapper.findAttachmentById(attachmentId);
+    }
 }

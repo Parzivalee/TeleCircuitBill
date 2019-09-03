@@ -7,8 +7,8 @@
 <body class="white-bg">
 <div th:include="include :: footer"></div>
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-    <form class="form-horizontal m" id="form-file-upload">
-        <input id="contractId" name="contractId" th:value="${contractId}"  type="hidden">
+    <form class="form-horizontal m" id="form-fileupload-edit" th:object="${attachment}">
+        <input id="attachmentId" name="attachmentId" th:value="${attachmentId}"  type="hidden">
         <input id="elecDocumentName" name="elecDocumentName" type="hidden">
         <input id="elecDocumentPath" name="elecDocumentPath" type="hidden">
         <input id="scanDocumentName" name="scanDocumentName" type="hidden">
@@ -16,17 +16,25 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">附件类型：</label>
             <div class="col-sm-10">
-                <select id="attachmentType" name="attachmentType" class="form-control">
-                    <option value="" selected="selected">请选择</option>
-                    <option value="add">新增</option>
-                    <option value="change">变更</option>
-                </select>
+                <div th:if="${attachment.attachmentType} eq 'add' ">
+                    <select id="attachmentType1" name="attachmentType" class="form-control">
+                        <option value="">请选择</option>
+                        <option value="add" selected="selected">新增</option>
+                        <option value="change">变更</option>
+                    </select>
+                </div>
+
+                <div th:if="${attachmentType} eq 'change'">
+                    <select id="attachmentType2" name="attachmentType" class="form-control">
+                        <option value="">请选择</option>
+                        <option value="add">新增</option>
+                        <option value="change" selected="selected">变更</option>
+                    </select>
+                </div>
+
             </div>
         </div>
-        <!--<div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">请上传一份Word文件和一份PDF文件：</h4>
-        </div>-->
+
         <div class="form-group">
             <label class="col-sm-2 control-label">电子文档：</label>
             <div class="col-sm-10">
@@ -47,15 +55,10 @@
                 <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
             </div>
         </div>
-        附件信息表：
-        <div class="col-sm-12 select-info table-striped">
-            <table id="bootstrap-table" data-mobile-responsive="true"></table>
-        </div>
-
     </form>
 </div>
 <div th:include="include::footer"></div>
-<!--fileinput 文件上传插件 -->
+<!--fileInput 文件上传插件 -->
 <script th:src="@{/js/plugins/fileinput/fileinput.min.js}" ></script>
 <script th:src="@{/js/plugins/fileinput/zh.js}"></script>
 <script th:inline="javascript">
@@ -64,78 +67,6 @@
     var prefix = ctx + "contractmng/contractInfo";
 
     $(function () {
-        var options = {
-            id: "contractId",
-            url: ctx + "contractmng/contractInfo/findContractAttachment",
-            queryParams:paramsList,
-            search: false,
-            showExport: false,
-            showToggle: false,
-            removeUrl: ctx + "contractmng/contractInfo/removeattachs",
-            updateUrl: ctx + "contractmng/contractInfo/editattach/{id}",
-            showColumns: false,
-            modalName: "附件",
-            columns: [
-                {
-                    field: 'attachmentType',
-                    title: '附件分类',
-                    formatter: function(value, row, index) {
-
-                        if (value=="add") {
-                            return "新增";
-                        }else if (value == "change"){
-                            return "变更";
-                        }
-                    },
-                    align: 'center'
-                },
-                {
-                    field: 'uploadDate',
-                    title: '上传日期',
-                    align: 'center'
-
-                },
-                {
-                    field: 'elecDocumentName',
-                    title: '电子文档',
-                    align: 'center',
-                    formatter: function(value, row, index) {
-                        return ['<a href="/teleCircuitBill/profile/'+ row.elecDocumentPath +'" >' + value + '</a>'].join("");
-                    }
-
-                },
-                {
-                    field: 'scanDocumentName',
-                    title: '扫描文件',
-                    align: 'center',
-                    formatter: function(value, row, index) {
-                        return ['<a href="/teleCircuitBill/profile/'+ row.scanDocumentPath +'" >' + value + '</a>'].join("");
-                    }
-
-                },
-                {
-                    field: 'contractType',
-                    title: '操作',
-                    align: 'center',
-                    formatter: function(value, row, index) {
-                        var actions = [];
-                        actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.attachmentId + '\')"><i class="fa fa-edit"></i>编辑</a> <br>');
-                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.attachmentId + '\')"><i class="fa fa-remove"></i>删除</a> ');
-                        return actions.join('');
-                    }
-                }
-            ]
-        };
-
-        function paramsList(params) {
-            var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                contractId: $("#contractId").val()
-            };
-            return temp;
-        };
-
-        $.table.init(options);
-
         //初始化fileinput
         var oFileInput = new FileInput();
         //参数1:控件id、参数2:上传地址
@@ -181,7 +112,6 @@
                 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
             });
-
             //word文件上传完成之后的事件
             $("#elec_document").on("fileuploaded", function (event, data, previewId, index) {
                 if (data == undefined) {
@@ -193,13 +123,12 @@
 
                 }
             });
-        }
+        };
 
 
         //初始化fileinput控件（第一次初始化）
         oFile.Init2 = function(ctrlName, uploadUrl) {
             var control = $('#' + ctrlName);
-
             //初始化上传控件的样式
             control.fileinput({
                 language: 'zh', //设置语言
@@ -254,10 +183,10 @@
             alert("请上传电子文档！");
             return;
         }
-       /*if ($("#scanDocumentName").val()==null || $("#scanDocumentName").val()=="") {
-           alert("请上传扫描文件！");
-           return;
-       }*/
+        /*if ($("#scanDocumentName").val()==null || $("#scanDocumentName").val()=="") {
+            alert("请上传扫描文件！");
+            return;
+        }*/
 
         $.ajax({
             url: prefix+"/addAttachment",
@@ -280,17 +209,17 @@
             }
 
         });
-       /*$("#txt_file").on("fileuploaded", function (event, data, previewId, index) {
-            console.log("回调函数:"+data);
-            //var data = data.response.lstOrderImport;
-            if (data == undefined) {
-                alert('文件格式类型不正确');
-                return;
-            }else {
-                alert("附件上传成功！");
-            }
+        /*$("#txt_file").on("fileuploaded", function (event, data, previewId, index) {
+             console.log("回调函数:"+data);
+             //var data = data.response.lstOrderImport;
+             if (data == undefined) {
+                 alert('文件格式类型不正确');
+                 return;
+             }else {
+                 alert("附件上传成功！");
+             }
 
-        });*/
+         });*/
 
     };
 </script>

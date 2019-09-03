@@ -36,6 +36,11 @@
         where a.contract_id = #{contractId} and a.isdel=0
     </select>
 
+    <select id="findAttachmentById" parameterType="String" resultMap="ContractAttachmentResult">
+        select * from tele_contract_attachment
+        where id = #{attachmentId} and isdel=0
+    </select>
+
     <insert id="insertContractAttachment" parameterType="ContractAttachment">
         <selectKey keyProperty="attachmentId" resultType="java.lang.String" order="BEFORE">
             select replace(uuid(), '-', '')
@@ -78,10 +83,8 @@
         where id = #{cAccessFeeId}
     </update>-->
 
-    <!--<delete id="deleteDomesticFeeByIds" parameterType="String">
-        delete from tele_circuit_month_fee where id in
-        <foreach item="domesticFeeId" collection="array" open="(" separator="," close=")">
-            #{domesticFeeId}
-        </foreach>
-    </delete>-->
+    <delete id="removeContractAttachmentById" parameterType="String">
+        delete from tele_contract_attachment
+        where id= #{id}
+    </delete>
 </mapper>

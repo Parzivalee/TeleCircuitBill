@@ -13,11 +13,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import cn.com.atnc.teleCircuitBill.framework.aspectj.lang.annotation.Log;
 import cn.com.atnc.teleCircuitBill.framework.aspectj.lang.constant.BusinessType;
 import cn.com.atnc.teleCircuitBill.framework.web.controller.BaseController;
@@ -47,9 +43,9 @@ public class CusOwnerRelationController extends BaseController
 	
 	@RequiresPermissions("system:cusbillownermng:view")
 	@GetMapping()
-	public String ownerRelation()
+	public String ownerRelation(ModelMap modelMap)
 	{
-
+        modelMap.put("customers",customerService.selectCustomerList(new Customer()));
 	    return prefix + "/cusownerrelation";
 	}
 	
@@ -84,28 +80,25 @@ public class CusOwnerRelationController extends BaseController
 	@Log(title = "客户-开帐单位关系", action = BusinessType.INSERT)
 	@PostMapping("/add")
 	@ResponseBody
-	public AjaxResult addSave(HttpServletRequest request)
-	{		
-		String customerId = request.getParameter("customerId");
-		String monthBillOwnerId = request.getParameter("monthBillOwnerId");
-		String configBillOwnerId = request.getParameter("configBillOwnerId");
-		String accessBillOwnerId = request.getParameter("accessBillOwnerId");
+	public AjaxResult addSave(@RequestParam("customerId") String customerId, @RequestParam("monthBillOwnerId") String monthBillOwnerId,
+                              @RequestParam("configBillOwnerId") String configBillOwnerId, @RequestParam("accessBillOwnerId") String accessBillOwnerId)
+	{
 		CusOwnerRelation cusOwnerRelation = new CusOwnerRelation();
 		Customer customer = customerService.findCustomerByCustomerId(customerId);
-		if (customer!=null) {
+		if (customer != null) {
 			cusOwnerRelation.setCustomer(customer);
 		}
 
 		Billowner monthBillOwner = billownerService.selectBillownerById(monthBillOwnerId);
-		if (monthBillOwner!=null) {
+		if (monthBillOwner != null) {
 			cusOwnerRelation.setMonthBillOwner(monthBillOwner);
 		}
 		Billowner configBillOwner = billownerService.selectBillownerById(configBillOwnerId);
-		if (configBillOwner!=null) {
+		if (configBillOwner != null) {
 			cusOwnerRelation.setConfigBillOwner(configBillOwner);
 		}
 		Billowner accessBillOwner = billownerService.selectBillownerById(accessBillOwnerId);
-		if (accessBillOwner!=null) {
+		if (accessBillOwner != null) {
 			cusOwnerRelation.setAccessBillOwner(accessBillOwner);
 		}
 		return toAjax(cusOwnerRelationService.insertCusOwnerRelation(cusOwnerRelation));
@@ -118,7 +111,23 @@ public class CusOwnerRelationController extends BaseController
 	public String edit(@PathVariable("id") String id, ModelMap mmap)
 	{
 		CusOwnerRelation cusownerRelation = cusOwnerRelationService.selectCusOwnerRelationById(id);
-		mmap.put("ownerRelation", cusownerRelation);
+        mmap.put("customers",customerService.selectCustomerList(new Customer()));
+        mmap.put("billowners",billownerService.selectBillownerList(new Billowner()));
+		mmap.put("cusownerRelation", cusownerRelation);
+		if (cusownerRelation.getCustomer().getCustomerId() != null ) {
+            mmap.put("customerIdSelected",customerService.findCustomerByCustomerId(cusownerRelation.getCustomer().getCustomerId()).getCustomerId());
+        }
+		if (cusownerRelation.getMonthBillOwner().getBillOwnerId() != null) {
+            mmap.put("monthBillOwnerSelected", billownerService.selectBillownerById(cusownerRelation.getMonthBillOwner().getBillOwnerId()).getBillOwnerId());
+        }
+        if (cusownerRelation.getAccessBillOwner().getBillOwnerId() != null) {
+            mmap.put("accessBillOwnerSelected", billownerService.selectBillownerById(cusownerRelation.getAccessBillOwner().getBillOwnerId()).getBillOwnerId());
+        }
+        if (cusownerRelation.getConfigBillOwner().getBillOwnerId() != null) {
+            mmap.put("configBillOwnerSelected", billownerService.selectBillownerById(cusownerRelation.getConfigBillOwner().getBillOwnerId()).getBillOwnerId());
+        }
+
+
 	    return prefix + "/edit";
 	}
 	
@@ -129,9 +138,27 @@ public class CusOwnerRelationController extends BaseController
 	@Log(title = "客户-开帐单位关系", action = BusinessType.UPDATE)
 	@PostMapping("/edit")
 	@ResponseBody
-	public AjaxResult editSave(CusOwnerRelation cusownerRelation)
-	{		
-		return toAjax(cusOwnerRelationService.updateCusOwnerRelation(cusownerRelation));
+	public AjaxResult editSave(CusOwnerRelation cusOwnerRelation,@RequestParam("customerId") String customerId, @RequestParam("monthBillOwnerId") String monthBillOwnerId,
+                               @RequestParam("configBillOwnerId") String configBillOwnerId, @RequestParam("accessBillOwnerId") String accessBillOwnerId)
+	{
+        Customer customer = customerService.findCustomerByCustomerId(customerId);
+        if (customer != null) {
+            cusOwnerRelation.setCustomer(customer);
+        }
+
+        Billowner monthBillOwner = billownerService.selectBillownerById(monthBillOwnerId);
+        if (monthBillOwner != null) {
+            cusOwnerRelation.setMonthBillOwner(monthBillOwner);
+        }
+        Billowner configBillOwner = billownerService.selectBillownerById(configBillOwnerId);
+        if (configBillOwner != null) {
+            cusOwnerRelation.setConfigBillOwner(configBillOwner);
+        }
+        Billowner accessBillOwner = billownerService.selectBillownerById(accessBillOwnerId);
+        if (accessBillOwner != null) {
+            cusOwnerRelation.setAccessBillOwner(accessBillOwner);
+        }
+		return toAjax(cusOwnerRelationService.updateCusOwnerRelation(cusOwnerRelation));
 	}
 	
 	/**

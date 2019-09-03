@@ -19,6 +19,7 @@
         <result property="isContractAutoPostpone"    column="contract_auto_postpone"/>
         <result property="generateBill"    column="contract_is_generate_bill"/>
         <result property="changeStatus"    column="is_change"/>
+        <result property="basisFile"    column="basis_file"/>
         <result property="remark"    column="remark"/>
         <result property="createBy"     column="create_by"    />
         <result property="createTime"   column="create_time"  />
@@ -158,6 +159,7 @@
         <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">contract_auto_postpone,</if>
         <if test="generateBill != null and generateBill != ''">contract_is_generate_bill,</if>
         <if test="changeStatus != null and changeStatus != ''">is_change,</if>
+        <if test="basisFile != null and basisFile != ''">basis_file,</if>
         <if test="remark != null and remark != ''">remark,</if>
         <if test="createBy != null and createBy != ''">create_by,</if>
         create_time
@@ -185,6 +187,7 @@
         <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">#{isContractAutoPostpone},</if>
         <if test="generateBill != null and generateBill != ''">#{generateBill},</if>
         <if test="changeStatus != null and changeStatus != ''">#{changeStatus},</if>
+        <if test="basisFile != null and basisFile != ''">#{basisFile},</if>
         <if test="remark != null and remark != ''">#{remark},</if>
         <if test="createBy != null and createBy != ''">#{createBy},</if>
         sysdate()
@@ -216,6 +219,7 @@
             <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">contract_auto_postpone=#{isContractAutoPostpone},</if>
             <if test="generateBill != null and generateBill != ''">contract_is_generate_bill=#{generateBill},</if>
             <if test="changeStatus != null and changeStatus != ''">is_change=#{changeStatus},</if>
+            <if test="basisFile != null and basisFile != ''">basis_file=#{basisFile},</if>
             <if test="remark != null and remark != ''">remark=#{remark},</if>
             <if test="updateBy != null and updateBy != ''">update_by=#{updateBy},</if>
             update_time = sysdate()

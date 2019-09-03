@@ -95,7 +95,7 @@ public class ContractController extends BaseController {
     @RequiresPermissions("contractmng:contract:list")
     @PostMapping("/list")
     @ResponseBody
-    public TableDataInfo list(ContractInfo contractInfo) throws Exception
+    public TableDataInfo list(ContractInfo contractInfo)
     {
         startPage();
         List<ContractInfo> list = contractService.selectContractList(contractInfo);
@@ -533,6 +533,25 @@ public class ContractController extends BaseController {
         newAttachment.setScanDocumentPath(scanDocumentPath);
 
         return toAjax(attachmentService.insertContractAttachment(newAttachment));
+    }
+
+    /**
+     * 附件信息修改-GET
+     */
+    @GetMapping("/editattach/{attachmentId}")
+    public String editAttaches(@PathVariable("attachmentId") String attachmentId, ModelMap model)
+    {
+        model.put("attachment",attachmentService.findAttachmentById(attachmentId));
+
+        return prefix + "/editattach";
+    }
+
+    @Log(title = "附件信息", action = BusinessType.DELETE)
+    @PostMapping("/removeattachs")
+    @ResponseBody
+    public AjaxResult delAttachments(String ids)
+    {
+        return toAjax(attachmentService.removeContractAttachmentById(ids));
     }
 
     /**

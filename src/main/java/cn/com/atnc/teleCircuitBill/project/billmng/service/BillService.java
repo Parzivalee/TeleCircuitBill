@@ -32,7 +32,7 @@ public interface BillService {
      * @return
      * @throws ParseException
      */
-    int makeBill(BillDetail billDetail, String billType, String customerId, String associationIds) throws ParseException;
+    int makeBill(BillDetail billDetail, String billType, String customerId, String associationIds ,Date billTime) throws ParseException;
 
     /**
      * 删除账单信息
@@ -74,7 +74,7 @@ public interface BillService {
      * @param accessTypeId
      * @return
      */
-    int makeAccessBill(AccessBillDetail accessBillDetail, String billType, String customerId, String accessTypeId);
+    int makeAccessBill(AccessBillDetail accessBillDetail, String billType, String customerId, String accessTypeId,Date billTime);
 
     /**
      * 根据账单id查找入网账单明细

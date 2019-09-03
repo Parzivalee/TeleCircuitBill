@@ -29,7 +29,7 @@ public class Bill extends BaseEntity {
     private String billYear;            //账单年份
     private String billQuarter;         //账单季度
     private String billPeriod;          //账单日期
-    private Date billTime;				//开账时间
+    private Date billTime;				//开账日期
     private Date billReceiveTime;		//到账时间
     private Double billFeeTotal;		//账单费用
     private String isReceive;			//是否到账

@@ -86,7 +86,7 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public int makeBill(BillDetail billDetail, String billType,
-                        String customerId, String associationIds) throws ParseException {
+                        String customerId, String associationIds,Date billTime) throws ParseException {
         //返回值标识
         int flag = 0;
         //境内境外
@@ -153,7 +153,7 @@ public class BillServiceImpl implements BillService {
         }
         //如果新增账单是租用账单或者分成账单
         //生成账单时间
-        Date billTime = new Date();
+        //Date billTime = new Date();
 
             /*//此电路的账单总费用
             Double billFeeSum = association.getFeeSum()*monthSum;
@@ -352,11 +352,6 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public int updateBill(Bill bill) {
-        if (bill.getBillReceiveTime()!=null) {
-            //如果到账日期不为空，改变isReceive标识
-            bill.setIsReceive("1");
-        }
-
         bill.setUpdateBy(ShiroUtils.getLoginName());
         return billMapper.updateBill(bill);
     }
@@ -541,10 +536,10 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
-    public int makeAccessBill(AccessBillDetail accessBillDetail, String billType, String customerId, String accessTypeId) {
+    public int makeAccessBill(AccessBillDetail accessBillDetail, String billType,
+                              String customerId, String accessTypeId,Date billTime) {
         AccessBillDetail newAccessBillDetail = new AccessBillDetail();
         Calendar nowCalendar = Calendar.getInstance();
-        Date billTime = new Date();
         // 定义日期格式转换Format
         DateFormat format = new SimpleDateFormat("yyyyMMdd");
         String timeStr = format.format(nowCalendar.getTime());
@@ -555,7 +550,7 @@ public class BillServiceImpl implements BillService {
         //找到开帐客户对应的开帐单位信息
         CusOwnerRelation cusOwnerRelation = cusOwnerRelationMapper.selectCusOwnerRelationByCustomerId(customerId);
         String billOwnerId = cusOwnerRelation.getAccessBillOwner().getBillOwnerId();
-        if (contractAccessInfo!=null) {
+        if (contractAccessInfo != null) {
             String accessTypeShort;
             String accessType = contractAccessInfo.getContractAccessType();
             switch (accessType) {

@@ -52,7 +52,7 @@
     <div th:include="include::footer"></div>
 	<script th:src="@{/ajax/libs/select/select2.js}"></script>
 	<script type="text/javascript">
-		var prefix = ctx + "module/ownerRelation"
+		var prefix = ctx + "system/cusbillownermng";
 		$("#form-ownerRelation-add").validate({
 			rules:{
                 customer:{
@@ -70,7 +70,8 @@
 
 			},
 			submitHandler: function(form) {
-				$.operate.save(prefix + "/add", $('#form-ownerRelation-add').serialize());
+				//$.operate.save(prefix + "/add", $('#form-ownerRelation-add').serialize());
+                add();
 			}
 		});
 

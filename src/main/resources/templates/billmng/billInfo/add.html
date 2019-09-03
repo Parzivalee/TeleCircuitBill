@@ -58,6 +58,14 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">开账日期：</label>
+            <div class="col-sm-8">
+                <div class="input-group date"> <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input type="text" autocomplete="off" name="billTime" id="billTime" class="form-control" value="">
+                </div>
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="form-control-static col-sm-offset-9">
@@ -227,6 +235,7 @@
         var circuitString = circuitList.join(",");
         var monthBillStart = $("input[name='monthBillStart']").val();
         var monthBillEnd = $("input[name='monthBillEnd']").val();
+        var billTime = $("input[name='billTime']").val();
 
         if (billType=="AccessBill") {
             if ($("#accessType").val()==null || $("#accessType").val()=="") {
@@ -241,7 +250,8 @@
                 data : {
                     "billType": billType,
                     "customerId": customerId,
-                    "accessTypeId": $("#accessType").val()
+                    "accessTypeId": $("#accessType").val(),
+                    "billTime": billTime
                 },
                 dataType:'json',
                 async : false,
@@ -263,7 +273,8 @@
                     "customerId": customerId,
                     "associationIds": circuitString,
                     "monthBillStart": monthBillStart,
-                    "monthBillEnd": monthBillEnd
+                    "monthBillEnd": monthBillEnd,
+                    "billTime": billTime
                 },
                 dataType:'json',
                 async : false,

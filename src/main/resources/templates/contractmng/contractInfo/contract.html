@@ -81,7 +81,7 @@
 </div>
 <div th:include="include :: footer"></div>
 <script th:src="@{/ajax/libs/select/select2.js}"></script>
-<!--fileinput 文件上传插件 -->
+<!--fileInput 文件上传插件 -->
 <script th:src="@{/js/plugins/fileinput/fileinput.min.js}" ></script>
 <script th:src="@{/js/plugins/fileinput/zh.js}"></script>
 <script th:inline="javascript">
@@ -92,6 +92,7 @@
     var uploadFlag = [[${@permission.hasPermi('contractmng:contract:upload')}]];
     var changeFlag = [[${@permission.hasPermi('contractmng:contract:change')}]];
     var contractType = [[${@dict.getType('tele_contract_type')}]];
+    var contractSignType = [[${@dict.getType('contract_sign_type')}]];
     var areaType = [[${@dict.getType('cus_area')}]];
     var statusFlag = [[${@dict.getType('contract_status_type')}]];
     var prefix = ctx + "contractmng/contractInfo";
@@ -141,6 +142,13 @@
                     }
                 },
                 {
+                    field: 'contractSignType',
+                    title: '签订类型',
+                    formatter: function(value, row, index) {
+                        return $.table.selectDictData(contractSignType, value);
+                    },
+                },
+                {
                     field: 'customer.customerName',
                     title: '客户名称',
                 },
@@ -165,6 +173,12 @@
                     formatter: function(value, row, index) {
                         return $.table.selectDictLabel(statusFlag, value);
                     }
+                },
+                {
+                    field: 'basisFile',
+                    title: '依据文件',
+                    align: 'center',
+                    visible: false
                 },
                 {
                     field: 'contractType',

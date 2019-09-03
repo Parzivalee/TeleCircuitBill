@@ -4,30 +4,47 @@
 <head th:include="include :: header"></head>
 <body class="white-bg">
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-        <form class="form-horizontal m" id="form-ownerRelation-edit" th:object="${ownerRelation}">
+        <form class="form-horizontal m" id="form-ownerRelation-edit" th:object="${cusownerRelation}">
             <input id="id" name="id" th:field="*{id}"  type="hidden">
-            <div class="form-group">	
-                <label class="col-sm-3 control-label">：</label>
+            <div class="form-group">
+                <label class="col-sm-3 control-label ">客户：</label>
                 <div class="col-sm-8">
-                    <input id="customerId" name="customerId" th:field="*{customerId}" class="form-control" type="text">
+                    <select id="customer" class="form-control m-b">
+                        <option value="">请选择</option>
+                        <option th:each="customer1:${customers}" th:text="${customer1.customerName}"
+                                th:value="${customer1.customerId}"
+                                th:selected="${customer1.customerId == customerIdSelected}"></option>
+                    </select>
                 </div>
             </div>
-            <div class="form-group">	
-                <label class="col-sm-3 control-label">：</label>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">技术服务账单开帐单位：</label>
                 <div class="col-sm-8">
-                    <input id="monthBillOwnerId" name="monthBillOwnerId" th:field="*{monthBillOwnerId}" class="form-control" type="text">
+                    <select id="monthBillOwner" class="form-control m-b">
+                        <option value="">请选择</option>
+                        <option th:each="monthBillOwner:${billowners}" th:text="${monthBillOwner.billCompany}" th:value="${monthBillOwner.billOwnerId}"
+                                th:selected="${monthBillOwner.billOwnerId == monthBillOwnerSelected}"></option>
+                    </select>
                 </div>
             </div>
-            <div class="form-group">	
-                <label class="col-sm-3 control-label">：</label>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">维护账单开帐单位：</label>
                 <div class="col-sm-8">
-                    <input id="configBillOwnerId" name="configBillOwnerId" th:field="*{configBillOwnerId}" class="form-control" type="text">
+                    <select id="configBillOwner" class="form-control m-b">
+                        <option value="">请选择</option>
+                        <option th:each="configBillOwner:${billowners}" th:text="${configBillOwner.billCompany}" th:value="${configBillOwner.billOwnerId}"
+                                th:selected="${configBillOwner.billOwnerId == configBillOwnerSelected}">></option>
+                    </select>
                 </div>
             </div>
-            <div class="form-group">	
-                <label class="col-sm-3 control-label">：</label>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">入网账单开帐单位：</label>
                 <div class="col-sm-8">
-                    <input id="accessBillOwnerId" name="accessBillOwnerId" th:field="*{accessBillOwnerId}" class="form-control" type="text">
+                    <select id="accessBillOwner" class="form-control m-b">
+                        <option value="">请选择</option>
+                        <option th:each="accessBillOwner:${billowners}" th:text="${accessBillOwner.billCompany}" th:value="${accessBillOwner.billOwnerId}"
+                                th:selected="${accessBillOwner.billOwnerId == accessBillOwnerSelected}"></option>
+                    </select>
                 </div>
             </div>
 			<div class="form-group">
@@ -39,18 +56,55 @@
 		</form>
     </div>
     <div th:include="include::footer"></div>
+    <script th:src="@{/ajax/libs/select/select2.js}"></script>
     <script type="text/javascript">
-		var prefix = ctx + "module/ownerRelation"
+		var prefix = ctx + "system/ownerRelation";
 		$("#form-ownerRelation-edit").validate({
 			rules:{
-				xxxx:{
-					required:true,
-				},
+                customer:{
+                    required:true,
+                },
+                monthBillOwner:{
+                    required:true
+                },
+                configBillOwner:{
+                    required:true
+                },
+                accessBillOwner:{
+                    required:true
+                }
 			},
 			submitHandler: function(form) {
-				$.operate.save(prefix + "/edit", $('#form-ownerRelation-edit').serialize());
+				//$.operate.save(prefix + "/edit", $('#form-ownerRelation-edit').serialize());
+                edit();
 			}
 		});
+
+        function edit() {
+            var customer = $("#customer option:selected").val();
+            var monthBillOwner = $("#monthBillOwner option:selected").val();
+            var configBillOwner = $("#configBillOwner option:selected").val();
+            var accessBillOwner = $("#accessBillOwner option:selected").val();
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: ctx + "system/cusbillownermng/edit",
+                data: {
+                    "id": $("#id").val(),
+                    "customerId": customer,
+                    "monthBillOwnerId": monthBillOwner,
+                    "configBillOwnerId": configBillOwner,
+                    "accessBillOwnerId": accessBillOwner
+                },
+                async: false,
+                error: function (request) {
+                    $.modal.alertError("系统错误");
+                },
+                success: function (data) {
+                    $.operate.saveSuccess(data);
+                }
+            });
+        }
 	</script>
 </body>
 </html>

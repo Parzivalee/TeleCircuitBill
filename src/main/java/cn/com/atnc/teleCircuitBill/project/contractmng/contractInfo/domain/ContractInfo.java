@@ -55,8 +55,11 @@ public class ContractInfo extends BaseEntity {
     //状态
     private transient String status;
     //是否生成账单
-    public Integer generateBill;
+    private Integer generateBill;
     //是否变更
-    public Integer changeStatus;
+    private Integer changeStatus;
+    //依据文件
+    private String basisFile;
+
 
 }

@@ -88,7 +88,13 @@ public class BillController extends BaseController {
     }
 
     /**
-     * 新增账单-post
+     * 新增租用/分成账单-post
+     * @param billDetail 账单详细信息
+     * @param billType 账单类型
+     * @param customerId 客户id
+     * @param associationIds 合同电路关联表Id
+     * @return AjaxResult
+     * @throws ParseException
      */
     @RequiresPermissions("billmng:bill:add")
     @Log(title = "新增租用/分成账单", action = BusinessType.INSERT)
@@ -97,24 +103,34 @@ public class BillController extends BaseController {
     @ResponseBody
     public AjaxResult addSave(BillDetail billDetail, @RequestParam("billType") String billType,
                               @RequestParam("customerId") String customerId,
-                              @RequestParam("associationIds") String associationIds) throws ParseException {
-        return toAjax(billService.makeBill(billDetail,billType,customerId,associationIds));
+                              @RequestParam("associationIds") String associationIds,
+                              @RequestParam("billTime") Date billTime) throws ParseException {
+        return toAjax(billService.makeBill(billDetail,billType,customerId,associationIds,billTime));
     }
 
-
+    /**
+     * 新增入网账单-post
+     * @param accessBillDetail 入网账单详细信息
+     * @param billType 账单类型
+     * @param customerId 客户Id
+     * @param accessTypeId 入网账单类型
+     * @return AjaxResult
+     * @throws ParseException
+     */
     @Log(title = "新增入网账单", action = BusinessType.INSERT)
     @PostMapping("/addacessbill")
     @Transactional(rollbackFor = Exception.class)
     @ResponseBody
     public AjaxResult addAccessBill(AccessBillDetail accessBillDetail, @RequestParam("billType") String billType,
                                     @RequestParam("customerId") String customerId,
-                                    @RequestParam("accessTypeId") String accessTypeId) throws ParseException {
-        return toAjax(billService.makeAccessBill(accessBillDetail,billType,customerId,accessTypeId));
+                                    @RequestParam("accessTypeId") String accessTypeId,
+                                    @RequestParam("billTime") Date billTime) throws ParseException {
+        return toAjax(billService.makeAccessBill(accessBillDetail,billType,customerId,accessTypeId,billTime));
     }
 
     /**
      * 账单修改-GET
-     * @param billId
+     * @param billId 账单ID
      * @param model
      * @return
      */

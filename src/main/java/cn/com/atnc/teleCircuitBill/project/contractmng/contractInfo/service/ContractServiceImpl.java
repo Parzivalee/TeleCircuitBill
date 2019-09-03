@@ -227,8 +227,12 @@ public class ContractServiceImpl implements ContractService {
         }
 
         //是否顺延
-        if (contract.getIsContractAutoPostpone()!=oldContract.getIsContractAutoPostpone()) {
+        if (contract.getIsContractAutoPostpone()!=null && oldContract.getIsContractAutoPostpone() != null) {
+            if (!contract.getIsContractAutoPostpone().equals(oldContract.getIsContractAutoPostpone())) {
                 difference+="是否顺延，";
+            }
+        }else if (contract.getIsContractAutoPostpone()!=null || oldContract.getIsContractAutoPostpone() != null){
+            difference+="是否顺延，";
         }
 
         return difference;

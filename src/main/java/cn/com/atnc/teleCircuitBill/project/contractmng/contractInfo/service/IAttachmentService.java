@@ -22,4 +22,18 @@ public interface IAttachmentService {
      * @return
      */
     int insertContractAttachment(ContractAttachment newAttachment);
+
+    /**
+     * 删除附件信息
+     * @param id
+     * @return
+     */
+    int removeContractAttachmentById(String id);
+
+    /**
+     * 根据id查找附件信息
+     * @param attachmentId
+     * @return
+     */
+    ContractAttachment findAttachmentById(String attachmentId);
 }

@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <resultMap type="Customer" id="CustomerResult">
-        <id property="customerId" column="id" />
+        <id property="customerId" column="customer_id" />
         <result property="customerName" column="customer_name" />
     </resultMap>
 
@@ -33,10 +33,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
 	<sql id="selectCusOwnerRelationVo">
-        select a.*,b.customer_name,
+        select a.*,b.customer_name,b.id customer_id,
         (select c.bill_company from sys_billowner c where c.id=a.access_bill_owner_id) access_company,
+        (select c.id from sys_billowner c where c.id=a.access_bill_owner_id) access_bill_owner_id,
         (select d.bill_company from sys_billowner d where d.id=a.month_bill_owner_id) month_company,
-        (select e.bill_company from sys_billowner e where e.id=a.config_bill_owner_id) config_company
+        (select d.id from sys_billowner d where d.id=a.month_bill_owner_id) month_bill_owner_id,
+        (select e.bill_company from sys_billowner e where e.id=a.config_bill_owner_id) config_company,
+        (select e.id from sys_billowner e where e.id=a.config_bill_owner_id) config_bill_owner_id
         from cus_owner_relation a
         left join cus_customer b on a.customer_id = b.id
 
@@ -47,16 +50,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectCusOwnerRelationVo"/>
         <where>  
             <if test="id != null and id != ''"> and id = #{id}</if>
-             <if test="customer != null and customer != ''"> and customer_id = #{customer}</if>
-             <if test="monthBillOwner != null and monthBillOwner != ''"> and month_bill_owner_id = #{monthBillOwner}</if>
-             <if test="configBillOwner != null and configBillOwner != ''"> and config_bill_owner_id = #{configBillOwner}</if>
-             <if test="accessBillOwner != null and accessBillOwner != ''"> and access_bill_owner_id = #{accessBillOwner}</if>
+             <if test="customer != null and customer.customerId != ''"> and customer_id = #{customer.customerId}</if>
+             <if test="monthBillOwner != null and monthBillOwner.billOwnerId != ''"> and month_bill_owner_id = #{monthBillOwner.billOwnerId}</if>
+             <if test="configBillOwner != null and configBillOwner.billOwnerId != ''"> and config_bill_owner_id = #{configBillOwner.billOwnerId}</if>
+             <if test="accessBillOwner != null and accessBillOwner.billOwnerId != ''"> and access_bill_owner_id = #{accessBillOwner.billOwnerId}</if>
          </where>
     </select>
     
     <select id="selectCusOwnerRelationById" parameterType="String" resultMap="CusOwnerRelationResult">
         <include refid="selectCusOwnerRelationVo"/>
-        where id = #{id}
+        where a.id = #{id}
     </select>
 
     <select id="selectCusOwnerRelationByCustomerId" parameterType="String" resultMap="CusOwnerRelationResult">
@@ -72,17 +75,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into cus_owner_relation
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != '' ">id,</if>
-			<if test="customerId != null and customer.customerId != '' ">customer_id,</if>
-			<if test="monthBillOwner != null and monthBillOwner.monthBillOwnerId != '' ">month_bill_owner_id,</if>
-			<if test="configBillOwner != null and configBillOwner.configBillOwnerId != '' ">config_bill_owner_id,</if>
-			<if test="accessBillOwner != null and accessBillOwner.accessBillOwnerId != '' ">access_bill_owner_id,</if>
+			<if test="customer != null and customer.customerId != '' ">customer_id,</if>
+			<if test="monthBillOwner != null and monthBillOwner.billOwnerId != '' ">month_bill_owner_id,</if>
+			<if test="configBillOwner != null and configBillOwner.billOwnerId != '' ">config_bill_owner_id,</if>
+			<if test="accessBillOwner != null and accessBillOwner.billOwnerId != '' ">access_bill_owner_id,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != ''">#{id},</if>
 			<if test="customer != null and customer.customerId != ''">#{customer.customerId},</if>
-			<if test="monthBillOwner != null and monthBillOwner.monthBillOwnerId != ''">#{monthBillOwner.monthBillOwnerId},</if>
-			<if test="configBillOwner != null and configBillOwner.configBillOwnerId != ''">#{configBillOwner.configBillOwnerId},</if>
-			<if test="accessBillOwner != null and accessBillOwner.accessBillOwnerId != ''">#{accessBillOwner.accessBillOwnerId},</if>
+			<if test="monthBillOwner != null and monthBillOwner.billOwnerId != ''">#{monthBillOwner.billOwnerId},</if>
+			<if test="configBillOwner != null and configBillOwner.billOwnerId != ''">#{configBillOwner.billOwnerId},</if>
+			<if test="accessBillOwner != null and accessBillOwner.billOwnerId != ''">#{accessBillOwner.billOwnerId},</if>
          </trim>
     </insert>
 	 
@@ -90,9 +93,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         update cus_owner_relation
         <trim prefix="SET" suffixOverrides=",">
             <if test="customer != null  and customer.customerId != ''  ">customer_id = #{customer.customerId},</if>
-            <if test="monthBillOwner != null  and monthBillOwner.monthBillOwnerId != ''  ">month_bill_owner_id = #{monthBillOwner.monthBillOwnerId},</if>
-            <if test="configBillOwner != null  and configBillOwner.configBillOwnerId != ''  ">config_bill_owner_id = #{configBillOwner.configBillOwnerId},</if>
-            <if test="accessBillOwner != null  and accessBillOwner.accessBillOwnerId != ''  ">access_bill_owner_id = #{accessBillOwner.accessBillOwnerId},</if>
+            <if test="monthBillOwner != null  and monthBillOwner.billOwnerId != ''  ">month_bill_owner_id = #{monthBillOwner.billOwnerId},</if>
+            <if test="configBillOwner != null  and configBillOwner.billOwnerId != ''  ">config_bill_owner_id = #{configBillOwner.billOwnerId},</if>
+            <if test="accessBillOwner != null  and accessBillOwner.billOwnerId != ''  ">access_bill_owner_id = #{accessBillOwner.billOwnerId},</if>
         </trim>
         where id = #{id}
     </update>
