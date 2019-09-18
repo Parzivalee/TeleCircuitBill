@@ -36,4 +36,25 @@ public interface IAttachmentService {
      * @return
      */
     ContractAttachment findAttachmentById(String attachmentId);
+
+    /**
+     * 根据电子文档路径查找附件信息
+     * @param path 路径
+     * @return ContractAttachment
+     */
+    ContractAttachment findAttachmentByElecDocumentPath(String path);
+
+    /**
+     * 根据扫描文档路径查找附件信息
+     * @param path 路径
+     * @return ContractAttachment
+     */
+    ContractAttachment findAttachmentByScanDocumentPath(String path);
+
+    /**
+     * 修改附件信息
+     * @param attachment 附件实体
+     * @return
+     */
+    int updateAttachment(ContractAttachment attachment);
 }

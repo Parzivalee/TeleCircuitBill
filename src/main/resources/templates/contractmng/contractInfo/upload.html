@@ -100,7 +100,10 @@
                     title: '电子文档',
                     align: 'center',
                     formatter: function(value, row, index) {
-                        return ['<a href="/teleCircuitBill/profile/'+ row.elecDocumentPath +'" >' + value + '</a>'].join("");
+                        //return ['<a href="/teleCircuitBill/profile/'+ row.elecDocumentPath +'" >' + value + '</a>'].join("");
+                        let actions = [];
+                        actions.push('<a href="#" onclick="downloadFile(\'' + row.elecDocumentPath + '\',\'elecFile\')">'+value+'</a> ');
+                        return actions.join('');
                     }
 
                 },
@@ -109,7 +112,10 @@
                     title: '扫描文件',
                     align: 'center',
                     formatter: function(value, row, index) {
-                        return ['<a href="/teleCircuitBill/profile/'+ row.scanDocumentPath +'" >' + value + '</a>'].join("");
+                        //return ['<a href="/teleCircuitBill/profile/'+ row.scanDocumentPath +'" >' + value + '</a>'].join("");
+                        let actions = [];
+                        actions.push('<a href="#" onclick="downloadFile(\'' + row.scanDocumentPath + '\',\'scanFile\')">'+value+'</a> ');
+                        return actions.join('');
                     }
 
                 },
@@ -144,11 +150,11 @@
         oFileInput.Init2("scan_document", prefix+"/uploadfile");
     });
 
-    //初始化fileinput
-    var FileInput = function () {
-        var oFile = new Object();
+    //初始化fileInput
+    let FileInput = function () {
+        let oFile = new Object();
 
-        //初始化fileinput控件（第一次初始化）
+        //初始化fileInput控件（第一次初始化）
         oFile.Init = function(ctrlName, uploadUrl) {
             var control = $('#' + ctrlName);
 
@@ -193,7 +199,7 @@
 
                 }
             });
-        }
+        };
 
 
         //初始化fileinput控件（第一次初始化）
@@ -241,7 +247,7 @@
 
                 }
             });
-        }
+        };
         return oFile;
     };
 
@@ -280,19 +286,13 @@
             }
 
         });
-       /*$("#txt_file").on("fileuploaded", function (event, data, previewId, index) {
-            console.log("回调函数:"+data);
-            //var data = data.response.lstOrderImport;
-            if (data == undefined) {
-                alert('文件格式类型不正确');
-                return;
-            }else {
-                alert("附件上传成功！");
-            }
+    }
 
-        });*/
-
-    };
+    //下载附件
+    function downloadFile(value,type) {
+        let downloadUrl = prefix + "/download?type="+type+"&path="+value;
+        window.location.href = downloadUrl;
+    }
 </script>
 </body>
 </html>

@@ -51,7 +51,7 @@ public interface CircuitService {
 
     /**
      * 比较修改前后的电路信息之间的不同
-     * @param circuit
+     * @param circuit 电路
      * @param oldCircuit
      * @return
      */
@@ -59,9 +59,9 @@ public interface CircuitService {
 
     /**
      * 根据客户，合同，电路编号查找电路
-     * @param customerId
-     * @param contractId
-     * @return
+     * @param customerId 客户Id
+     * @param contractId 合同Id
+     * @return List<Circuit>
      */
     List<Circuit> selectCircuitByCustomerAndContract(String customerId, String contractId);
 

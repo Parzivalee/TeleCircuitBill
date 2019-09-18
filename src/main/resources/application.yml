@@ -5,21 +5,21 @@ telecircuitbill:
   #版本
   version: 1.0
   #版权年份
-  copyrightYear: 2018
+  copyrightYear: 2019
   #头像上传路径
-  profile: /root/data/teleCircuit/profile/
+  profile: /Users/lwj/Documents/temporary/profile/
   #profile: E:\teleCircuitBilling\profile\
 
 #文件上传路径
 web:
-  upload-path: /root/data/teleCircuit/profile/
+  #upload-path: /root/data/teleCircuit/profile/
 #开发环境配置
 server:
   #端口
   port: 8088
   tomcat:
     uri-encoding: utf-8
-    basedir: /root/data/teleCircuit/profile/
+    #basedir: /root/data/teleCircuit/profile/
   servlet:
     context-path: /teleCircuitBill
 #日志配置

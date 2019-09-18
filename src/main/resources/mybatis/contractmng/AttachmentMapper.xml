@@ -33,12 +33,22 @@
         select a.*,b.id from tele_contract_attachment a
         left join tele_contract_info b
         on a.contract_id=b.id
-        where a.contract_id = #{contractId} and a.isdel=0
+        where a.contract_id = #{contractId} and a.isdel=0 order by a.upload_date desc
     </select>
 
     <select id="findAttachmentById" parameterType="String" resultMap="ContractAttachmentResult">
         select * from tele_contract_attachment
         where id = #{attachmentId} and isdel=0
+    </select>
+
+    <select id="findAttachmentByElecDocumentPath" parameterType="String" resultMap="ContractAttachmentResult">
+        select * from tele_contract_attachment
+        where elec_document_path = #{path} and isdel=0
+    </select>
+
+    <select id="findAttachmentByScanDocumentPath" parameterType="String" resultMap="ContractAttachmentResult">
+        select * from tele_contract_attachment
+        where scan_document_path = #{path} and isdel=0
     </select>
 
     <insert id="insertContractAttachment" parameterType="ContractAttachment">
@@ -70,18 +80,19 @@
         )
     </insert>
 
-    <!--<update id="updateCAccessFee" parameterType="CAccessFee">
-        update tele_c_access_fee
+    <update id="updateAttachment" parameterType="ContractAttachment">
+        update tele_contract_attachment
         <set>
-            <if test="siteArea != null and siteArea != ''">site_area = #{siteArea},</if>
-            <if test="currencyType != null and currencyType != ''">currency_type = #{currencyType},</if>
-            <if test="siteType != null and siteType != ''">site_type = #{siteType},</if>
-            <if test="siteAccessAmount != null and siteAccessAmount != ''">site_access_amount = #{siteAccessAmount},</if>
+            <if test="attachmentType != null and attachmentType != ''">attachment_type = #{attachmentType},</if>
+            <if test="elecDocumentName != null and elecDocumentName != ''">elec_document_name = #{elecDocumentName},</if>
+            <if test="elecDocumentPath != null and elecDocumentPath != ''">elec_document_path = #{elecDocumentPath},</if>
+            <if test="scanDocumentName != null and scanDocumentName != ''">scan_document_name = #{scanDocumentName},</if>
+            <if test="scanDocumentPath != null and scanDocumentPath != ''">scan_document_path = #{scanDocumentPath},</if>
             <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
             update_time = sysdate()
         </set>
-        where id = #{cAccessFeeId}
-    </update>-->
+        where id = #{attachmentId}
+    </update>
 
     <delete id="removeContractAttachmentById" parameterType="String">
         delete from tele_contract_attachment

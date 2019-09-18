@@ -1,5 +1,7 @@
 package cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.controller;
 
+import cn.com.atnc.teleCircuitBill.common.utils.file.FileUploadUtils;
+import cn.com.atnc.teleCircuitBill.common.utils.file.FileUtils;
 import cn.com.atnc.teleCircuitBill.framework.aspectj.lang.annotation.Log;
 import cn.com.atnc.teleCircuitBill.framework.aspectj.lang.constant.BusinessType;
 import cn.com.atnc.teleCircuitBill.framework.web.controller.BaseController;
@@ -28,6 +30,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
@@ -36,6 +39,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.*;
 
 import static cn.com.atnc.teleCircuitBill.common.utils.file.FileUploadUtils.getDefaultBaseDir;
@@ -541,9 +546,33 @@ public class ContractController extends BaseController {
     @GetMapping("/editattach/{attachmentId}")
     public String editAttaches(@PathVariable("attachmentId") String attachmentId, ModelMap model)
     {
-        model.put("attachment",attachmentService.findAttachmentById(attachmentId));
+        ContractAttachment attachment = attachmentService.findAttachmentById(attachmentId);
+        System.out.println(attachment.getAttachmentType());
+        model.put("attachment",attachment);
+        model.put("attachmentType",attachment.getAttachmentType());
+        model.put("elecSelected",attachment.getElecDocumentName());
+        model.put("scanSelected",attachment.getScanDocumentName());
 
         return prefix + "/editattach";
+    }
+
+    @PostMapping("/editAttachment")
+    @Log(title = "合同附件信息", action = BusinessType.UPDATE)
+    @ResponseBody
+    public AjaxResult editContractAttachment(@RequestParam("attachmentId") String attachmentId,
+                                            @RequestParam("attachmentType") String attachmentType,
+                                            @RequestParam("elecDocumentName") String elecDocumentName,
+                                            @RequestParam("elecDocumentPath") String elecDocumentPath,
+                                            @RequestParam("scanDocumentName") String scanDocumentName,
+                                            @RequestParam("scanDocumentPath") String scanDocumentPath) {
+        ContractAttachment attachment = attachmentService.findAttachmentById(attachmentId);
+        attachment.setAttachmentType(attachmentType);
+        attachment.setElecDocumentName(elecDocumentName);
+        attachment.setElecDocumentPath(elecDocumentPath);
+        attachment.setScanDocumentName(scanDocumentName);
+        attachment.setScanDocumentPath(scanDocumentPath);
+
+        return toAjax(attachmentService.updateAttachment(attachment));
     }
 
     @Log(title = "附件信息", action = BusinessType.DELETE)
@@ -586,7 +615,7 @@ public class ContractController extends BaseController {
 
     /**
      * 显示合同入网信息列表
-     * @param contractId
+     * @param contractId 合同Id
      * @return
      */
     @PostMapping("/contractaccessinfo")
@@ -599,9 +628,9 @@ public class ContractController extends BaseController {
 
     /**
      * 根据入网合同类型查找入网资费
-     * @param contractAccessType
-     * @param contractId
-     * @return
+     * @param contractAccessType 入网合同类型
+     * @param contractId 合同Id
+     * @return double
      */
     @PostMapping("/findaccessfee")
     @ResponseBody
@@ -655,8 +684,8 @@ public class ContractController extends BaseController {
 
     /**
      * 删除合同-入网信息（逻辑删除）
-     * @param ids
-     * @return
+     * @param ids 合同Id
+     * @return AjaxResult
      */
     @RequiresPermissions("contractmng:contract:cancelAccessInfo")
     @Log(title = "合同-入网信息", action = BusinessType.DELETE)
@@ -679,14 +708,94 @@ public class ContractController extends BaseController {
     }
 
     /**
-     * 检验合同编号是否唯一
-     * @param contractInfo
-     * @return
+     * 检验合同编号是否唯一(修改)
+     * @param contractInfo 合同信息
+     * @return String
      */
     @PostMapping("/checkContractNumberUnique")
     @ResponseBody
     public String checkContractNumberUnique(ContractInfo contractInfo) {
         return contractService.checkContractNumberUnique(contractInfo.getContractNumber(),contractInfo.getContractId());
     }
+
+    /**
+     * 检验合同编号是否唯一(变更)
+     * @param contractInfo 合同信息
+     * @return String
+     */
+    @PostMapping("/checkContractNumberUniqueChange")
+    @ResponseBody
+    public String checkContractNumberUniqueChange(ContractInfo contractInfo) {
+        return contractService.checkContractNumberUniqueChange(contractInfo.getContractNumber());
+    }
+
+    /**
+     * 下载附件
+     * @param path 附件的存储路径
+     * @param type 附件类型
+     * @param response 响应体
+     */
+    @GetMapping("/download")
+    @ResponseBody
+    public void downloadFile(@RequestParam("path") String path,@RequestParam("type") String type,
+                             HttpServletResponse response) throws UnsupportedEncodingException {
+        String fileName = "";
+        if (type.equals("elecFile")) {
+            //电子文档
+            ContractAttachment attachment = attachmentService.findAttachmentByElecDocumentPath(path);
+            if (attachment != null) {
+                fileName += attachment.getElecDocumentName();
+            }
+        } else if (type.equals("scanFile")) {
+            //扫描文档
+            ContractAttachment attachment = attachmentService.findAttachmentByScanDocumentPath(path);
+            if (attachment != null) {
+                fileName += attachment.getScanDocumentName();
+            }
+        }
+
+        System.err.println(fileName);
+        System.err.println(path);
+
+        //真实路径
+        String realPath = FileUploadUtils.getDefaultBaseDir() + path;
+        System.err.println(realPath);
+        File file = new File(realPath);
+
+        response.reset();
+        response.setContentType("application/octet-stream");
+        response.setCharacterEncoding("utf-8");
+        response.setContentLength((int) file.length());
+        /*response.setHeader("content-type", "text/plain");
+        response.setHeader("content-type", "application/x-msdownload;");
+        response.setContentType("text/plain; charset=utf-8");*/
+        response.setHeader("Content-Disposition", "attachment;filename=" + java.net.URLEncoder.encode(fileName,"UTF-8"));
+        byte[] buff = new byte[1024];
+        BufferedInputStream bis = null;
+        OutputStream os = null;
+        try {
+            os = response.getOutputStream();
+            bis = new BufferedInputStream(new FileInputStream(file));
+            int i = bis.read(buff);
+            while (i != -1) {
+                os.write(buff, 0, i);
+                os.flush();
+                i = bis.read(buff);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (bis != null) {
+                try {
+                    bis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+
 
 }

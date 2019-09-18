@@ -117,11 +117,21 @@
             },
                 {
                     field: 'contractNumber',
-                    title: '合同编号'
+                    title: '合同编号',
+                    formatter: function(value, row, index) {
+                       //return $.table.selectDictData(contractSignType, value);
+                        if (row.changeStatus == 1) {
+                            return row.contractNumber + '（被变更）';
+                        }else {
+                            return row.contractNumber;
+                        }
+                    },
+                    align: 'center'
                 },
                 {
                     field: 'contractName',
-                    title: '合同名称'
+                    title: '合同名称',
+                    align: 'center'
                 },
                 {
                     field: 'contractType',
@@ -139,7 +149,8 @@
                             });
                             return actions.join('');
                         }
-                    }
+                    },
+                    align: 'center'
                 },
                 {
                     field: 'contractSignType',
@@ -147,32 +158,38 @@
                     formatter: function(value, row, index) {
                         return $.table.selectDictData(contractSignType, value);
                     },
+                    align: 'center'
                 },
                 {
                     field: 'customer.customerName',
                     title: '客户名称',
+                    align: 'center'
                 },
                 {
                     field: 'partA.customerName',
-                    title: '甲方'
+                    title: '甲方',
+                    align: 'center'
                 },
                 {
                     field: 'partB.customerName',
-                    title: '乙方'
+                    title: '乙方',
+                    align: 'center'
                 },
                 {
                     field: 'customer.area',
                     title: '所属地区',
                     formatter: function(value, row, index) {
                         return $.table.selectDictData(areaType, value);
-                    }
+                    },
+                    align: 'center'
                 },
                 {
                     field: 'status',
                     title: '是否生效',
                     formatter: function(value, row, index) {
                         return $.table.selectDictLabel(statusFlag, value);
-                    }
+                    },
+                    align: 'center'
                 },
                 {
                     field: 'basisFile',

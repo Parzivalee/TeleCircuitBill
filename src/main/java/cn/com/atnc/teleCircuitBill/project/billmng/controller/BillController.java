@@ -209,7 +209,9 @@ public class BillController extends BaseController {
 
     /**
      * 根据客户id找到挂的电路
-     * @param customerId
+     * @param billType 账单类型
+     * @param customerId 客户Id
+     * @return
      */
     @GetMapping("/findcircuitlist")
     @ResponseBody

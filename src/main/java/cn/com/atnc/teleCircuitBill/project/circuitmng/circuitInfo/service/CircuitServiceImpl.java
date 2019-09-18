@@ -235,7 +235,7 @@ public class CircuitServiceImpl implements CircuitService {
         }else if (circuit.getBasisFile()!=null || oldCircuit.getBasisFile() != null) {
             difference+="依据文件，";
         }
-
+        difference = difference.substring(0,difference.length()-1);
         return difference;
     }
 

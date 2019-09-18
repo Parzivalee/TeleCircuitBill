@@ -17,7 +17,7 @@ public class FileUtils
     /**
      * 输出指定文件的byte数组
      * 
-     * @param filename 文件
+     * @param filePath 文件
      * @return
      */
     public static void writeBytes(String filePath, OutputStream os) throws IOException

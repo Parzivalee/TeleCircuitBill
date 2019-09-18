@@ -69,9 +69,9 @@ public interface ContractService {
 
     /**
      *
-     * @param contract
-     * @param oldContract
-     * @return
+     * @param contract 修改的合同信息
+     * @param oldContract 数据库的合同比较信息
+     * @return String
      */
     String compareContract(ContractInfo contract,ContractInfo oldContract);
 
@@ -82,16 +82,24 @@ public interface ContractService {
     String getLatestContractInfos();
 
     /**
-     * 检验合同编号是否唯一
-     * @param contractNumber
-     * @return
+     * 检验合同编号是否唯一（修改）
+     * @param contractNumber 合同编号
+     * @param contractId 合同Id
+     * @return String
      */
     String checkContractNumberUnique(String contractNumber,String contractId);
 
     /**
+     * 检验合同编号是否唯一（变更）
+     * @param contractNumber 合同编号
+     * @return String
+     */
+    String checkContractNumberUniqueChange(String contractNumber);
+
+    /**
      * 变更合同
-     * @param contract
-     * @param contractNumberNew
+     * @param contract 合同Model
+     * @param contractNumberNew 新的合同编号
      * @return
      */
     int changeContract(ContractInfo contract, String contractNumberNew);
@@ -108,4 +116,6 @@ public interface ContractService {
      * @return
      */
     List<ContractInfo> selectContractsByCustomerAndType(String customerId, String contractType);
+
+
 }

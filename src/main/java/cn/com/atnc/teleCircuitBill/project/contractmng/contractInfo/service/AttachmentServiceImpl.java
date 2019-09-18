@@ -36,4 +36,20 @@ public class AttachmentServiceImpl implements IAttachmentService {
     public ContractAttachment findAttachmentById(String attachmentId) {
         return attachmentMapper.findAttachmentById(attachmentId);
     }
+
+    @Override
+    public ContractAttachment findAttachmentByElecDocumentPath(String path) {
+        return attachmentMapper.findAttachmentByElecDocumentPath(path);
+    }
+
+    @Override
+    public ContractAttachment findAttachmentByScanDocumentPath(String path) {
+        return attachmentMapper.findAttachmentByScanDocumentPath(path);
+    }
+
+    @Override
+    public int updateAttachment(ContractAttachment attachment) {
+        attachment.setUpdateBy(ShiroUtils.getLoginName());
+        return attachmentMapper.updateAttachment(attachment);
+    }
 }

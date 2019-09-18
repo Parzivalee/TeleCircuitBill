@@ -33,6 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
              <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime}</if>
              <if test="isdel != null and isdel != ''"> and isdel = #{isdel}</if>
          </where>
+         order by rate_time desc
     </select>
     
     <select id="selectExchangerateById" parameterType="String" resultMap="ExchangerateResult">
@@ -46,10 +47,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
         
     <insert id="insertExchangerate" parameterType="Exchangerate">
+        <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+            select replace(uuid(), '-', '')
+        </selectKey>
         insert into sys_exchangerate
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != '' ">id,</if>
-			<if test="rateTime != null and rateTime != '' ">rate_time,</if>
+			<if test="rateTime != null ">rate_time,</if>
 			<if test="rate != null and rate != '' ">rate_usa_to_rmb,</if>
 			<if test="rateDescription != null and rateDescription != '' ">rate_description,</if>
 			<if test="createBy != null and createBy != '' ">create_by,</if>
@@ -60,7 +64,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != ''">#{id},</if>
-			<if test="rateTime != null and rateTime != ''">#{rateTime},</if>
+			<if test="rateTime != null ">#{rateTime},</if>
 			<if test="rate != null and rate != ''">#{rate},</if>
 			<if test="rateDescription != null and rateDescription != ''">#{rateDescription},</if>
 			<if test="createBy != null and createBy != ''">#{createBy},</if>

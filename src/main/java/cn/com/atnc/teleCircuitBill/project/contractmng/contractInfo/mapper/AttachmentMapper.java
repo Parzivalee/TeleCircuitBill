@@ -18,4 +18,10 @@ public interface AttachmentMapper {
     int removeContractAttachmentById(String id);
 
     ContractAttachment findAttachmentById(String attachmentId);
+
+    ContractAttachment findAttachmentByElecDocumentPath(String path);
+
+    ContractAttachment findAttachmentByScanDocumentPath(String path);
+
+    int updateAttachment(ContractAttachment attachment);
 }

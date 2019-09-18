@@ -139,6 +139,7 @@ public class ContractServiceImpl implements ContractService {
         String difference = "";
         //合同类型
         if (contract.getContractType()!=null && oldContract.getContractType() != null) {
+            //修改的信息和数据库中的信息不相等时
             if (!contract.getContractType().equals(oldContract.getContractType())) {
                 difference+="合同类型，";
             }
@@ -225,6 +226,22 @@ public class ContractServiceImpl implements ContractService {
         }else if (contract.getContractStartDate()!=null || oldContract.getContractStartDate() != null){
             difference+="合同生效日期，";
         }
+        //合同结束日期
+        if (contract.getContractEndDate()!=null && oldContract.getContractEndDate() != null) {
+            if (!contract.getContractEndDate().equals(oldContract.getContractEndDate())) {
+                difference+="合同结束日期，";
+            }
+        }else if (contract.getContractEndDate()!=null || oldContract.getContractEndDate() != null){
+            difference+="合同结束日期，";
+        }
+        //合同终止日期
+        if (contract.getContractStopDate()!=null && oldContract.getContractStopDate() != null) {
+            if (!contract.getContractStopDate().equals(oldContract.getContractStopDate())) {
+                difference+="合同终止日期，";
+            }
+        }else if (contract.getContractStopDate()!=null || oldContract.getContractStopDate() != null){
+            difference+="合同终止日期，";
+        }
 
         //是否顺延
         if (contract.getIsContractAutoPostpone()!=null && oldContract.getIsContractAutoPostpone() != null) {
@@ -234,7 +251,9 @@ public class ContractServiceImpl implements ContractService {
         }else if (contract.getIsContractAutoPostpone()!=null || oldContract.getIsContractAutoPostpone() != null){
             difference+="是否顺延，";
         }
-
+        if (difference.length() >1) {
+            difference = difference.substring(0,difference.length()-1);
+        }
         return difference;
     }
 
@@ -272,8 +291,25 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
+    public String checkContractNumberUniqueChange(String contractNumber) {
+        List<ContractInfo> contracts = contractMapper.selectContractByContractNumber(contractNumber);
+
+        if (contracts.size() == 0) {
+            return UserConstants.USER_NAME_UNIQUE;
+        }else {
+            return UserConstants.USER_NAME_NOT_UNIQUE;
+        }
+    }
+
+    @Override
     public int changeContract(ContractInfo contract, String contractNumberNew) {
         ContractInfo contractOld = contractMapper.selectContractByContractId(contract.getContractId());
+        String changeContent = "终止日期";
+        //新增历史数据信息（修改旧合同）
+        historyDataService.insertCircuitHistoryData(CONTRACT,EDIT,changeContent,contractOld.getContractNumber());
+        //新增历史数据信息（新增新合同）
+        historyDataService.insertCircuitHistoryData(CONTRACT,ADD,"",contractNumberNew);
+
         if (contract.getContractStopDate() != null) {
             contractOld.setContractStopDate(contract.getContractStopDate());
         }else {
@@ -315,7 +351,7 @@ public class ContractServiceImpl implements ContractService {
         associationList.stream().forEach(association -> {
             //终止原有的关联表，并生成新的合同-电路关联表
             association.setEndTime(contract.getContractStopDate());
-            association.setIsEnd(1);
+            //association.setIsEnd(1); //（原关联表不终止-lwj 2019-09-16修改）
             association.setUpdateBy(ShiroUtils.getLoginName());
             associationMapper.updateAssociation(association);
 

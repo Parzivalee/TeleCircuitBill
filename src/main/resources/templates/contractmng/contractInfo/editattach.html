@@ -10,14 +10,16 @@
     <form class="form-horizontal m" id="form-fileupload-edit" th:object="${attachment}">
         <input id="attachmentId" name="attachmentId" th:value="${attachmentId}"  type="hidden">
         <input id="elecDocumentName" name="elecDocumentName" type="hidden">
+        <input id="elecSelected" name="elecSelected" th:value="${elecSelected}" type="hidden">
         <input id="elecDocumentPath" name="elecDocumentPath" type="hidden">
         <input id="scanDocumentName" name="scanDocumentName" type="hidden">
+        <input id="scanSelected" name="scanSelected" th:value="${scanSelected}" type="hidden">
         <input id="scanDocumentPath" name="scanDocumentPath" type="hidden">
         <div class="form-group">
             <label class="col-sm-2 control-label">附件类型：</label>
             <div class="col-sm-10">
-                <div th:if="${attachment.attachmentType} eq 'add' ">
-                    <select id="attachmentType1" name="attachmentType" class="form-control">
+                <div th:if="${attachmentType} eq 'add' ">
+                    <select id="attachmentType" name="attachmentType" class="form-control">
                         <option value="">请选择</option>
                         <option value="add" selected="selected">新增</option>
                         <option value="change">变更</option>
@@ -25,7 +27,7 @@
                 </div>
 
                 <div th:if="${attachmentType} eq 'change'">
-                    <select id="attachmentType2" name="attachmentType" class="form-control">
+                    <select id="attachmentType" name="attachmentType" class="form-control">
                         <option value="">请选择</option>
                         <option value="add">新增</option>
                         <option value="change" selected="selected">变更</option>
@@ -65,9 +67,21 @@
     var editFlag = [[${@permission.hasPermi('contractmng:contract:edit')}]];
     var removeFlag = [[${@permission.hasPermi('contractmng:contract:remove')}]];
     var prefix = ctx + "contractmng/contractInfo";
+    console.log($("#attachmentId").val());
+    let elecSelected = "";
+    let scanSelected = "";
 
     $(function () {
-        //初始化fileinput
+        if ($("#elecSelected").val() != null && $("#elecSelected").val() != "") {
+            elecSelected =  "<div class='file-preview-text'>" +
+            + $("#elecSelected").val()+
+            "</div>";
+        }
+        if ($("#scanSelected").val() != null && $("#scanSelected").val() != "") {
+            scanSelected =  "<div class='file-preview-text'>" +$("#scanSelected").val()+"</div>";
+        }
+
+        //初始化fileInput
         var oFileInput = new FileInput();
         //参数1:控件id、参数2:上传地址
         var prefix = ctx + "contractmng/contractInfo";
@@ -111,6 +125,8 @@
                 validateInitialCount:true,
                 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                initialPreview: elecSelected
+
             });
             //word文件上传完成之后的事件
             $("#elec_document").on("fileuploaded", function (event, data, previewId, index) {
@@ -157,6 +173,9 @@
                 validateInitialCount:true,
                 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+                initialPreview: scanSelected
+
+
             });
 
             //pdf文件上传完成之后的事件
@@ -179,20 +198,12 @@
             alert("请选择附件类型！");
             return false;
         }
-        if ($("#elecDocumentName").val()==null || $("#elecDocumentName").val()=="") {
-            alert("请上传电子文档！");
-            return;
-        }
-        /*if ($("#scanDocumentName").val()==null || $("#scanDocumentName").val()=="") {
-            alert("请上传扫描文件！");
-            return;
-        }*/
 
         $.ajax({
-            url: prefix+"/addAttachment",
+            url: prefix+"/editAttachment",
             type: "POST",
             data: {
-                contractId: $("#contractId").val(),
+                attachmentId: $("#attachmentId").val(),
                 attachmentType: $("#attachmentType option:selected").val(),
                 elecDocumentName:$("#elecDocumentName").val(),
                 elecDocumentPath:$("#elecDocumentPath").val(),
@@ -209,17 +220,6 @@
             }
 
         });
-        /*$("#txt_file").on("fileuploaded", function (event, data, previewId, index) {
-             console.log("回调函数:"+data);
-             //var data = data.response.lstOrderImport;
-             if (data == undefined) {
-                 alert('文件格式类型不正确');
-                 return;
-             }else {
-                 alert("附件上传成功！");
-             }
-
-         });*/
 
     };
 </script>
