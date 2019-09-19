@@ -639,10 +639,10 @@ public class CircuitController extends BaseController {
     }
 
     /**
-     * 获取最新（一周内）的即将到期的电路信息
-     * @return
+     * 获取最新（一周内）的即将到期的电路信息（首页）
+     * @return String
      */
-    @PostMapping("/latestOverCircuitInfos")
+    @GetMapping("/latestOverCircuitInfos")
     @ResponseBody
     public String getLatestOverCircuitInfos() {
         return circuitService.getLatestOverCircuitInfos();

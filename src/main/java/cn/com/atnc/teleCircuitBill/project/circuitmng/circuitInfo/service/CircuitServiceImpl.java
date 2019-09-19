@@ -235,7 +235,9 @@ public class CircuitServiceImpl implements CircuitService {
         }else if (circuit.getBasisFile()!=null || oldCircuit.getBasisFile() != null) {
             difference+="依据文件，";
         }
-        difference = difference.substring(0,difference.length()-1);
+        if (difference.length() >1) {
+            difference = difference.substring(0, difference.length() - 1);
+        }
         return difference;
     }
 
@@ -297,12 +299,13 @@ public class CircuitServiceImpl implements CircuitService {
      */
     @Override
     public void checkCircuitIsExpired() {
+
         Circuit newCircuit = new Circuit();
         //对所有未过期且有取消日期的电路进行判断
         newCircuit.setIsExpired(0);
         List<Circuit> circuitList = circuitMapper.selectCircuitList(newCircuit);
         //筛选出所有有取消日期的电路
-        circuitList.parallelStream()
+        circuitList.stream()
                 .filter(circuit -> circuit.getCancelTime()!=null)
                 .forEach(circuit1 -> {
                     Date cancelTime = circuit1.getCancelTime();
@@ -312,7 +315,7 @@ public class CircuitServiceImpl implements CircuitService {
                     Date todayDate = new Date();
 
                     //如果电路的取消日期超过2年，则电路过期
-                    if (cancelTimeAfter2years.after(todayDate)) {
+                    if (todayDate.after(cancelTimeAfter2years)) {
                         circuit1.setIsExpired(1);
                         circuitMapper.updateCircuit(circuit1);
                     }

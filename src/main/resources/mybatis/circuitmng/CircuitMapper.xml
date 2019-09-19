@@ -92,7 +92,7 @@
         where circuit_code=#{customerId} and isdel=0
     </select>
 
-    <select id="selectCircuitListInDays" parameterType="String" resultMap="CircuitResult">
+    <select id="selectCircuitListInDays" parameterType="java.util.Date" resultMap="CircuitResult">
         select * from tele_circuit_info
         where isdel=0
         and date_format(tele_circuit_canceltime,'%y%m%d') &gt;= date_format(#{day7before},'%y%m%d')

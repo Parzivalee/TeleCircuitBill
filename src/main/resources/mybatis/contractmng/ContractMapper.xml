@@ -112,7 +112,7 @@
         and a.contract_type = #{contractType}
     </select>
 
-    <select id="selectContractListInDays" parameterType="String" resultMap="ContractInfoResult">
+    <select id="selectContractListInDays" parameterType="java.util.Date" resultMap="ContractInfoResult">
         select * from tele_contract_info
         where isdel=0
         and date_format(contract_config_time,'%y%m%d') &gt;= date_format(#{day7before},'%y%m%d')

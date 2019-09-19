@@ -381,7 +381,7 @@ public class ContractServiceImpl implements ContractService {
         newContract.setIsExpired(0);
         List<ContractInfo> contractInfoList = contractMapper.selectContractList(newContract);
         //筛选出所有有终止日期的合同
-        contractInfoList.parallelStream()
+        contractInfoList.stream()
                 .filter(contractInfo -> contractInfo.getContractStopDate()!=null)
                 .forEach(contractInfo1 -> {
                     Date contractStopDate = contractInfo1.getContractStopDate();
@@ -391,7 +391,7 @@ public class ContractServiceImpl implements ContractService {
                     Date todayDate = new Date();
 
                     //如果合同的终止日期超过2年，则合同过期
-                    if (contractStopDateAfter2years.after(todayDate)) {
+                    if (todayDate.after(contractStopDateAfter2years)) {
                         contractInfo1.setIsExpired(1);
                         contractMapper.updateContract(contractInfo1);
                     }

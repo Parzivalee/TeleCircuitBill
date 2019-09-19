@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html  lang="zh" xmlns:th="http://www.thymeleaf.org">
-<head>
+
+<head th:include="include :: header">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--360浏览器优先以webkit内核解析-->
@@ -56,14 +57,15 @@
         </div>
     </div>
 </div>
-<script th:src="@{/js/jquery.min.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
+<div th:include="include :: footer"></div>
+<!--<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>-->
 <script th:inline="javascript">
-    /*$(function () {
+    $(function () {
         //最新合同信息
         $.ajax({
             cache : true,
-            type : "POST",
+            type : "GET",
             url : ctx + "contractmng/contractInfo/latestContractInfos",
             async : false,
             error : function(request) {
@@ -76,7 +78,7 @@
         //即将到期电路信息
         $.ajax({
             cache : true,
-            type : "POST",
+            type : "GET",
             url : ctx + "circuitmng/circuitInfo/latestOverCircuitInfos",
             async : false,
             error : function(request) {
@@ -86,7 +88,7 @@
                 $("#latestOverCircuitInfos").append(data);
             }
         });
-    });*/
+    });
 </script>
 </body>
 </html>

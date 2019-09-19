@@ -697,10 +697,10 @@ public class ContractController extends BaseController {
     }
 
     /**
-     * 获取最新的合同信息
+     * 获取最新的合同信息(首页)
      * @return String
      */
-    @PostMapping("/latestContractInfos")
+    @GetMapping("/latestContractInfos")
     @ResponseBody
     public String getLatestContractInfos()
     {
