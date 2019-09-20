@@ -94,10 +94,14 @@ public class CircuitController extends BaseController {
                 }
 
                 if (contract != null) {
-                    if (contract.getContractType().equals("Hire")) {
-                        hireContractNumbers.add(contract.getContractNumber());
-                    }else if (contract.getContractType().equals("Maintain")) {
-                        maintainContractNumbers.add(contract.getContractNumber());
+                    Date today = new Date();
+                    //获取在生效期间的合同(终止日期为空或者当前时间在终止日期时间范围内)
+                    if (contract.getContractStopDate()==null || today.getTime()<contract.getContractStopDate().getTime()) {
+                        if (contract.getContractType().equals("Hire")) {
+                            hireContractNumbers.add(contract.getContractNumber());
+                        }else if (contract.getContractType().equals("Maintain")) {
+                            maintainContractNumbers.add(contract.getContractNumber());
+                        }
                     }
                 }
             }

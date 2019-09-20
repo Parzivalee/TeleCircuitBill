@@ -87,7 +87,7 @@
         <if test="params != null and params.endTime != ''"><!-- 结束时间检索 -->
             and date_format(contract_config_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
         </if>
-        <if test="isExpired != null and isExpired != '' ">
+        <if test="isExpired != null ">
             and is_expired=#{isExpired}
         </if>
         order by contract_config_time DESC
@@ -214,7 +214,7 @@
             <if test="contractConfigDate != null ">contract_config_time=#{contractConfigDate},</if>
             <if test="contractStartDate != null ">contract_start_time=#{contractStartDate},</if>
             <if test="contractEndDate != null ">contract_end_time=#{contractEndDate},</if>
-            <if test="contractStopDate != null ">contract_stop_time=#{contractStopDate},</if>
+            contract_stop_time=#{contractStopDate},
             <if test="isExpired != null and isExpired != '' ">is_expired=#{isExpired},</if>
             <if test="isContractAutoPostpone != null and isContractAutoPostpone != ''">contract_auto_postpone=#{isContractAutoPostpone},</if>
             <if test="generateBill != null and generateBill != ''">contract_is_generate_bill=#{generateBill},</if>

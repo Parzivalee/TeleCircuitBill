@@ -58,17 +58,19 @@
         <if test="circuitCode != null and circuitCode != ''">
             AND circuit_code like concat('%',#{circuitCode},'%')
         </if>
-        <if test="isExpired != null and isExpired != '' ">
+        <if test="isExpired != null ">
             and is_expired=#{isExpired}
         </if>
-            <!--<if test="params != null and params.beginTime != ''">&lt;!&ndash; 开始时间检索 &ndash;&gt;-->
-                <!--and date_format(tele_circuit_opentime,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')-->
-            <!--</if>-->
-            <!--<if test="params != null and params.endTime != ''">&lt;!&ndash; 结束时间检索 &ndash;&gt;-->
-                <!--and date_format(tele_circuit_opentime,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')-->
-            <!--</if>-->
         order by create_time desc
     </select>
+
+    <!--根据名称排序的电路列表-->
+    <select id="selectCircuitListOrderByName"  resultMap="CircuitResult">
+        select * from
+        tele_circuit_info where isdel=0
+        order by tele_circuit_name
+    </select>
+
 
     <select id="selectCircuitByContractId" parameterType="String" resultMap="CircuitResult">
         select a.* from

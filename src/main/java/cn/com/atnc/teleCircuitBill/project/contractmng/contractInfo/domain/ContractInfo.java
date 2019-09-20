@@ -52,7 +52,7 @@ public class ContractInfo extends BaseEntity {
     private Integer isExpired;
     //合同是否自动顺延
     private String isContractAutoPostpone;
-    //状态
+    //状态(判断合同是否处于生效状态的冗余字段)
     private transient String status;
     //是否生成账单
     private Integer generateBill;

@@ -31,4 +31,6 @@ public interface CircuitMapper {
     List<Circuit> selectCircuitListInDays(@Param("day7before") Date day7before, @Param("today") Date today);
 
     List<Circuit> checkCircuitCodeNameUnique(String circuitCode);
+
+    List<Circuit> selectCircuitListOrderByName(Circuit circuit);
 }

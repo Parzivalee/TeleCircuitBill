@@ -255,11 +255,11 @@ public class ContractController extends BaseController {
             circuitIds.add(circuit.getCircuitId());
         }
         //所有的电路列表
-        List<Circuit> circuitAll = circuitService.selectCircuitList(new Circuit());
+        List<Circuit> circuitAll = circuitService.selectCircuitListOrderByName(new Circuit());
         //circuitAll.remove(circuitList);
 
         model.put("circuits",circuitAll);
-        //合同以选中的电路列表
+        //合同已选中的电路列表
         model.put("circuitIds",circuitIds);
         model.put("contractId",contractId);
         model.put("contractType",contractType);

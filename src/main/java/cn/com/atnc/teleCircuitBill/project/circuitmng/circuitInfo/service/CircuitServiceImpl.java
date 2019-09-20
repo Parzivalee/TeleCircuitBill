@@ -325,4 +325,9 @@ public class CircuitServiceImpl implements CircuitService {
 
     }
 
+    @Override
+    public List<Circuit> selectCircuitListOrderByName(Circuit circuit) {
+        return circuitMapper.selectCircuitListOrderByName(circuit);
+    }
+
 }

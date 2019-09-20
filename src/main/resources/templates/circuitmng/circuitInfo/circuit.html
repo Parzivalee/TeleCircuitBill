@@ -35,9 +35,9 @@
                         <li>
                             是否过期：
                             <select name="isExpired" >
-                                <option value="0" selected="selected">否</option>
+                                <option value="0" >否</option>
                                 <option value="1">是</option>
-                                <option value="">所有</option>
+                                <option value="" selected="selected">所有</option>
                             </select>
                         </li>
                         <li>
@@ -131,6 +131,13 @@
                     align: 'center'
                 },
                 {
+                    field: 'divideRatio',
+                    title: '',
+                    align: 'center',
+                    visible: false
+                },
+
+                {
                     field: 'circuitFee',
                     title: '通信技术服务费',
                     align: 'center'
@@ -151,6 +158,42 @@
                     align: 'center'
                 },
                 {
+                    field: 'openTime',
+                    title: '起付时间',
+                    align: 'center',
+                    visible: false
+                },
+                {
+                    field: 'configTime',
+                    title: '配置时间',
+                    align: 'center',
+                    visible: false
+                },
+                {
+                    field: 'cancelTime',
+                    title: '取消时间',
+                    align: 'center',
+                    visible: false
+                },
+                {
+                    field: 'iomsApplyNumber',
+                    title: '运维平台申请编号',
+                    align: 'center',
+                    visible: false
+                },
+                {
+                    field: 'basisFile',
+                    title: '依据文件',
+                    align: 'center',
+                    visible: false
+                },
+                {
+                    field: 'description',
+                    title: '说明',
+                    align: 'center',
+                    visible: false
+                },
+                {
                     field: 'hireContractNumber',
                     title: '租用合同',
                     formatter: function(value, row, index) {
@@ -167,6 +210,12 @@
                     },
                     align: 'center',
                     visible:false
+                },
+                {
+                    field: 'updateTime',
+                    title: '修改时间',
+                    align: 'center',
+                    visible: false
                 },
                 {
                     title: '操作',

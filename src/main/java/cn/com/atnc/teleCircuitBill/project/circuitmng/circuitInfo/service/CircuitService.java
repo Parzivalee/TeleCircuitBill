@@ -83,4 +83,11 @@ public interface CircuitService {
      * 判断电路是否过期
      */
     void checkCircuitIsExpired();
+
+    /**
+     * 获取根据电路名称排序的电路列表
+     * @param circuit 查询条件
+     * @return
+     */
+    List<Circuit> selectCircuitListOrderByName(Circuit circuit);
 }
