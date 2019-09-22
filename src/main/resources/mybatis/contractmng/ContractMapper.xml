@@ -129,6 +129,7 @@
         select * from tele_contract_info
         where isdel=0
         and customer_id=#{customerId} and contract_type=#{contractType}
+        order by contract_name desc
     </select>
 
     <insert id="insertContract" parameterType="cn.com.atnc.teleCircuitBill.project.contractmng.contractInfo.domain.ContractInfo">

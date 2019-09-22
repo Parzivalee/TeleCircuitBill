@@ -32,6 +32,9 @@ import org.springframework.web.multipart.MultipartRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * 电路详情控制层
@@ -278,8 +281,12 @@ public class CircuitController extends BaseController {
     public List<ContractInfo> getContractList(@RequestParam("customerId") String customerId,
                                              @RequestParam("contractType") String contractType, ModelMap map) {
         List<ContractInfo> contractList = contractService.selectContractsByCustomerAndType(customerId,contractType);
-        map.put("contracts",contractList);
-        return contractList;
+        //过滤掉名称中只含有ATMB的合同编号
+        List<ContractInfo> contractListFilter =  contractList.stream()
+                .filter(contract -> contract.getContractNumber().contains("ATMB"))
+                .collect(toList());
+        map.put("contracts",contractListFilter);
+        return contractListFilter;
     }
 
     /**
