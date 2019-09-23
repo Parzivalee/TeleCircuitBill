@@ -243,8 +243,9 @@ public class CircuitServiceImpl implements CircuitService {
 
     @Override
     public List<Circuit> selectCircuitByCustomerAndContract(String customerId, String contractId) {
-        List<Association> associationListDB;
-        if (contractId != null) {
+        List<Association> associationListDB = new ArrayList<>();
+        //判断是否选择了合同号（可以只选择客户而不选择合同号）
+        if (!contractId.equals("")) {
             associationListDB = associationMapper.selectCircuitByCustomerAndContract(customerId, contractId);
         }else {
             associationListDB = associationMapper.selectAssociationByCustomerId(customerId);
@@ -252,7 +253,9 @@ public class CircuitServiceImpl implements CircuitService {
         List<Circuit> circuitListDB = new ArrayList<>();
         if (associationListDB.size()>0) {
             for (Association association:associationListDB) {
-                String circuitId = association.getCircuit().getCircuitId();
+                String circuitId = "";
+                if(association.getCircuit()!= null)
+                    circuitId  = association.getCircuit().getCircuitId();
                 Circuit circuit = circuitMapper.selectCircuitById(circuitId);
                 circuitListDB.add(circuit);
             }

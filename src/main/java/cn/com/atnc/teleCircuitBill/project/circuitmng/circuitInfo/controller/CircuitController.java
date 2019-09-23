@@ -309,211 +309,201 @@ public class CircuitController extends BaseController {
         String customerId = request.getParameter("customer");
         String[] contractIds = request.getParameter("contract").split(",");
 
-
+        //数据库中的电路待比较列表
         List<Circuit> circuitListDB = new ArrayList<>();
-        //获取要比较的电路列表
-        for (int i = 0; i < contractIds.length; i++) {
-            circuitListDB.addAll(circuitService.selectCircuitByCustomerAndContract(customerId, contractIds[i]));
+        //从数据库中获取要比较的电路列表
+        if (contractIds.length>0) {
+            //选择了合同
+            for (int i = 0; i < contractIds.length; i++) {
+                circuitListDB.addAll(circuitService.selectCircuitByCustomerAndContract(customerId, contractIds[i]));
+            }
+        }else {
+            //未选择合同
+            circuitListDB.addAll(circuitService.selectCircuitByCustomerAndContract(customerId, ""));
         }
-        //去重（distinct方法需要对象重写hashCode()和 equals()）
-        circuitListDB.stream().distinct();
-
-
-        ExcelUtil<Circuit> excelUtil = new ExcelUtil<>(Circuit.class);
-        List<Circuit> circuitList = excelUtil.importExcel(excel);
         //用Map保存新增或者变更的电路信息
         Map<String, Map<String, String>> circuitMapList = new HashMap<>();
-        //根据条件查找数据库中的电路列表(待比较list)
-        Set<String> circuitCodeDBSet = new HashSet<>();
-        for (Circuit circuit1 : circuitListDB) {
-            circuitCodeDBSet.add(circuit1.getCircuitCode());
-        }
-        Set<String> circuitCodeExcelSet = new HashSet<>();
-        for (Circuit circuit2 : circuitList) {
-            circuitCodeExcelSet.add(circuit2.getCircuitCode());
-        }
+        //技术服务合同电路待比较列表
+        List<Circuit> circuitListHire = new ArrayList<>();
+        //维护合同电路待比较列表
+        List<Circuit> circuitListMaintain = new ArrayList<>();
+        //从导入的Excel列表中获取电路列表(租用合同)
+        if (contractType.equals("Hire")) {
+            ExcelUtil<Circuit> excelUtil = new ExcelUtil<>(Circuit.class);
+            circuitListHire = excelUtil.importExcel(excel);
 
-        //遍历获取的list
-        for (Circuit circuit : circuitList) {
-            //如果excel中数据不存在于circuitDB中，说明是新增电路
-            if (!circuitCodeDBSet.contains(circuit.getCircuitCode())) {
-                Map<String, String> newInfo = new HashMap<>();
-                newInfo.put("", "new");
-                circuitMapList.put(circuit.getCircuitCode(), newInfo);
-            } else {
-                //判断电路编号是否存在
-                // TODO
-                Circuit circuitOld = circuitService.selectCircuitByCircuitCode(circuit.getCircuitCode());
-                if (circuitOld != null) {
-                    //用于展示的电路对象实体
-                    Circuit circuitShow = new Circuit();
-                    //新建map保存信息
-                    Map<String, String> changeInfo = new HashMap<>();
-                    String changeField = "变更字段：";
-                    //判断导入的电路信息和原有电路信息是否存在变更
-                    boolean changeFlag = false;
-                    //判端技术服务合同和维护合同检测的电路字段不同
-                    if (StringUtils.equals(contractType,"Hire")) {
-                        //电路名称
-                        if (circuitOld.getCircuitName() != null && circuit.getCircuitName() != null) {
-                            if (!circuitOld.getCircuitName().equals(circuit.getCircuitName())) {
+            //根据条件查找数据库中的电路编号列表(待比较list)
+            Set<String> circuitCodeDBSet = new HashSet<>();
+            for (Circuit circuit1 : circuitListDB) {
+                circuitCodeDBSet.add(circuit1.getCircuitCode());
+            }
+            Set<String> circuitCodeExcelSet = new HashSet<>();
+            for (Circuit circuit2 : circuitListHire) {
+                circuitCodeExcelSet.add(circuit2.getCircuitCode());
+            }
+
+            //遍历Excel中的数据
+            for (Circuit circuit : circuitListHire) {
+                //如果excel中数据不存在于circuitDB中，说明是新增电路
+                if (!circuitCodeDBSet.contains(circuit.getCircuitCode())) {
+                    Map<String, String> newInfo = new HashMap<>();
+                    newInfo.put("", "new");
+                    circuitMapList.put(circuit.getCircuitCode(), newInfo);
+                } else {
+                    //判断电路编号是否存在
+                    Circuit circuitOld = circuitService.selectCircuitByCircuitCode(circuit.getCircuitCode());
+                    if (circuitOld != null) {
+                        //用于展示的电路对象实体
+                        Circuit circuitShow = new Circuit();
+                        //新建map保存信息
+                        Map<String, String> changeInfo = new HashMap<>();
+                        String changeField = "变更字段：";
+                        //判断导入的电路信息和原有电路信息是否存在变更
+                        boolean changeFlag = false;
+                        //判端技术服务合同和维护合同检测的电路字段不同
+                        if (StringUtils.equals(contractType,"Hire")) {
+                            //电路名称
+                            if (circuitOld.getCircuitName() != null && circuit.getCircuitName() != null) {
+                                if (!circuitOld.getCircuitName().equals(circuit.getCircuitName())) {
+                                    changeFlag = true;
+                                    //circuitOld.setCircuitName(circuit.getCircuitName());
+                                    circuitShow.setCircuitName(circuit.getCircuitName());
+                                    changeField += "电路名称，";
+                                }
+                            }else {
                                 changeFlag = true;
-                                circuitOld.setCircuitName(circuit.getCircuitName());
-                                circuitShow.setCircuitName(circuit.getCircuitName());
                                 changeField += "电路名称，";
                             }
+
+                            //速率
+                            if (circuitOld.getCircuitSpeed() != null && circuit.getCircuitSpeed() != null) {
+                                if (!circuitOld.getCircuitSpeed().equals(circuit.getCircuitSpeed())) {
+                                    changeFlag = true;
+                                    circuitShow.setCircuitSpeed(circuit.getCircuitSpeed());
+                                    changeField += "速率，";
+                                }
+                            }
+
+                            //本端节点
+                            if (circuitOld.getHomeEnd() != null && circuit.getHomeEnd() != null) {
+                                if (!circuitOld.getHomeEnd().equals(circuit.getHomeEnd())) {
+                                    changeFlag = true;
+                                    circuitShow.setHomeEnd(circuit.getHomeEnd());
+                                    changeField += "本端节点名称/槽位号/端口号，";
+                                }
+                            }
+
+                            //对端节点
+                            if (circuitOld.getOppEnd() != null && circuit.getOppEnd() != null) {
+                                if (!circuitOld.getOppEnd().equals(circuit.getOppEnd())) {
+                                    changeFlag = true;
+                                    circuitShow.setOppEnd(circuit.getOppEnd());
+                                    changeField += "对端节点名称/槽位号/端口号，";
+                                }
+                            }
+
+                            //配置时间
+                            if (circuitOld.getConfigTime() != null && circuit.getConfigTime() != null) {
+                                if (!circuitOld.getConfigTime().equals(circuit.getConfigTime())) {
+                                    changeFlag = true;
+                                    circuitShow.setConfigTime(circuit.getConfigTime());
+                                    changeField += "配置时间，";
+                                }
+                            }
+                        }else if (StringUtils.equals(contractType,"Maintain")) {
+                            //电路名称
+                            if (circuitOld.getCircuitName() != null && circuit.getCircuitName() != null) {
+                                if (!circuitOld.getCircuitName().equals(circuit.getCircuitName())) {
+                                    changeFlag = true;
+                                    circuitShow.setCircuitName(circuit.getCircuitName());
+                                    changeField += "电路名称，";
+                                }
+                            }
+
+                            //速率
+                            if (circuitOld.getCircuitSpeed() != null && circuit.getCircuitSpeed() != null) {
+                                if (!circuitOld.getCircuitSpeed().equals(circuit.getCircuitSpeed())) {
+                                    changeFlag = true;
+                                    circuitShow.setCircuitSpeed(circuit.getCircuitSpeed());
+                                    changeField += "速率，";
+                                }
+                            }
+
+                            //本端节点
+                            if (circuitOld.getHomeEnd() != null && circuit.getHomeEnd() != null) {
+                                if (!circuitOld.getHomeEnd().equals(circuit.getHomeEnd())) {
+                                    changeFlag = true;
+                                    circuitShow.setHomeEnd(circuit.getHomeEnd());
+                                    changeField += "本端节点名称/槽位号/端口号，";
+                                }
+                            }
+
+                            //对端节点
+                            if (circuitOld.getOppEnd() != null && circuit.getOppEnd() != null) {
+                                if (!circuitOld.getOppEnd().equals(circuit.getOppEnd())) {
+                                    changeFlag = true;
+                                    circuitShow.setOppEnd(circuit.getOppEnd());
+                                    changeField += "对端节点名称/槽位号/端口号，";
+                                }
+                            }
+
+                            //配置时间
+                            if (circuitOld.getConfigTime() != null && circuit.getConfigTime() != null) {
+                                if (!circuitOld.getConfigTime().equals(circuit.getConfigTime())) {
+                                    changeFlag = true;
+                                    circuitShow.setConfigTime(circuit.getConfigTime());
+                                    changeField += "配置时间，";
+                                }
+                            }
+
+                            //端口费
+                            if (circuitOld.getCircuitFeePort() != null && circuit.getCircuitFeePort() != null) {
+                                if (!circuitOld.getCircuitFeePort().equals(circuit.getCircuitFeePort())) {
+                                    changeFlag = true;
+                                    circuitShow.setCircuitFeePort(circuit.getCircuitFeePort());
+                                    changeField += "端口费，";
+                                }
+                            }
+
+                            //电路费
+                            if (circuitOld.getCircuitFeeCir() != null && circuit.getCircuitFeeCir() != null) {
+                                if (!circuitOld.getCircuitFeeCir().equals(circuit.getCircuitFeeCir())) {
+                                    changeFlag = true;
+                                    circuitShow.setCircuitFeeCir(circuit.getCircuitFeeCir());
+                                    changeField += "电路费，";
+                                }
+                            }
+                            //甲方分配比例
+                            //乙方分配比例
                         }
 
-                        //速率
-                        if (circuitOld.getCircuitSpeed() != null && circuit.getCircuitSpeed() != null) {
-                            if (!circuitOld.getCircuitSpeed().equals(circuit.getCircuitSpeed())) {
+                        if (circuitOld.getCircuitType() != null && circuit.getCircuitType() != null) {
+                            if (!circuitOld.getCircuitType().equals(circuit.getCircuitType())) {
                                 changeFlag = true;
-                                circuitOld.setCircuitSpeed(circuit.getCircuitSpeed());
-                                circuitShow.setCircuitSpeed(circuit.getCircuitSpeed());
-                                changeField += "速率，";
+                                circuitShow.setCircuitType(circuit.getCircuitType());
+                                changeField += "电路信息，";
                             }
                         }
 
-                        //本端节点
-                        if (circuitOld.getHomeEnd() != null && circuit.getHomeEnd() != null) {
-                            if (!circuitOld.getHomeEnd().equals(circuit.getHomeEnd())) {
+                        if (circuitOld.getOpenTime() != null && circuit.getOpenTime() != null) {
+                            if (!circuitOld.getOpenTime().equals(circuit.getOpenTime())) {
                                 changeFlag = true;
-                                circuitOld.setHomeEnd(circuit.getHomeEnd());
-                                circuitShow.setHomeEnd(circuit.getHomeEnd());
-                                changeField += "本端节点名称/槽位号/端口号，";
+                                circuitShow.setOpenTime(circuit.getOpenTime());
+                                changeField += "启付时间，";
                             }
                         }
 
-                        //对端节点
-                        if (circuitOld.getOppEnd() != null && circuit.getOppEnd() != null) {
-                            if (!circuitOld.getOppEnd().equals(circuit.getOppEnd())) {
-                                changeFlag = true;
-                                circuitOld.setOppEnd(circuit.getOppEnd());
-                                circuitShow.setOppEnd(circuit.getOppEnd());
-                                changeField += "对端节点名称/槽位号/端口号，";
+                        if (changeFlag) {
+                            if (circuitShow != null) {
+                                changeInfo.put(changeField, "change");
+                                circuitMapList.put(circuit.getCircuitCode(), changeInfo);
                             }
                         }
-
-                        //配置时间
-                        if (circuitOld.getConfigTime() != null && circuit.getConfigTime() != null) {
-                            if (!circuitOld.getConfigTime().equals(circuit.getConfigTime())) {
-                                changeFlag = true;
-                                circuitOld.setConfigTime(circuit.getConfigTime());
-                                circuitShow.setConfigTime(circuit.getConfigTime());
-                                changeField += "配置时间，";
-                            }
-                        }
-                    }else if (StringUtils.equals(contractType,"Maintain")) {
-                        //电路名称
-                        if (circuitOld.getCircuitName() != null && circuit.getCircuitName() != null) {
-                            if (!circuitOld.getCircuitName().equals(circuit.getCircuitName())) {
-                                changeFlag = true;
-                                circuitOld.setCircuitName(circuit.getCircuitName());
-                                circuitShow.setCircuitName(circuit.getCircuitName());
-                                changeField += "电路名称，";
-                            }
-                        }
-
-                        //速率
-                        if (circuitOld.getCircuitSpeed() != null && circuit.getCircuitSpeed() != null) {
-                            if (!circuitOld.getCircuitSpeed().equals(circuit.getCircuitSpeed())) {
-                                changeFlag = true;
-                                circuitOld.setCircuitSpeed(circuit.getCircuitSpeed());
-                                circuitShow.setCircuitSpeed(circuit.getCircuitSpeed());
-                                changeField += "速率，";
-                            }
-                        }
-
-                        //本端节点
-                        if (circuitOld.getHomeEnd() != null && circuit.getHomeEnd() != null) {
-                            if (!circuitOld.getHomeEnd().equals(circuit.getHomeEnd())) {
-                                changeFlag = true;
-                                circuitOld.setHomeEnd(circuit.getHomeEnd());
-                                circuitShow.setHomeEnd(circuit.getHomeEnd());
-                                changeField += "本端节点名称/槽位号/端口号，";
-                            }
-                        }
-
-                        //对端节点
-                        if (circuitOld.getOppEnd() != null && circuit.getOppEnd() != null) {
-                            if (!circuitOld.getOppEnd().equals(circuit.getOppEnd())) {
-                                changeFlag = true;
-                                circuitOld.setOppEnd(circuit.getOppEnd());
-                                circuitShow.setOppEnd(circuit.getOppEnd());
-                                changeField += "对端节点名称/槽位号/端口号，";
-                            }
-                        }
-
-                        //配置时间
-                        if (circuitOld.getConfigTime() != null && circuit.getConfigTime() != null) {
-                            if (!circuitOld.getConfigTime().equals(circuit.getConfigTime())) {
-                                changeFlag = true;
-                                circuitOld.setConfigTime(circuit.getConfigTime());
-                                circuitShow.setConfigTime(circuit.getConfigTime());
-                                changeField += "配置时间，";
-                            }
-                        }
-
-                        //端口费
-                        if (circuitOld.getCircuitFeePort() != null && circuit.getCircuitFeePort() != null) {
-                            if (!circuitOld.getCircuitFeePort().equals(circuit.getCircuitFeePort())) {
-                                changeFlag = true;
-                                circuitOld.setCircuitFeePort(circuit.getCircuitFeePort());
-                                circuitShow.setCircuitFeePort(circuit.getCircuitFeePort());
-                                changeField += "端口费，";
-                            }
-                        }
-
-                        //电路费
-                        if (circuitOld.getCircuitFeeCir() != null && circuit.getCircuitFeeCir() != null) {
-                            if (!circuitOld.getCircuitFeeCir().equals(circuit.getCircuitFeeCir())) {
-                                changeFlag = true;
-                                circuitOld.setCircuitFeeCir(circuit.getCircuitFeeCir());
-                                circuitShow.setCircuitFeeCir(circuit.getCircuitFeeCir());
-                                changeField += "电路费，";
-                            }
-                        }
-                        //甲方分配比例
-                        //乙方分配比例
-                    }
-
-
-                    if (circuitOld.getCircuitType() != null && circuit.getCircuitType() != null) {
-                        if (!circuitOld.getCircuitType().equals(circuit.getCircuitType())) {
-                            changeFlag = true;
-                            circuitOld.setCircuitType(circuit.getCircuitType());
-                            circuitShow.setCircuitType(circuit.getCircuitType());
-                            changeField += "电路信息，";
-                        }
-                    }
-
-
-
-
-
-
-
-                    if (circuitOld.getOpenTime() != null && circuit.getOpenTime() != null) {
-                        if (!circuitOld.getOpenTime().equals(circuit.getOpenTime())) {
-                            changeFlag = true;
-                            circuitOld.setOpenTime(circuit.getOpenTime());
-                            circuitShow.setOpenTime(circuit.getOpenTime());
-                            changeField += "启付时间，";
-                        }
-                    }
-
-                    if (changeFlag) {
-                        if (circuitShow != null) {
-                            changeInfo.put(changeField, "change");
-                            circuitMapList.put(circuit.getCircuitCode(), changeInfo);
-                        }
-
-                        //修改电路
-                        //circuitService.updateCircuit(circuitOld);
                     }
                 }
             }
 
+            //遍历数据库表中的数据
             for (Circuit circuit3 : circuitListDB) {
                 //如果DB中数据不存在于Excel数据中，说明是删除电路
                 if (!circuitCodeExcelSet.contains(circuit3.getCircuitCode())) {
@@ -523,6 +513,18 @@ public class CircuitController extends BaseController {
                 }
             }
         }
+        //从导入的Excel列表中获取电路列表(维护合同)
+        else if (contractType.equals("Maintain")) {
+            ExcelUtil<Circuit> excelUtil = new ExcelUtil<>(Circuit.class);
+            circuitListMaintain = excelUtil.importExcel(excel);
+
+        }
+
+
+        //去重（distinct方法需要对象重写hashCode()和 equals()）
+        //List<Circuit> circuitSetDB = circuitListDB.stream().distinct().collect(toList());
+
+
         return circuitMapList;
 
 

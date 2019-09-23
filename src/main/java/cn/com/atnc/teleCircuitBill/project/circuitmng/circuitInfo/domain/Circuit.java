@@ -54,9 +54,6 @@ public class Circuit extends BaseEntity {
     @Excel(name="速率")
     private String circuitSpeed;
 
-    //通信技术服务费=电路费用 + 端口费用
-    private Double circuitFee;
-
     //电路费用
     private Double circuitFeeCir;
 
@@ -80,11 +77,6 @@ public class Circuit extends BaseEntity {
     @Excel(name="对端节点名称/槽位号/端口号")
     private String oppEnd;
 
-    //启付时间
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    @Excel(name="启付时间")
-    private Date openTime;
-
     //电路用途
     private String useInfo;
 
@@ -93,10 +85,18 @@ public class Circuit extends BaseEntity {
     @Excel(name="配置时间")
     private Date configTime;
 
+    //启付时间
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @Excel(name="启付时间")
+    private Date openTime;
+
     //电路取消时间
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    @Excel(name="取消时间")
+    //@Excel(name="取消时间")
     private Date cancelTime;
+    //通信技术服务费=电路费用 + 端口费用
+    @Excel(name="通信电路技术服务费（元/月）")
+    private Double circuitFee;
 
     //是否过期标识位
     private Integer isExpired;
@@ -105,11 +105,11 @@ public class Circuit extends BaseEntity {
     private String divideRatio;
 
     //运维平台申请编号
-    @Excel(name="运维平台申请编号")
+    //@Excel(name="运维平台申请编号")
     private String iomsApplyNumber;
 
     //依据文件
-    @Excel(name="依据文件")
+    //@Excel(name="依据文件")
     private String basisFile;
 
     //说明

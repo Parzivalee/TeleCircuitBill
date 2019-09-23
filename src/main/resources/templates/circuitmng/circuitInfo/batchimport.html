@@ -51,7 +51,7 @@
                 <!--<button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>-->
             </div>
         </div>
-
+        <p>电路增删改提示：</p>
         <div class="form-group">
             <label class="col-sm-2 control-label">新增电路：</label>
             <div class="col-sm-10">
@@ -70,10 +70,17 @@
             </div>
         </div>
 
-        <!--<div class="modal-footer">
-            <button type="button" class="btn btn-success" onclick="submitExcel()">导入</button>
-            <button onclick="$.modal.close()" class="btn btn-danger" type="button">关闭</button>
-        </div>-->
+        <p>费用计算提示：</p>
+        <label class="col-sm-2 control-label">技术服务费计算有误的电路：</label>
+        <div class="col-sm-10">
+            <input readonly="readonly" class="form-control" id="hireFee" style="outline:none;">
+            <br>
+        </div>
+        <label class="col-sm-2 control-label">维护费计算有误的电路：</label>
+        <div class="col-sm-10">
+            <input readonly="readonly" class="form-control" id="maintainFee" style="outline:none;">
+            <br>
+        </div>
 
     </form>
 </div>
@@ -102,6 +109,10 @@
         //如果一级select的值为null，隐藏二级select,并返回
         if(value == ''){
             /*$("#customer").fadeOut("fast");*/
+            return;
+        }
+        if ($("#contractType option:selected").val() == null) {
+            alert("请选择合同类型！");
             return;
         }
         //远程获取二级菜单下拉列表的值

@@ -4,4 +4,4 @@ VOLUME /tmp
 ADD /target/teleCircuitBill.war teleCircuitBill.war
 CMD ["java","-Xms512m","-jar","teleCircuitBill.war"]
 
-EXPOSE 8088
+EXPOSE 8081

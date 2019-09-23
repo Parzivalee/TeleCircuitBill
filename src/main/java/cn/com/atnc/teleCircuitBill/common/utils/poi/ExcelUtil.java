@@ -4,11 +4,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import cn.com.atnc.teleCircuitBill.framework.web.domain.AjaxResult;
 import cn.com.atnc.teleCircuitBill.framework.aspectj.lang.annotation.Excel;
@@ -39,7 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * Excel相关处理
  * 
- * @author
+ * @author lwj
  */
 public class ExcelUtil<T>
 {
@@ -102,7 +98,7 @@ public class ExcelUtil<T>
                         if (cell == null) {
                             continue;
                         } else {
-                            // 先设置Cell的类型，然后就可以把纯数字作为String类型读进来了 by zhuyangyong 20171228
+                            // 先设置Cell的类型，然后就可以把纯数字作为String类型读进来
                             row.getCell(j).setCellType(Cell.CELL_TYPE_STRING);
                             cell = row.getCell(j);
                         }
@@ -135,13 +131,31 @@ public class ExcelUtil<T>
                                 field.set(entity, Character.valueOf(c.charAt(0)));
                             }
                         } else if (java.util.Date.class == fieldType) {
-                            if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            /*if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                                 cell.setCellValue(sdf.format(cell.getNumericCellValue()));
-                                c = sdf.format(cell.getNumericCellValue());
-                            } else {
+                                //c = sdf.format(cell.getNumericCellValue());
+                                field.set(entity, sdf.format(Double.valueOf(cell.getStringCellValue())));
+                            }else if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                cell.setCellValue(sdf.format(cell.getStringCellValue()));
+                                //c = sdf.format(cell.getStringCellValue());
+                                field.set(entity, sdf.format(cell.getStringCellValue()));
+                            }{
                                 c = cell.getStringCellValue();
+                                field.set(entity, c);
+                            }*/
+                            String[] dateStrings = c.split("\\.");
+                            String dateString="";
+                            if (dateStrings.length>2) {
+                                dateString = dateStrings[0]+"-"+dateStrings[1]+"-"+dateStrings[2];
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                Date date = format.parse(dateString);
+                                field.set(entity,date);
                             }
+
+
+
                         } else if (java.math.BigDecimal.class == fieldType) {
                             c = cell.getStringCellValue();
                         }
